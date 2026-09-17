@@ -13,7 +13,15 @@ zwölf völlig verschiedene Erwartungen. Das wird hier nicht behauptet, sondern
 live vorgeführt: Die Musterseite wird beim Richtungswechsel **nicht neu
 gerendert**, es wechselt ausschließlich ein Attribut.
 
-## Starten
+## Ansehen
+
+**[vroind-ausm-all.github.io/Showcase-gebastelt](https://vroind-ausm-all.github.io/Showcase-gebastelt/)**
+
+Veröffentlicht über GitHub Pages (`.github/workflows/pages.yml`). Jeder Push auf
+den Veröffentlichungszweig baut die Seite neu — die Seite ist statisch, es wird
+nur hochgeladen.
+
+## Lokal starten
 
 ```bash
 python3 -m http.server 8000
