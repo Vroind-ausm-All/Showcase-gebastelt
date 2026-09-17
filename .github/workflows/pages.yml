@@ -23,6 +23,12 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Zwingend: Die Pages-API lehnt eine Bereitstellung ohne diese Umgebung ab
+    # ("Missing environment"). Die Umgebung traegt zugleich die Freigabe-Regel,
+    # die festlegt, welche Branches veroeffentlichen duerfen.
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
