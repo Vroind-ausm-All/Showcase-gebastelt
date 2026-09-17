@@ -20,6 +20,20 @@ gerendert**, es wechselt ausschließlich ein Attribut.
 Veröffentlicht über GitHub Pages (`.github/workflows/pages.yml`). Jeder Push auf
 `main` veröffentlicht neu — die Seite ist statisch, es wird nur hochgeladen.
 
+### Einmalige Einstellung
+
+Pages wurde zuerst direkt vom Entwicklungszweig veröffentlicht. Die dabei
+angelegte Umgebung `github-pages` erlaubt deshalb weiterhin nur diesen Zweig,
+und Läufe von `main` brechen ohne einen einzigen Schritt ab. Das ist eine
+Einstellung, kein Fehler im Workflow:
+
+**Settings → Environments → `github-pages` → Deployment branches and tags**
+→ entweder auf *No restriction* setzen oder `main` in die Liste aufnehmen.
+
+Danach läuft jeder Push auf `main` durch. Die Umgebung selbst muss im Workflow
+stehen bleiben — ohne sie lehnt die Pages-API die Bereitstellung mit
+`Missing environment` ab.
+
 ## Lokal starten
 
 ```bash
