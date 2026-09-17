@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>05 — Content-Focused Layout · Flowdesk Wireframe</title>
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+/* ===== 05 CONTENT-FOCUSED LAYOUT ==========================================
+   Der Text erzeugt die Struktur. Keine Cards, keine Boxen, kaum UI: eine
+   ruhige Lesespalte (ca. 68 Zeichen), klare Zwischenüberschriften, Bilder nur
+   dort, wo sie etwas erklären. CTAs sind in den Lesefluss eingebettet.        */
+
+body { font-size: 17px; line-height: 1.65; color: var(--ink-2); }
+
+.measure  { width: min(680px, 100% - 48px); margin-inline: auto; }
+.measure--wide { width: min(880px, 100% - 48px); margin-inline: auto; }
+.measure--full { width: min(1080px, 100% - 48px); margin-inline: auto; }
+
+/* Header: nur Wortmarke und Textlinks, kein Button, keine Fläche */
+.hd { padding: var(--s-5) 0; }
+.hd__in { display: flex; align-items: baseline; gap: var(--s-6); }
+.hd__nav { margin-left: auto; display: flex; gap: var(--s-5); font-size: 14px; }
+.hd__nav a { color: var(--ink-3); text-decoration: none; }
+.hd__nav a:hover { color: var(--ink); }
+.hd .logo { font-size: 17px; color: var(--ink); text-decoration: none; }
+
+/* Titelblock statt Hero-Fläche */
+.title { padding: var(--s-9) 0 var(--s-7); }
+.title .kicker { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.title h1 { font-size: clamp(34px, 4.6vw, 58px); line-height: 1.04; letter-spacing: -.03em; color: var(--ink); margin: var(--s-4) 0; }
+.title .standfirst { font-size: clamp(19px, 1.7vw, 23px); line-height: 1.45; color: var(--ink-2); }
+.title .meta { margin-top: var(--s-5); padding-top: var(--s-4); border-top: 1px solid var(--line);
+               display: flex; gap: var(--s-4); flex-wrap: wrap; font-size: 14px; color: var(--ink-3); }
+.title .meta a { color: var(--ink); text-underline-offset: 3px; }
+
+.prose { padding-bottom: var(--s-8); }
+.prose h2 { font-size: clamp(24px, 2.4vw, 30px); color: var(--ink); margin: var(--s-8) 0 var(--s-4); letter-spacing: -.02em; }
+.prose h3 { font-size: 19px; color: var(--ink); margin: var(--s-6) 0 var(--s-2); }
+.prose p { margin-bottom: var(--s-4); }
+.prose p.lede { font-size: 19px; color: var(--ink); }
+.prose a { color: var(--ink); text-underline-offset: 3px; }
+.prose ul.dash { margin: var(--s-4) 0; }
+.prose ul.dash li { display: grid; grid-template-columns: 22px 1fr; margin-bottom: var(--s-3); }
+.prose ul.dash li::before { content: "—"; color: var(--ink-4); }
+.prose ol.num { margin: var(--s-4) 0; counter-reset: n; }
+.prose ol.num li { counter-increment: n; display: grid; grid-template-columns: 34px 1fr; margin-bottom: var(--s-4); }
+.prose ol.num li::before { content: counter(n) "."; color: var(--ink-4); font-variant-numeric: tabular-nums; }
+.prose hr { border: 0; border-top: 1px solid var(--line); margin: var(--s-7) 0; }
+
+/* Definitionsliste für Funktionen – Text statt Karten */
+.deflist { margin: var(--s-5) 0; }
+.deflist > div { display: grid; grid-template-columns: 200px 1fr; gap: var(--s-5);
+                 padding: var(--s-4) 0; border-top: 1px solid var(--line); }
+.deflist > div:last-child { border-bottom: 1px solid var(--line); }
+.deflist dt { color: var(--ink); font-weight: 600; font-size: 16px; }
+.deflist dd { margin: 0; font-size: 16px; }
+
+/* Bilder erklären, sie dekorieren nicht */
+figure { margin: var(--s-6) 0; }
+figure .ph { aspect-ratio: 16/9; }
+figcaption { margin-top: var(--s-2); font-size: 13px; color: var(--ink-3); }
+figure.bleed { width: min(1080px, 100% - 48px); margin-inline: auto; }
+
+/* Zitat im Fluss */
+.pull { margin: var(--s-7) 0; padding-left: var(--s-5); border-left: 2px solid var(--ink); }
+.pull p { font-size: clamp(20px, 2.2vw, 26px); line-height: 1.35; color: var(--ink); letter-spacing: -.015em; }
+.pull cite { display: block; margin-top: var(--s-3); font-style: normal; font-size: 14px; color: var(--ink-3); }
+
+/* Social Proof als Textzeile + reduzierte Logos */
+.proofline { margin: var(--s-6) 0; padding: var(--s-4) 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 15px; }
+.prooflogos { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-4); }
+.prooflogos .logo-ph { border: 0; background: none; color: var(--ink-4); height: 22px; padding: 0 var(--s-3) 0 0; }
+
+/* CTA im Lesefluss, ohne laute Fläche */
+.inlinecta { margin: var(--s-7) 0; padding: var(--s-5) 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); }
+.inlinecta h3 { font-size: 21px; color: var(--ink); margin-bottom: var(--s-2); }
+.inlinecta .btn-row { margin-top: var(--s-4); }
+
+.faq { margin-top: var(--s-5); }
+.faq summary { font-size: 17px; color: var(--ink); }
+.faq details > p { font-size: 16px; }
+
+/* Abschluss-CTA: ruhig, zentriert, ohne Farbfläche */
+.endcta { padding: var(--s-9) 0; border-top: 1px solid var(--line); text-align: left; }
+.endcta h2 { font-size: clamp(26px, 3vw, 38px); color: var(--ink); letter-spacing: -.025em; max-width: 20ch; }
+.endcta p { margin-top: var(--s-3); max-width: 52ch; }
+.endcta .btn-row { margin-top: var(--s-5); }
+
+.ft { padding: var(--s-7) 0 var(--s-6); border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-3); }
+.ft__cols { display: flex; flex-wrap: wrap; gap: var(--s-6) var(--s-7); }
+.ft__cols div { min-width: 140px; }
+.ft h4 { font-size: 13px; color: var(--ink); margin-bottom: var(--s-2); }
+.ft li { margin-bottom: 4px; } .ft a { text-decoration: none; color: var(--ink-3); }
+.ft__base { margin-top: var(--s-6); padding-top: var(--s-4); border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; font-size: 13px; }
+
+/* ---- Mobile: identische Struktur, nur schmaler – Lesbarkeit bleibt ------- */
+@media (max-width: 780px) {
+  body { font-size: 16px; }
+  .measure, .measure--wide, .measure--full, figure.bleed { width: calc(100% - 32px); }
+  .hd__nav { display: none; }
+  .title { padding: var(--s-7) 0 var(--s-5); }
+  .title h1 { font-size: 32px; }
+  .deflist > div { grid-template-columns: 1fr; gap: 2px; }
+  .inlinecta .btn, .endcta .btn { flex: 1 1 100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="measure--full hd__in">
+    <a class="logo" href="#">Flowdesk</a>
+    <nav class="hd__nav">
+      <a href="#produkt">Produkt</a><a href="#funktionen">Funktionen</a><a href="#usecases">Use Cases</a>
+      <a href="#preise">Preise</a><a href="#demo">Demo</a>
+    </nav>
+  </div>
+</header>
+
+<section class="title measure">
+  <p class="kicker">Produktüberblick</p>
+  <h1>Agenturplanung, die endlich zusammenpasst.</h1>
+  <p class="standfirst">Flowdesk verbindet Projekte, Kapazitäten und Budgets in einer Oberfläche –
+    damit Ihr Team jederzeit weiß, wer wann woran arbeitet.</p>
+  <div class="meta">
+    <span>Lesedauer 4 Minuten</span><span>·</span>
+    <a href="#demo">Demo buchen</a><span>·</span>
+    <a href="#tour">Produkt-Tour ansehen</a>
+  </div>
+</section>
+
+<main class="prose measure" id="produkt">
+  <p class="lede">Die meisten Agenturen planen in fünf Tabellen, drei Tools und einem gemeinsamen Bauchgefühl.
+    Das funktioniert, solange nichts dazwischenkommt.</p>
+  <p>Flowdesk ersetzt diese Sammlung durch <strong>eine Quelle der Wahrheit für Auslastung, Timings und Margen</strong>.
+    Projekte, Kapazitäten und Budgets liegen in derselben Oberfläche. Verschiebt sich ein Timing, ziehen
+    Kapazitätsplanung und Forecast automatisch nach – ohne dass jemand eine zweite Datei pflegen muss.</p>
+
+  <figure>
+    <div class="ph"><span>Produktvisualisierung · Planungsboard</span></div>
+    <figcaption>Das Planungsboard zeigt Projekte, zugewiesene Personen und freie Kapazität in derselben Ansicht.</figcaption>
+  </figure>
+
+  <h2>Was sich in den ersten Wochen verändert</h2>
+  <p>Vier Effekte berichten fast alle Teams nach der Einführung – unabhängig von ihrer Größe:</p>
+  <ul class="dash">
+    <li><strong>Auslastung in Echtzeit.</strong> Kapazitäten pro Person, Team und Woche auf einen Blick, inklusive Teilzeit, Urlaub und Skills.</li>
+    <li><strong>Weniger Planungs-Chaos.</strong> Ein Plan statt fünf Tabellen; Änderungen laufen automatisch durch alle Ansichten.</li>
+    <li><strong>Projekte bleiben profitabel.</strong> Soll-Ist-Vergleich von Stunden und Budget ab Tag eins statt erst zum Projektende.</li>
+    <li><strong>Schnell startklar.</strong> Import aus Excel und Jira, Go-live in unter 14 Tagen, ohne Beraterprojekt.</li>
+  </ul>
+
+  <div class="proofline">
+    <strong>480+ Agenturen</strong> planen mit Flowdesk. Durchschnittlich <strong>31 % weniger Planungsaufwand</strong>
+    in den ersten drei Monaten, Bewertung 4,7 von 5 aus 320 Rückmeldungen.
+    <div class="prooflogos">
+      <span class="logo-ph">Aurum</span><span class="logo-ph">Kessler &amp; Co.</span><span class="logo-ph">Studio Nord</span>
+      <span class="logo-ph">Brandwerk</span><span class="logo-ph">Pixelhof</span><span class="logo-ph">Vesta Group</span>
+    </div>
+  </div>
+
+  <h2 id="funktionen">Funktionen im Überblick</h2>
+  <p>Alles, was zwischen Briefing und Rechnung passiert – bewusst als Liste, nicht als Kachelwand:</p>
+  <dl class="deflist">
+    <div><dt>Kapazitätsplanung</dt><dd>Wochen- und Tagesansicht, Skills, Teilzeit, Urlaube, Überbuchungs-Warnungen.</dd></div>
+    <div><dt>Projekt-Timeline</dt><dd>Phasen, Meilensteine und Abhängigkeiten in einer Ansicht, mit Verschiebe-Logik.</dd></div>
+    <div><dt>Zeiterfassung</dt><dd>Erfassung in 15 Sekunden, mobil und im Browser, mit Erinnerungen.</dd></div>
+    <div><dt>Budget &amp; Forecast</dt><dd>Soll-Ist je Projekt, Kunde und Quartal, Prognose für zwölf Wochen.</dd></div>
+    <div><dt>Reporting</dt><dd>Dashboards für Leitung, Projektleitung und Controlling, exportierbar.</dd></div>
+    <div><dt>Integrationen</dt><dd>Jira, Slack, DATEV, Google Kalender, Outlook und eine offene REST-API.</dd></div>
+  </dl>
+
+  <div class="inlinecta">
+    <h3>Lieber einmal selbst sehen?</h3>
+    <p>Wir bauen im Termin Ihren realen Wochenplan nach – 30 Minuten, ohne Vorbereitung.</p>
+    <div class="btn-row"><a class="btn" href="#demo">Demo buchen</a><a class="btn btn--ghost" href="#tour">Produkt-Tour ansehen</a></div>
+  </div>
+
+  <h2>So funktioniert die Einführung</h2>
+  <ol class="num">
+    <li><strong>Daten importieren.</strong> Projekte, Stunden und Teams kommen aus Excel, CSV oder Jira – meist an einem Vormittag.</li>
+    <li><strong>Teams und Rollen anlegen.</strong> Skills, Verfügbarkeiten und Stundensätze hinterlegen, Rechte je Funktion setzen.</li>
+    <li><strong>Projekte planen.</strong> Kapazität zuweisen, Timings prüfen, Konflikte auflösen – zunächst für ein Pilotteam.</li>
+    <li><strong>Auslastung steuern.</strong> Wöchentlich nachjustieren statt quartalsweise raten.</li>
+  </ol>
+
+  <div class="pull">
+    <p>„Wir haben unsere Wochenplanung von vier Stunden auf zwanzig Minuten reduziert.“</p>
+    <cite>Lena Brandt, Head of Operations, Studio Nord</cite>
+  </div>
+
+  <h2 id="usecases">Wer so arbeitet</h2>
+  <p><strong>Kreativagenturen</strong> steuern Retainer und Projektgeschäft parallel, ohne dass eines das andere auffrisst.
+    <strong>Design-Studios</strong> behalten bei vielen parallelen Kunden den Überblick über wenige Köpfe.
+    <strong>IT-Dienstleister</strong> verbinden Sprints, Rollen und Abrechenbarkeit.
+    <strong>Inhouse-Teams</strong> machen interne Nachfrage sichtbar und priorisieren sie transparent.</p>
+
+  <figure>
+    <div class="ph ph--wide"><span>Auslastungs-Heatmap über sechs Teams</span></div>
+    <figcaption>Die Heatmap macht Überbuchung sichtbar, bevor sie zum Problem wird.</figcaption>
+  </figure>
+
+  <div class="pull">
+    <p>„Zum ersten Mal sehen Geschäftsführung und Projektleitung dieselben Zahlen.“</p>
+    <cite>Mirko Falk, Geschäftsführer, Brandwerk</cite>
+  </div>
+
+  <h2>Häufige Fragen</h2>
+  <div class="faq">
+    <details open><summary>Wie lange dauert die Einführung?</summary><p>Die meisten Teams sind in 10 bis 14 Tagen produktiv, inklusive Datenimport und Schulung.</p></details>
+    <details><summary>Können wir bestehende Daten importieren?</summary><p>Ja: Excel, CSV, Jira und Harvest direkt, alles Weitere über die offene API.</p></details>
+    <details><summary>Welche Integrationen gibt es?</summary><p>Jira, Slack, DATEV, Google Kalender, Outlook sowie eine REST-API.</p></details>
+    <details><summary>Wie wird abgerechnet?</summary><p>Pro aktiver Person und Monat, monatlich kündbar, Staffelpreise ab 25 Personen.</p></details>
+    <details><summary>Wo liegen die Daten?</summary><p>Auf Servern in Frankfurt, DSGVO-konform, mit AVV und täglichem Backup.</p></details>
+  </div>
+</main>
+
+<section class="endcta" id="demo">
+  <div class="measure">
+    <h2>Sehen Sie Flowdesk an Ihrem eigenen Projektplan.</h2>
+    <p>30 Minuten, gemeinsam mit einer Person aus Ihrem Team. Wir bauen Ihren realen Wochenplan nach und
+      zeigen, wo heute Kapazität verloren geht.</p>
+    <div class="btn-row"><a class="btn btn--lg" href="#">Demo buchen</a><a class="btn btn--sec btn--lg" href="#tour">Produkt-Tour ansehen</a></div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="measure--full">
+    <div class="ft__cols">
+      <div><h4>Produkt</h4><ul><li><a href="#">Funktionen</a></li><li><a href="#">Integrationen</a></li><li><a href="#">Preise</a></li><li><a href="#">Sicherheit</a></li></ul></div>
+      <div><h4>Unternehmen</h4><ul><li><a href="#">Über uns</a></li><li><a href="#">Karriere</a></li><li><a href="#">Kontakt</a></li></ul></div>
+      <div><h4>Ressourcen</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Hilfe-Center</a></li><li><a href="#">Webinare</a></li></ul></div>
+      <div><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul></div>
+    </div>
+    <div class="ft__base"><span>© 2026 Flowdesk GmbH · Hamburg</span><span>Server in Frankfurt · DSGVO-konform</span></div>
+  </div>
+</footer>
+
+<script src="../assets/wf.js"></script>
+</body>
+</html>

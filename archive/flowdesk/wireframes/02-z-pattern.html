@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 — Z-Pattern Layout · Flowdesk Wireframe</title>
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+/* ===== 02 Z-PATTERN LAYOUT ================================================
+   Jeder Bildschirm ist als Z gebaut: oben links → oben rechts → Diagonale →
+   unten links → unten rechts. Die Diagonalen sind als Hilfslinien sichtbar
+   gemacht, die Blickpunkte nummeriert.                                       */
+
+.wrap { width: min(1360px, 100% - 56px); margin-inline: auto; }
+
+/* Header als erste Z-Achse: Logo links, Navigation mittig, CTA ganz rechts */
+.hd { border-bottom: 2px solid var(--ink); }
+.hd__in { display: grid; grid-template-columns: auto 1fr auto; align-items: center; height: 74px; gap: var(--s-6); }
+.hd__nav { display: flex; gap: var(--s-6); justify-content: center; font-size: 14px; }
+.hd__nav a { text-decoration: none; color: var(--ink-2); }
+.hd__act { display: flex; align-items: center; gap: var(--s-4); }
+
+/* Z-Bühne */
+.zstage { position: relative; border-bottom: 1px solid var(--line); overflow: hidden; }
+.zstage__grid {
+  position: relative; display: grid;
+  grid-template-columns: 1.15fr .85fr; grid-template-rows: auto auto;
+  gap: var(--s-7) var(--s-8); padding: var(--s-8) 0 var(--s-9);
+  align-items: start;
+}
+/* sichtbare Blickführungs-Diagonale */
+.zline { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.zline svg { width: 100%; height: 100%; }
+.zline path, .zline line { stroke: var(--line-2); stroke-width: 1.5; stroke-dasharray: 6 8; fill: none;
+                            vector-effect: non-scaling-stroke; }
+.zstage__grid > * { position: relative; z-index: 1; }
+
+.zmark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border: 1.5px solid var(--ink); border-radius: 50%;
+  font-size: 12px; font-weight: 700; margin-bottom: var(--s-3);
+}
+
+/* Z1 oben links: Kernbotschaft */
+.z1 { grid-column: 1; grid-row: 1; max-width: 22ch; }
+.z1 h1 { font-size: clamp(38px, 4.6vw, 64px); letter-spacing: -.03em; }
+.z1 p { margin-top: var(--s-4); }
+/* Z2 oben rechts: unterstützendes Visual */
+.z2 { grid-column: 2; grid-row: 1; }
+/* Z3 unten links: Beweis / Social Proof */
+.z3 { grid-column: 1; grid-row: 2; align-self: end; }
+.z3__stats { display: flex; gap: var(--s-7); flex-wrap: wrap; }
+.z3__logos { display: flex; gap: var(--s-3); flex-wrap: wrap; margin-top: var(--s-5); }
+/* Z4 unten rechts: Handlung — Endpunkt des Blickverlaufs */
+.z4 { grid-column: 2; grid-row: 2; align-self: end; justify-self: end; text-align: right;
+      border: 2px solid var(--ink); padding: var(--s-5) var(--s-6); background: var(--bg); max-width: 380px; }
+.z4 .btn-row { justify-content: flex-end; margin-top: var(--s-4); }
+
+/* Wiederholte Z-Takte in den Folgesektionen */
+.zrow { position: relative; border-bottom: 1px solid var(--line); padding: var(--s-8) 0; }
+.zrow__in { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-8); align-items: center; }
+.zrow--rev .zrow__in > :first-child { order: 2; }
+.zrow__diag { position: absolute; left: 0; right: 0; top: 0; bottom: 0; pointer-events: none; }
+.zrow__diag svg { width: 100%; height: 100%; }
+.zrow__diag line { stroke: var(--line-2); stroke-width: 1.5; stroke-dasharray: 6 8;
+                     vector-effect: non-scaling-stroke; }
+.zrow__in > * { position: relative; z-index: 1; }
+.zrow h2 { font-size: clamp(24px, 2.6vw, 34px); max-width: 18ch; }
+.zrow p.t-lead { margin-top: var(--s-4); max-width: 44ch; }
+.zrow .btn-row { margin-top: var(--s-5); }
+
+.bullets { display: grid; gap: var(--s-3); margin-top: var(--s-5); }
+.bullets li { display: grid; grid-template-columns: 18px 1fr; gap: var(--s-3); font-size: 14px; color: var(--ink-2); }
+.bullets li::before { content: ""; width: 10px; height: 10px; border: 1.5px solid var(--ink-3); margin-top: 6px; }
+
+/* Featureraster, ebenfalls im Z gelesen (2 Spalten, versetzt) */
+.zfeat { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-6) var(--s-8); }
+.zfeat article { display: grid; grid-template-columns: 44px 1fr; gap: var(--s-4); }
+.zfeat article:nth-child(2n) { margin-top: var(--s-6); }
+.zfeat h3 { font-size: 17px; margin-bottom: var(--s-2); }
+
+.sec { padding: var(--s-8) 0; border-bottom: 1px solid var(--line); }
+.sec__head { display: flex; justify-content: space-between; align-items: end; gap: var(--s-5); margin-bottom: var(--s-6); }
+.sec__head h2 { font-size: clamp(24px, 2.4vw, 32px); }
+
+.tgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); }
+.tcard { border-top: 2px solid var(--ink); padding-top: var(--s-4); }
+.tcard__by { display: flex; gap: var(--s-3); align-items: center; margin-top: var(--s-4); }
+
+.faqwrap { display: grid; grid-template-columns: 1fr 1.3fr; gap: var(--s-8); }
+
+/* Abschluss-CTA als letztes Z: Text links oben, CTA rechts unten */
+.endz { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: var(--s-9) 0; position: relative; }
+.endz__in { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7); }
+.endz h2 { font-size: clamp(30px, 3.4vw, 46px); max-width: 16ch; }
+.endz__act { grid-column: 2; justify-self: end; align-self: end; text-align: right; }
+
+.ft { padding: var(--s-7) 0 var(--s-5); font-size: 13px; color: var(--ink-3); }
+.ft__in { display: grid; grid-template-columns: 1.2fr repeat(4, 1fr); gap: var(--s-6); }
+.ft h4 { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-bottom: var(--s-3); }
+.ft li { margin-bottom: 6px; } .ft a { text-decoration: none; }
+.ft__base { margin-top: var(--s-6); padding-top: var(--s-4); border-top: 1px solid var(--line);
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--s-3); }
+
+/* ---- Mobile: Z klappt zu einer Treppe, Reihenfolge bleibt 1→2→3→4 -------- */
+@media (max-width: 900px) {
+  .wrap { width: calc(100% - 32px); }
+  .hd__in { grid-template-columns: auto auto; height: 62px; }
+  .hd__nav { display: none; }
+  .zline, .zrow__diag { display: none; }
+  .zstage__grid { grid-template-columns: 1fr; gap: var(--s-6); padding: var(--s-6) 0 var(--s-7); }
+  .z1, .z2, .z3, .z4 { grid-column: 1; grid-row: auto; max-width: none; }
+  .z4 { justify-self: stretch; text-align: left; }
+  .z4 .btn-row { justify-content: flex-start; }
+  .z4 .btn { flex: 1 1 100%; }
+  .z1 h1 { font-size: 36px; }
+  .zrow__in, .zfeat, .tgrid, .faqwrap, .endz__in { grid-template-columns: 1fr; gap: var(--s-5); }
+  .zrow--rev .zrow__in > :first-child { order: 0; }
+  .zfeat article:nth-child(2n) { margin-top: 0; }
+  .endz__act { grid-column: 1; justify-self: stretch; text-align: left; }
+  .ft__in { grid-template-columns: 1fr 1fr; }
+  .sec, .zrow, .endz { padding: var(--s-7) 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="logo" href="#">Flowdesk</a>
+    <nav class="hd__nav">
+      <a href="#">Produkt</a><a href="#">Funktionen</a><a href="#usecases">Use Cases</a><a href="#">Preise</a><a href="#">Ressourcen</a>
+    </nav>
+    <div class="hd__act">
+      <a class="btn btn--ghost btn--sm" href="#tour">Produkt-Tour</a>
+      <a class="btn btn--sm" href="#demo">Demo buchen</a>
+    </div>
+  </div>
+</header>
+
+<!-- Erster Viewport strikt als Z komponiert -->
+<section class="zstage">
+  <div class="zline" aria-hidden="true">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="4" y1="6" x2="96" y2="6"/>
+      <line x1="96" y1="6" x2="6" y2="93"/>
+      <line x1="6" y1="93" x2="96" y2="93"/>
+    </svg>
+  </div>
+  <div class="wrap zstage__grid">
+    <div class="z1">
+      <span class="zmark">1</span>
+      <p class="eyebrow">Ressourcenplanung für Agenturen</p>
+      <h1>Agenturplanung, die endlich zusammenpasst.</h1>
+      <p class="t-lead">Projekte, Kapazitäten und Budgets in einer Oberfläche.</p>
+    </div>
+
+    <div class="z2">
+      <span class="zmark">2</span>
+      <div class="ui">
+        <div class="ui__bar ui__bar--sm"></div>
+        <div class="ui__grid">
+          <span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span>
+          <span class="ui__cell"></span><span class="ui__cell ui__cell--fill"></span><span class="ui__cell ui__cell--half"></span><span class="ui__cell"></span>
+        </div>
+        <div class="ui__row"><i style="height:50%"></i><i style="height:80%"></i><i style="height:40%"></i><i style="height:95%"></i><i style="height:65%"></i><i style="height:30%"></i><i style="height:75%"></i></div>
+        <p class="t-micro">Auslastungs-Heatmap · 6 Teams</p>
+      </div>
+    </div>
+
+    <div class="z3">
+      <span class="zmark">3</span>
+      <p class="t-lead" style="max-width:34ch">Damit Ihr Team jederzeit weiß, wer wann woran arbeitet.</p>
+      <div class="z3__stats" style="margin-top:20px">
+        <div><div class="stat__value num">480+</div><div class="stat__label">Agenturen</div></div>
+        <div><div class="stat__value num">31 %</div><div class="stat__label">weniger Planungsaufwand</div></div>
+        <div><div class="stat__value num">4,7</div><div class="stat__label">von 5 Sternen</div></div>
+      </div>
+      <div class="z3__logos">
+        <span class="logo-ph">Aurum</span><span class="logo-ph">Kessler &amp; Co.</span><span class="logo-ph">Studio Nord</span>
+        <span class="logo-ph">Brandwerk</span><span class="logo-ph">Pixelhof</span>
+      </div>
+    </div>
+
+    <div class="z4" id="demo">
+      <span class="zmark">4</span>
+      <h2 class="t-h3">Bereit für den nächsten Schritt?</h2>
+      <p class="t-small" style="margin-top:8px">30 Minuten an Ihrem eigenen Projektplan.</p>
+      <div class="btn-row">
+        <a class="btn btn--sec btn--sm" href="#tour">Produkt-Tour</a>
+        <a class="btn" href="#">Demo buchen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Z-Takt 2: Text links oben → Visual rechts → CTA links unten -->
+<section class="zrow">
+  <div class="zrow__diag" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="92" y1="14" x2="10" y2="88"/></svg></div>
+  <div class="wrap zrow__in">
+    <div>
+      <p class="eyebrow">Value Proposition</p>
+      <h2>Eine Quelle der Wahrheit für Auslastung, Timings und Margen.</h2>
+      <p class="t-lead">Statt fünf Tabellen und drei Tools arbeitet die ganze Agentur auf demselben Plan.</p>
+      <ul class="bullets">
+        <li>Änderungen laufen automatisch durch Kapazität, Budget und Forecast.</li>
+        <li>Leitung und Projektleitung sehen dieselben Zahlen – in Echtzeit.</li>
+      </ul>
+      <div class="btn-row"><a class="btn" href="#demo">Demo buchen</a><a class="btn btn--ghost" href="#tour">Mehr erfahren</a></div>
+    </div>
+    <div class="ph ph--wide"><span>Produktvisualisierung · Planungsboard</span></div>
+  </div>
+</section>
+
+<!-- Z-Takt 3: gespiegelt, damit der Blick zurückschwingt -->
+<section class="zrow zrow--rev">
+  <div class="zrow__diag" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="8" y1="14" x2="90" y2="88"/></svg></div>
+  <div class="wrap zrow__in">
+    <div>
+      <p class="eyebrow">Vorteile</p>
+      <h2>Was sich in den ersten Wochen messbar verändert.</h2>
+      <ul class="bullets">
+        <li><strong>Auslastung in Echtzeit</strong> – Kapazitäten pro Person, Team und Woche.</li>
+        <li><strong>Weniger Planungs-Chaos</strong> – ein Plan statt fünf Tabellen.</li>
+        <li><strong>Projekte bleiben profitabel</strong> – Soll-Ist ab Tag eins.</li>
+        <li><strong>Schnell startklar</strong> – Import aus Excel und Jira, Go-live in 14 Tagen.</li>
+      </ul>
+      <div class="btn-row"><a class="btn" href="#demo">Demo buchen</a></div>
+    </div>
+    <div class="ph ph--photo"><span>Team-Situation</span></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><h2>Funktionen</h2><a class="btn btn--ghost btn--sm" href="#">Alle Funktionen ansehen</a></div>
+    <div class="zfeat">
+      <article><span class="icon icon--lg"></span><div><h3>Kapazitätsplanung</h3><p class="t-body">Wochen- und Tagesansicht, Skills, Teilzeit, Urlaube.</p></div></article>
+      <article><span class="icon icon--lg"></span><div><h3>Projekt-Timeline</h3><p class="t-body">Phasen, Meilensteine und Abhängigkeiten in einer Ansicht.</p></div></article>
+      <article><span class="icon icon--lg"></span><div><h3>Zeiterfassung</h3><p class="t-body">Erfassung in 15 Sekunden, mobil und im Browser.</p></div></article>
+      <article><span class="icon icon--lg"></span><div><h3>Budget &amp; Forecast</h3><p class="t-body">Soll-Ist je Projekt, Kunde und Quartal.</p></div></article>
+      <article><span class="icon icon--lg"></span><div><h3>Reporting</h3><p class="t-body">Dashboards für Leitung, PM und Controlling.</p></div></article>
+      <article><span class="icon icon--lg"></span><div><h3>Integrationen</h3><p class="t-body">Jira, Slack, DATEV, Google Kalender, API.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="zrow">
+  <div class="zrow__diag" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="92" y1="16" x2="10" y2="86"/></svg></div>
+  <div class="wrap zrow__in">
+    <div>
+      <p class="eyebrow">So funktioniert es</p>
+      <h2>Vier Schritte bis zum ersten sauberen Wochenplan.</h2>
+      <ol class="bullets">
+        <li><strong>01</strong> Daten importieren – Projekte, Stunden, Teams.</li>
+        <li><strong>02</strong> Teams &amp; Rollen anlegen – Skills, Verfügbarkeiten, Sätze.</li>
+        <li><strong>03</strong> Projekte planen – Kapazität zuweisen, Timings prüfen.</li>
+        <li><strong>04</strong> Auslastung steuern – wöchentlich nachjustieren.</li>
+      </ol>
+    </div>
+    <div class="ph ph--wide"><span>Prozessdiagramm</span></div>
+  </div>
+</section>
+
+<section class="sec" id="usecases">
+  <div class="wrap">
+    <div class="sec__head"><h2>Use Cases</h2><span class="t-small">Für Teams von 8 bis 200 Personen</span></div>
+    <div class="zfeat">
+      <article><span class="icon icon--lg"></span><div><h3>Kreativagenturen</h3><p class="t-body">Retainer und Projektgeschäft parallel steuern.</p></div></article>
+      <article><span class="icon icon--lg"></span><div><h3>Design-Studios</h3><p class="t-body">Kleine Teams, viele parallele Kunden.</p></div></article>
+      <article><span class="icon icon--lg"></span><div><h3>IT-Dienstleister</h3><p class="t-body">Sprints, Rollen und Abrechenbarkeit verbinden.</p></div></article>
+      <article><span class="icon icon--lg"></span><div><h3>Inhouse-Teams</h3><p class="t-body">Interne Nachfrage sichtbar priorisieren.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><h2>Stimmen aus der Praxis</h2></div>
+    <div class="tgrid">
+      <blockquote class="tcard"><p class="t-body">„Wir haben unsere Wochenplanung von vier Stunden auf zwanzig Minuten reduziert.“</p>
+        <div class="tcard__by"><span class="avatar"></span><span class="t-small">Lena Brandt<br>Head of Operations, Studio Nord</span></div></blockquote>
+      <blockquote class="tcard"><p class="t-body">„Zum ersten Mal sehen Geschäftsführung und Projektleitung dieselben Zahlen.“</p>
+        <div class="tcard__by"><span class="avatar"></span><span class="t-small">Mirko Falk<br>Geschäftsführer, Brandwerk</span></div></blockquote>
+      <blockquote class="tcard"><p class="t-body">„Die Einführung war in zwei Wochen durch – ohne Beraterprojekt.“</p>
+        <div class="tcard__by"><span class="avatar"></span><span class="t-small">Ayla Demir<br>Projektleitung, Vesta Group</span></div></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap faqwrap">
+    <h2 class="t-h2">Häufige Fragen</h2>
+    <div class="faq">
+      <details open><summary>Wie lange dauert die Einführung?</summary><p>10 bis 14 Tage, inklusive Datenimport und Schulung.</p></details>
+      <details><summary>Können wir bestehende Daten importieren?</summary><p>Excel, CSV, Jira und Harvest direkt, alles Weitere über die API.</p></details>
+      <details><summary>Welche Integrationen gibt es?</summary><p>Jira, Slack, DATEV, Google Kalender, Outlook, REST-API.</p></details>
+      <details><summary>Wie wird abgerechnet?</summary><p>Pro aktiver Person und Monat, monatlich kündbar.</p></details>
+      <details><summary>Wo liegen die Daten?</summary><p>Server in Frankfurt, DSGVO-konform, AVV inklusive.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="endz">
+  <div class="wrap endz__in">
+    <div>
+      <p class="eyebrow">Abschluss</p>
+      <h2>Sehen Sie Flowdesk an Ihrem eigenen Projektplan.</h2>
+    </div>
+    <div class="endz__act">
+      <p class="t-lead" style="margin-bottom:16px">30 Minuten, gemeinsam mit Ihrem Team.</p>
+      <div class="btn-row" style="justify-content:flex-end">
+        <a class="btn btn--sec btn--lg" href="#tour">Produkt-Tour ansehen</a>
+        <a class="btn btn--lg" href="#">Demo buchen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div><span class="logo">Flowdesk</span><p style="margin-top:10px;max-width:30ch">Ressourcenplanung für Agenturen und Studios.</p></div>
+      <div><h4>Produkt</h4><ul><li><a href="#">Funktionen</a></li><li><a href="#">Integrationen</a></li><li><a href="#">Preise</a></li><li><a href="#">Sicherheit</a></li></ul></div>
+      <div><h4>Unternehmen</h4><ul><li><a href="#">Über uns</a></li><li><a href="#">Karriere</a></li><li><a href="#">Kontakt</a></li></ul></div>
+      <div><h4>Ressourcen</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Hilfe-Center</a></li><li><a href="#">Webinare</a></li></ul></div>
+      <div><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul></div>
+    </div>
+    <div class="ft__base"><span>© 2026 Flowdesk GmbH</span><span>Hamburg · Server in Frankfurt</span></div>
+  </div>
+</footer>
+
+<script src="../assets/wf.js"></script>
+</body>
+</html>

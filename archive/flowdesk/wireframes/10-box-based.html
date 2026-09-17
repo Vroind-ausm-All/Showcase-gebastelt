@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 — Box-Based Layout · Flowdesk Wireframe</title>
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+/* ===== 10 BOX-BASED LAYOUT ================================================
+   Die Seite besteht aus klar abgegrenzten Containern. Jede Sektion ist ein
+   Panel mit eigener Kopfzeile; innerhalb der Panels gibt es verschachtelte
+   Boxen und Box-Gruppen. Struktur wird sichtbar gemacht, nicht angedeutet.    */
+
+body { background: var(--bg-3); }
+.wrap { width: min(1320px, 100% - 40px); margin-inline: auto; }
+
+/* Grundbaustein: Box */
+.box { background: var(--bg); border: 1px solid var(--line-2); }
+.box + .box { margin-top: var(--s-4); }
+.box__hd { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-5);
+           border-bottom: 1px solid var(--line-2); background: var(--bg-2); }
+.box__hd h2, .box__hd h3 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
+.box__hd .t-small { margin-left: auto; }
+.box__bd { padding: var(--s-6); }
+.box__bd--tight { padding: var(--s-4); }
+.box--dark { background: var(--ink-dark); border-color: #000; color: #fff; }
+.box--dark .box__hd { background: #262626; border-color: #3a3a3a; }
+.box--dark .t-body, .box--dark .t-lead, .box--dark .t-small { color: #b4b4b4; }
+.box--flat { background: var(--bg-2); }
+
+/* Box-Gruppen */
+.boxgroup { display: grid; gap: var(--s-4); }
+.bg-2 { grid-template-columns: 1fr 1fr; }
+.bg-3 { grid-template-columns: repeat(3, 1fr); }
+.bg-4 { grid-template-columns: repeat(4, 1fr); }
+.bg-hero { grid-template-columns: 1.25fr .75fr; }
+.bg-side { grid-template-columns: 2fr 1fr; }
+.bg-split { grid-template-columns: 1fr 1.6fr; }
+
+/* Header als eigene Box */
+.hd { padding: var(--s-4) 0 0; }
+.hd__box { display: flex; align-items: center; gap: var(--s-5); padding: var(--s-3) var(--s-5); }
+.hd__nav { display: flex; gap: var(--s-4); font-size: 14px; }
+.hd__nav a { text-decoration: none; color: var(--ink-2); padding: 6px 10px; border: 1px solid transparent; }
+.hd__nav a.is-active { border-color: var(--line-2); background: var(--bg-2); }
+.hd__act { margin-left: auto; display: flex; gap: var(--s-3); }
+
+.main { padding: var(--s-4) 0 var(--s-6); display: grid; gap: var(--s-4); }
+
+/* Hero-Box mit verschachtelten Unterboxen */
+.hero h1 { font-size: clamp(32px, 4.2vw, 54px); line-height: 1.03; letter-spacing: -.03em; }
+.hero .t-lead { margin-top: var(--s-4); }
+.hero .btn-row { margin-top: var(--s-5); }
+.nestbox { border: 1px solid var(--line); background: var(--bg-2); padding: var(--s-4); }
+.nestgroup { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); margin-top: var(--s-6); }
+
+.kpi { border: 1px solid var(--line); padding: var(--s-4); background: var(--bg); }
+.kpi .stat__value { font-size: 28px; }
+
+.itembox { border: 1px solid var(--line); padding: var(--s-4); background: var(--bg); }
+.itembox h3 { font-size: 16px; margin: var(--s-3) 0 var(--s-2); }
+.itembox--accent { border-width: 2px; border-color: var(--ink); }
+
+.steprow { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-4); }
+.steprow .itembox { display: grid; gap: var(--s-2); }
+.steprow .chip { justify-self: start; }
+
+.logobox { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--s-3); }
+
+.quotebox { border: 1px solid var(--line); padding: var(--s-4); background: var(--bg); display: grid; gap: var(--s-3); }
+.quotebox .by { display: flex; gap: var(--s-3); align-items: center; }
+
+.faqbox .faq { border: 1px solid var(--line); }
+.faqbox .faq details { border-bottom: 1px solid var(--line); }
+.faqbox .faq details:last-child { border-bottom: 0; }
+.faqbox .faq summary { padding: var(--s-4) var(--s-4); background: var(--bg); }
+.faqbox .faq details[open] summary { background: var(--bg-2); }
+.faqbox .faq details > p { padding: var(--s-4); background: var(--bg-2); border-top: 1px solid var(--line); max-width: none; }
+
+/* Abschluss-CTA als hervorgehobene Box */
+.endbox .box__bd { display: grid; grid-template-columns: 1.3fr .7fr; gap: var(--s-6); align-items: center; }
+.endbox h2 { font-size: clamp(24px, 3vw, 38px); letter-spacing: -.025em; }
+
+.ft { padding-bottom: var(--s-6); }
+.ft .box__bd { display: grid; grid-template-columns: 1.3fr repeat(4, 1fr); gap: var(--s-5); }
+.ft h4 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: var(--s-3); }
+.ft li { margin-bottom: 6px; font-size: 13px; color: var(--ink-3); }
+.ft a { text-decoration: none; }
+
+/* ---- Mobile: Boxen stapeln, Rahmen bleiben als Gliederung erhalten ------- */
+@media (max-width: 900px) {
+  .wrap { width: calc(100% - 24px); }
+  .hd__nav { display: none; }
+  .hd__box { gap: var(--s-3); }
+  .hd__act .btn--sec { display: none; }   /* sekundäre CTA wandert in den Content */
+  .bg-2, .bg-3, .bg-4, .bg-hero, .bg-side, .bg-split, .nestgroup, .steprow { grid-template-columns: 1fr; }
+  .logobox { grid-template-columns: 1fr 1fr; }
+  .box__bd { padding: var(--s-5) var(--s-4); }
+  .endbox .box__bd, .ft .box__bd { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 32px; }
+  .hero .btn { flex: 1 1 100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap">
+    <div class="box hd__box">
+      <a class="logo" href="#">Flowdesk</a>
+      <nav class="hd__nav">
+        <a class="is-active" href="#">Produkt</a><a href="#">Funktionen</a><a href="#usecases">Use Cases</a><a href="#">Preise</a><a href="#">Ressourcen</a>
+      </nav>
+      <div class="hd__act"><a class="btn btn--sec btn--sm" href="#tour">Produkt-Tour</a><a class="btn btn--sm" href="#demo">Demo buchen</a></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap main">
+
+  <!-- Hero-Box mit verschachtelten Boxen -->
+  <div class="boxgroup bg-hero hero">
+    <section class="box">
+      <div class="box__hd"><h2>Übersicht</h2><span class="t-small">Ressourcenplanung für Agenturen</span></div>
+      <div class="box__bd">
+        <h1>Agenturplanung, die endlich zusammenpasst.</h1>
+        <p class="t-lead">Flowdesk verbindet Projekte, Kapazitäten und Budgets in einer Oberfläche –
+          damit Ihr Team jederzeit weiß, wer wann woran arbeitet.</p>
+        <div class="btn-row"><a class="btn btn--lg" href="#demo">Demo buchen</a><a class="btn btn--sec btn--lg" href="#tour">Produkt-Tour ansehen</a></div>
+        <div class="nestgroup">
+          <div class="nestbox"><p class="t-micro">Value Proposition</p><p class="t-body" style="margin-top:6px">Eine Quelle der Wahrheit für Auslastung, Timings und Margen.</p></div>
+          <div class="nestbox"><p class="t-micro">Einführung</p><p class="t-body" style="margin-top:6px">Import aus Excel und Jira, Go-live in unter 14 Tagen.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="box">
+      <div class="box__hd"><h2>Produktvorschau</h2></div>
+      <div class="box__bd box__bd--tight">
+        <div class="ui">
+          <div class="ui__bar ui__bar--sm"></div>
+          <div class="ui__grid">
+            <span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span>
+            <span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell"></span>
+          </div>
+          <div class="ui__row"><i style="height:55%"></i><i style="height:85%"></i><i style="height:45%"></i><i style="height:100%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:60%"></i></div>
+        </div>
+        <div class="nestgroup" style="margin-top:16px">
+          <div class="kpi"><div class="stat__value num">87 %</div><div class="stat__label">Auslastung</div></div>
+          <div class="kpi"><div class="stat__value num">4,7</div><div class="stat__label">Bewertung</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Social Proof als eigene Box -->
+  <section class="box">
+    <div class="box__hd"><h2>Referenzen</h2><span class="t-small">480+ Agenturen · 12.000 Projekte / Monat</span></div>
+    <div class="box__bd box__bd--tight">
+      <div class="logobox">
+        <span class="logo-ph">Aurum</span><span class="logo-ph">Kessler &amp; Co.</span><span class="logo-ph">Studio Nord</span>
+        <span class="logo-ph">Brandwerk</span><span class="logo-ph">Pixelhof</span><span class="logo-ph">Vesta Group</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vorteile: Box mit Box-Gruppe darin -->
+  <section class="box">
+    <div class="box__hd"><h2>Vorteile</h2><span class="t-small">Was sich in den ersten Wochen verändert</span></div>
+    <div class="box__bd">
+      <div class="boxgroup bg-4">
+        <article class="itembox itembox--accent"><span class="icon icon--lg"></span><h3>Auslastung in Echtzeit</h3><p class="t-body">Kapazitäten pro Person, Team und Woche.</p></article>
+        <article class="itembox"><span class="icon icon--lg"></span><h3>Weniger Planungs-Chaos</h3><p class="t-body">Ein Plan statt fünf Tabellen.</p></article>
+        <article class="itembox"><span class="icon icon--lg"></span><h3>Projekte bleiben profitabel</h3><p class="t-body">Soll-Ist ab Tag eins.</p></article>
+        <article class="itembox"><span class="icon icon--lg"></span><h3>Schnell startklar</h3><p class="t-body">Go-live in unter 14 Tagen.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funktionen + Produktbild als Box-Paar -->
+  <div class="boxgroup bg-side">
+    <section class="box">
+      <div class="box__hd"><h2>Funktionen</h2><span class="t-small">Briefing bis Rechnung</span></div>
+      <div class="box__bd">
+        <div class="boxgroup bg-3">
+          <article class="itembox"><span class="icon"></span><h3>Kapazitätsplanung</h3><p class="t-body">Wochen- und Tagesansicht, Skills, Urlaube.</p></article>
+          <article class="itembox"><span class="icon"></span><h3>Projekt-Timeline</h3><p class="t-body">Phasen, Meilensteine, Abhängigkeiten.</p></article>
+          <article class="itembox"><span class="icon"></span><h3>Zeiterfassung</h3><p class="t-body">15 Sekunden, mobil und im Browser.</p></article>
+          <article class="itembox"><span class="icon"></span><h3>Budget &amp; Forecast</h3><p class="t-body">Soll-Ist je Projekt, Kunde, Quartal.</p></article>
+          <article class="itembox"><span class="icon"></span><h3>Reporting</h3><p class="t-body">Dashboards für Leitung und Controlling.</p></article>
+          <article class="itembox"><span class="icon"></span><h3>Integrationen</h3><p class="t-body">Jira, Slack, DATEV, Kalender, API.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="box">
+      <div class="box__hd"><h2>Produktvisualisierung</h2></div>
+      <div class="box__bd box__bd--tight">
+        <div class="ph ph--photo"><span>Planungsboard</span></div>
+        <div class="ph ph--wide" style="margin-top:16px"><span>Forecast</span></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Prozess -->
+  <section class="box">
+    <div class="box__hd"><h2>So funktioniert es</h2><span class="t-small">Vier Schritte</span></div>
+    <div class="box__bd">
+      <div class="steprow">
+        <div class="itembox"><span class="chip">Schritt 01</span><h3>Daten importieren</h3><p class="t-body">Projekte, Stunden und Teams aus Excel oder Jira.</p></div>
+        <div class="itembox"><span class="chip">Schritt 02</span><h3>Teams &amp; Rollen</h3><p class="t-body">Skills, Verfügbarkeiten, Stundensätze.</p></div>
+        <div class="itembox"><span class="chip">Schritt 03</span><h3>Projekte planen</h3><p class="t-body">Kapazität zuweisen, Timings prüfen.</p></div>
+        <div class="itembox"><span class="chip">Schritt 04</span><h3>Auslastung steuern</h3><p class="t-body">Wöchentlich nachjustieren.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases und Testimonials nebeneinander -->
+  <div class="boxgroup bg-split">
+    <section class="box" id="usecases">
+      <div class="box__hd"><h2>Use Cases</h2></div>
+      <div class="box__bd box__bd--tight">
+        <div class="boxgroup">
+          <div class="itembox"><h3>Kreativagenturen</h3><p class="t-body">Retainer und Projektgeschäft parallel steuern.</p></div>
+          <div class="itembox"><h3>Design-Studios</h3><p class="t-body">Kleine Teams, viele parallele Kunden.</p></div>
+          <div class="itembox"><h3>IT-Dienstleister</h3><p class="t-body">Sprints, Rollen und Abrechenbarkeit verbinden.</p></div>
+          <div class="itembox"><h3>Inhouse-Teams</h3><p class="t-body">Interne Nachfrage sichtbar priorisieren.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="box">
+      <div class="box__hd"><h2>Stimmen</h2><span class="t-small">4,7/5 aus 320 Bewertungen</span></div>
+      <div class="box__bd box__bd--tight">
+        <div class="boxgroup bg-3">
+          <blockquote class="quotebox"><p class="t-body">„Wochenplanung von vier Stunden auf zwanzig Minuten reduziert.“</p>
+            <div class="by"><span class="avatar"></span><span class="t-small">Lena Brandt<br>Studio Nord</span></div></blockquote>
+          <blockquote class="quotebox"><p class="t-body">„Erstmals sehen GF und Projektleitung dieselben Zahlen.“</p>
+            <div class="by"><span class="avatar"></span><span class="t-small">Mirko Falk<br>Brandwerk</span></div></blockquote>
+          <blockquote class="quotebox"><p class="t-body">„Einführung in zwei Wochen – ohne Beraterprojekt.“</p>
+            <div class="by"><span class="avatar"></span><span class="t-small">Ayla Demir<br>Vesta Group</span></div></blockquote>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FAQ -->
+  <section class="box faqbox">
+    <div class="box__hd"><h2>Häufige Fragen</h2></div>
+    <div class="box__bd box__bd--tight">
+      <div class="faq">
+        <details open><summary>Wie lange dauert die Einführung?</summary><p>10 bis 14 Tage, inklusive Datenimport und Schulung.</p></details>
+        <details><summary>Können wir bestehende Daten importieren?</summary><p>Excel, CSV, Jira und Harvest direkt, alles Weitere über die API.</p></details>
+        <details><summary>Welche Integrationen gibt es?</summary><p>Jira, Slack, DATEV, Google Kalender, Outlook, REST-API.</p></details>
+        <details><summary>Wie wird abgerechnet?</summary><p>Pro aktiver Person und Monat, monatlich kündbar.</p></details>
+        <details><summary>Wo liegen die Daten?</summary><p>Server in Frankfurt, DSGVO-konform, AVV inklusive.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abschluss-CTA -->
+  <section class="box box--dark endbox" id="demo">
+    <div class="box__hd"><h2>Nächster Schritt</h2><span class="t-small" style="color:#9a9a9a">Demo · 30 Minuten</span></div>
+    <div class="box__bd">
+      <div>
+        <h2>Sehen Sie Flowdesk an Ihrem eigenen Projektplan.</h2>
+        <p class="t-lead" style="margin-top:12px">Gemeinsam mit einer Person aus Ihrem Team – wir bauen Ihren realen Wochenplan nach.</p>
+      </div>
+      <div class="btn-row" style="flex-direction:column;align-items:stretch">
+        <a class="btn btn--on-dark btn--lg" href="#">Demo buchen</a>
+        <a class="btn btn--on-dark-sec btn--lg" href="#tour">Produkt-Tour ansehen</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap ft">
+  <div class="box">
+    <div class="box__hd"><h2>Flowdesk</h2><span class="t-small">© 2026 Flowdesk GmbH · Hamburg</span></div>
+    <div class="box__bd">
+      <div><span class="logo">Flowdesk</span><p class="t-small" style="margin-top:8px">Ressourcenplanung für Agenturen und Studios.</p></div>
+      <div><h4>Produkt</h4><ul><li><a href="#">Funktionen</a></li><li><a href="#">Integrationen</a></li><li><a href="#">Preise</a></li></ul></div>
+      <div><h4>Unternehmen</h4><ul><li><a href="#">Über uns</a></li><li><a href="#">Karriere</a></li><li><a href="#">Kontakt</a></li></ul></div>
+      <div><h4>Ressourcen</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Hilfe-Center</a></li><li><a href="#">Webinare</a></li></ul></div>
+      <div><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/wf.js"></script>
+</body>
+</html>

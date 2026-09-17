@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Konzept 06 – Futuristic / AI Tech · NORDFELD Wireframes</title>
+<link rel="stylesheet" href="assets/wf.css">
+<style>
+.c06{font-family:var(--sans);color:var(--ink);background:var(--paper)}
+.c06 .wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+.c06 h1{font-size:82px;line-height:1;letter-spacing:-.04em;font-weight:600;margin:0}
+.c06 h2{font-size:42px;line-height:1.08;letter-spacing:-.03em;font-weight:600;margin:0}
+.c06 h3{font-size:21px;line-height:1.24;letter-spacing:-.015em;font-weight:600;margin:0}
+.c06 .mod{border:1px solid var(--l1);border-radius:20px;background:var(--paper);padding:28px;position:relative}
+.c06 .mod.fill{background:var(--fill2)}
+.c06 .mod.inv{background:var(--inv-bg);color:var(--inv-fg);border-color:var(--inv-bg)}
+.c06 .float{box-shadow:0 26px 60px -34px rgba(0,0,0,.55)}
+.c06 .pill{display:inline-flex;align-items:center;gap:22px;border:1px solid var(--l1);border-radius:999px;
+  background:var(--paper);padding:10px 12px 10px 24px;font-size:14px}
+.c06 .status{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--l1);border-radius:999px;
+  padding:7px 14px;font:500 12px/1 var(--mono);color:var(--ink2);background:var(--paper)}
+.c06 .status i{width:7px;height:7px;border-radius:50%;background:var(--ink2);display:block}
+.c06 .sec{padding:120px 0}
+.c06 .rail{display:flex;gap:20px;overflow:hidden;padding-bottom:6px}
+.c06 .rail > *{flex:0 0 420px}
+.c06 .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:150px;gap:20px}
+.c06 .wordmark{font-size:214px;line-height:.78;letter-spacing:-.05em;font-weight:700}
+.c06.m .wrap{padding:0 18px}
+.c06.m h1{font-size:40px}.c06.m h2{font-size:27px}.c06.m h3{font-size:18px}
+.c06.m .sec{padding:56px 0}
+.c06.m .wordmark{font-size:58px}
+.c06.m .rail > *{flex:0 0 250px}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-bar">
+    <b>NORDFELD · Wireframe-Studie</b>
+    <span style="color:var(--ink3);font-size:12px">Konzept 06 von 10</span>
+    <span class="sp"></span>
+    <a href="index.html">Übersicht &amp; Vergleichsmatrix</a>
+  </div>
+
+  <div class="doc-head">
+    <div class="num">Konzept 06</div>
+    <h1>Futuristic / AI Tech</h1>
+    <p class="sub">Schwebende Pill-Navigation, vollflächige Hero-Inszenierung mit überlagerten Modulen, horizontale Modul-Schiene und sichtbares Layering – Tiefe statt Dekoration.</p>
+    <div class="tags"><span class="tag">Pill-Navigation</span><span class="tag">Layering &amp;amp; Tiefe</span><span class="tag">Hero über volle Höhe</span><span class="tag">Horizontale Schiene</span><span class="tag">Statuszeile</span><span class="tag">XXL-Wortmarke</span></div>
+  </div>
+
+  <div class="sec-label"><h2>Desktop</h2><span>1440 px</span></div>
+  <div class="stage" data-w="1440"><div class="frame c06 d"><!-- SCHWEBENDE PILL-NAVIGATION -->
+<div class="pinhost" style="padding:26px 0;display:flex;justify-content:center;position:relative;z-index:30">
+  <span class="pin" style="top:18px;left:1050px">1</span>
+  <div class="pill float">
+    <span style="font-weight:700;letter-spacing:-.02em">NORDFELD</span>
+    <span style="display:flex;gap:22px;color:var(--ink2)">
+      <span style="color:var(--ink)">Plattform</span><span>Lösungen</span><span>Preise</span><span>Docs</span><span>Über uns</span></span>
+    <span class="btn sm" style="border-radius:999px">Demo buchen</span>
+  </div>
+</div>
+
+<!-- HERO ALS BÜHNE MIT ÜBERLAGERUNG -->
+<div class="wrap pinhost" style="padding-top:20px;padding-bottom:140px">
+  <span class="pin" style="top:430px;left:-16px">2</span>
+  <span class="pin" style="top:600px;left:1120px">3</span>
+  <div class="mod fill" style="padding:76px 60px 0;border-radius:32px;overflow:visible">
+    <div style="text-align:center;margin-bottom:44px">
+      <span class="status" style="margin-bottom:30px"><i></i>Risiko-Radar 2.0 · live seit heute</span>
+      <h1 style="margin:22px 0 22px">Lieferketten,<br>die man nachweisen kann.</h1>
+      <p style="font-size:19px;line-height:1.55;color:var(--ink2);max-width:56ch;margin:0 auto 34px">
+        Eine Datenschicht für Nachweise, Risiken und Berichte – über alle Lieferanten hinweg.</p>
+      <div style="display:flex;gap:12px;justify-content:center">
+        <span class="btn lg" style="border-radius:999px">Demo buchen</span>
+        <span class="btn lg ghost" style="border-radius:999px;background:var(--paper)">Dokumentation</span></div>
+    </div>
+    <!-- Hauptmodul + zwei ueberlagernde Module -->
+    <div style="position:relative;margin:0 -20px -70px">
+      <div class="mod float" style="padding:0;overflow:hidden;border-radius:22px">
+        <div style="height:44px;border-bottom:1px solid var(--l1);display:flex;align-items:center;gap:8px;padding:0 18px">
+          <div class="b" style="width:80px;height:9px;border-radius:5px"></div>
+          <div class="b" style="width:60px;height:9px;border-radius:5px;opacity:.5"></div>
+          <div class="b" style="width:60px;height:9px;border-radius:5px;opacity:.5"></div></div>
+        <div class="img" style="height:440px;border:0"></div>
+      </div>
+      <div class="mod float" style="position:absolute;left:-40px;bottom:64px;width:290px;padding:22px;z-index:12">
+        <div class="eyebrow" style="margin-bottom:14px">Risikoscore</div>
+        <div style="font-size:42px;line-height:1;letter-spacing:-.03em;font-weight:600;margin-bottom:14px">A−</div>
+        <div class="tx n2" style="--lh:15px;--th:7px"></div>
+      </div>
+      <div class="mod inv float" style="position:absolute;right:-30px;top:120px;width:250px;padding:22px;z-index:12">
+        <div class="eyebrow" style="color:var(--inv-fill);margin-bottom:14px">Live-Ereignis</div>
+        <div class="tx n3 on-inv" style="--lh:15px;--th:7px"></div>
+      </div>
+      <div class="mod float" style="position:absolute;right:60px;bottom:-40px;width:320px;padding:18px;z-index:14;display:flex;gap:14px;align-items:center">
+        <div class="b" style="width:38px;height:38px;border-radius:12px;flex:none"></div>
+        <div style="flex:1"><div class="tx n2" style="--lh:14px;--th:6px"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGO-LAUFBAND -->
+<div style="border-top:1px solid var(--l1);border-bottom:1px solid var(--l1);padding:30px 0;overflow:hidden">
+  <div style="display:flex;gap:70px;align-items:center;justify-content:center;opacity:.55">
+    <div class="logo"></div><div class="logo"></div><div class="logo"></div><div class="logo"></div>
+    <div class="logo"></div><div class="logo"></div><div class="logo"></div><div class="logo"></div></div>
+</div>
+
+<!-- VORTEILE ALS BENTO MIT UNTERSCHIEDLICHEN SPANS -->
+<div class="wrap sec pinhost">
+  <span class="pin" style="top:76px;left:-16px">4</span>
+  <div style="display:flex;align-items:end;justify-content:space-between;margin-bottom:40px">
+    <div><div class="eyebrow" style="margin-bottom:16px">Warum NORDFELD</div>
+      <h2>Ein System, drei Effekte.</h2></div>
+    <span class="status"><i></i>3 von 3 Modulen aktiv</span>
+  </div>
+  <div class="bento">
+    <div class="mod" style="grid-column:span 7;grid-row:span 2;display:flex;flex-direction:column">
+      <div class="eyebrow" style="margin-bottom:18px">01 · Transparenz</div>
+      <h3 style="margin-bottom:14px;font-size:30px">Echtzeit statt Quartalsbericht</h3>
+      <div class="tx n3" style="margin-bottom:24px"></div>
+      <div class="img" style="flex:1;border-radius:12px"></div></div>
+    <div class="mod fill" style="grid-column:span 5">
+      <div class="eyebrow" style="margin-bottom:16px">02 · Nachweis</div>
+      <h3>Prüfsichere Nachweise auf Knopfdruck</h3></div>
+    <div class="mod inv" style="grid-column:span 5;display:flex;flex-direction:column;justify-content:space-between">
+      <div class="eyebrow" style="color:var(--inv-fill)">03 · Aufwand</div>
+      <div style="font-size:52px;line-height:1;letter-spacing:-.035em;font-weight:600">−68 %</div>
+      <div style="font-size:14px;color:var(--inv-fill)">weniger manuelle Arbeit im Monat</div></div>
+  </div>
+</div>
+
+<!-- MODULE ALS HORIZONTALE SCHIENE -->
+<div style="padding-bottom:120px" class="pinhost">
+  <span class="pin" style="top:0;left:1390px">5</span>
+  <div class="wrap" style="display:flex;align-items:end;justify-content:space-between;margin-bottom:34px">
+    <div><div class="eyebrow" style="margin-bottom:16px">Die Plattform</div><h2>Vier Module, ein Datenmodell.</h2></div>
+    <div style="display:flex;gap:10px">
+      <span class="mod" style="padding:12px 16px;border-radius:999px">←</span>
+      <span class="mod" style="padding:12px 16px;border-radius:999px">→</span></div>
+  </div>
+  <div class="wrap" style="padding-right:0">
+    <div class="rail">
+      <div class="mod" style="padding:0;overflow:hidden"><div class="img" style="height:210px;border:0"></div>
+        <div style="padding:26px"><div class="eyebrow" style="margin-bottom:12px">Modul 01</div>
+          <h3 style="margin-bottom:12px">Lieferanten-Cockpit</h3><div class="tx n3"></div></div></div>
+      <div class="mod" style="padding:0;overflow:hidden"><div class="img" style="height:210px;border:0"></div>
+        <div style="padding:26px"><div class="eyebrow" style="margin-bottom:12px">Modul 02</div>
+          <h3 style="margin-bottom:12px">Risiko-Radar</h3><div class="tx n3"></div></div></div>
+      <div class="mod" style="padding:0;overflow:hidden"><div class="img" style="height:210px;border:0"></div>
+        <div style="padding:26px"><div class="eyebrow" style="margin-bottom:12px">Modul 03</div>
+          <h3 style="margin-bottom:12px">Nachweis-Archiv</h3><div class="tx n3"></div></div></div>
+      <div class="mod" style="padding:0;overflow:hidden"><div class="img" style="height:210px;border:0"></div>
+        <div style="padding:26px"><div class="eyebrow" style="margin-bottom:12px">Modul 04</div>
+          <h3 style="margin-bottom:12px">Reporting-Studio</h3><div class="tx n3"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF + KENNZAHLEN ALS MODULE -->
+<div class="wrap" style="padding-bottom:120px">
+  <div class="bento" style="grid-auto-rows:auto">
+    <div class="mod" style="grid-column:span 7;padding:48px">
+      <div style="font-size:32px;line-height:1.3;letter-spacing:-.022em;margin-bottom:28px">
+        „Wir haben den Nachweis für 340 Lieferanten von vier Wochen auf zwei Tage gebracht."</div>
+      <div style="display:flex;gap:14px;align-items:center">
+        <div class="av" style="width:46px;height:46px"></div>
+        <div><div style="font-size:14.5px;font-weight:600">M. Keller</div>
+          <div style="font-size:13px;color:var(--ink3)">Head of Supply Chain · Werk Nord</div></div></div></div>
+    <div style="grid-column:span 5;display:grid;gap:20px">
+      <div class="mod fill" style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:14px;color:var(--ink2)">Time-to-Value</span>
+        <span style="font-size:34px;font-weight:600;letter-spacing:-.03em">12 Tage</span></div>
+      <div class="mod fill" style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:14px;color:var(--ink2)">Lieferanten Ø</span>
+        <span style="font-size:34px;font-weight:600;letter-spacing:-.03em">340</span></div>
+      <div class="mod fill" style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:14px;color:var(--ink2)">Datenquellen</span>
+        <span style="font-size:34px;font-weight:600;letter-spacing:-.03em">40+</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ÜBER UNS ALS MODUL MIT EINGESETZTEM PANEL -->
+<div class="wrap" style="padding-bottom:120px">
+  <div class="mod fill" style="padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;border-radius:28px">
+    <div>
+      <div class="eyebrow" style="margin-bottom:18px">Über uns</div>
+      <h2 style="margin-bottom:20px">28 Leute in Hamburg, seit 2019.</h2>
+      <div class="tx n5" style="--bg:var(--fill2);margin-bottom:26px"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <span class="status">ISO 27001</span><span class="status">DSGVO</span><span class="status">EU-Hosting</span></div>
+    </div>
+    <div class="mod float" style="padding:0;overflow:hidden"><div class="img" style="height:340px;border:0"></div></div>
+  </div>
+</div>
+
+<!-- FAQ MIT STICKY-ANMUTUNG -->
+<div class="wrap" style="padding-bottom:120px">
+  <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:56px;align-items:start">
+    <div><div class="eyebrow" style="margin-bottom:16px">FAQ</div><h2>Fragen, die vor der Demo kommen.</h2></div>
+    <div style="display:grid;gap:12px">
+      <div class="mod"><div style="display:flex;gap:20px;margin-bottom:14px"><h3 style="flex:1">Wie lange dauert die Einführung?</h3><span style="color:var(--ink3)">−</span></div><div class="tx n3"></div></div>
+      <div class="mod" style="display:flex;gap:20px"><h3 style="flex:1">Welche Systeme lassen sich anbinden?</h3><span style="color:var(--ink3)">+</span></div>
+      <div class="mod" style="display:flex;gap:20px"><h3 style="flex:1">Wie sicher sind unsere Daten?</h3><span style="color:var(--ink3)">+</span></div>
+      <div class="mod" style="display:flex;gap:20px"><h3 style="flex:1">Was kostet NORDFELD?</h3><span style="color:var(--ink3)">+</span></div>
+      <div class="mod" style="display:flex;gap:20px"><h3 style="flex:1">Brauchen wir eigene IT-Ressourcen?</h3><span style="color:var(--ink3)">+</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABSCHLUSS-CTA: schwebendes Modul ueber Vollflaeche -->
+<div style="background:var(--fill2);padding:110px 0 0;margin-top:0" class="pinhost">
+  <span class="pin" style="top:60px;left:40px">6</span>
+  <div class="wrap">
+    <div class="mod inv float" style="border-radius:28px;padding:72px 56px;text-align:center;margin-bottom:-60px;position:relative;z-index:5">
+      <span class="status" style="background:transparent;border-color:var(--inv-line);color:var(--inv-fill);margin-bottom:26px"><i style="background:var(--inv-fill)"></i>Antwort in unter 24 h</span>
+      <h2 style="font-size:52px;margin:22px 0 20px">In 30 Minuten sehen,<br>wie Ihre Lieferkette aussieht.</h2>
+      <p style="font-size:17px;color:var(--inv-fill);max-width:52ch;margin:0 auto 34px">Demo mit Ihren eigenen Lieferantendaten – unverbindlich.</p>
+      <div style="display:flex;gap:12px;justify-content:center">
+        <span class="btn lg on-inv" style="border-radius:999px">Demo buchen</span>
+        <span class="btn lg on-inv ghost" style="border-radius:999px">Docs lesen</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER MIT XXL-WORTMARKE -->
+<div style="background:var(--inv-bg);color:var(--inv-fg);padding:120px 0 0">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px">
+      <div><div class="tx n3 on-inv" style="--lh:20px;--th:8px;max-width:30ch"></div></div>
+      <div><div class="eyebrow" style="color:var(--inv-fill);margin-bottom:16px">Plattform</div><div class="tx n4 on-inv" style="--lh:22px;--th:8px"></div></div>
+      <div><div class="eyebrow" style="color:var(--inv-fill);margin-bottom:16px">Ressourcen</div><div class="tx n4 on-inv" style="--lh:22px;--th:8px"></div></div>
+      <div><div class="eyebrow" style="color:var(--inv-fill);margin-bottom:16px">Unternehmen</div><div class="tx n4 on-inv" style="--lh:22px;--th:8px"></div></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--inv-fill);border-top:1px solid var(--inv-line);padding:22px 0 40px">
+      <span>© 2026 NORDFELD GmbH</span><span>Impressum · Datenschutz · Status</span></div>
+  </div>
+  <div class="wordmark" style="padding:0 40px;overflow:hidden;margin-bottom:-46px">NORDFELD</div>
+</div></div></div>
+  <ol class="legend"><li><b>Navigation schwebt als Pill über dem Inhalt.</b> Sie ist vom Seitenrand gelöst, zentriert und trägt den CTA als abgerundete Fläche – die Kopfzeile wird selbst zum Modul.</li>
+<li><b>Hero ist eine Bühne, kein Textblock.</b> Ein 32 px gerundetes Großmodul rahmt Statuszeile, Headline, CTAs und das Produktmodul. Die gesamte Einstiegssequenz liegt in einem Objekt.</li>
+<li><b>Drei Module überlagern das Hauptmodul</b> – links außerhalb der Kante, rechts oben invertiert, unten rechts über die Modulgrenze hinaus. Die Z-Achse trägt hier die Hierarchie, nicht die Größe.</li>
+<li><b>Bento mit ungleichen Spans (7 / 5 / 5).</b> Der wichtigste Vorteil bekommt die doppelte Fläche, die Kennzahl liegt invertiert daneben – Gewichtung über Modulgröße statt über Reihenfolge.</li>
+<li><b>Module in einer horizontalen Schiene.</b> Die Richtungsänderung bricht das vertikale Scrollen bewusst auf und signalisiert, dass die Plattform erweiterbar ist.</li>
+<li><b>Abschluss-CTA ragt 60 px in den Footer hinein.</b> Die Überlappung verbindet Handlungsaufforderung und Seitenende und lässt die XXL-Wortmarke als Schlussbild stehen.</li></ol>
+
+  <div class="sec-label"><h2>Mobile</h2><span>390 px</span></div>
+  <div class="mobile-row">
+    <div class="stage" data-w="390"><div class="frame c06 m"><div style="padding:14px 0;display:flex;justify-content:center;position:relative;z-index:30" class="pinhost">
+  <span class="pin" style="top:10px;left:348px">1</span>
+  <div class="pill float" style="gap:12px;padding:8px 8px 8px 16px;width:calc(100% - 36px);justify-content:space-between">
+    <span style="font-weight:700;font-size:13.5px">NORDFELD</span>
+    <span style="display:flex;gap:10px;align-items:center">
+      <span class="btn sm" style="border-radius:999px;padding:9px 13px;font-size:12px">Demo</span>
+      <span style="width:20px;display:flex;flex-direction:column;gap:3.5px">
+        <span class="b" style="height:2px;display:block"></span><span class="b" style="height:2px;display:block"></span><span class="b" style="height:2px;display:block"></span></span></span>
+  </div>
+</div>
+<div class="wrap pinhost" style="padding-top:10px;padding-bottom:70px">
+  <span class="pin" style="top:430px;left:-2px">3</span>
+  <div class="mod fill" style="padding:34px 20px 0;border-radius:24px;overflow:visible;text-align:center">
+    <span class="status" style="margin-bottom:18px"><i></i>Risiko-Radar 2.0 live</span>
+    <h1 style="margin:16px 0 14px">Lieferketten, die man nachweisen kann.</h1>
+    <p style="font-size:15.5px;line-height:1.55;color:var(--ink2);margin:0 0 22px">Eine Datenschicht für Nachweise, Risiken und Berichte.</p>
+    <span class="btn lg block" style="border-radius:999px;margin-bottom:10px">Demo buchen</span>
+    <span class="btn lg ghost block" style="border-radius:999px;background:var(--paper);margin-bottom:26px">Dokumentation</span>
+    <div style="position:relative;margin:0 -6px -40px">
+      <div class="mod float" style="padding:0;overflow:hidden;border-radius:16px">
+        <div style="height:34px;border-bottom:1px solid var(--l1);display:flex;align-items:center;gap:6px;padding:0 12px">
+          <div class="b" style="width:56px;height:7px;border-radius:4px"></div>
+          <div class="b" style="width:40px;height:7px;border-radius:4px;opacity:.5"></div></div>
+        <div class="img" style="height:230px;border:0"></div></div>
+      <div class="mod inv float" style="position:absolute;right:-10px;top:60px;width:150px;padding:14px;z-index:12">
+        <div class="eyebrow" style="color:var(--inv-fill);margin-bottom:10px;font-size:9px">Live-Ereignis</div>
+        <div class="tx n2 on-inv" style="--lh:13px;--th:6px"></div></div>
+      <div class="mod float" style="position:absolute;left:-12px;bottom:-24px;width:150px;padding:14px;z-index:14">
+        <div class="eyebrow" style="margin-bottom:8px;font-size:9px">Risikoscore</div>
+        <div style="font-size:28px;line-height:1;font-weight:600;letter-spacing:-.03em">A−</div></div>
+    </div>
+  </div>
+</div>
+<div style="border-top:1px solid var(--l1);border-bottom:1px solid var(--l1);padding:20px 0;overflow:hidden">
+  <div style="display:flex;gap:30px;align-items:center;padding-left:18px;opacity:.55">
+    <div class="logo sm" style="flex:none"></div><div class="logo sm" style="flex:none"></div>
+    <div class="logo sm" style="flex:none"></div><div class="logo sm" style="flex:none"></div></div>
+</div>
+<div class="wrap sec">
+  <div class="eyebrow" style="margin-bottom:14px">Warum NORDFELD</div>
+  <h2 style="margin-bottom:24px">Ein System, drei Effekte.</h2>
+  <div style="display:grid;gap:14px">
+    <div class="mod"><div class="eyebrow" style="margin-bottom:14px">01 · Transparenz</div>
+      <h3 style="margin-bottom:12px">Echtzeit statt Quartalsbericht</h3><div class="tx n3" style="margin-bottom:18px"></div>
+      <div class="img" style="height:150px;border-radius:12px"></div></div>
+    <div class="mod fill"><div class="eyebrow" style="margin-bottom:12px">02 · Nachweis</div>
+      <h3>Prüfsichere Nachweise auf Knopfdruck</h3></div>
+    <div class="mod inv"><div class="eyebrow" style="color:var(--inv-fill);margin-bottom:12px">03 · Aufwand</div>
+      <div style="font-size:40px;line-height:1;font-weight:600;letter-spacing:-.035em;margin-bottom:8px">−68 %</div>
+      <div style="font-size:13px;color:var(--inv-fill)">weniger manuelle Arbeit im Monat</div></div>
+  </div>
+</div>
+<div style="padding-bottom:56px" class="pinhost">
+  <span class="pin" style="top:-4px;left:348px">5</span>
+  <div class="wrap" style="margin-bottom:22px">
+    <div class="eyebrow" style="margin-bottom:14px">Die Plattform</div><h2>Vier Module, ein Datenmodell.</h2></div>
+  <div style="padding-left:18px"><div class="rail">
+    <div class="mod" style="padding:0;overflow:hidden"><div class="img" style="height:130px;border:0"></div>
+      <div style="padding:18px"><div class="eyebrow" style="margin-bottom:10px">Modul 01</div><h3 style="margin-bottom:10px">Lieferanten-Cockpit</h3><div class="tx n2"></div></div></div>
+    <div class="mod" style="padding:0;overflow:hidden"><div class="img" style="height:130px;border:0"></div>
+      <div style="padding:18px"><div class="eyebrow" style="margin-bottom:10px">Modul 02</div><h3 style="margin-bottom:10px">Risiko-Radar</h3><div class="tx n2"></div></div></div>
+    <div class="mod" style="padding:0;overflow:hidden"><div class="img" style="height:130px;border:0"></div>
+      <div style="padding:18px"><div class="eyebrow" style="margin-bottom:10px">Modul 03</div><h3 style="margin-bottom:10px">Nachweis-Archiv</h3><div class="tx n2"></div></div></div>
+  </div></div>
+</div>
+<div class="wrap" style="padding-bottom:56px;display:grid;gap:14px">
+  <div class="mod" style="padding:28px">
+    <div style="font-size:21px;line-height:1.32;letter-spacing:-.02em;margin-bottom:20px">„Wir haben den Nachweis für 340 Lieferanten von vier Wochen auf zwei Tage gebracht."</div>
+    <div style="display:flex;gap:12px;align-items:center"><div class="av" style="width:40px;height:40px"></div>
+      <div><div style="font-size:13.5px;font-weight:600">M. Keller</div><div style="font-size:12px;color:var(--ink3)">Werk Nord</div></div></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div class="mod fill" style="padding:20px"><div style="font-size:13px;color:var(--ink2);margin-bottom:8px">Time-to-Value</div>
+      <div style="font-size:26px;font-weight:600;letter-spacing:-.03em">12 Tage</div></div>
+    <div class="mod fill" style="padding:20px"><div style="font-size:13px;color:var(--ink2);margin-bottom:8px">Lieferanten Ø</div>
+      <div style="font-size:26px;font-weight:600;letter-spacing:-.03em">340</div></div>
+  </div>
+</div>
+<div class="wrap" style="padding-bottom:56px">
+  <div class="mod fill" style="padding:28px 20px;border-radius:22px">
+    <div class="eyebrow" style="margin-bottom:14px">Über uns</div>
+    <h2 style="margin-bottom:16px">28 Leute in Hamburg, seit 2019.</h2>
+    <div class="tx n4" style="--bg:var(--fill2);margin-bottom:20px"></div>
+    <div class="mod float" style="padding:0;overflow:hidden;margin-bottom:20px"><div class="img" style="height:190px;border:0"></div></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="status">ISO 27001</span><span class="status">DSGVO</span><span class="status">EU-Hosting</span></div>
+  </div>
+</div>
+<div class="wrap" style="padding-bottom:56px">
+  <div class="eyebrow" style="margin-bottom:14px">FAQ</div>
+  <h2 style="margin-bottom:22px">Fragen, die vor der Demo kommen.</h2>
+  <div style="display:grid;gap:10px">
+    <div class="mod"><div style="display:flex;gap:16px;margin-bottom:12px"><h3 style="flex:1">Wie lange dauert die Einführung?</h3><span style="color:var(--ink3)">−</span></div><div class="tx n3"></div></div>
+    <div class="mod" style="display:flex;gap:16px"><h3 style="flex:1">Welche Systeme lassen sich anbinden?</h3><span style="color:var(--ink3)">+</span></div>
+    <div class="mod" style="display:flex;gap:16px"><h3 style="flex:1">Wie sicher sind unsere Daten?</h3><span style="color:var(--ink3)">+</span></div>
+    <div class="mod" style="display:flex;gap:16px"><h3 style="flex:1">Was kostet NORDFELD?</h3><span style="color:var(--ink3)">+</span></div>
+    <div class="mod" style="display:flex;gap:16px"><h3 style="flex:1">Brauchen wir IT-Ressourcen?</h3><span style="color:var(--ink3)">+</span></div>
+  </div>
+</div>
+<div style="background:var(--fill2);padding:50px 0 0">
+  <div class="wrap">
+    <div class="mod inv float" style="border-radius:22px;padding:34px 22px;text-align:center;margin-bottom:-40px;position:relative;z-index:5">
+      <span class="status" style="background:transparent;border-color:var(--inv-line);color:var(--inv-fill);margin-bottom:16px"><i style="background:var(--inv-fill)"></i>Antwort in unter 24 h</span>
+      <h2 style="margin:14px 0 14px">In 30 Minuten sehen, wie Ihre Lieferkette aussieht.</h2>
+      <p style="font-size:14.5px;color:var(--inv-fill);margin:0 0 22px">Demo mit Ihren eigenen Lieferantendaten.</p>
+      <span class="btn lg on-inv block" style="border-radius:999px;margin-bottom:10px">Demo buchen</span>
+      <span class="btn lg on-inv ghost block" style="border-radius:999px">Docs lesen</span></div>
+  </div>
+</div>
+<div style="background:var(--inv-bg);color:var(--inv-fg);padding:70px 0 0">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;padding-bottom:30px">
+      <div><div class="eyebrow" style="color:var(--inv-fill);margin-bottom:12px">Plattform</div><div class="tx n4 on-inv" style="--lh:20px;--th:7px"></div></div>
+      <div><div class="eyebrow" style="color:var(--inv-fill);margin-bottom:12px">Ressourcen</div><div class="tx n4 on-inv" style="--lh:20px;--th:7px"></div></div>
+      <div><div class="eyebrow" style="color:var(--inv-fill);margin-bottom:12px">Unternehmen</div><div class="tx n4 on-inv" style="--lh:20px;--th:7px"></div></div>
+      <div><div class="eyebrow" style="color:var(--inv-fill);margin-bottom:12px">Rechtliches</div><div class="tx n4 on-inv" style="--lh:20px;--th:7px"></div></div>
+    </div>
+    <div style="font-size:12px;color:var(--inv-fill);border-top:1px solid var(--inv-line);padding:16px 0 26px">© 2026 NORDFELD GmbH</div>
+  </div>
+  <div class="wordmark" style="padding:0 18px;overflow:hidden;margin-bottom:-14px">NORDFELD</div>
+</div></div></div>
+    <div class="notes"><ol class="legend" style="grid-template-columns:1fr"><li><b>Die Pill-Navigation bleibt schwebend</b> und wird zur vollbreiten Kapsel mit CTA und Burger-Icon. Sie behält Abstand zum Seitenrand – das Prinzip „Navigation als Modul" überträgt sich damit unverändert.</li>
+<li><b>Das Layering überlebt die Verkleinerung.</b> Statt drei Overlays bleiben zwei: Live-Ereignis rechts oben, Risikoscore links unten, beide weiterhin über die Modulkante hinausragend. Die Tiefenwirkung ist auf 390 px der eigentliche Wiedererkennungswert.</li></ol></div>
+  </div>
+
+  <div class="sec-label"><h2>Einordnung</h2><span>Designidee · Blickführung · Differenz · Positionierung</span></div>
+  <div class="rationale"><div><h3>Zentrale Designidee</h3><p>Die Oberfläche arbeitet mit Ebenen. Ein großes Hauptmodul wird von kleineren Modulen überlagert, die aus dem Raster ausbrechen – das Produkt wirkt wie ein System aus Bauteilen, nicht wie eine Seite aus Sektionen.</p></div><div><h3>Blickführung</h3><p>Die schwebende Navigation hält den Blick zunächst oben, die Statuszeile zieht ihn in die Mitte des Hero-Moduls. Die überlappenden Karten erzeugen Tiefe und führen diagonal nach unten links, die horizontale Schiene setzt eine bewusste Richtungsänderung.</p></div><div><h3>Unterschied zu den anderen</h3><p>Einziges Konzept mit echten Überlagerungen (Module liegen vor- und hintereinander) und horizontalem Scrollen. Der Hero ist eine Bühne, kein Textblock.</p></div><div><h3>Passende Markenpositionierung</h3><p>Technologieführer, die Innovationskraft zeigen müssen, ohne die Seriosität für den Einkauf zu verlieren.</p></div></div>
+
+  <div class="pager">
+    <a href="konzept-05-saas.html">&larr; Vorheriges Konzept</a>
+    <a href="index.html">Alle Konzepte</a>
+    <a href="konzept-07-luxury.html">Nächstes Konzept &rarr;</a>
+  </div>
+</div>
+<script src="assets/wf.js"></script>
+</body>
+</html>

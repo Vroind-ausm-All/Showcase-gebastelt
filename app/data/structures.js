@@ -1,0 +1,102 @@
+/* ============================================================================
+   DIE STRUKTUR-ACHSE
+   Dreizehn Layout-Prinzipien aus der Flowdesk-Studie (Repo „Designs-Wireframes“).
+
+   Wichtig für das Gesamtkonzept: Struktur und Richtung sind zwei getrennte
+   Achsen. „Editorial“ sagt, wie es aussieht; „F-Pattern“ sagt, wie es geordnet
+   ist. Fast jede Kombination ist möglich – deshalb stehen sie hier nebeneinander
+   und nicht in einer Liste.
+
+   Werte 1–5 aus der Originalstudie, unverändert übernommen.
+   ========================================================================== */
+
+export const STRUCTURES = [
+  { id: 'hero',        no: '01', name: 'Hero',            file: '01-hero.html',
+    claim: 'Ein dominanter Hero trägt die gesamte Botschaft.',
+    gaze: 'Headline links → Produktvisualisierung rechts → CTA-Zeile → Social-Proof-Streifen.',
+    pro: 'Kernbotschaft sitzt in Sekunden, sehr hoher Conversion-Fokus.',
+    con: 'Alles hängt an einem Bereich. Ist der Hero unklar, trägt der Rest nicht.',
+    r: { dichte: 3, dynamik: 3, einfach: 4, story: 3, scan: 4, conv: 5, mobile: 4 } },
+  { id: 'z',           no: '02', name: 'Z-Pattern',       file: '02-z-pattern.html',
+    claim: 'Der Blick wird diagonal von der Botschaft zur Handlung geführt.',
+    gaze: 'Oben links → oben rechts → diagonal nach unten links → unten rechts.',
+    pro: 'Sehr kontrollierte Führung; die Handlung liegt, wo der Blick endet.',
+    con: 'Nur bei moderater Inhaltsmenge; wirkt sonst schematisch.',
+    r: { dichte: 2, dynamik: 3, einfach: 4, story: 3, scan: 4, conv: 5, mobile: 3 } },
+  { id: 'f',           no: '03', name: 'F-Pattern',       file: '03-f-pattern.html',
+    claim: 'Linke Informationsachse plus starke horizontale Einstiege.',
+    gaze: 'Horizontal über den Balken, zurück an die linke Kante, wieder horizontal.',
+    pro: 'Höchste Scanbarkeit bei sehr vielen Inhalten.',
+    con: 'Visuell spannungsarm, wenig markenbildend.',
+    r: { dichte: 5, dynamik: 1, einfach: 3, story: 2, scan: 5, conv: 3, mobile: 4 } },
+  { id: 'gridbreak',   no: '04', name: 'Grid-Breaking',   file: '04-grid-breaking.html',
+    claim: 'Ein sichtbares Raster, das gezielt gebrochen wird.',
+    gaze: 'Große Headline zuerst, dann entlang der Bruchstellen.',
+    pro: 'Hohe Dynamik und Wiedererkennbarkeit, ohne Ordnung aufzugeben.',
+    con: 'Anspruchsvoll in Pflege und Responsive-Umsetzung.',
+    r: { dichte: 3, dynamik: 5, einfach: 2, story: 4, scan: 2, conv: 3, mobile: 2 } },
+  { id: 'content',     no: '05', name: 'Content-Focused', file: '05-content-focused.html',
+    claim: 'Der Text erzeugt die Struktur, die UI tritt zurück.',
+    gaze: 'Streng vertikal entlang einer Lesespalte von rund 68 Zeichen.',
+    pro: 'Höchste Glaubwürdigkeit und Lesbarkeit.',
+    con: 'Geringer Conversion-Druck; erfordert wirklich gute Texte.',
+    r: { dichte: 4, dynamik: 1, einfach: 5, story: 4, scan: 3, conv: 2, mobile: 5 } },
+  { id: 'fullscreen',  no: '06', name: 'Fullscreen Image',file: '06-fullscreen-image.html',
+    claim: 'Bildschirmfüllende Visuals tragen das Layout.',
+    gaze: 'Zuerst das Bild als Ganzes, dann der Overlay-Text im unteren Drittel.',
+    pro: 'Starke emotionale Wirkung, Produkt wird sofort erlebbar.',
+    con: 'Wenig Platz für Inhalt, hohe Anforderungen an Bild und Ladezeit.',
+    r: { dichte: 1, dynamik: 5, einfach: 3, story: 5, scan: 2, conv: 3, mobile: 3 } },
+  { id: 'alternating', no: '07', name: 'Alternating',     file: '07-alternating.html',
+    claim: 'Bild-Text-Wechsel erzeugt einen ruhigen Leserhythmus.',
+    gaze: 'Zickzack von Textblock zu Bild und zurück.',
+    pro: 'Ausgewogen und beliebig erweiterbar.',
+    con: 'Neigt zur Monotonie, wirkt schnell generisch.',
+    r: { dichte: 3, dynamik: 2, einfach: 4, story: 3, scan: 4, conv: 4, mobile: 5 } },
+  { id: 'asymmetric',  no: '08', name: 'Asymmetrical',    file: '08-asymmetrical.html',
+    claim: 'Spannung durch ungleiche Gewichte und große Leerräume.',
+    gaze: 'Von der weit links gesetzten Headline zum hochgezogenen Visual rechts.',
+    pro: 'Hohe Eigenständigkeit bei ruhiger, luftiger Wirkung.',
+    con: 'Leerraum kostet Platz, Scanbarkeit sinkt spürbar.',
+    r: { dichte: 2, dynamik: 4, einfach: 3, story: 4, scan: 2, conv: 3, mobile: 3 } },
+  { id: 'single',      no: '09', name: 'Single Column',   file: '09-single-column.html',
+    claim: 'Eine vertikale Achse, eine Reihenfolge, eine Story.',
+    gaze: 'Rein vertikal, getaktet durch Sektionsnummern und Größensprünge.',
+    pro: 'Maximale Klarheit, identisches Erlebnis auf allen Geräten.',
+    con: 'Lange Scrollwege, geringe Dichte pro Bildschirm.',
+    r: { dichte: 2, dynamik: 2, einfach: 5, story: 5, scan: 3, conv: 5, mobile: 5 } },
+  { id: 'box',         no: '10', name: 'Box-Based',       file: '10-box-based.html',
+    claim: 'Jede Sektion ist ein sichtbares Panel mit Kopfzeile.',
+    gaze: 'Panel für Panel; innerhalb führt die Kopfzeile, dann die Boxgruppe.',
+    pro: 'Sehr klare Gruppierung bei vielen Inhaltstypen.',
+    con: 'Wirkt schnell technisch; viele Rahmen erzeugen Rauschen.',
+    r: { dichte: 5, dynamik: 2, einfach: 3, story: 2, scan: 4, conv: 3, mobile: 4 } },
+  { id: 'cards',       no: '11', name: 'Cards / Bento',   file: '11-cards.html',
+    claim: 'Die ganze Seite besteht aus modularen Cards.',
+    gaze: 'Von der großen Hero-Card zu kleineren Modulen, reihenweise.',
+    pro: 'Extrem skalierbar und redaktionell pflegbar.',
+    con: 'Alles wirkt gleich wichtig; wenig Hierarchie, wenig Storytelling.',
+    r: { dichte: 4, dynamik: 3, einfach: 4, story: 2, scan: 4, conv: 3, mobile: 5 } },
+  { id: 'magazine',    no: '12', name: 'Magazine',        file: '12-magazine.html',
+    claim: 'Redaktionelles Raster mit Lead-Story und Spaltensatz.',
+    gaze: 'Masthead → Lead-Headline → Standfirst → Aufmacherbild, dann spaltenweise.',
+    pro: 'Hohe inhaltliche Kapazität bei hochwertiger Anmutung.',
+    con: 'Aufwendig; auf kleinen Viewports verliert der Spaltensatz seine Wirkung.',
+    r: { dichte: 5, dynamik: 3, einfach: 2, story: 5, scan: 3, conv: 2, mobile: 2 } },
+  { id: 'strips',      no: '13', name: 'Horizontal Strips',file: '13-horizontal-strips.html',
+    claim: 'Eine Folge klar getrennter Streifen mit eigener Dichte.',
+    gaze: 'Streifen für Streifen; jeder Wechsel markiert einen Themensprung.',
+    pro: 'Sehr robuste Gliederung, jeder Streifen ist unabhängig pflegbar.',
+    con: 'Ohne Variation in Höhe und Dichte entsteht ein monotoner Takt.',
+    r: { dichte: 4, dynamik: 3, einfach: 4, story: 3, scan: 4, conv: 4, mobile: 4 } }
+];
+
+export const STRUCTURE_AXES = [
+  { key: 'dichte',  label: 'Dichte' },
+  { key: 'dynamik', label: 'Dynamik' },
+  { key: 'einfach', label: 'Einfachheit' },
+  { key: 'story',   label: 'Story' },
+  { key: 'scan',    label: 'Scanbarkeit' },
+  { key: 'conv',    label: 'Conversion' },
+  { key: 'mobile',  label: 'Mobile' }
+];

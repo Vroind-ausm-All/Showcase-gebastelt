@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13 Wireframe-Konzepte · Flowdesk</title>
+<link rel="stylesheet" href="assets/base.css">
+<style>
+body { background: var(--bg-2); }
+.shell { width: min(1600px, 100% - 48px); margin-inline: auto; }
+
+/* Kopfbereich */
+.top { background: var(--ink-dark); color: #fff; padding: var(--s-6) 0 var(--s-7); }
+.top h1 { font-size: clamp(26px, 3vw, 40px); letter-spacing: -.03em; }
+.top p { color: #b4b4b4; max-width: 72ch; margin-top: var(--s-3); }
+.brief { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s-4); margin-top: var(--s-6); }
+.brief div { border-top: 1px solid #3a3a3a; padding-top: var(--s-3); }
+.brief dt { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #8f8f8f; }
+.brief dd { margin: 6px 0 0; font-size: 14px; }
+
+/* Arbeitsfläche */
+.work { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: var(--s-5); padding: var(--s-5) 0 var(--s-8); }
+
+.picker { align-self: start; position: sticky; top: var(--s-4); background: #fff; border: 1px solid var(--line-2); }
+.picker__hd { padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--line-2); background: var(--bg-2);
+              font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+.picker__list { max-height: calc(100vh - 160px); overflow: auto; }
+.pick { display: grid; grid-template-columns: 34px 1fr; gap: var(--s-3); width: 100%; text-align: left;
+        background: none; border: 0; border-bottom: 1px solid var(--line); padding: var(--s-3) var(--s-4); cursor: pointer; }
+.pick:hover { background: var(--bg-2); }
+.pick[aria-current="true"] { background: var(--ink-dark); color: #fff; }
+.pick[aria-current="true"] .pick__sub { color: #a5a5a5; }
+.pick__n { font-size: 12px; font-weight: 700; letter-spacing: .06em; opacity: .7; padding-top: 2px; }
+.pick__t { display: block; font-size: 14px; font-weight: 600; }
+.pick__sub { display: block; font-size: 12px; color: var(--ink-3); margin-top: 3px; line-height: 1.4; }
+
+.panel { background: #fff; border: 1px solid var(--line-2); }
+.panel__hd { display: flex; align-items: center; gap: var(--s-4); padding: var(--s-4) var(--s-5); border-bottom: 1px solid var(--line-2); flex-wrap: wrap; }
+.panel__hd h2 { font-size: 20px; }
+.panel__tools { margin-left: auto; display: flex; gap: var(--s-2); align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line-2); }
+.seg button { background: #fff; border: 0; padding: 8px 14px; font-size: 13px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line-2); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+/* Bühne für die Vorschau */
+.stage { background: var(--bg-3); padding: var(--s-5); display: flex; justify-content: center;
+         background-image: radial-gradient(var(--line-2) 1px, transparent 1px); background-size: 16px 16px; }
+.stage__device { position: relative; background: #fff; border: 1px solid var(--line-3); overflow: hidden;
+                 padding-top: 22px; }
+.stage__device iframe { border: 0; display: block; transform-origin: top left; }
+.stage__label { position: absolute; top: 0; left: 0; right: 0; z-index: 2; background: var(--ink); color: #fff;
+                font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 5px 10px; }
+.stage__hint { padding: var(--s-3) var(--s-5); font-size: 12px; color: var(--ink-3); border-top: 1px solid var(--line); }
+
+/* Erklärung */
+.explain { padding: var(--s-5); display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); border-top: 1px solid var(--line-2); }
+.explain__lead { grid-column: 1 / -1; font-size: 16px; color: var(--ink-2); }
+.ex { border-top: 2px solid var(--ink); padding-top: var(--s-3); }
+.ex h3 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: var(--s-2); }
+.ex p { font-size: 14px; color: var(--ink-2); }
+.ex--pro { border-top-color: var(--ink); }
+.ex--con { border-top-color: var(--line-3); }
+
+/* Vergleichsmatrix */
+.compare { background: #fff; border: 1px solid var(--line-2); margin-bottom: var(--s-8); }
+.compare__hd { padding: var(--s-5); border-bottom: 1px solid var(--line-2); }
+.compare__hd h2 { font-size: 22px; }
+.compare__hd p { color: var(--ink-3); font-size: 14px; margin-top: var(--s-2); max-width: 90ch; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 900px; font-size: 13px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+thead th { position: sticky; top: 0; background: var(--bg-2); font-size: 11px; letter-spacing: .08em;
+           text-transform: uppercase; color: var(--ink-3); z-index: 1; border-bottom: 2px solid var(--ink); }
+tbody tr:hover { background: var(--bg-2); }
+th[scope="row"] { font-weight: 600; white-space: nowrap; }
+th[scope="row"] span { display: block; font-weight: 400; color: var(--ink-3); font-size: 11px; }
+.meter { display: flex; gap: 3px; align-items: center; }
+.meter i { width: 9px; height: 9px; border: 1px solid var(--line-3); display: block; }
+.meter i.on { background: var(--ink); border-color: var(--ink); }
+.legend { padding: var(--s-4) var(--s-5); font-size: 12px; color: var(--ink-3); display: flex; gap: var(--s-5); flex-wrap: wrap; border-top: 1px solid var(--line); }
+
+.docs { padding: 0 0 var(--s-8); font-size: 13px; color: var(--ink-3); }
+.docs a { color: var(--ink); }
+
+@media (max-width: 1100px) {
+  .brief { grid-template-columns: 1fr 1fr; }
+  .work { grid-template-columns: 1fr; }
+  .picker { position: static; }
+  .picker__list { display: grid; grid-template-columns: repeat(2, 1fr); max-height: none; }
+  .explain { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .shell { width: calc(100% - 24px); }
+  .brief { grid-template-columns: 1fr; }
+  .picker__list { grid-template-columns: 1fr; }
+  .panel__tools { margin-left: 0; width: 100%; }
+  .stage { padding: var(--s-3); }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="shell">
+    <p class="eyebrow" style="color:#8f8f8f">Wireframe-Serie · Low bis Mid Fidelity</p>
+    <h1>13 Layout-Konzepte für dieselbe Website</h1>
+    <p style="margin-top:14px"><a href="showcase.html" style="color:#fff">→ Zur Showcase-Präsentation</a>
+      <span style="color:#6f6f6f">· diese Seite ist das Arbeitswerkzeug zum direkten Vergleich</span></p>
+    <p>Identischer Content, identische Funktionen, identische Botschaften – unterschiedlich sind ausschliesslich
+      Informationsarchitektur, visuelle Hierarchie, Anordnung, Contentflächen und Nutzerführung.
+      Die Beispielinhalte sind fiktiv und dienen dem fairen Vergleich der Strukturen.</p>
+    <dl class="brief">
+      <div><dt>Website-Typ</dt><dd>SaaS / Produktwebsite (B2B)</dd></div>
+      <div><dt>Projekt</dt><dd>Flowdesk — Ressourcenplanung für Agenturen</dd></div>
+      <div><dt>Zielgruppe</dt><dd>Agenturleitung, Operations und Projektleitung, 8–200 Personen</dd></div>
+      <div><dt>Primäres Ziel</dt><dd>Demo-Buchungen / Leads</dd></div>
+      <div><dt>CTAs</dt><dd>Primär „Demo buchen“ · Sekundär „Produkt-Tour ansehen“</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main class="shell work">
+  <nav class="picker" aria-label="Konzeptauswahl">
+    <div class="picker__hd">Konzepte</div>
+    <div class="picker__list" id="picker"></div>
+  </nav>
+
+  <div>
+    <section class="panel">
+      <div class="panel__hd">
+        <h2 id="c-title">—</h2>
+        <div class="panel__tools">
+          <div class="seg" role="group" aria-label="Viewport">
+            <button type="button" id="btn-desktop" aria-pressed="true">Desktop 1440</button>
+            <button type="button" id="btn-mobile" aria-pressed="false">Mobile 390</button>
+          </div>
+          <a class="btn btn--sec btn--sm" id="open-new" href="#" target="_blank" rel="noopener">In neuem Tab öffnen</a>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="stage__device" id="device">
+          <span class="stage__label" id="stage-label">Desktop · 1440 px</span>
+          <iframe id="frame" title="Wireframe-Vorschau" loading="lazy"></iframe>
+        </div>
+      </div>
+      <p class="stage__hint">Die Vorschau zeigt das reale, responsive Wireframe – skaliert, damit 1440 px und 390 px
+        direkt vergleichbar sind. Bleibt der Rahmen leer, die Dateien über einen lokalen Server öffnen
+        (<code>python3 -m http.server</code>) oder das Konzept in einem neuen Tab starten.</p>
+
+      <div class="explain" id="explain"></div>
+    </section>
+  </div>
+</main>
+
+<section class="shell">
+  <div class="compare">
+    <div class="compare__hd">
+      <h2>Vergleichsübersicht</h2>
+      <p>Die Skala beschreibt die <strong>Ausprägung</strong> eines Merkmals, nicht dessen Qualität: eine hohe
+        Informationsdichte ist für ein Wissensportal ein Vorteil und für eine Kampagnenseite ein Nachteil.
+        Deshalb gibt es hier bewusst keinen pauschalen Gewinner – die Auswahl hängt von Inhaltsmenge,
+        Zielgruppe und Conversion-Ziel ab.</p>
+    </div>
+    <div class="tablewrap"><table id="matrix"><thead></thead><tbody></tbody></table></div>
+    <div class="legend">
+      <span>Skala: <span class="meter" style="display:inline-flex;vertical-align:middle"><i class="on"></i><i></i><i></i><i></i><i></i></span> gering … <span class="meter" style="display:inline-flex;vertical-align:middle"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span> sehr hoch</span>
+      <span>Alle 13 Varianten nutzen denselben Beispiel-Content.</span>
+    </div>
+  </div>
+  <p class="docs">Dateien: <code>wireframes/01-hero.html</code> … <code>wireframes/13-horizontal-strips.html</code> ·
+    gemeinsame Primitives in <code>assets/base.css</code> · ausführliche Beschreibungen in
+    <a href="docs/KONZEPTE.md">docs/KONZEPTE.md</a>.</p>
+</section>
+
+<script src="assets/concepts.js"></script>
+<script>
+(function () {
+  var picker  = document.getElementById('picker');
+  var frame   = document.getElementById('frame');
+  var device  = document.getElementById('device');
+  var label   = document.getElementById('stage-label');
+  var title   = document.getElementById('c-title');
+  var explain = document.getElementById('explain');
+  var openNew = document.getElementById('open-new');
+  var bD = document.getElementById('btn-desktop');
+  var bM = document.getElementById('btn-mobile');
+
+  var VIEWS = {
+    desktop: { w: 1440, h: 900, label: 'Desktop · 1440 px' },
+    mobile:  { w: 390,  h: 800, label: 'Mobile · 390 px' }
+  };
+  var view = 'desktop';
+  var current = 0;
+
+  /* Konzeptliste */
+  window.CONCEPTS.forEach(function (c, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'pick';
+    b.setAttribute('aria-current', 'false');
+    b.innerHTML = '<span class="pick__n">' + c.n + '</span>' +
+                  '<span><span class="pick__t">' + c.title + '</span>' +
+                  '<span class="pick__sub">' + c.claim + '</span></span>';
+    b.addEventListener('click', function () { select(i, true); });
+    picker.appendChild(b);
+  });
+
+  function field(cls, head, text) {
+    return '<div class="ex ' + cls + '"><h3>' + head + '</h3><p>' + text + '</p></div>';
+  }
+
+  function select(i, push) {
+    current = i;
+    var c = window.CONCEPTS[i];
+    Array.prototype.forEach.call(picker.children, function (el, idx) {
+      el.setAttribute('aria-current', idx === i ? 'true' : 'false');
+    });
+    title.textContent = c.n + ' — ' + c.title;
+    frame.src = 'wireframes/' + c.slug;
+    openNew.href = 'wireframes/' + c.slug;
+    explain.innerHTML =
+      '<p class="explain__lead"><strong>' + c.claim + '</strong></p>' +
+      field('', 'Grundidee des Layouts', c.idea) +
+      field('', 'Blickführung', c.gaze) +
+      field('', 'Position der wichtigsten CTA', c.cta) +
+      field('ex--pro', 'Vorteil dieser Struktur', c.pro) +
+      field('ex--con', 'Mögliche Schwäche', c.con) +
+      field('', 'Besonders geeignete Website-Typen', c.types) +
+      field('', 'Verhalten auf Mobile', c.mobile);
+    if (push) history.replaceState(null, '', '#' + c.n);
+    fit();
+  }
+
+  function setView(v) {
+    view = v;
+    bD.setAttribute('aria-pressed', String(v === 'desktop'));
+    bM.setAttribute('aria-pressed', String(v === 'mobile'));
+    label.textContent = VIEWS[v].label;
+    fit();
+  }
+  bD.addEventListener('click', function () { setView('desktop'); });
+  bM.addEventListener('click', function () { setView('mobile'); });
+
+  /* Vorschau massstäblich einpassen */
+  function fit() {
+    var v = VIEWS[view];
+    var avail = device.parentElement.clientWidth - 40;
+    var scale = Math.min(1, avail / v.w);
+    frame.style.width  = v.w + 'px';
+    frame.style.height = v.h + 'px';
+    frame.style.transform = 'scale(' + scale + ')';
+    device.style.width  = Math.round(v.w * scale) + 'px';
+    device.style.height = (Math.round(v.h * scale) + 22) + 'px';
+  }
+  window.addEventListener('resize', fit);
+
+  /* Vergleichsmatrix */
+  var thead = document.querySelector('#matrix thead');
+  var tbody = document.querySelector('#matrix tbody');
+  var hr = '<tr><th scope="col">Konzept</th>' +
+    window.CRITERIA.map(function (k) { return '<th scope="col">' + k.label + '</th>'; }).join('') + '</tr>';
+  thead.innerHTML = hr;
+  tbody.innerHTML = window.CONCEPTS.map(function (c) {
+    return '<tr><th scope="row">' + c.n + ' — ' + c.title + '<span>' + c.claim + '</span></th>' +
+      window.CRITERIA.map(function (k) {
+        var val = c.r[k.key], dots = '';
+        for (var i = 1; i <= 5; i++) dots += '<i class="' + (i <= val ? 'on' : '') + '"></i>';
+        return '<td><span class="meter" role="img" aria-label="' + val + ' von 5">' + dots + '</span></td>';
+      }).join('') + '</tr>';
+  }).join('');
+
+  /* Start: Konzept aus dem Hash oder 01 */
+  var start = 0;
+  var h = (location.hash || '').replace('#', '');
+  window.CONCEPTS.forEach(function (c, i) { if (c.n === h) start = i; });
+  select(start, false);
+})();
+</script>
+</body>
+</html>

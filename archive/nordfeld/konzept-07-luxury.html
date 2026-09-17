@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Konzept 07 – Luxury / High-End · NORDFELD Wireframes</title>
+<link rel="stylesheet" href="assets/wf.css">
+<style>
+.c07{font-family:var(--serif);color:var(--ink);background:var(--paper)}
+.c07 .pad{padding-left:80px;padding-right:80px}
+.c07 .caps{font:400 11px/1.5 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--ink2)}
+.c07 h1{font-size:74px;line-height:1.08;letter-spacing:-.012em;font-weight:400;margin:0}
+.c07 h2{font-size:46px;line-height:1.14;letter-spacing:-.01em;font-weight:400;margin:0}
+.c07 h3{font-size:26px;line-height:1.2;font-weight:400;margin:0}
+.c07 .body{font-size:16px;line-height:1.75;color:var(--ink2)}
+.c07 .ul{font:400 13px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  border-bottom:1px solid currentColor;padding-bottom:7px;display:inline-block}
+.c07 .sec{padding-top:200px;padding-bottom:200px}
+.c07 .bignum{font-size:130px;line-height:.8;font-weight:400;color:var(--l1)}
+.c07.m .pad{padding-left:24px;padding-right:24px}
+.c07.m h1{font-size:36px}.c07.m h2{font-size:27px}.c07.m h3{font-size:20px}
+.c07.m .sec{padding-top:76px;padding-bottom:76px}
+.c07.m .bignum{font-size:60px}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-bar">
+    <b>NORDFELD · Wireframe-Studie</b>
+    <span style="color:var(--ink3);font-size:12px">Konzept 07 von 10</span>
+    <span class="sp"></span>
+    <a href="index.html">Übersicht &amp; Vergleichsmatrix</a>
+  </div>
+
+  <div class="doc-head">
+    <div class="num">Konzept 07</div>
+    <h1>Luxury / High-End</h1>
+    <p class="sub">Bildflächen tragen die Seite, Text tritt zurück: Navigation hinter einem Menü, vollflächiger Einstieg, 240 px Abstandsrhythmus, Serifen-Typografie und CTAs ausschließlich als feine Unterstreichung.</p>
+    <div class="tags"><span class="tag">Verstecktes Menü</span><span class="tag">Vollbild-Einstieg</span><span class="tag">240-px-Rhythmus</span><span class="tag">Bild 70 : Text 30</span><span class="tag">CTA als Linie</span><span class="tag">Serifen</span></div>
+  </div>
+
+  <div class="sec-label"><h2>Desktop</h2><span>1440 px</span></div>
+  <div class="stage" data-w="1440"><div class="frame c07 d"><!-- NAVIGATION: nur Menü, Wortmarke, Kontakt -->
+<div class="pad pinhost" style="height:104px;display:flex;align-items:center;justify-content:space-between;position:absolute;top:0;left:0;right:0;z-index:20;color:var(--inv-fg)">
+  <span class="pin" style="top:40px;left:20px">1</span>
+  <span class="caps" style="color:var(--inv-fg);display:flex;align-items:center;gap:12px">
+    <span style="display:inline-flex;flex-direction:column;gap:4px">
+      <span style="width:20px;height:1px;background:currentColor;display:block"></span>
+      <span style="width:20px;height:1px;background:currentColor;display:block"></span></span>Menü</span>
+  <span style="font-size:22px;letter-spacing:.34em;text-transform:uppercase">Nordfeld</span>
+  <span class="caps" style="color:var(--inv-fg)">Kontakt</span>
+</div>
+
+<!-- HERO: Vollbild, Text unten links -->
+<div style="position:relative;height:880px" class="pinhost">
+  <span class="pin" style="top:700px;left:20px">2</span>
+  <div class="img inv" style="position:absolute;inset:0;border:0"></div>
+  <div class="pad" style="position:absolute;left:0;bottom:96px;color:var(--inv-fg);max-width:800px">
+    <div class="caps" style="color:var(--inv-fill);margin-bottom:28px">Lieferketten-Transparenz — seit 2019</div>
+    <h1 style="margin-bottom:34px">Lieferketten,<br>die man nachweisen kann.</h1>
+    <span class="ul">Demo vereinbaren</span>
+  </div>
+</div>
+
+<!-- EINSTIEGSTEXT: winziger Block, viel Fläche -->
+<div class="pad sec pinhost" style="padding-bottom:0">
+  <span class="pin" style="top:180px;left:20px">3</span>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px">
+    <div></div>
+    <div style="max-width:44ch">
+      <div class="caps" style="margin-bottom:26px">Über die Plattform</div>
+      <div class="body">Eine Datenschicht für Nachweise, Risiken und Berichte – über alle Lieferanten hinweg, in einem einzigen System.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VORTEILE: drei Kapitel, alternierend ausgerichtet -->
+<div style="padding-top:200px">
+  <div class="pad" style="margin-bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end">
+    <div><div class="bignum" style="margin-bottom:34px">01</div>
+      <h2 style="margin-bottom:26px">Transparenz<br>in Echtzeit</h2>
+      <div class="body" style="max-width:40ch">Jede Bewegung in der Kette wird sichtbar, sobald sie passiert.</div></div>
+    <div></div>
+  </div>
+  <div style="padding:0 80px 0 240px"><div class="img" style="height:620px"></div></div>
+</div>
+<div style="padding-top:200px">
+  <div class="pad" style="margin-bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end">
+    <div></div>
+    <div style="text-align:right"><div class="bignum" style="margin-bottom:34px">02</div>
+      <h2 style="margin-bottom:26px">Prüfsichere<br>Nachweise</h2>
+      <div class="body" style="max-width:40ch;margin-left:auto">Dokumente, Fristen und Prüfpfade in einem revisionsfesten Archiv.</div></div>
+  </div>
+  <div style="padding:0 240px 0 80px"><div class="img" style="height:620px"></div></div>
+</div>
+<div style="padding-top:200px">
+  <div class="pad" style="margin-bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end">
+    <div><div class="bignum" style="margin-bottom:34px">03</div>
+      <h2 style="margin-bottom:26px">Weniger<br>Handarbeit</h2>
+      <div class="body" style="max-width:40ch">68 Prozent des monatlichen Aufwands entfallen ersatzlos.</div></div>
+    <div></div>
+  </div>
+  <div style="padding:0 80px 0 240px"><div class="img" style="height:620px"></div></div>
+</div>
+
+<!-- MODULE: zwei große Flächen, Bildunterschriften klein -->
+<div class="pad sec pinhost">
+  <span class="pin" style="top:180px;left:20px">4</span>
+  <div class="caps" style="margin-bottom:70px;text-align:center">Die vier Module</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:120px">
+    <div><div class="img" style="height:520px;margin-bottom:28px"></div>
+      <h3 style="margin-bottom:14px">Lieferanten-Cockpit</h3>
+      <div class="body" style="font-size:15px;max-width:34ch">Stammdaten, Zertifikate und Fristen je Lieferant.</div></div>
+    <div style="padding-top:120px"><div class="img" style="height:520px;margin-bottom:28px"></div>
+      <h3 style="margin-bottom:14px">Risiko-Radar</h3>
+      <div class="body" style="font-size:15px;max-width:34ch">Frühwarnsignale aus 40 Quellen, automatisch zugeordnet.</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px">
+    <div><div class="img" style="height:440px;margin-bottom:28px"></div>
+      <h3 style="margin-bottom:14px">Nachweis-Archiv</h3>
+      <div class="body" style="font-size:15px;max-width:34ch">Revisionsfest, durchsuchbar, exportierbar.</div></div>
+    <div style="padding-top:80px"><div class="img" style="height:440px;margin-bottom:28px"></div>
+      <h3 style="margin-bottom:14px">Reporting-Studio</h3>
+      <div class="body" style="font-size:15px;max-width:34ch">Prüfberichte auf Knopfdruck, in Ihrem Layout.</div></div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF: ein Zitat, sehr groß -->
+<div class="pad" style="padding-top:60px;padding-bottom:200px;text-align:center">
+  <div style="font-size:44px;line-height:1.38;max-width:24ch;margin:0 auto 44px">
+    „Vier Wochen Nachweisarbeit sind zwei Tage geworden."</div>
+  <div class="caps">M. Keller — Werk Nord</div>
+  <div style="display:flex;justify-content:center;gap:64px;margin-top:90px;opacity:.4">
+    <div class="logo sm"></div><div class="logo sm"></div><div class="logo sm"></div>
+    <div class="logo sm"></div><div class="logo sm"></div></div>
+</div>
+
+<!-- ÜBER UNS: Vollbild mit überlappender Textspalte -->
+<div style="position:relative" class="pinhost">
+  <span class="pin" style="top:560px;left:20px">5</span>
+  <div class="img inv" style="height:760px;border:0"></div>
+  <div style="position:absolute;right:80px;bottom:-100px;width:520px;background:var(--paper);padding:72px 64px">
+    <div class="caps" style="margin-bottom:26px">Über uns</div>
+    <h2 style="margin-bottom:26px">28 Leute<br>in Hamburg.</h2>
+    <div class="body" style="margin-bottom:34px">Seit 2019 bauen wir Software für Teams, die ihre Lieferkette belegen müssen – nicht nur beschreiben.</div>
+    <div class="caps" style="line-height:2.2">ISO 27001 · DSGVO · Hosting in der EU</div>
+  </div>
+</div>
+
+<!-- FAQ: reine Linienliste -->
+<div class="pad" style="padding-top:260px;padding-bottom:200px">
+  <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start">
+    <div class="caps">Fragen</div>
+    <div>
+      <div style="border-top:1px solid var(--l1);padding:36px 0"><h3 style="margin-bottom:20px">Wie lange dauert die Einführung?</h3>
+        <div class="body" style="max-width:52ch">Die erste Auswertung liegt nach zwölf Tagen vor.</div></div>
+      <div style="border-top:1px solid var(--l1);padding:36px 0;display:flex;justify-content:space-between"><h3>Welche Systeme lassen sich anbinden?</h3><span class="caps">+</span></div>
+      <div style="border-top:1px solid var(--l1);padding:36px 0;display:flex;justify-content:space-between"><h3>Wie sicher sind unsere Daten?</h3><span class="caps">+</span></div>
+      <div style="border-top:1px solid var(--l1);padding:36px 0;display:flex;justify-content:space-between"><h3>Was kostet NORDFELD?</h3><span class="caps">+</span></div>
+      <div style="border-top:1px solid var(--l1);border-bottom:1px solid var(--l1);padding:36px 0;display:flex;justify-content:space-between"><h3>Brauchen wir eigene IT-Ressourcen?</h3><span class="caps">+</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABSCHLUSS-CTA: nur Typografie und eine Linie -->
+<div class="pad pinhost" style="padding-top:200px;padding-bottom:200px;text-align:center;background:var(--fill2)">
+  <span class="pin" style="top:60px;left:20px">6</span>
+  <div class="caps" style="margin-bottom:40px">Persönliches Gespräch</div>
+  <h2 style="font-size:60px;max-width:20ch;margin:0 auto 50px">In 30 Minuten sehen, wie Ihre Lieferkette aussieht.</h2>
+  <span class="ul">Demo vereinbaren</span>
+</div>
+
+<!-- FOOTER -->
+<div class="pad" style="padding-top:110px;padding-bottom:70px;text-align:center">
+  <div style="font-size:30px;letter-spacing:.34em;text-transform:uppercase;margin-bottom:54px">Nordfeld</div>
+  <div class="caps" style="display:flex;justify-content:center;gap:52px;margin-bottom:60px">
+    <span>Plattform</span><span>Module</span><span>Über uns</span><span>Kontakt</span><span>Presse</span></div>
+  <div class="caps" style="color:var(--ink3)">Hamburg · Zürich — © 2026 Nordfeld GmbH — Impressum · Datenschutz</div>
+</div></div></div>
+  <ol class="legend"><li><b>Navigation vollständig hinter „Menü".</b> Sichtbar bleiben nur drei Elemente: Menü, Wortmarke, Kontakt – und sie liegen transparent über dem Vollbild, statt eine eigene Leiste zu beanspruchen.</li>
+<li><b>Hero über 880 px Höhe, Text unten links.</b> Das Bild bekommt den gesamten oberen Bildschirm; der Text sitzt in der ruhigsten Ecke und beansprucht weniger als ein Drittel der Breite.</li>
+<li><b>Der Einstiegstext steht rechts, die linke Hälfte bleibt leer.</b> Diese bewusst „verschwendete" Fläche ist das eigentliche Gestaltungsmittel der Richtung.</li>
+<li><b>Bilder brechen asymmetrisch aus dem Satzspiegel.</b> Mal 240 px links eingerückt, mal rechts – die Kapitel bekommen dadurch Richtung, ohne dass ein Element sich vordrängt.</li>
+<li><b>Über-uns-Text überlappt die Bildfläche und ragt 100 px darüber hinaus.</b> Die einzige Überlagerung der Seite – dadurch wirkt sie wie eine gesetzte Bildunterschrift, nicht wie ein Effekt.</li>
+<li><b>Kein einziger gefüllter Button.</b> Jeder CTA ist ein Versalien-Link mit 1-px-Unterstreichung. Die Conversion läuft über Begehrlichkeit statt über Signalfarbe.</li></ol>
+
+  <div class="sec-label"><h2>Mobile</h2><span>390 px</span></div>
+  <div class="mobile-row">
+    <div class="stage" data-w="390"><div class="frame c07 m"><div class="pad pinhost" style="height:70px;display:flex;align-items:center;justify-content:space-between;position:absolute;top:0;left:0;right:0;z-index:20;color:var(--inv-fg)">
+  <span class="pin" style="top:24px;left:6px">1</span>
+  <span style="display:inline-flex;flex-direction:column;gap:4px">
+    <span style="width:18px;height:1px;background:currentColor;display:block"></span>
+    <span style="width:18px;height:1px;background:currentColor;display:block"></span></span>
+  <span style="font-size:14px;letter-spacing:.3em;text-transform:uppercase">Nordfeld</span>
+  <span class="caps" style="color:var(--inv-fg);font-size:9px">Kontakt</span>
+</div>
+<div style="position:relative;height:560px">
+  <div class="img inv" style="position:absolute;inset:0;border:0"></div>
+  <div class="pad" style="position:absolute;left:0;bottom:44px;color:var(--inv-fg)">
+    <div class="caps" style="color:var(--inv-fill);margin-bottom:18px;font-size:9px">Lieferketten-Transparenz</div>
+    <h1 style="margin-bottom:24px">Lieferketten, die man nachweisen kann.</h1>
+    <span class="ul" style="font-size:11px">Demo vereinbaren</span>
+  </div>
+</div>
+<div class="pad sec" style="padding-bottom:0">
+  <div class="caps" style="margin-bottom:20px">Über die Plattform</div>
+  <div class="body">Eine Datenschicht für Nachweise, Risiken und Berichte – über alle Lieferanten hinweg.</div>
+</div>
+<div style="padding-top:76px">
+  <div class="pad" style="margin-bottom:26px"><div class="bignum" style="margin-bottom:18px">01</div>
+    <h2 style="margin-bottom:16px">Transparenz<br>in Echtzeit</h2>
+    <div class="body">Jede Bewegung in der Kette wird sichtbar, sobald sie passiert.</div></div>
+  <div style="padding:0 0 0 40px"><div class="img" style="height:300px"></div></div>
+</div>
+<div style="padding-top:76px">
+  <div class="pad" style="margin-bottom:26px;text-align:right"><div class="bignum" style="margin-bottom:18px">02</div>
+    <h2 style="margin-bottom:16px">Prüfsichere<br>Nachweise</h2>
+    <div class="body">Dokumente, Fristen und Prüfpfade revisionsfest archiviert.</div></div>
+  <div style="padding:0 40px 0 0"><div class="img" style="height:300px"></div></div>
+</div>
+<div style="padding-top:76px">
+  <div class="pad" style="margin-bottom:26px"><div class="bignum" style="margin-bottom:18px">03</div>
+    <h2 style="margin-bottom:16px">Weniger<br>Handarbeit</h2>
+    <div class="body">68 Prozent des monatlichen Aufwands entfallen ersatzlos.</div></div>
+  <div style="padding:0 0 0 40px"><div class="img" style="height:300px"></div></div>
+</div>
+<div class="pad sec">
+  <div class="caps" style="margin-bottom:40px;text-align:center">Die vier Module</div>
+  <div style="display:grid;gap:56px">
+    <div><div class="img" style="height:300px;margin-bottom:20px"></div><h3 style="margin-bottom:10px">Lieferanten-Cockpit</h3>
+      <div class="body" style="font-size:15px">Stammdaten, Zertifikate und Fristen je Lieferant.</div></div>
+    <div><div class="img" style="height:300px;margin-bottom:20px"></div><h3 style="margin-bottom:10px">Risiko-Radar</h3>
+      <div class="body" style="font-size:15px">Frühwarnsignale aus 40 Quellen.</div></div>
+    <div><div class="img" style="height:260px;margin-bottom:20px"></div><h3 style="margin-bottom:10px">Nachweis-Archiv</h3>
+      <div class="body" style="font-size:15px">Revisionsfest, durchsuchbar, exportierbar.</div></div>
+    <div><div class="img" style="height:260px;margin-bottom:20px"></div><h3 style="margin-bottom:10px">Reporting-Studio</h3>
+      <div class="body" style="font-size:15px">Prüfberichte auf Knopfdruck.</div></div>
+  </div>
+</div>
+<div class="pad" style="padding-bottom:76px;text-align:center">
+  <div style="font-size:25px;line-height:1.42;margin-bottom:26px">„Vier Wochen Nachweisarbeit sind zwei Tage geworden."</div>
+  <div class="caps">M. Keller — Werk Nord</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:44px;justify-items:center;opacity:.4">
+    <div class="logo sm"></div><div class="logo sm"></div><div class="logo sm"></div></div>
+</div>
+<div style="position:relative">
+  <div class="img inv" style="height:420px;border:0"></div>
+  <div style="margin:-60px 24px 0;background:var(--paper);padding:40px 28px;position:relative">
+    <div class="caps" style="margin-bottom:18px">Über uns</div>
+    <h2 style="margin-bottom:18px">28 Leute<br>in Hamburg.</h2>
+    <div class="body" style="margin-bottom:22px">Seit 2019 bauen wir Software für Teams, die ihre Lieferkette belegen müssen.</div>
+    <div class="caps" style="line-height:2">ISO 27001 · DSGVO<br>Hosting in der EU</div>
+  </div>
+</div>
+<div class="pad" style="padding-top:90px;padding-bottom:76px">
+  <div class="caps" style="margin-bottom:30px">Fragen</div>
+  <div style="border-top:1px solid var(--l1);padding:24px 0"><h3 style="margin-bottom:14px">Wie lange dauert die Einführung?</h3>
+    <div class="body">Die erste Auswertung liegt nach zwölf Tagen vor.</div></div>
+  <div style="border-top:1px solid var(--l1);padding:24px 0;display:flex;justify-content:space-between;gap:16px"><h3>Welche Systeme lassen sich anbinden?</h3><span class="caps">+</span></div>
+  <div style="border-top:1px solid var(--l1);padding:24px 0;display:flex;justify-content:space-between;gap:16px"><h3>Wie sicher sind unsere Daten?</h3><span class="caps">+</span></div>
+  <div style="border-top:1px solid var(--l1);padding:24px 0;display:flex;justify-content:space-between;gap:16px"><h3>Was kostet NORDFELD?</h3><span class="caps">+</span></div>
+  <div style="border-top:1px solid var(--l1);border-bottom:1px solid var(--l1);padding:24px 0;display:flex;justify-content:space-between;gap:16px"><h3>IT-Ressourcen nötig?</h3><span class="caps">+</span></div>
+</div>
+<div class="pad" style="padding-top:90px;padding-bottom:90px;text-align:center;background:var(--fill2)">
+  <div class="caps" style="margin-bottom:24px">Persönliches Gespräch</div>
+  <h2 style="margin-bottom:30px">In 30 Minuten sehen, wie Ihre Lieferkette aussieht.</h2>
+  <span class="ul">Demo vereinbaren</span>
+</div>
+<div class="pad" style="padding-top:56px;padding-bottom:44px;text-align:center">
+  <div style="font-size:19px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:30px">Nordfeld</div>
+  <div class="caps" style="display:flex;justify-content:center;flex-wrap:wrap;gap:18px 26px;margin-bottom:30px">
+    <span>Plattform</span><span>Module</span><span>Über uns</span><span>Kontakt</span><span>Presse</span></div>
+  <div class="caps" style="color:var(--ink3);font-size:9px;line-height:2">Hamburg · Zürich<br>© 2026 Nordfeld GmbH</div>
+</div></div></div>
+    <div class="notes"><ol class="legend" style="grid-template-columns:1fr"><li><b>Die Kopfzeile bleibt transparent über dem Bild</b> und behält alle drei Elemente – Menü-Strich, Wortmarke, Kontakt. Es gibt mobil keine zusätzliche Leiste und keinen eingeblendeten Button.</li>
+<li><b>Der Text-über-Bild-Überlapp bleibt als Prinzip erhalten:</b> Der Über-uns-Block schiebt sich mit −60 px über die Bildkante. Die asymmetrischen Bildeinzüge (40 px links bzw. rechts) übersetzen die Desktop-Dramaturgie maßstabsgerecht.</li></ol></div>
+  </div>
+
+  <div class="sec-label"><h2>Einordnung</h2><span>Designidee · Blickführung · Differenz · Positionierung</span></div>
+  <div class="rationale"><div><h3>Zentrale Designidee</h3><p>Die Seite inszeniert statt zu erklären. Große Bildflächen bestimmen den Takt, Text erscheint nur in kleinen, exakt gesetzten Blöcken – Wertigkeit entsteht aus dem Verhältnis von Fläche zu Inhalt.</p></div><div><h3>Blickführung</h3><p>Der Blick beginnt im Vollbild und findet den Text unten links, wo er am wenigsten stört. Danach führt ein sehr langsamer Rhythmus aus Bild, Pause, kleinem Textblock nach unten – jede Zäsur ist bewusst überdehnt.</p></div><div><h3>Unterschied zu den anderen</h3><p>Die Navigation ist als einziges Konzept vollständig hinter einem Menü verborgen, und es gibt auf der gesamten Seite keinen einzigen gefüllten Button – nur unterstrichene Links.</p></div><div><h3>Passende Markenpositionierung</h3><p>Premium- und Luxusmarken, deren Zielgruppe erwartet, umworben statt überzeugt zu werden.</p></div></div>
+
+  <div class="pager">
+    <a href="konzept-06-futuristic.html">&larr; Vorheriges Konzept</a>
+    <a href="index.html">Alle Konzepte</a>
+    <a href="konzept-08-organic.html">Nächstes Konzept &rarr;</a>
+  </div>
+</div>
+<script src="assets/wf.js"></script>
+</body>
+</html>

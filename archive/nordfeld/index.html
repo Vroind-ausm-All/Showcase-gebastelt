@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NORDFELD – 10 Wireframe-Konzepte im Vergleich</title>
+<link rel="stylesheet" href="assets/wf.css">
+<style>
+.c01{font-family:var(--sans);color:var(--ink)}
+.c01 .pad{padding-left:96px;padding-right:96px}
+.c01 .g12{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.c01 .hair{height:1px;background:var(--l1)}
+.c01 .hair-ink{height:2px;background:var(--ink)}
+.c01 .lbl{font:500 11px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.c01 .num{font:400 13px/1 var(--mono);color:var(--ink3)}
+.c01 .link{font-size:15px;border-bottom:1px solid var(--ink);padding-bottom:3px;display:inline-block}
+.c01 h1{font-size:112px;line-height:.92;letter-spacing:-.035em;font-weight:500;margin:0}
+.c01 h2{font-size:42px;line-height:1.05;letter-spacing:-.025em;font-weight:500;margin:0}
+.c01 h3{font-size:22px;line-height:1.2;letter-spacing:-.01em;font-weight:500;margin:0}
+.c01 .sec{padding-top:88px;padding-bottom:88px}
+.c01 .row{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start;
+  padding:28px 0;border-top:1px solid var(--l1)}
+.c01 .inv{background:var(--inv-bg);color:var(--inv-fg);position:relative;z-index:3}
+.c01.d .gridlines{bottom:auto;height:2200px}
+/* Mobile */
+.c01.m .pad{padding-left:20px;padding-right:20px}
+.c01.m h1{font-size:40px;line-height:.98}
+.c01.m h2{font-size:26px}
+.c01.m h3{font-size:17px}
+.c01.m .sec{padding-top:44px;padding-bottom:44px}.c02{font-family:var(--sans);color:var(--ink);text-align:center}
+.c02 .wrap{max-width:880px;margin:0 auto;padding:0 40px}
+.c02 .wide{max-width:1248px;margin:0 auto;padding:0 96px}
+.c02 h1{font-size:76px;line-height:1.02;letter-spacing:-.035em;font-weight:600;margin:0}
+.c02 h2{font-size:48px;line-height:1.08;letter-spacing:-.03em;font-weight:600;margin:0}
+.c02 h3{font-size:19px;line-height:1.3;letter-spacing:-.01em;font-weight:600;margin:0}
+.c02 .lead{font-size:19px;line-height:1.6;color:var(--ink2);max-width:58ch;margin:0 auto}
+.c02 .sec{padding:180px 0}
+.c02 .txc{margin:0 auto}
+.c02 .txc::after{display:none}
+.c02 .visual{border-radius:14px}
+.c02 .cue{width:1px;height:56px;background:var(--l1);margin:0 auto}.c03{font-family:var(--serif);color:var(--ink)}
+.c03 .pad{padding-left:72px;padding-right:72px}
+.c03 .g12{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+.c03 .kick{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink2)}
+.c03 .cap{font:400 12px/1.45 var(--sans);color:var(--ink3)}
+.c03 .byl{font:500 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.c03 h1{font-size:92px;line-height:.94;letter-spacing:-.02em;font-weight:600;margin:0}
+.c03 h2{font-size:44px;line-height:1.06;letter-spacing:-.015em;font-weight:600;margin:0}
+.c03 h3{font-size:25px;line-height:1.2;font-weight:600;margin:0}
+.c03 h4{font-size:19px;line-height:1.25;font-weight:600;margin:0}
+.c03 .rules{border-top:3px solid var(--ink);border-bottom:1px solid var(--ink)}
+.c03 .cols2{column-count:2;column-gap:32px}
+.c03 .cols3{column-count:3;column-gap:28px}
+.c03 .drop{float:left;font-size:76px;line-height:.78;font-weight:600;margin:6px 10px 0 0}
+.c03 .sec{padding-top:64px;padding-bottom:64px}
+.c03 .hairs{border-top:1px solid var(--l1)}
+.c03 .qm{font-size:110px;line-height:.6;font-weight:600;color:var(--l1)}
+.c03.m .pad{padding-left:20px;padding-right:20px}
+.c03.m h1{font-size:40px}.c03.m h2{font-size:27px}.c03.m h3{font-size:20px}.c03.m h4{font-size:17px}
+.c03.m .sec{padding-top:38px;padding-bottom:38px}.c04{font-family:var(--sans);color:var(--ink);background:var(--paper)}
+.c04 .bd{border:4px solid var(--ink)}
+.c04 .bd2{border:2px solid var(--ink)}
+.c04 .shadow{box-shadow:10px 10px 0 var(--ink)}
+.c04 .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.c04 h1{font-family:var(--sans);font-size:132px;line-height:.84;letter-spacing:-.05em;font-weight:800;margin:0;text-transform:uppercase}
+.c04 h2{font-size:56px;line-height:.92;letter-spacing:-.035em;font-weight:800;margin:0;text-transform:uppercase}
+.c04 h3{font-size:28px;line-height:1;letter-spacing:-.02em;font-weight:800;margin:0;text-transform:uppercase}
+.c04 .big-n{font-family:var(--mono);font-size:104px;line-height:.8;font-weight:700}
+.c04 .cta-xxl{display:block;width:100%;background:var(--inv-bg);color:var(--inv-fg);
+  text-align:center;font:800 40px/1 var(--sans);letter-spacing:-.02em;text-transform:uppercase;padding:38px 0;border:4px solid var(--ink)}
+.c04 .marq{border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);
+  background:var(--inv-bg);color:var(--inv-fg);overflow:hidden;white-space:nowrap;padding:18px 0}
+.c04 .marq span{font:700 26px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:0 26px}
+.c04 .cell{border-right:4px solid var(--ink);padding:36px}
+.c04 .cell:last-child{border-right:0}
+.c04 .inv{background:var(--inv-bg);color:var(--inv-fg)}
+.c04.m h1{font-size:52px}.c04.m h2{font-size:30px}.c04.m h3{font-size:20px}
+.c04.m .cta-xxl{font-size:22px;padding:24px 0}
+.c04.m .big-n{font-size:56px}
+.c04.m .cell{border-right:0;border-bottom:4px solid var(--ink);padding:22px}
+.c04.m .cell:last-child{border-bottom:0}
+.c04.m .marq span{font-size:16px;padding:0 14px}.c05{font-family:var(--sans);color:var(--ink)}
+.c05 .wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+.c05 h1{font-size:60px;line-height:1.06;letter-spacing:-.032em;font-weight:700;margin:0}
+.c05 h2{font-size:40px;line-height:1.12;letter-spacing:-.028em;font-weight:700;margin:0}
+.c05 h3{font-size:20px;line-height:1.25;letter-spacing:-.012em;font-weight:600;margin:0}
+.c05 .lead{font-size:18px;line-height:1.6;color:var(--ink2);margin:0}
+.c05 .card{border:1px solid var(--l1);border-radius:12px;background:var(--paper);padding:28px}
+.c05 .sec{padding:96px 0}
+.c05 .mock{border:1px solid var(--l1);border-radius:12px;overflow:hidden;background:var(--fill2)}
+.c05 .mockbar{height:34px;background:var(--paper);border-bottom:1px solid var(--l1);display:flex;align-items:center;gap:6px;padding:0 12px}
+.c05 .dot{width:8px;height:8px;border-radius:50%;background:var(--l1)}
+.c05 .kpi{font-size:44px;line-height:1;letter-spacing:-.03em;font-weight:700}
+.c05 .badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--l1);border-radius:999px;
+  padding:6px 12px;font-size:12.5px;color:var(--ink2);background:var(--paper)}
+.c05 .band{background:var(--fill2)}
+.c05.m .wrap{padding:0 20px}
+.c05.m h1{font-size:34px}.c05.m h2{font-size:26px}.c05.m h3{font-size:17px}
+.c05.m .lead{font-size:16px}.c05.m .sec{padding:48px 0}.c05.m .kpi{font-size:32px}.c06{font-family:var(--sans);color:var(--ink);background:var(--paper)}
+.c06 .wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+.c06 h1{font-size:82px;line-height:1;letter-spacing:-.04em;font-weight:600;margin:0}
+.c06 h2{font-size:42px;line-height:1.08;letter-spacing:-.03em;font-weight:600;margin:0}
+.c06 h3{font-size:21px;line-height:1.24;letter-spacing:-.015em;font-weight:600;margin:0}
+.c06 .mod{border:1px solid var(--l1);border-radius:20px;background:var(--paper);padding:28px;position:relative}
+.c06 .mod.fill{background:var(--fill2)}
+.c06 .mod.inv{background:var(--inv-bg);color:var(--inv-fg);border-color:var(--inv-bg)}
+.c06 .float{box-shadow:0 26px 60px -34px rgba(0,0,0,.55)}
+.c06 .pill{display:inline-flex;align-items:center;gap:22px;border:1px solid var(--l1);border-radius:999px;
+  background:var(--paper);padding:10px 12px 10px 24px;font-size:14px}
+.c06 .status{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--l1);border-radius:999px;
+  padding:7px 14px;font:500 12px/1 var(--mono);color:var(--ink2);background:var(--paper)}
+.c06 .status i{width:7px;height:7px;border-radius:50%;background:var(--ink2);display:block}
+.c06 .sec{padding:120px 0}
+.c06 .rail{display:flex;gap:20px;overflow:hidden;padding-bottom:6px}
+.c06 .rail > *{flex:0 0 420px}
+.c06 .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:150px;gap:20px}
+.c06 .wordmark{font-size:214px;line-height:.78;letter-spacing:-.05em;font-weight:700}
+.c06.m .wrap{padding:0 18px}
+.c06.m h1{font-size:40px}.c06.m h2{font-size:27px}.c06.m h3{font-size:18px}
+.c06.m .sec{padding:56px 0}
+.c06.m .wordmark{font-size:58px}
+.c06.m .rail > *{flex:0 0 250px}.c07{font-family:var(--serif);color:var(--ink);background:var(--paper)}
+.c07 .pad{padding-left:80px;padding-right:80px}
+.c07 .caps{font:400 11px/1.5 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--ink2)}
+.c07 h1{font-size:74px;line-height:1.08;letter-spacing:-.012em;font-weight:400;margin:0}
+.c07 h2{font-size:46px;line-height:1.14;letter-spacing:-.01em;font-weight:400;margin:0}
+.c07 h3{font-size:26px;line-height:1.2;font-weight:400;margin:0}
+.c07 .body{font-size:16px;line-height:1.75;color:var(--ink2)}
+.c07 .ul{font:400 13px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  border-bottom:1px solid currentColor;padding-bottom:7px;display:inline-block}
+.c07 .sec{padding-top:200px;padding-bottom:200px}
+.c07 .bignum{font-size:130px;line-height:.8;font-weight:400;color:var(--l1)}
+.c07.m .pad{padding-left:24px;padding-right:24px}
+.c07.m h1{font-size:36px}.c07.m h2{font-size:27px}.c07.m h3{font-size:20px}
+.c07.m .sec{padding-top:76px;padding-bottom:76px}
+.c07.m .bignum{font-size:60px}.c08{font-family:var(--sans);color:var(--ink);background:var(--paper)}
+.c08 .wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.c08 h1{font-size:62px;line-height:1.08;letter-spacing:-.028em;font-weight:600;margin:0}
+.c08 h2{font-size:40px;line-height:1.14;letter-spacing:-.024em;font-weight:600;margin:0}
+.c08 h3{font-size:21px;line-height:1.3;letter-spacing:-.012em;font-weight:600;margin:0}
+.c08 .lead{font-size:18px;line-height:1.68;color:var(--ink2);margin:0}
+.c08 .soft{border-radius:28px}
+.c08 .card{border:1px solid var(--l1);border-radius:26px;background:var(--paper);padding:30px}
+.c08 .card.fill{background:var(--fill2);border-color:transparent}
+.c08 .blob1{border-radius:58% 42% 47% 53% / 43% 51% 49% 57%}
+.c08 .blob2{border-radius:44% 56% 62% 38% / 55% 41% 59% 45%}
+.c08 .blob3{border-radius:50% 50% 38% 62% / 60% 44% 56% 40%}
+.c08 .arch{border-radius:200px 200px 28px 28px}
+.c08 .curve-bottom{border-radius:0 0 50% 50% / 0 0 90px 90px}
+.c08 .curve-top{border-radius:50% 50% 0 0 / 90px 90px 0 0}
+.c08 .pillnav{border:1px solid var(--l1);border-radius:999px;background:var(--paper);padding:10px 12px 10px 26px;
+  display:flex;align-items:center;gap:28px;font-size:14.5px}
+.c08 .btn{border-radius:999px}
+.c08 .sec{padding:104px 0}
+.c08 .bubble{border-radius:28px 28px 28px 6px}
+.c08.m .wrap{padding:0 20px}
+.c08.m h1{font-size:34px}.c08.m h2{font-size:26px}.c08.m h3{font-size:18px}
+.c08.m .lead{font-size:16px}.c08.m .sec{padding:56px 0}.c09{font-family:var(--sans);color:var(--ink);background:var(--canvas)}
+.c09 .wrap{max-width:1360px;margin:0 auto;padding:0 32px}
+.c09 h1{font-size:64px;line-height:1.03;letter-spacing:-.035em;font-weight:650;margin:0}
+.c09 h2{font-size:34px;line-height:1.1;letter-spacing:-.028em;font-weight:650;margin:0}
+.c09 h3{font-size:19px;line-height:1.26;letter-spacing:-.012em;font-weight:600;margin:0}
+.c09 .t{background:var(--paper);border-radius:18px;padding:28px;position:relative;overflow:hidden}
+.c09 .t.fill{background:var(--fill2)}
+.c09 .t.inv{background:var(--inv-bg);color:var(--inv-fg)}
+.c09 .t.flat{background:transparent;padding:0}
+.c09 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.c09 .lbl{font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.c09 .num{font-size:46px;line-height:1;letter-spacing:-.035em;font-weight:650}
+.c09 .gap{height:16px}
+.c09.m .wrap{padding:0 14px}
+.c09.m h1{font-size:34px}.c09.m h2{font-size:24px}.c09.m h3{font-size:17px}
+.c09.m .t{border-radius:16px;padding:20px}
+.c09.m .num{font-size:32px}.c10{font-family:var(--sans);color:var(--ink);background:var(--paper);position:relative}
+.c10 .rail{position:absolute;left:0;top:0;bottom:0;width:76px;border-right:1px solid var(--ink);z-index:40;background:var(--paper)}
+.c10 .railtxt{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center}
+.c10 .vert{writing-mode:vertical-rl;text-orientation:mixed;font:500 13px/1 var(--sans);
+  letter-spacing:.24em;text-transform:uppercase}
+.c10 .body{padding-left:76px}
+.c10 .pad{padding-left:56px;padding-right:56px}
+.c10 h1{font-size:118px;line-height:.86;letter-spacing:-.05em;font-weight:650;margin:0}
+.c10 h2{font-size:58px;line-height:.96;letter-spacing:-.04em;font-weight:650;margin:0}
+.c10 h3{font-size:24px;line-height:1.14;letter-spacing:-.02em;font-weight:650;margin:0}
+.c10 .mono{font:400 12px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.c10 .diag{transform:rotate(-2.4deg);background:var(--inv-bg);color:var(--inv-fg);
+  padding:22px 0;white-space:nowrap;overflow:hidden;width:112%;margin-left:-6%}
+.c10 .diag span{font:650 30px/1 var(--sans);letter-spacing:-.02em;padding:0 30px}
+.c10 .hrail{display:flex;gap:28px;overflow:hidden}
+.c10 .hrail > *{flex:0 0 480px}
+.c10 .quiet{background:var(--fill2)}
+.c10.m .rail{width:44px}
+.c10.m .body{padding-left:44px}
+.c10.m .pad{padding-left:18px;padding-right:18px}
+.c10.m h1{font-size:46px}.c10.m h2{font-size:30px}.c10.m h3{font-size:19px}
+.c10.m .diag span{font-size:16px;padding:0 16px}
+.c10.m .hrail > *{flex:0 0 260px}
+.c10.m .vert{font-size:10px;letter-spacing:.2em}
+
+/* ---- Übersichtsseite ---- */
+.brief{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  background:var(--paper);border:1px solid var(--l1);margin-top:8px}
+.brief div{padding:16px 18px;border-right:1px solid var(--l2)}
+.brief div:last-child{border-right:0}
+.brief h3{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:0 0 6px}
+.brief p{margin:0;font-size:13.5px;color:var(--ink2);line-height:1.5}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:18px}
+.card{background:var(--paper);border:1px solid var(--l1);text-decoration:none;display:block;
+  transition:box-shadow .15s ease, transform .15s ease}
+.card:hover{box-shadow:0 14px 30px -20px var(--shadow);transform:translateY(-2px)}
+.card .thumb{height:168px;border-bottom:1px solid var(--l2);position:relative;overflow:hidden;
+  padding:10px;display:flex;flex-direction:column;gap:5px;background:var(--paper)}
+.card-b{padding:14px 16px 18px}
+.card-b .num{font:600 10px/1 var(--mono);letter-spacing:.14em;color:var(--ink3);text-transform:uppercase}
+.card-b h3{margin:7px 0 6px;font-size:16px;line-height:1.2;letter-spacing:-.01em}
+.card-b p{margin:0;font-size:12.5px;color:var(--ink2);line-height:1.5}
+/* Miniatur-Primitives */
+.t .r{background:var(--fill);border-radius:1px}
+.t .o{border:1px solid var(--l1);border-radius:1px}
+.t .row{display:flex;gap:5px}
+.t .col{display:flex;flex-direction:column;gap:5px}
+.t .g{flex:1}
+.matrix-wrap{overflow-x:auto;background:var(--paper);border:1px solid var(--l1)}
+.matrix{border-collapse:collapse;width:100%;min-width:900px;font-size:13px}
+.matrix th,.matrix td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--l2);vertical-align:top}
+.matrix thead th{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);
+  border-bottom:1px solid var(--l1);white-space:nowrap;font-weight:600}
+.matrix tbody th{font-weight:600;white-space:nowrap}
+.matrix tbody th a{text-decoration:none;display:flex;gap:8px;align-items:baseline}
+.matrix tbody th a .n{font:600 10px/1 var(--mono);color:var(--ink3)}
+.matrix td.txt{color:var(--ink2);min-width:170px;line-height:1.45}
+.dots{display:inline-flex;gap:3px}
+.dots i{width:7px;height:7px;border-radius:50%;display:block}
+.dots i.on{background:var(--ink)}
+.dots i.off{background:var(--l1)}
+@media (max-width:760px){.brief div{border-right:0;border-bottom:1px solid var(--l2)}}
+
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-bar"><b>NORDFELD · Wireframe-Studie</b>
+    <span style="color:var(--ink3);font-size:12px">10 Stilrichtungen, eine Informationsarchitektur</span></div>
+
+  <div class="doc-head">
+    <div class="num">Übersicht</div>
+    <h1>Zehn gestalterische Richtungen, identischer Inhalt.</h1>
+    <p class="sub">Alle Konzepte transportieren dieselben Inhalte und dieselbe Informationsarchitektur
+    (Navigation → Hero → Vorteile → Leistungen → Social Proof → Vertrauen → FAQ → Abschluss-CTA → Footer).
+    Unterschiedlich sind Raster, Abschnittsgrößen, Bild-Text-Verhältnis, Navigationsprinzip und CTA-Platzierung –
+    damit die Richtungen direkt vergleichbar bleiben. Low-/Mid-Fidelity, bewusst ohne Farbkonzept.</p>
+  </div>
+
+  <div class="brief">
+    <div><h3>Website-Typ</h3><p>B2B-SaaS- / Produktwebsite</p></div>
+    <div><h3>Projekt</h3><p>NORDFELD – Plattform für Lieferketten-Transparenz</p></div>
+    <div><h3>Zielgruppe</h3><p>Operations-, Einkaufs- und Compliance-Teams im Mittelstand (50–500 MA)</p></div>
+    <div><h3>Hauptziel</h3><p>Qualifizierte Leads – gebuchte Produkt-Demos</p></div>
+  </div>
+
+  <div class="sec-label"><h2>Die zehn Konzepte</h2><span>Struktur-Miniaturen</span></div>
+  <div class="cards">
+      <a class="card" href="konzept-01-swiss.html">
+        <div class="thumb c01 t"><div class="row" style="height:12px"><div class="r g" style="max-width:38px"></div><div class="g"></div><div class="r" style="width:46px"></div></div>
+<div class="r" style="height:34px;width:78%"></div>
+<div class="row"><div class="g"></div><div class="r" style="width:40%;height:14px"></div></div>
+<div class="r" style="height:1px;background:var(--l1)"></div>
+<div class="r o" style="height:30px;background:var(--fill2)"></div>
+<div class="row" style="height:26px"><div class="r g"></div><div class="r g"></div><div class="r g"></div></div>
+<div class="r" style="height:1px;background:var(--l1)"></div>
+<div class="r" style="height:20px;background:var(--inv-bg)"></div></div>
+        <div class="card-b">
+          <div class="num">Konzept 01</div>
+          <h3>Swiss / International Style</h3>
+          <p>Sachlich, präzise, hochwertig – Autorität durch Ordnung statt durch Effekt.</p>
+        </div>
+      </a>
+      <a class="card" href="konzept-02-minimal.html">
+        <div class="thumb c02 t"><div class="row" style="height:10px"><div class="r" style="width:26px"></div><div class="g"></div><div class="r" style="width:36px"></div></div>
+<div style="height:8px"></div>
+<div class="r" style="height:16px;width:64%;margin:0 auto"></div>
+<div class="r" style="height:7px;width:40%;margin:0 auto"></div>
+<div class="r" style="height:12px;width:26%;margin:0 auto;background:var(--inv-bg)"></div>
+<div style="height:6px"></div>
+<div class="r o" style="height:44px;background:var(--fill2)"></div>
+<div style="height:10px"></div>
+<div class="row" style="height:10px;justify-content:center"><div class="r" style="width:22px"></div><div class="r" style="width:22px"></div><div class="r" style="width:22px"></div></div></div>
+        <div class="card-b">
+          <div class="num">Konzept 02</div>
+          <h3>Minimalist / Premium</h3>
+          <p>Ruhig, teuer, souverän – Wertigkeit entsteht durch das, was weggelassen wurde.</p>
+        </div>
+      </a>
+      <a class="card" href="konzept-03-editorial.html">
+        <div class="thumb c03 t"><div class="r" style="height:1px;background:var(--ink)"></div>
+<div class="r" style="height:12px;width:56%;margin:0 auto"></div>
+<div class="r" style="height:1px;background:var(--ink)"></div>
+<div class="row" style="height:7px;justify-content:center"><div class="r" style="width:20px"></div><div class="r" style="width:20px"></div><div class="r" style="width:20px"></div><div class="r" style="width:20px"></div></div>
+<div class="row" style="height:52px"><div class="r o g" style="background:var(--fill2)"></div><div class="col" style="width:34%"><div class="r" style="height:18px"></div><div class="r" style="height:5px"></div><div class="r" style="height:5px"></div></div></div>
+<div class="row" style="height:24px"><div class="r g"></div><div class="r g"></div><div class="r g"></div></div>
+<div class="r" style="height:9px;width:70%"></div></div>
+        <div class="card-b">
+          <div class="num">Konzept 03</div>
+          <h3>Editorial / Magazine</h3>
+          <p>Erzählerisch, inhaltsstark, journalistisch – die Marke wirkt wie ein Absender mit Meinung.</p>
+        </div>
+      </a>
+      <a class="card" href="konzept-04-brutalist.html">
+        <div class="thumb c04 t"><div class="row" style="height:16px"><div class="r o g" style="border-width:2px"></div><div class="r o" style="width:34px;border-width:2px"></div><div class="r" style="width:26px;background:var(--inv-bg)"></div></div>
+<div class="r o" style="height:44px;border-width:2px;background:var(--fill2)"></div>
+<div class="r" style="height:16px;background:var(--inv-bg)"></div>
+<div class="row" style="height:28px"><div class="r o g" style="border-width:2px"></div><div class="r o g" style="border-width:2px"></div><div class="r o g" style="border-width:2px"></div></div>
+<div class="r o" style="height:14px;border-width:2px"></div>
+<div class="r" style="height:22px;background:var(--inv-bg)"></div></div>
+        <div class="card-b">
+          <div class="num">Konzept 04</div>
+          <h3>Brutalist / Neo-Brutalist</h3>
+          <p>Laut, selbstbewusst, unangepasst – Aufmerksamkeit vor Gefälligkeit.</p>
+        </div>
+      </a>
+      <a class="card" href="konzept-05-saas.html">
+        <div class="thumb c05 t"><div class="row" style="height:12px"><div class="r" style="width:30px"></div><div class="g"></div><div class="r" style="width:16px"></div><div class="r" style="width:16px"></div><div class="r" style="width:24px;background:var(--inv-bg)"></div></div>
+<div class="row" style="height:46px"><div class="col g"><div class="r" style="height:14px"></div><div class="r" style="height:5px"></div><div class="row" style="height:11px"><div class="r" style="width:30px;background:var(--inv-bg)"></div><div class="r o" style="width:26px"></div></div></div><div class="r o g" style="background:var(--fill2)"></div></div>
+<div class="row" style="height:7px;justify-content:space-between"><div class="r" style="width:18px"></div><div class="r" style="width:18px"></div><div class="r" style="width:18px"></div><div class="r" style="width:18px"></div></div>
+<div class="row" style="height:26px"><div class="r o g"></div><div class="r o g"></div><div class="r o g"></div></div>
+<div class="r" style="height:20px;background:var(--inv-bg)"></div></div>
+        <div class="card-b">
+          <div class="num">Konzept 05</div>
+          <h3>Modern SaaS / Tech</h3>
+          <p>Professionell, vertraut, erwartungskonform – Vertrauen durch Konvention.</p>
+        </div>
+      </a>
+      <a class="card" href="konzept-06-futuristic.html">
+        <div class="thumb c06 t"><div class="r" style="height:9px;width:56%;margin:0 auto;border-radius:999px;background:var(--inv-bg)"></div>
+<div class="r o" style="height:62px;background:var(--fill2);position:relative">
+  <div class="r" style="height:13px;width:56%;margin:10px auto 0"></div>
+  <div class="r o" style="position:absolute;left:6px;bottom:-6px;width:56px;height:24px;background:var(--paper)"></div>
+  <div class="r o" style="position:absolute;right:6px;bottom:-12px;width:44px;height:20px;background:var(--paper)"></div>
+</div>
+<div style="height:8px"></div>
+<div class="row" style="height:24px"><div class="r o" style="width:52%;background:var(--fill2)"></div><div class="r o g" style="background:var(--fill2)"></div><div class="r o" style="width:14%;background:var(--fill2)"></div></div>
+<div class="row" style="height:16px"><div class="r o g"></div><div class="r o" style="width:30%"></div></div>
+<div class="r" style="height:16px;background:var(--inv-bg)"></div></div>
+        <div class="card-b">
+          <div class="num">Konzept 06</div>
+          <h3>Futuristic / AI Tech</h3>
+          <p>Progressiv, technisch, souverän – zeitgemäß statt Science-Fiction.</p>
+        </div>
+      </a>
+      <a class="card" href="konzept-07-luxury.html">
+        <div class="thumb c07 t"><div class="row" style="height:8px"><div class="r" style="width:12px"></div><div class="g"></div><div class="r" style="width:30px"></div><div class="g"></div><div class="r" style="width:16px"></div></div>
+<div class="r o" style="height:74px;background:var(--fill2);position:relative">
+  <div class="r" style="position:absolute;left:8px;bottom:10px;width:56%;height:10px"></div>
+  <div class="r" style="position:absolute;left:8px;bottom:5px;width:24%;height:3px"></div>
+</div>
+<div style="height:10px"></div>
+<div class="row" style="height:26px"><div class="r o g" style="background:var(--fill2)"></div><div class="col" style="width:26%;justify-content:flex-end"><div class="r" style="height:5px"></div><div class="r" style="height:3px;width:60%"></div></div></div>
+<div style="height:8px"></div>
+<div class="r" style="height:7px;width:50%;margin:0 auto"></div></div>
+        <div class="card-b">
+          <div class="num">Konzept 07</div>
+          <h3>Luxury / High-End</h3>
+          <p>Exklusiv, ruhig, kuratiert – Zurückhaltung als Statusmerkmal.</p>
+        </div>
+      </a>
+      <a class="card" href="konzept-08-organic.html">
+        <div class="thumb c08 t"><div class="r" style="height:11px;border-radius:999px;background:var(--fill)"></div>
+<div class="row" style="height:48px"><div class="col g" style="justify-content:center"><div class="r" style="height:12px"></div><div class="r" style="height:5px;width:70%"></div><div class="r" style="height:10px;width:42%;border-radius:999px;background:var(--inv-bg)"></div></div>
+  <div class="r" style="width:42%;border-radius:58% 42% 47% 53%/43% 51% 49% 57%;background:var(--fill2);border:1px solid var(--l1)"></div></div>
+<div class="r" style="height:10px;border-radius:0 0 40px 40px;background:var(--fill2)"></div>
+<div class="row" style="height:30px;align-items:flex-start"><div class="r o g" style="border-radius:10px;height:26px"></div><div class="r o g" style="border-radius:10px;height:30px;margin-top:5px"></div><div class="r o g" style="border-radius:10px;height:24px"></div></div>
+<div class="r" style="height:16px;border-radius:14px;background:var(--inv-bg)"></div></div>
+        <div class="card-b">
+          <div class="num">Konzept 08</div>
+          <h3>Organic / Human-Centered</h3>
+          <p>Zugänglich, freundlich, menschlich – Nähe vor Autorität.</p>
+        </div>
+      </a>
+      <a class="card" href="konzept-09-bento.html">
+        <div class="thumb c09 t"><div class="r o" style="height:11px;border-radius:6px"></div>
+<div class="row" style="height:46px"><div class="col" style="width:58%"><div class="r o g" style="border-radius:6px;background:var(--fill2)"></div></div>
+  <div class="col g"><div class="r o g" style="border-radius:6px"></div><div class="r g" style="border-radius:6px;background:var(--inv-bg)"></div></div></div>
+<div class="row" style="height:24px"><div class="r o" style="width:30%;border-radius:6px"></div><div class="r o g" style="border-radius:6px;background:var(--fill2)"></div><div class="r o" style="width:22%;border-radius:6px"></div></div>
+<div class="row" style="height:20px"><div class="r o g" style="border-radius:6px"></div><div class="r o" style="width:44%;border-radius:6px"></div></div>
+<div class="r" style="height:18px;border-radius:6px;background:var(--inv-bg)"></div></div>
+        <div class="card-b">
+          <div class="num">Konzept 09</div>
+          <h3>Bento Grid / Modular</h3>
+          <p>Aufgeräumt, systematisch, modern – wirkt wie ein gut gebautes Produkt.</p>
+        </div>
+      </a>
+      <a class="card" href="konzept-10-experimental.html">
+        <div class="thumb c10 t"><div class="row" style="height:100%;gap:6px;align-items:stretch">
+  <div class="r" style="width:9px"></div>
+  <div class="col g">
+    <div class="r" style="height:20px;width:88%;margin-left:12%"></div>
+    <div class="row" style="height:34px"><div class="r o g" style="background:var(--fill2)"></div></div>
+    <div class="r" style="height:14px;width:60%;margin-top:-16px;position:relative;z-index:2"></div>
+    <div class="row" style="height:22px"><div class="r o" style="width:42%"></div><div class="r o" style="width:42%"></div><div class="r o" style="width:22%"></div></div>
+    <div class="r" style="height:10px;background:var(--inv-bg);transform:rotate(-2.5deg)"></div>
+    <div class="r" style="height:20px;width:74%;margin-left:26%"></div>
+  </div>
+</div></div>
+        <div class="card-b">
+          <div class="num">Konzept 10</div>
+          <h3>Experimental / Creative Agency</h3>
+          <p>Eigenwillig, gestalterisch selbstbewusst – die Seite ist selbst der Arbeitsnachweis.</p>
+        </div>
+      </a></div>
+
+  <div class="sec-label"><h2>Vergleichsmatrix</h2><span>1 = niedrig · 5 = hoch</span></div>
+  <div class="matrix-wrap">
+    <table class="matrix">
+      <thead><tr><th>Konzept</th><th>Visuelle Wirkung</th><th>Modernität</th><th>Seriosität</th><th>Emotionalität</th><th>Informationsdichte</th><th>Experimentiergrad</th><th>Geeignete Branchen / Marken</th></tr></thead>
+      <tbody><tr>
+        <th scope="row"><a href="konzept-01-swiss.html"><span class="n">01</span>Swiss</a></th>
+        <td data-l="Visuelle Wirkung" class="txt">Sachlich, präzise, hochwertig – Autorität durch Ordnung statt durch Effekt.</td>
+        <td data-l="Modernität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Seriosität"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td data-l="Emotionalität"><span class="dots" aria-label="2 von 5"><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Informationsdichte"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Experimentiergrad"><span class="dots" aria-label="2 von 5"><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td>
+        <td data-l="Branchen" class="txt">Ingenieurwesen, Architektur, Beratung, Industrie, Hochschule, B2B mit Anspruch</td>
+      </tr><tr>
+        <th scope="row"><a href="konzept-02-minimal.html"><span class="n">02</span>Minimal</a></th>
+        <td data-l="Visuelle Wirkung" class="txt">Ruhig, teuer, souverän – Wertigkeit entsteht durch das, was weggelassen wurde.</td>
+        <td data-l="Modernität"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td data-l="Seriosität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Emotionalität"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Informationsdichte"><span class="dots" aria-label="1 von 5"><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Experimentiergrad"><span class="dots" aria-label="2 von 5"><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td>
+        <td data-l="Branchen" class="txt">Premium-Tech, Hardware, Fintech, Medizintechnik, Produkte mit hohem Preispunkt</td>
+      </tr><tr>
+        <th scope="row"><a href="konzept-03-editorial.html"><span class="n">03</span>Editorial</a></th>
+        <td data-l="Visuelle Wirkung" class="txt">Erzählerisch, inhaltsstark, journalistisch – die Marke wirkt wie ein Absender mit Meinung.</td>
+        <td data-l="Modernität"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Seriosität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Emotionalität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Informationsdichte"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td data-l="Experimentiergrad"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td>
+        <td data-l="Branchen" class="txt">Medien, Verlage, Think Tanks, Beratungen mit Haltung, Kultur, NGOs</td>
+      </tr><tr>
+        <th scope="row"><a href="konzept-04-brutalist.html"><span class="n">04</span>Brutalist</a></th>
+        <td data-l="Visuelle Wirkung" class="txt">Laut, selbstbewusst, unangepasst – Aufmerksamkeit vor Gefälligkeit.</td>
+        <td data-l="Modernität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Seriosität"><span class="dots" aria-label="2 von 5"><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Emotionalität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Informationsdichte"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Experimentiergrad"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+        <td data-l="Branchen" class="txt">Developer-Tools, Web3, Musik, Streetwear, Startups mit Anti-Corporate-Haltung</td>
+      </tr><tr>
+        <th scope="row"><a href="konzept-05-saas.html"><span class="n">05</span>SaaS</a></th>
+        <td data-l="Visuelle Wirkung" class="txt">Professionell, vertraut, erwartungskonform – Vertrauen durch Konvention.</td>
+        <td data-l="Modernität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Seriosität"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td data-l="Emotionalität"><span class="dots" aria-label="2 von 5"><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Informationsdichte"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Experimentiergrad"><span class="dots" aria-label="1 von 5"><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td>
+        <td data-l="Branchen" class="txt">B2B-SaaS, Fintech, HR-Tech, Logistik-Software, alles mit Demo- oder Trial-Funnel</td>
+      </tr><tr>
+        <th scope="row"><a href="konzept-06-futuristic.html"><span class="n">06</span>Futuristic</a></th>
+        <td data-l="Visuelle Wirkung" class="txt">Progressiv, technisch, souverän – zeitgemäß statt Science-Fiction.</td>
+        <td data-l="Modernität"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td data-l="Seriosität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Emotionalität"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Informationsdichte"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Experimentiergrad"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td>
+        <td data-l="Branchen" class="txt">KI- und Datenplattformen, Infrastruktur, Deep Tech, Security, Industrie 4.0</td>
+      </tr><tr>
+        <th scope="row"><a href="konzept-07-luxury.html"><span class="n">07</span>Luxury</a></th>
+        <td data-l="Visuelle Wirkung" class="txt">Exklusiv, ruhig, kuratiert – Zurückhaltung als Statusmerkmal.</td>
+        <td data-l="Modernität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Seriosität"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td data-l="Emotionalität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Informationsdichte"><span class="dots" aria-label="1 von 5"><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Experimentiergrad"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td>
+        <td data-l="Branchen" class="txt">Luxusgüter, Immobilien, Hotellerie, Private Banking, Design- und Manufakturmarken</td>
+      </tr><tr>
+        <th scope="row"><a href="konzept-08-organic.html"><span class="n">08</span>Organic</a></th>
+        <td data-l="Visuelle Wirkung" class="txt">Zugänglich, freundlich, menschlich – Nähe vor Autorität.</td>
+        <td data-l="Modernität"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Seriosität"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Emotionalität"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td data-l="Informationsdichte"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Experimentiergrad"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td>
+        <td data-l="Branchen" class="txt">Health, Education, Nachhaltigkeit, Lifestyle, Genossenschaften, Sozialunternehmen</td>
+      </tr><tr>
+        <th scope="row"><a href="konzept-09-bento.html"><span class="n">09</span>Bento</a></th>
+        <td data-l="Visuelle Wirkung" class="txt">Aufgeräumt, systematisch, modern – wirkt wie ein gut gebautes Produkt.</td>
+        <td data-l="Modernität"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td data-l="Seriosität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Emotionalität"><span class="dots" aria-label="2 von 5"><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Informationsdichte"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Experimentiergrad"><span class="dots" aria-label="3 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i></span></td>
+        <td data-l="Branchen" class="txt">Developer-Tools, Data- und API-Produkte, Design-Systeme, Consumer-Tech, moderne B2B-Software</td>
+      </tr><tr>
+        <th scope="row"><a href="konzept-10-experimental.html"><span class="n">10</span>Experimental</a></th>
+        <td data-l="Visuelle Wirkung" class="txt">Eigenwillig, gestalterisch selbstbewusst – die Seite ist selbst der Arbeitsnachweis.</td>
+        <td data-l="Modernität"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td data-l="Seriosität"><span class="dots" aria-label="2 von 5"><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Emotionalität"><span class="dots" aria-label="4 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i></span></td><td data-l="Informationsdichte"><span class="dots" aria-label="2 von 5"><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i></span></td><td data-l="Experimentiergrad"><span class="dots" aria-label="5 von 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+        <td data-l="Branchen" class="txt">Design- und Digitalagenturen, Studios, Fotografie, Mode, Kultur, Personal Brands</td>
+      </tr></tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Konzept 04 – Brutalist / Neo-Brutalist · NORDFELD Wireframes</title>
+<link rel="stylesheet" href="assets/wf.css">
+<style>
+.c04{font-family:var(--sans);color:var(--ink);background:var(--paper)}
+.c04 .bd{border:4px solid var(--ink)}
+.c04 .bd2{border:2px solid var(--ink)}
+.c04 .shadow{box-shadow:10px 10px 0 var(--ink)}
+.c04 .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.c04 h1{font-family:var(--sans);font-size:132px;line-height:.84;letter-spacing:-.05em;font-weight:800;margin:0;text-transform:uppercase}
+.c04 h2{font-size:56px;line-height:.92;letter-spacing:-.035em;font-weight:800;margin:0;text-transform:uppercase}
+.c04 h3{font-size:28px;line-height:1;letter-spacing:-.02em;font-weight:800;margin:0;text-transform:uppercase}
+.c04 .big-n{font-family:var(--mono);font-size:104px;line-height:.8;font-weight:700}
+.c04 .cta-xxl{display:block;width:100%;background:var(--inv-bg);color:var(--inv-fg);
+  text-align:center;font:800 40px/1 var(--sans);letter-spacing:-.02em;text-transform:uppercase;padding:38px 0;border:4px solid var(--ink)}
+.c04 .marq{border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);
+  background:var(--inv-bg);color:var(--inv-fg);overflow:hidden;white-space:nowrap;padding:18px 0}
+.c04 .marq span{font:700 26px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:0 26px}
+.c04 .cell{border-right:4px solid var(--ink);padding:36px}
+.c04 .cell:last-child{border-right:0}
+.c04 .inv{background:var(--inv-bg);color:var(--inv-fg)}
+.c04.m h1{font-size:52px}.c04.m h2{font-size:30px}.c04.m h3{font-size:20px}
+.c04.m .cta-xxl{font-size:22px;padding:24px 0}
+.c04.m .big-n{font-size:56px}
+.c04.m .cell{border-right:0;border-bottom:4px solid var(--ink);padding:22px}
+.c04.m .cell:last-child{border-bottom:0}
+.c04.m .marq span{font-size:16px;padding:0 14px}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-bar">
+    <b>NORDFELD · Wireframe-Studie</b>
+    <span style="color:var(--ink3);font-size:12px">Konzept 04 von 10</span>
+    <span class="sp"></span>
+    <a href="index.html">Übersicht &amp; Vergleichsmatrix</a>
+  </div>
+
+  <div class="doc-head">
+    <div class="num">Konzept 04</div>
+    <h1>Brutalist / Neo-Brutalist</h1>
+    <p class="sub">Sichtbare Konstruktion: 4 px starke Rahmen, harte Schlagschatten, Navigation als Zellenraster, überdimensionierte Buttons und eine Headline, die aus dem Satzspiegel läuft.</p>
+    <div class="tags"><span class="tag">4-px-Rahmen</span><span class="tag">Zellen-Navigation</span><span class="tag">Harte Schatten</span><span class="tag">Marquee-Band</span><span class="tag">XXL-Buttons</span><span class="tag">Mono-Typografie</span></div>
+  </div>
+
+  <div class="sec-label"><h2>Desktop</h2><span>1440 px</span></div>
+  <div class="stage" data-w="1440"><div class="frame c04 d"><!-- NAVIGATION ALS ZELLENRASTER -->
+<div class="bd pinhost" style="border-width:0 0 4px 0;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1.4fr">
+  <span class="pin" style="top:26px;left:1390px">1</span>
+  <div style="border-right:4px solid var(--ink);padding:24px 28px;font:800 30px/1 var(--sans);letter-spacing:-.03em">NORDFELD</div>
+  <div class="mono" style="border-right:4px solid var(--ink);padding:30px 20px;font-size:14px;font-weight:700">Produkt</div>
+  <div class="mono" style="border-right:4px solid var(--ink);padding:30px 20px;font-size:14px">Lösungen</div>
+  <div class="mono" style="border-right:4px solid var(--ink);padding:30px 20px;font-size:14px">Preise</div>
+  <div class="mono" style="border-right:4px solid var(--ink);padding:30px 20px;font-size:14px">Über uns</div>
+  <div class="inv mono" style="padding:30px 20px;font-size:14px;font-weight:700;text-align:center">Demo buchen →</div>
+</div>
+
+<!-- HERO: Headline laeuft aus dem Satzspiegel -->
+<div style="padding:56px 0 0;overflow:hidden" class="pinhost">
+  <span class="pin" style="top:120px;left:1380px">2</span>
+  <div class="mono" style="padding:0 40px 24px;font-size:14px;font-weight:700">[ Lieferketten-Transparenz · seit 2019 ]</div>
+  <h1 style="padding:0 40px;white-space:nowrap">Lieferketten,</h1>
+  <h1 style="padding:0 40px;margin-left:120px">die man</h1>
+  <h1 style="padding:0 40px;white-space:nowrap;margin-left:-40px">nachweisen kann.</h1>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:48px 40px 0;align-items:end">
+    <div class="tx n3" style="--lh:26px;--th:11px"></div>
+    <div class="bd shadow" style="padding:24px"><div class="mono" style="font-size:13px;margin-bottom:10px">Kennzahl</div>
+      <div class="big-n">−68%</div><div class="mono" style="font-size:13px;margin-top:10px">manueller Aufwand</div></div>
+  </div>
+</div>
+<div style="padding:44px 40px 0" class="pinhost">
+  <span class="pin" style="top:40px;left:20px">3</span>
+  <span class="cta-xxl shadow">Demo buchen →</span>
+</div>
+<div style="padding:44px 40px 56px"><div class="img bd solid" style="height:420px;border-width:4px"></div></div>
+
+<!-- LAUFBAND -->
+<div class="marq pinhost">
+  <span class="pin" style="top:18px;left:1390px">4</span>
+  <span>Werk Nord</span><span>·</span><span>Hanse Logistik</span><span>·</span><span>Voss &amp; Partner</span><span>·</span>
+  <span>Metallbau Süd</span><span>·</span><span>Kappler AG</span><span>·</span><span>Deltamar</span><span>·</span><span>Werk Nord</span>
+</div>
+
+<!-- VORTEILE: drei gerahmte Zellen -->
+<div style="border-bottom:4px solid var(--ink);display:grid;grid-template-columns:repeat(3,1fr)">
+  <div class="cell"><div class="big-n" style="margin-bottom:22px">01</div>
+    <h3 style="margin-bottom:18px">Transparenz<br>in Echtzeit</h3><div class="tx n4"></div></div>
+  <div class="cell"><div class="big-n" style="margin-bottom:22px">02</div>
+    <h3 style="margin-bottom:18px">Prüfsichere<br>Nachweise</h3><div class="tx n4"></div></div>
+  <div class="cell inv"><div class="big-n" style="margin-bottom:22px">03</div>
+    <h3 style="margin-bottom:18px">Weniger<br>Handarbeit</h3><div class="tx n4 on-inv"></div></div>
+</div>
+
+<!-- MODULE ALS ROHE TABELLE -->
+<div style="padding:56px 40px" class="pinhost">
+  <span class="pin" style="top:60px;left:20px">5</span>
+  <h2 style="margin-bottom:34px">Vier Module.<br>Ein Datenmodell.</h2>
+  <div class="bd">
+    <div style="display:grid;grid-template-columns:100px 1.1fr 2fr 200px;border-bottom:4px solid var(--ink)" class="mono">
+      <div style="padding:16px;border-right:4px solid var(--ink);font-size:12px;font-weight:700">Nr.</div>
+      <div style="padding:16px;border-right:4px solid var(--ink);font-size:12px;font-weight:700">Modul</div>
+      <div style="padding:16px;border-right:4px solid var(--ink);font-size:12px;font-weight:700">Beschreibung</div>
+      <div style="padding:16px;font-size:12px;font-weight:700">Status</div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1.1fr 2fr 200px;border-bottom:4px solid var(--ink);align-items:center">
+      <div class="mono" style="padding:24px 16px;border-right:4px solid var(--ink);font-size:20px;font-weight:700">01</div>
+      <div style="padding:24px 16px;border-right:4px solid var(--ink)"><h3 style="font-size:22px">Lieferanten-Cockpit</h3></div>
+      <div style="padding:24px 16px;border-right:4px solid var(--ink)"><div class="tx n2"></div></div>
+      <div class="mono" style="padding:24px 16px;font-size:13px">Live</div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1.1fr 2fr 200px;border-bottom:4px solid var(--ink);align-items:center">
+      <div class="mono" style="padding:24px 16px;border-right:4px solid var(--ink);font-size:20px;font-weight:700">02</div>
+      <div style="padding:24px 16px;border-right:4px solid var(--ink)"><h3 style="font-size:22px">Risiko-Radar</h3></div>
+      <div style="padding:24px 16px;border-right:4px solid var(--ink)"><div class="tx n2"></div></div>
+      <div class="mono" style="padding:24px 16px;font-size:13px">Live</div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1.1fr 2fr 200px;border-bottom:4px solid var(--ink);align-items:center">
+      <div class="mono" style="padding:24px 16px;border-right:4px solid var(--ink);font-size:20px;font-weight:700">03</div>
+      <div style="padding:24px 16px;border-right:4px solid var(--ink)"><h3 style="font-size:22px">Nachweis-Archiv</h3></div>
+      <div style="padding:24px 16px;border-right:4px solid var(--ink)"><div class="tx n2"></div></div>
+      <div class="mono" style="padding:24px 16px;font-size:13px">Live</div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1.1fr 2fr 200px;align-items:center">
+      <div class="mono" style="padding:24px 16px;border-right:4px solid var(--ink);font-size:20px;font-weight:700">04</div>
+      <div style="padding:24px 16px;border-right:4px solid var(--ink)"><h3 style="font-size:22px">Reporting-Studio</h3></div>
+      <div style="padding:24px 16px;border-right:4px solid var(--ink)"><div class="tx n2"></div></div>
+      <div class="mono" style="padding:24px 16px;font-size:13px">Beta</div>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF: Zitat als ueberdimensionierter Block -->
+<div style="padding:0 40px 56px">
+  <div class="bd inv shadow" style="padding:56px;box-shadow:14px 14px 0 var(--l1)">
+    <div class="mono" style="font-size:14px;margin-bottom:26px;color:var(--inv-fill)">[ Kundenstimme 01/06 ]</div>
+    <div style="font-size:46px;line-height:1.1;font-weight:800;letter-spacing:-.03em;text-transform:uppercase;max-width:22ch">
+      Vier Wochen Nachweis­arbeit sind zwei Tage geworden.</div>
+    <div class="mono" style="font-size:14px;margin-top:34px">M. Keller · Head of Supply Chain · Werk Nord</div>
+  </div>
+</div>
+
+<!-- ÜBER UNS -->
+<div style="border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);display:grid;grid-template-columns:1fr 1fr">
+  <div class="cell" style="padding:0"><div class="img" style="height:100%;min-height:440px;border:0;border-right:4px solid var(--ink)"></div></div>
+  <div class="cell" style="border-right:0;padding:56px">
+    <div class="mono" style="font-size:14px;font-weight:700;margin-bottom:22px">[ Über uns ]</div>
+    <h2 style="margin-bottom:26px">28 Leute<br>in Hamburg.</h2>
+    <div class="tx n5" style="margin-bottom:28px"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <span class="bd2 mono" style="padding:10px 14px;font-size:12px;font-weight:700">ISO 27001</span>
+      <span class="bd2 mono" style="padding:10px 14px;font-size:12px;font-weight:700">DSGVO</span>
+      <span class="bd2 mono" style="padding:10px 14px;font-size:12px;font-weight:700">EU-Hosting</span>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ: riesige Plus-Zeichen -->
+<div style="padding:56px 40px">
+  <h2 style="margin-bottom:34px">Fragen?</h2>
+  <div class="bd" style="border-width:4px 4px 0 4px">
+    <div style="display:flex;align-items:center;gap:24px;padding:28px 32px;border-bottom:4px solid var(--ink)">
+      <h3 style="flex:1;font-size:24px">Wie lange dauert die Einführung?</h3><span style="font:700 46px/1 var(--mono)">−</span></div>
+    <div style="padding:0 32px 28px;border-bottom:4px solid var(--ink)"><div class="tx n3" style="max-width:70ch"></div></div>
+    <div style="display:flex;align-items:center;gap:24px;padding:28px 32px;border-bottom:4px solid var(--ink)">
+      <h3 style="flex:1;font-size:24px">Welche Systeme lassen sich anbinden?</h3><span style="font:700 46px/1 var(--mono)">+</span></div>
+    <div style="display:flex;align-items:center;gap:24px;padding:28px 32px;border-bottom:4px solid var(--ink)">
+      <h3 style="flex:1;font-size:24px">Wie sicher sind unsere Daten?</h3><span style="font:700 46px/1 var(--mono)">+</span></div>
+    <div style="display:flex;align-items:center;gap:24px;padding:28px 32px;border-bottom:4px solid var(--ink)">
+      <h3 style="flex:1;font-size:24px">Was kostet NORDFELD?</h3><span style="font:700 46px/1 var(--mono)">+</span></div>
+    <div style="display:flex;align-items:center;gap:24px;padding:28px 32px;border-bottom:4px solid var(--ink)">
+      <h3 style="flex:1;font-size:24px">Brauchen wir eigene IT-Ressourcen?</h3><span style="font:700 46px/1 var(--mono)">+</span></div>
+  </div>
+</div>
+
+<!-- ABSCHLUSS-CTA: vollflaechig, ueberdimensioniert -->
+<div class="inv pinhost" style="border-top:4px solid var(--ink);padding:80px 40px">
+  <span class="pin" style="top:40px;left:20px">6</span>
+  <div style="font-size:78px;line-height:.92;font-weight:800;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:44px;max-width:20ch">
+    In 30 Minuten sehen, wie Ihre Lieferkette aussieht.</div>
+  <span class="cta-xxl" style="background:var(--paper);color:var(--ink);border-color:var(--paper);font-size:44px">Demo buchen →</span>
+</div>
+
+<!-- FOOTER -->
+<div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;border-top:4px solid var(--ink)">
+  <div class="cell" style="padding:32px"><div style="font:800 26px/1 var(--sans);letter-spacing:-.03em;margin-bottom:16px">NORDFELD</div>
+    <div class="mono" style="font-size:12px">Hamburg · Zürich<br>© 2026</div></div>
+  <div class="cell mono" style="padding:32px 24px;font-size:12px"><div style="font-weight:700;margin-bottom:14px">Produkt</div><div class="tx n4" style="--lh:20px;--th:7px"></div></div>
+  <div class="cell mono" style="padding:32px 24px;font-size:12px"><div style="font-weight:700;margin-bottom:14px">Lösungen</div><div class="tx n4" style="--lh:20px;--th:7px"></div></div>
+  <div class="cell mono" style="padding:32px 24px;font-size:12px"><div style="font-weight:700;margin-bottom:14px">Firma</div><div class="tx n4" style="--lh:20px;--th:7px"></div></div>
+  <div class="cell mono" style="padding:32px 24px;font-size:12px"><div style="font-weight:700;margin-bottom:14px">Recht</div><div class="tx n4" style="--lh:20px;--th:7px"></div></div>
+</div></div></div>
+  <ol class="legend"><li><b>Navigation als Zellenraster.</b> Statt schwebender Links sitzt jeder Punkt in einer eigenen, 4 px gerahmten Zelle. Die CTA-Zelle ist invertiert und damit ohne Button-Form der stärkste Kontrast der Kopfzeile.</li>
+<li><b>Headline in drei Zeilen mit unterschiedlichem Einzug.</b> Zeile 2 ist 120 px eingerückt, Zeile 3 läuft links aus dem Satzspiegel – die Unregelmäßigkeit ist gesetzt, nicht zufällig.</li>
+<li><b>CTA über die volle Breite, 40 px Schriftgröße, harter Schlagschatten.</b> Der Button ist ein Bauteil der Seite, kein Detail – er lässt sich nicht übersehen und nicht überscrollen.</li>
+<li><b>Laufband als Social Proof.</b> Kundennamen statt Logo-Grafiken, in Versalien im Endlosband. Die horizontale Bewegung unterbricht die vertikale Leserichtung bewusst.</li>
+<li><b>Module als rohe Tabelle mit sichtbaren Zellwänden.</b> Kopfzeile, Nummer, Titel, Beschreibung, Status – die Daten werden nicht als Card verkleidet, sondern als Daten gezeigt.</li>
+<li><b>Abschluss-CTA auf ganzer Fläche invertiert</b>, mit 78-px-Headline und einem zweiten XXL-Button. Der Ausgang der Seite ist genauso laut wie ihr Eingang.</li></ol>
+
+  <div class="sec-label"><h2>Mobile</h2><span>390 px</span></div>
+  <div class="mobile-row">
+    <div class="stage" data-w="390"><div class="frame c04 m"><div style="border-bottom:4px solid var(--ink);display:flex;align-items:center" class="pinhost">
+  <span class="pin" style="top:52px;left:340px">1</span>
+  <div style="flex:1;padding:16px 18px;font:800 22px/1 var(--sans);letter-spacing:-.03em;border-right:4px solid var(--ink)">NORDFELD</div>
+  <div class="mono inv" style="padding:20px 18px;font-size:13px;font-weight:700">MENÜ</div>
+</div>
+<div class="mono inv" style="border-bottom:4px solid var(--ink);padding:16px 18px;font-size:13px;font-weight:700;text-align:center">Demo buchen →</div>
+<div style="padding:30px 0 0;overflow:hidden">
+  <div class="mono" style="padding:0 18px 16px;font-size:12px;font-weight:700">[ Lieferketten-Transparenz ]</div>
+  <h1 style="padding:0 18px;white-space:nowrap">Liefer-</h1>
+  <h1 style="padding:0 18px;margin-left:36px">ketten,</h1>
+  <h1 style="padding:0 18px;margin-left:-12px">die man</h1>
+  <h1 style="padding:0 18px;white-space:nowrap">nachweisen</h1>
+  <h1 style="padding:0 18px;margin-left:24px">kann.</h1>
+  <div style="padding:26px 18px 0"><div class="tx n3" style="--lh:24px;--th:10px"></div></div>
+  <div style="padding:22px 18px 0"><div class="bd shadow" style="padding:18px;box-shadow:8px 8px 0 var(--ink)">
+    <div class="mono" style="font-size:12px;margin-bottom:8px">Kennzahl</div><div class="big-n">−68%</div>
+    <div class="mono" style="font-size:12px;margin-top:8px">manueller Aufwand</div></div></div>
+</div>
+<div style="padding:24px 18px 0" class="pinhost">
+  <span class="pin" style="top:22px;left:342px">3</span>
+  <span class="cta-xxl shadow" style="box-shadow:8px 8px 0 var(--ink)">Demo buchen →</span>
+</div>
+<div style="padding:26px 18px 30px"><div class="img bd solid" style="height:220px;border-width:4px"></div></div>
+<div class="marq"><span>Werk Nord</span><span>·</span><span>Hanse Logistik</span><span>·</span><span>Voss &amp; Partner</span><span>·</span><span>Kappler AG</span></div>
+<div style="border-bottom:4px solid var(--ink)">
+  <div class="cell"><div class="big-n" style="margin-bottom:14px">01</div><h3 style="margin-bottom:12px">Transparenz in Echtzeit</h3><div class="tx n3"></div></div>
+  <div class="cell"><div class="big-n" style="margin-bottom:14px">02</div><h3 style="margin-bottom:12px">Prüfsichere Nachweise</h3><div class="tx n3"></div></div>
+  <div class="cell inv"><div class="big-n" style="margin-bottom:14px">03</div><h3 style="margin-bottom:12px">Weniger Handarbeit</h3><div class="tx n3 on-inv"></div></div>
+</div>
+<div style="padding:30px 18px" class="pinhost">
+  <span class="pin" style="top:28px;left:342px">5</span>
+  <h2 style="margin-bottom:22px">Vier Module.<br>Ein Datenmodell.</h2>
+  <div class="bd">
+    <div style="border-bottom:4px solid var(--ink);padding:18px"><div class="mono" style="font-size:18px;font-weight:700;margin-bottom:8px">01</div>
+      <h3 style="margin-bottom:10px">Lieferanten-Cockpit</h3><div class="tx n2"></div>
+      <div class="mono" style="font-size:12px;margin-top:10px">Status: Live</div></div>
+    <div style="border-bottom:4px solid var(--ink);padding:18px"><div class="mono" style="font-size:18px;font-weight:700;margin-bottom:8px">02</div>
+      <h3 style="margin-bottom:10px">Risiko-Radar</h3><div class="tx n2"></div>
+      <div class="mono" style="font-size:12px;margin-top:10px">Status: Live</div></div>
+    <div style="border-bottom:4px solid var(--ink);padding:18px"><div class="mono" style="font-size:18px;font-weight:700;margin-bottom:8px">03</div>
+      <h3 style="margin-bottom:10px">Nachweis-Archiv</h3><div class="tx n2"></div>
+      <div class="mono" style="font-size:12px;margin-top:10px">Status: Live</div></div>
+    <div style="padding:18px"><div class="mono" style="font-size:18px;font-weight:700;margin-bottom:8px">04</div>
+      <h3 style="margin-bottom:10px">Reporting-Studio</h3><div class="tx n2"></div>
+      <div class="mono" style="font-size:12px;margin-top:10px">Status: Beta</div></div>
+  </div>
+</div>
+<div style="padding:0 18px 30px">
+  <div class="bd inv" style="padding:26px;box-shadow:8px 8px 0 var(--l1)">
+    <div class="mono" style="font-size:12px;margin-bottom:16px;color:var(--inv-fill)">[ Kundenstimme 01/06 ]</div>
+    <div style="font-size:26px;line-height:1.1;font-weight:800;letter-spacing:-.03em;text-transform:uppercase">Vier Wochen Nachweis&shy;arbeit sind zwei Tage geworden.</div>
+    <div class="mono" style="font-size:12px;margin-top:20px">M. Keller · Werk Nord</div></div>
+</div>
+<div style="border-top:4px solid var(--ink);border-bottom:4px solid var(--ink)">
+  <div class="img" style="height:240px;border:0;border-bottom:4px solid var(--ink)"></div>
+  <div style="padding:26px 18px">
+    <div class="mono" style="font-size:12px;font-weight:700;margin-bottom:14px">[ Über uns ]</div>
+    <h2 style="margin-bottom:16px">28 Leute<br>in Hamburg.</h2>
+    <div class="tx n4" style="margin-bottom:20px"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <span class="bd2 mono" style="padding:8px 10px;font-size:11px;font-weight:700">ISO 27001</span>
+      <span class="bd2 mono" style="padding:8px 10px;font-size:11px;font-weight:700">DSGVO</span>
+      <span class="bd2 mono" style="padding:8px 10px;font-size:11px;font-weight:700">EU-HOSTING</span></div>
+  </div>
+</div>
+<div style="padding:30px 18px">
+  <h2 style="margin-bottom:22px">Fragen?</h2>
+  <div class="bd" style="border-width:4px 4px 0 4px">
+    <div style="display:flex;gap:14px;padding:18px;border-bottom:4px solid var(--ink)"><h3 style="flex:1">Wie lange dauert die Einführung?</h3><span style="font:700 28px/1 var(--mono)">−</span></div>
+    <div style="padding:0 18px 18px;border-bottom:4px solid var(--ink)"><div class="tx n3"></div></div>
+    <div style="display:flex;gap:14px;padding:18px;border-bottom:4px solid var(--ink)"><h3 style="flex:1">Welche Systeme lassen sich anbinden?</h3><span style="font:700 28px/1 var(--mono)">+</span></div>
+    <div style="display:flex;gap:14px;padding:18px;border-bottom:4px solid var(--ink)"><h3 style="flex:1">Wie sicher sind unsere Daten?</h3><span style="font:700 28px/1 var(--mono)">+</span></div>
+    <div style="display:flex;gap:14px;padding:18px;border-bottom:4px solid var(--ink)"><h3 style="flex:1">Was kostet NORDFELD?</h3><span style="font:700 28px/1 var(--mono)">+</span></div>
+    <div style="display:flex;gap:14px;padding:18px;border-bottom:4px solid var(--ink)"><h3 style="flex:1">Brauchen wir IT-Ressourcen?</h3><span style="font:700 28px/1 var(--mono)">+</span></div>
+  </div>
+</div>
+<div class="inv" style="border-top:4px solid var(--ink);padding:40px 18px">
+  <div style="font-size:36px;line-height:.95;font-weight:800;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:26px">In 30 Minuten sehen, wie Ihre Lieferkette aussieht.</div>
+  <span class="cta-xxl" style="background:var(--paper);color:var(--ink);border-color:var(--paper)">Demo buchen →</span>
+</div>
+<div style="border-top:4px solid var(--ink)">
+  <div class="cell"><div style="font:800 22px/1 var(--sans);letter-spacing:-.03em;margin-bottom:12px">NORDFELD</div>
+    <div class="mono" style="font-size:11px">Hamburg · Zürich · © 2026</div></div>
+  <div class="cell mono" style="font-size:11px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div><div style="font-weight:700;margin-bottom:10px">Produkt</div><div class="tx n3" style="--lh:18px;--th:7px"></div></div>
+    <div><div style="font-weight:700;margin-bottom:10px">Lösungen</div><div class="tx n3" style="--lh:18px;--th:7px"></div></div>
+    <div><div style="font-weight:700;margin-bottom:10px">Firma</div><div class="tx n3" style="--lh:18px;--th:7px"></div></div>
+    <div><div style="font-weight:700;margin-bottom:10px">Recht</div><div class="tx n3" style="--lh:18px;--th:7px"></div></div>
+  </div>
+</div></div></div>
+    <div class="notes"><ol class="legend" style="grid-template-columns:1fr"><li><b>Navigation bleibt eine Zelle, kein Overlay-Icon.</b> „MENÜ" steht als invertierte Fläche neben der Wortmarke; darunter läuft die CTA-Zelle über die volle Breite – der wichtigste Klick ist mobil immer sichtbar.</li>
+<li><b>Die Headline bricht auf fünf Zeilen mit wechselndem Einzug.</b> Statt die Größe zu opfern, wird enger umbrochen: 52 px bleiben auch auf 390 px eine Wand aus Text.</li>
+<li><b>Der XXL-Button behält Schlagschatten und Rahmenstärke</b> – nur der Schatten schrumpft von 10 px auf 8 px. Das Bauprinzip bleibt über beide Breiten identisch lesbar.</li></ol></div>
+  </div>
+
+  <div class="sec-label"><h2>Einordnung</h2><span>Designidee · Blickführung · Differenz · Positionierung</span></div>
+  <div class="rationale"><div><h3>Zentrale Designidee</h3><p>Die Seite zeigt ihre Konstruktion, statt sie zu kaschieren. Jede Sektion ist eine sichtbar gerahmte Zelle; Hierarchie entsteht über Rahmenstärke, Flächenkontrast und Größe – nicht über Weißraum.</p></div><div><h3>Blickführung</h3><p>Der Blick wird von harten Kanten gefangen: XXL-Headline links oben, dann zum vollbreiten schwarzen Button, danach von Zelle zu Zelle. Das Laufband dazwischen erzwingt eine kurze horizontale Pause.</p></div><div><h3>Unterschied zu den anderen</h3><p>Als einziges Konzept ohne weiche Übergänge und ohne Weißraum als Trennmittel – getrennt wird ausschließlich durch Linien. Buttons sind bis zu 5× größer als in allen anderen Varianten.</p></div><div><h3>Passende Markenpositionierung</h3><p>Marken, die bewusst anecken wollen, eine junge technische Zielgruppe ansprechen und sich vom Wettbewerb optisch maximal absetzen müssen.</p></div></div>
+
+  <div class="pager">
+    <a href="konzept-03-editorial.html">&larr; Vorheriges Konzept</a>
+    <a href="index.html">Alle Konzepte</a>
+    <a href="konzept-05-saas.html">Nächstes Konzept &rarr;</a>
+  </div>
+</div>
+<script src="assets/wf.js"></script>
+</body>
+</html>

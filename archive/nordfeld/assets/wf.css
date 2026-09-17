@@ -1,0 +1,173 @@
+/* ============================================================
+   NORDFELD – Wireframe-Kit
+   Low-/Mid-Fidelity-Primitives + Dokument-Chrome.
+   Bewusst graustufig: verglichen werden Layout, Hierarchie und
+   Nutzerführung – nicht Farbe.
+   ============================================================ */
+
+:root{
+  --sans: ui-sans-serif, -apple-system, "Segoe UI", Inter, "Helvetica Neue", Arial, sans-serif;
+  --serif: "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, "DejaVu Sans Mono", monospace;
+
+  --paper:#ffffff;   /* Seitenfläche im Wireframe */
+  --canvas:#e8e8e6;  /* Fläche um das Wireframe   */
+  --ink:#141414;
+  --ink2:#555555;
+  --ink3:#8d8d8d;
+  --l1:#d8d8d8;      /* Linie kräftig */
+  --l2:#ebebeb;      /* Linie zart    */
+  --fill:#dedede;    /* Platzhalterfläche */
+  --fill2:#f1f1f1;
+  --inv-bg:#1a1a1a;  /* invertierte Bänder / Buttons */
+  --inv-fg:#ffffff;
+  --inv-fill:#3a3a3a;
+  --inv-line:#3f3f3f;
+  --shadow:rgba(0,0,0,.45);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#191919; --canvas:#0e0e0e;
+    --ink:#f0f0f0; --ink2:#b2b2b2; --ink3:#868686;
+    --l1:#343434; --l2:#242424;
+    --fill:#333333; --fill2:#222222;
+    --inv-bg:#ededed; --inv-fg:#111111; --inv-fill:#c8c8c8; --inv-line:#c4c4c4;
+    --shadow:rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#191919; --canvas:#0e0e0e;
+  --ink:#f0f0f0; --ink2:#b2b2b2; --ink3:#868686;
+  --l1:#343434; --l2:#242424;
+  --fill:#333333; --fill2:#222222;
+  --inv-bg:#ededed; --inv-fg:#111111; --inv-fill:#c8c8c8; --inv-line:#c4c4c4;
+  --shadow:rgba(0,0,0,.8);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font:14px/1.55 var(--sans);-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+
+/* ---------- Dokument-Chrome (nicht Teil des Wireframes) ---------- */
+.doc{max-width:1240px;margin:0 auto;padding:0 20px 96px}
+.doc-bar{
+  position:sticky;top:0;z-index:100;background:var(--canvas);
+  border-bottom:1px solid var(--l1);
+  margin:0 -20px 40px;padding:12px 20px;
+  display:flex;gap:16px;align-items:center;flex-wrap:wrap;
+}
+.doc-bar b{font-size:13px;letter-spacing:.02em}
+.doc-bar .sp{margin-left:auto}
+.doc-bar a{font-size:12px;color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--l1);padding-bottom:1px}
+.doc-bar a:hover{color:var(--ink);border-color:var(--ink)}
+
+.doc-head{padding:24px 0 8px;border-top:3px solid var(--ink);margin-top:8px}
+.doc-head .num{font:600 12px/1 var(--mono);letter-spacing:.14em;color:var(--ink3);text-transform:uppercase}
+.doc-head h1{font-size:clamp(28px,4.4vw,46px);line-height:1.04;letter-spacing:-.025em;margin:14px 0 10px;max-width:22ch}
+.doc-head p.sub{max-width:72ch;color:var(--ink2);font-size:15px;margin:0 0 16px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.tag{font:500 11px/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;
+  border:1px solid var(--l1);background:var(--paper);color:var(--ink2);padding:6px 9px;border-radius:2px}
+
+.sec-label{display:flex;align-items:baseline;gap:12px;margin:56px 0 14px;
+  border-bottom:1px solid var(--l1);padding-bottom:8px}
+.sec-label h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0}
+.sec-label span{font:11px/1 var(--mono);color:var(--ink3)}
+
+/* ---------- Bühne + Skalierung ---------- */
+.stage{position:relative;overflow:hidden;background:var(--paper);
+  box-shadow:0 1px 0 var(--l1),0 18px 40px -28px var(--shadow)}
+.stage > .frame{transform-origin:0 0;position:relative;background:var(--paper)}
+.stage[data-w="390"]{max-width:390px;border-radius:18px;overflow:hidden;border:1px solid var(--l1)}
+.mobile-row{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}
+.mobile-row .stage{flex:0 0 390px}
+.mobile-row .notes{flex:1 1 380px;min-width:290px}
+
+/* ---------- Annotationen ---------- */
+.pinhost{position:relative}
+.pin{position:absolute;z-index:60;width:22px;height:22px;border-radius:50%;
+  background:#111;color:#fff;text-align:center;
+  font:600 11px/22px var(--sans);box-shadow:0 0 0 3px rgba(255,255,255,.92)}
+.legend{margin:18px 0 0;padding:0;list-style:none;counter-reset:lg;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:10px 28px}
+.legend li{counter-increment:lg;position:relative;padding-left:30px;font-size:13px;color:var(--ink2);line-height:1.5}
+.legend li::before{content:counter(lg);position:absolute;left:0;top:1px;
+  width:20px;height:20px;border-radius:50%;background:var(--inv-bg);color:var(--inv-fg);
+  font:600 11px/20px var(--sans);text-align:center}
+.legend li b{color:var(--ink);font-weight:600}
+
+/* ---------- Begründung ---------- */
+.rationale{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));
+  gap:0;margin-top:22px;background:var(--paper);border:1px solid var(--l1)}
+.rationale div{padding:20px 22px;border-right:1px solid var(--l2)}
+.rationale div:last-child{border-right:0}
+.rationale h3{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:0 0 8px}
+.rationale p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink2)}
+
+.pager{display:flex;justify-content:space-between;gap:16px;margin-top:56px;
+  border-top:1px solid var(--l1);padding-top:16px;font-size:13px}
+.pager a{color:var(--ink2);text-decoration:none}
+.pager a:hover{color:var(--ink)}
+
+/* ============================================================
+   WIREFRAME-PRIMITIVES
+   ============================================================ */
+.b{background:var(--fill)}
+.img{
+  background-color:var(--fill2);border:1px solid var(--l1);
+  background-image:
+    linear-gradient(to top right,transparent calc(50% - .5px),var(--l1) 50%,transparent calc(50% + .5px)),
+    linear-gradient(to bottom right,transparent calc(50% - .5px),var(--l1) 50%,transparent calc(50% + .5px));
+}
+.img.solid{background-color:var(--fill)}
+.img.inv{background-color:var(--inv-fill);border-color:var(--inv-line);
+  background-image:
+    linear-gradient(to top right,transparent calc(50% - .5px),var(--inv-line) 50%,transparent calc(50% + .5px)),
+    linear-gradient(to bottom right,transparent calc(50% - .5px),var(--inv-line) 50%,transparent calc(50% + .5px));}
+.av{border-radius:50%;background:var(--fill);flex:none}
+
+/* Fließtext-Platzhalter: --n = Anzahl Zeilen */
+.tx{position:relative;--lh:16px;--th:8px;--n:3;--bg:var(--paper);
+  height:calc(var(--lh) * var(--n));
+  background-image:linear-gradient(var(--fill) var(--th),transparent var(--th));
+  background-size:100% var(--lh)}
+.tx::after{content:"";position:absolute;right:0;bottom:calc(var(--lh) - var(--th));
+  width:32%;height:var(--th);background:var(--bg)}
+.tx.n1{--n:1}.tx.n2{--n:2}.tx.n4{--n:4}.tx.n5{--n:5}.tx.n6{--n:6}.tx.n8{--n:8}.tx.n10{--n:10}
+.tx.lg{--lh:20px;--th:10px}
+.tx.on-inv{--bg:var(--inv-bg);background-image:linear-gradient(var(--inv-fill) var(--th),transparent var(--th))}
+
+.logo{height:26px;width:104px;background:var(--fill);border-radius:3px}
+.logo.sm{height:20px;width:80px}
+.logo.on-inv{background:var(--inv-fill)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;
+  background:var(--inv-bg);color:var(--inv-fg);font:500 14px/1 var(--sans);
+  padding:15px 24px;border-radius:4px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--l1)}
+.btn.sm{padding:11px 16px;font-size:13px}
+.btn.lg{padding:19px 32px;font-size:16px}
+.btn.block{display:flex;width:100%}
+.btn.on-inv{background:var(--paper);color:var(--ink)}
+.btn.on-inv.ghost{background:transparent;color:var(--inv-fg);border-color:var(--inv-line)}
+
+.eyebrow{font:500 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+.rule{height:1px;background:var(--l1);width:100%}
+.rule.ink{background:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--l1);
+  border-radius:999px;padding:6px 12px;font-size:12px;color:var(--ink2)}
+
+/* Sichtbares Spaltenraster (Konzept 01) */
+.gridlines{position:absolute;inset:0;pointer-events:none;z-index:1;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;padding:0 96px}
+.gridlines i{background:rgba(110,110,210,.05);border-left:1px solid rgba(90,90,200,.13);
+  border-right:1px solid rgba(90,90,200,.13)}
+
+@media (max-width:760px){
+  .rationale div{border-right:0;border-bottom:1px solid var(--l2)}
+  .mobile-row .stage{flex:1 1 100%}
+}

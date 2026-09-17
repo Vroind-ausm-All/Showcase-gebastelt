@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13 — Horizontal Strips Layout · Flowdesk Wireframe</title>
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+/* ===== 13 HORIZONTAL STRIPS LAYOUT ========================================
+   Die Seite ist eine Folge klar getrennter Streifen über die volle Breite.
+   Jeder Streifen hat eigene Höhe, Contentbreite, Fläche, Typo-Skala, eigenes
+   Raster und eigene Informationsdichte – zusammen ergeben sie eine Story.     */
+
+.strip { position: relative; border-bottom: 1px solid var(--line); }
+.strip__in { margin-inline: auto; }
+/* unterschiedliche Contentbreiten je Streifen */
+.w-full   .strip__in { width: 100%; padding-inline: 40px; }
+.w-wide   .strip__in { width: min(1360px, 100% - 56px); }
+.w-mid    .strip__in { width: min(1100px, 100% - 56px); }
+.w-narrow .strip__in { width: min(780px, 100% - 48px); }
+/* unterschiedliche Streifenhöhen */
+.h-xl .strip__in { padding-block: var(--s-10); }
+.h-lg .strip__in { padding-block: var(--s-9); }
+.h-md .strip__in { padding-block: var(--s-8); }
+.h-sm .strip__in { padding-block: var(--s-6); }
+.h-xs .strip__in { padding-block: var(--s-4); }
+/* unterschiedliche Flächen */
+.bg-white { background: var(--bg); }
+.bg-grey  { background: var(--bg-2); }
+.bg-grey2 { background: var(--bg-3); }
+.bg-dark  { background: var(--ink-dark); color: #fff; border-bottom-color: #000; }
+.bg-dark .t-lead, .bg-dark .t-body, .bg-dark .t-small { color: #b4b4b4; }
+.bg-dark .icon { border-color: #4d4d4d; background: #262626; }
+.bg-dark .icon::after { border-color: #8a8a8a; }
+.bg-dark .rule { background: #333; }
+
+/* Streifen-Marker am linken Rand macht die Gliederung sichtbar */
+.strip__tag { position: absolute; left: 0; top: 0; background: var(--ink); color: #fff;
+              font-size: 10px; letter-spacing: .14em; text-transform: uppercase; padding: 4px 10px; }
+.bg-dark .strip__tag { background: #fff; color: var(--ink); }
+
+.hd { position: sticky; top: var(--wfchrome-h, 0px); z-index: 50; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
+.hd__in { display: flex; align-items: center; gap: var(--s-6); height: 64px; width: min(1360px, 100% - 56px); margin-inline: auto; }
+.hd__nav { display: flex; gap: var(--s-5); font-size: 14px; }
+.hd__nav a { text-decoration: none; color: var(--ink-2); }
+.hd__act { margin-left: auto; display: flex; gap: var(--s-3); align-items: center; }
+
+/* Strip 1 — Hero: breite Fläche, zweispaltig, grösste Typo */
+.s-hero .strip__in { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--s-8); align-items: center; }
+.s-hero h1 { font-size: clamp(36px, 5vw, 68px); line-height: 1; letter-spacing: -.035em; }
+.s-hero .t-lead { margin-top: var(--s-4); max-width: 46ch; }
+.s-hero .btn-row { margin-top: var(--s-6); }
+
+/* Strip 2 — Social Proof: flach, sehr breit, hohe Dichte */
+.s-proof .strip__in { display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); flex-wrap: wrap; }
+.s-proof__logos { display: flex; gap: var(--s-4); flex-wrap: wrap; }
+.s-proof .logo-ph { height: 24px; font-size: 10px; border: 0; background: none; color: var(--ink-4); }
+
+/* Strip 3 — Benefits: vierspaltig, mittlere Dichte */
+.s-benefits .strip__in > .head { max-width: 46ch; margin-bottom: var(--s-6); }
+.s-benefits__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-6); }
+.s-benefits h3 { font-size: 17px; margin: var(--s-3) 0 var(--s-2); }
+
+/* Strip 4 — Produkt: dunkel, hoch, Visual dominiert */
+.s-product .strip__in { display: grid; grid-template-columns: .8fr 1.2fr; gap: var(--s-8); align-items: center; }
+.s-product h2 { font-size: clamp(26px, 3vw, 40px); }
+.s-product .featlist { margin-top: var(--s-5); }
+.s-product .featlist li { display: grid; grid-template-columns: 1fr auto; gap: var(--s-4);
+                          padding: var(--s-3) 0; border-top: 1px solid #333; font-size: 14px; }
+.s-product .featlist li:last-child { border-bottom: 1px solid #333; }
+
+/* Strip 5 — Use Cases: horizontale Leiste zum Scrollen */
+.s-cases__rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 1fr);
+                 gap: var(--s-4); overflow-x: auto; padding-bottom: var(--s-3); }
+.s-cases__card { border: 1px solid var(--line-2); background: var(--bg); padding: var(--s-5); }
+.s-cases__card h3 { font-size: 17px; margin: var(--s-3) 0 var(--s-2); }
+.s-cases__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4); margin-bottom: var(--s-5); }
+
+/* Strip 6 — Prozess: schmale Contentbreite, vertikale Liste, viel Luft */
+.s-process ol { counter-reset: p; margin-top: var(--s-5); }
+.s-process li { counter-increment: p; display: grid; grid-template-columns: 56px 1fr; gap: var(--s-4);
+                padding: var(--s-5) 0; border-top: 1px solid var(--line); }
+.s-process li::before { content: "0" counter(p); font-size: 22px; font-weight: 700; color: var(--ink-4); }
+.s-process h3 { font-size: 18px; margin-bottom: 4px; }
+
+/* Strip 7 — Testimonials: dreispaltig auf grauer Fläche */
+.s-voices__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); }
+.s-voices blockquote { border-top: 2px solid var(--ink); padding-top: var(--s-4); }
+.s-voices .by { display: flex; gap: var(--s-3); align-items: center; margin-top: var(--s-4); }
+
+/* Strip 8 — Zahlen: sehr flach, volle Breite, grosse Ziffern */
+.s-stats .strip__in { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-5); text-align: center; }
+.s-stats .stat__value { font-size: clamp(30px, 4vw, 48px); }
+
+/* Strip 9 — FAQ: schmale Lesebreite */
+.s-faq h2 { font-size: clamp(24px, 2.6vw, 32px); margin-bottom: var(--s-4); }
+
+/* Strip 10 — Abschluss-CTA: dunkel, zentriert, hoch */
+.s-cta .strip__in { text-align: center; }
+.s-cta h2 { font-size: clamp(28px, 3.8vw, 50px); letter-spacing: -.03em; max-width: 20ch; margin-inline: auto; }
+.s-cta p { margin-top: var(--s-4); max-width: 52ch; margin-inline: auto; }
+.s-cta .btn-row { justify-content: center; margin-top: var(--s-6); }
+
+/* Strip 11 — Footer */
+.s-ft .strip__in { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: var(--s-6); }
+.s-ft h4 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: var(--s-3); }
+.s-ft li { margin-bottom: 6px; font-size: 13px; color: var(--ink-3); }
+.s-ft a { text-decoration: none; }
+.s-ftbase .strip__in { display: flex; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; font-size: 12px; color: var(--ink-3); }
+
+/* ---- Mobile: Streifen bleiben Streifen, nur einspaltig ------------------- */
+@media (max-width: 900px) {
+  .w-full .strip__in { padding-inline: 16px; }
+  .w-wide .strip__in, .w-mid .strip__in, .w-narrow .strip__in { width: calc(100% - 32px); }
+  .h-xl .strip__in, .h-lg .strip__in { padding-block: var(--s-7); }
+  .h-md .strip__in { padding-block: var(--s-6); }
+  .hd__nav { display: none; }
+  .hd__in { width: calc(100% - 32px); }
+  .s-hero .strip__in, .s-product .strip__in, .s-ft .strip__in { grid-template-columns: 1fr; gap: var(--s-5); }
+  .s-hero h1 { font-size: 36px; }
+  .s-hero .btn, .s-cta .btn { flex: 1 1 100%; }
+  .s-benefits__grid, .s-voices__grid { grid-template-columns: 1fr; gap: var(--s-5); }
+  .s-stats .strip__in { grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+  .s-ft .strip__in { grid-template-columns: 1fr 1fr; }
+  .s-cases__rail { grid-auto-columns: 78%; }
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="hd__in">
+    <a class="logo" href="#">Flowdesk</a>
+    <nav class="hd__nav"><a href="#">Produkt</a><a href="#">Funktionen</a><a href="#usecases">Use Cases</a><a href="#">Preise</a><a href="#">Ressourcen</a></nav>
+    <div class="hd__act"><a class="btn btn--ghost btn--sm" href="#tour">Produkt-Tour</a><a class="btn btn--sm" href="#demo">Demo buchen</a></div>
+  </div>
+</header>
+
+<!-- Strip 1: Hero -->
+<section class="strip s-hero w-wide h-xl bg-white">
+  <span class="strip__tag">Strip 01 · Hero</span>
+  <div class="strip__in">
+    <div>
+      <p class="eyebrow">Ressourcenplanung für Agenturen</p>
+      <h1>Agenturplanung, die endlich zusammenpasst.</h1>
+      <p class="t-lead">Flowdesk verbindet Projekte, Kapazitäten und Budgets in einer Oberfläche –
+        damit Ihr Team jederzeit weiß, wer wann woran arbeitet.</p>
+      <div class="btn-row"><a class="btn btn--lg" href="#demo">Demo buchen</a><a class="btn btn--sec btn--lg" href="#tour">Produkt-Tour ansehen</a></div>
+      <p class="t-small" style="margin-top:12px">14 Tage testen · keine Kreditkarte nötig</p>
+    </div>
+    <div class="ui" style="padding:18px">
+      <div class="ui__bar ui__bar--sm"></div>
+      <div class="ui__grid">
+        <span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span>
+        <span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell"></span>
+      </div>
+      <div class="ui__row"><i style="height:55%"></i><i style="height:85%"></i><i style="height:45%"></i><i style="height:100%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:60%"></i></div>
+      <p class="t-micro">Planungsboard · KW 38</p>
+    </div>
+  </div>
+</section>
+
+<!-- Strip 2: Social Proof, sehr flach und sehr breit -->
+<section class="strip s-proof w-full h-xs bg-grey2">
+  <span class="strip__tag">Strip 02 · Social Proof</span>
+  <div class="strip__in" style="padding-top:28px">
+    <p class="t-small"><strong>480+ Agenturen</strong> planen mit Flowdesk · 4,7/5 aus 320 Bewertungen</p>
+    <div class="s-proof__logos">
+      <span class="logo-ph">Aurum</span><span class="logo-ph">Kessler &amp; Co.</span><span class="logo-ph">Studio Nord</span>
+      <span class="logo-ph">Brandwerk</span><span class="logo-ph">Pixelhof</span><span class="logo-ph">Vesta Group</span>
+    </div>
+  </div>
+</section>
+
+<!-- Strip 3: Value Proposition, schmal und ruhig -->
+<section class="strip w-narrow h-lg bg-white">
+  <span class="strip__tag">Strip 03 · Value Proposition</span>
+  <div class="strip__in">
+    <h2 class="t-h1" style="letter-spacing:-.03em">Eine Quelle der Wahrheit für Auslastung, Timings und Margen.</h2>
+    <p class="t-lead" style="margin-top:20px">Statt fünf Tabellen und drei Tools arbeitet die ganze Agentur auf demselben Plan.
+      Änderungen an Timings laufen automatisch durch Kapazität, Budget und Forecast.</p>
+  </div>
+</section>
+
+<!-- Strip 4: Benefits, vierspaltig -->
+<section class="strip s-benefits w-wide h-lg bg-grey">
+  <span class="strip__tag">Strip 04 · Vorteile</span>
+  <div class="strip__in">
+    <div class="head"><p class="eyebrow">Vorteile</p><h2 class="t-h2">Was sich in den ersten Wochen messbar verändert.</h2></div>
+    <div class="s-benefits__grid">
+      <article><span class="icon icon--lg"></span><h3>Auslastung in Echtzeit</h3><p class="t-body">Kapazitäten pro Person, Team und Woche auf einen Blick.</p></article>
+      <article><span class="icon icon--lg"></span><h3>Weniger Planungs-Chaos</h3><p class="t-body">Ein Plan statt fünf Tabellen, Änderungen laufen durch.</p></article>
+      <article><span class="icon icon--lg"></span><h3>Projekte bleiben profitabel</h3><p class="t-body">Soll-Ist von Stunden und Budget ab Tag eins.</p></article>
+      <article><span class="icon icon--lg"></span><h3>Schnell startklar</h3><p class="t-body">Import aus Excel und Jira, Go-live in unter 14 Tagen.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- Strip 5: Produkt / Leistungen, dunkel und hoch -->
+<section class="strip s-product w-wide h-xl bg-dark">
+  <span class="strip__tag">Strip 05 · Produkt &amp; Leistungen</span>
+  <div class="strip__in">
+    <div>
+      <p class="eyebrow" style="color:#8f8f8f">Funktionen</p>
+      <h2>Alles zwischen Briefing und Rechnung.</h2>
+      <ul class="featlist">
+        <li><span>Kapazitätsplanung</span><span class="t-small">Wochen &amp; Tage</span></li>
+        <li><span>Projekt-Timeline</span><span class="t-small">Phasen &amp; Meilensteine</span></li>
+        <li><span>Zeiterfassung</span><span class="t-small">mobil &amp; Browser</span></li>
+        <li><span>Budget &amp; Forecast</span><span class="t-small">Soll-Ist</span></li>
+        <li><span>Reporting</span><span class="t-small">Dashboards</span></li>
+        <li><span>Integrationen</span><span class="t-small">Jira, Slack, DATEV</span></li>
+      </ul>
+      <div class="btn-row" style="margin-top:24px"><a class="btn btn--on-dark" href="#demo">Demo buchen</a><a class="btn btn--on-dark-sec" href="#tour">Produkt-Tour</a></div>
+    </div>
+    <div class="ph ph--dark ph--wide"><span>Produktvisualisierung · grosse Fläche</span></div>
+  </div>
+</section>
+
+<!-- Strip 6: Use Cases als horizontale Leiste -->
+<section class="strip s-cases w-wide h-md bg-white" id="usecases">
+  <span class="strip__tag">Strip 06 · Use Cases</span>
+  <div class="strip__in">
+    <div class="s-cases__head"><h2 class="t-h2">Use Cases</h2><span class="t-small">horizontal scrollbar →</span></div>
+    <div class="s-cases__rail">
+      <article class="s-cases__card"><span class="chip">Agentur</span><h3>Kreativagenturen</h3><p class="t-body">Retainer und Projektgeschäft parallel steuern.</p></article>
+      <article class="s-cases__card"><span class="chip">Studio</span><h3>Design-Studios</h3><p class="t-body">Kleine Teams, viele parallele Kunden.</p></article>
+      <article class="s-cases__card"><span class="chip">IT</span><h3>IT-Dienstleister</h3><p class="t-body">Sprints, Rollen und Abrechenbarkeit verbinden.</p></article>
+      <article class="s-cases__card"><span class="chip">Inhouse</span><h3>Inhouse-Teams</h3><p class="t-body">Interne Nachfrage sichtbar priorisieren.</p></article>
+      <article class="s-cases__card"><span class="chip">Beratung</span><h3>Consultants</h3><p class="t-body">Auslastung und Tagessätze im Blick behalten.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- Strip 7: Prozess, schmal und luftig -->
+<section class="strip s-process w-mid h-lg bg-grey">
+  <span class="strip__tag">Strip 07 · Ablauf</span>
+  <div class="strip__in">
+    <p class="eyebrow">So funktioniert es</p>
+    <h2 class="t-h2">In vier Schritten zum ersten sauberen Wochenplan.</h2>
+    <ol>
+      <li><div><h3>Daten importieren</h3><p class="t-body">Projekte, Stunden und Teams aus Excel, CSV oder Jira.</p></div></li>
+      <li><div><h3>Teams &amp; Rollen anlegen</h3><p class="t-body">Skills, Verfügbarkeiten und Stundensätze hinterlegen.</p></div></li>
+      <li><div><h3>Projekte planen</h3><p class="t-body">Kapazität zuweisen, Timings prüfen, Konflikte auflösen.</p></div></li>
+      <li><div><h3>Auslastung steuern</h3><p class="t-body">Wöchentlich nachjustieren statt quartalsweise raten.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- Strip 8: Zahlen, sehr flach -->
+<section class="strip s-stats w-full h-sm bg-dark">
+  <span class="strip__tag">Strip 08 · Zahlen</span>
+  <div class="strip__in">
+    <div><div class="stat__value num">480+</div><div class="stat__label" style="color:#9b9b9b">Agenturen</div></div>
+    <div><div class="stat__value num">12.000</div><div class="stat__label" style="color:#9b9b9b">Projekte / Monat</div></div>
+    <div><div class="stat__value num">31 %</div><div class="stat__label" style="color:#9b9b9b">weniger Aufwand</div></div>
+    <div><div class="stat__value num">4,7/5</div><div class="stat__label" style="color:#9b9b9b">Bewertung</div></div>
+  </div>
+</section>
+
+<!-- Strip 9: Testimonials -->
+<section class="strip s-voices w-wide h-md bg-white">
+  <span class="strip__tag">Strip 09 · Stimmen</span>
+  <div class="strip__in">
+    <p class="eyebrow" style="margin-bottom:24px">Stimmen aus der Praxis</p>
+    <div class="s-voices__grid">
+      <blockquote><p class="t-body">„Wir haben unsere Wochenplanung von vier Stunden auf zwanzig Minuten reduziert.“</p>
+        <div class="by"><span class="avatar"></span><span class="t-small">Lena Brandt<br>Studio Nord</span></div></blockquote>
+      <blockquote><p class="t-body">„Zum ersten Mal sehen Geschäftsführung und Projektleitung dieselben Zahlen.“</p>
+        <div class="by"><span class="avatar"></span><span class="t-small">Mirko Falk<br>Brandwerk</span></div></blockquote>
+      <blockquote><p class="t-body">„Die Einführung war in zwei Wochen durch – ohne Beraterprojekt.“</p>
+        <div class="by"><span class="avatar"></span><span class="t-small">Ayla Demir<br>Vesta Group</span></div></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- Strip 10: FAQ, schmale Lesebreite -->
+<section class="strip s-faq w-narrow h-md bg-grey">
+  <span class="strip__tag">Strip 10 · FAQ</span>
+  <div class="strip__in">
+    <h2>Häufige Fragen</h2>
+    <div class="faq">
+      <details open><summary>Wie lange dauert die Einführung?</summary><p>10 bis 14 Tage, inklusive Datenimport und Schulung.</p></details>
+      <details><summary>Können wir bestehende Daten importieren?</summary><p>Excel, CSV, Jira und Harvest direkt, alles Weitere über die API.</p></details>
+      <details><summary>Welche Integrationen gibt es?</summary><p>Jira, Slack, DATEV, Google Kalender, Outlook, REST-API.</p></details>
+      <details><summary>Wie wird abgerechnet?</summary><p>Pro aktiver Person und Monat, monatlich kündbar.</p></details>
+      <details><summary>Wo liegen die Daten?</summary><p>Server in Frankfurt, DSGVO-konform, AVV inklusive.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- Strip 11: Abschluss-CTA -->
+<section class="strip s-cta w-mid h-xl bg-dark" id="demo">
+  <span class="strip__tag">Strip 11 · Abschluss-CTA</span>
+  <div class="strip__in">
+    <p class="eyebrow" style="color:#8f8f8f">Nächster Schritt</p>
+    <h2>Sehen Sie Flowdesk an Ihrem eigenen Projektplan.</h2>
+    <p class="t-lead">30 Minuten, gemeinsam mit einer Person aus Ihrem Team – wir bauen Ihren realen Wochenplan nach.</p>
+    <div class="btn-row"><a class="btn btn--on-dark btn--lg" href="#">Demo buchen</a><a class="btn btn--on-dark-sec btn--lg" href="#tour">Produkt-Tour ansehen</a></div>
+  </div>
+</section>
+
+<!-- Strip 12 + 13: Footer -->
+<footer>
+  <section class="strip s-ft w-wide h-md bg-white">
+    <span class="strip__tag">Strip 12 · Footer</span>
+    <div class="strip__in">
+      <div><span class="logo">Flowdesk</span><p class="t-small" style="margin-top:8px;max-width:30ch">Ressourcenplanung für Agenturen und Studios.</p></div>
+      <div><h4>Produkt</h4><ul><li><a href="#">Funktionen</a></li><li><a href="#">Integrationen</a></li><li><a href="#">Preise</a></li><li><a href="#">Sicherheit</a></li></ul></div>
+      <div><h4>Unternehmen</h4><ul><li><a href="#">Über uns</a></li><li><a href="#">Karriere</a></li><li><a href="#">Kontakt</a></li></ul></div>
+      <div><h4>Ressourcen</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Hilfe-Center</a></li><li><a href="#">Webinare</a></li></ul></div>
+      <div><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul></div>
+    </div>
+  </section>
+  <section class="strip s-ftbase w-wide h-xs bg-grey2">
+    <div class="strip__in" style="padding-top:20px"><span>© 2026 Flowdesk GmbH · Hamburg</span><span>Server in Frankfurt · DSGVO-konform</span></div>
+  </section>
+</footer>
+
+<script src="../assets/wf.js"></script>
+</body>
+</html>

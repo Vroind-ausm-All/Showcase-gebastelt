@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PRISMA — Ein Inhalt. Zwölf Richtungen.</title>
+<meta name="description" content="Zwölf Gestaltungsrichtungen und dreizehn Layout-Strukturen für denselben Inhalt: vergleichen, bewerten und im Kundengespräch entscheiden.">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:title" content="PRISMA — Ein Inhalt. Zwölf Richtungen.">
+<meta property="og:description" content="Design-Richtungen vorgeführt statt beschrieben. Bühne, Vergleich, Bewertungskriterien und Beratungswerkzeug in einem.">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111'/%3E%3Cpath d='M16 6 26 24H6z' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+
+<link rel="stylesheet" href="css/01-tokens.css">
+<link rel="stylesheet" href="css/02-reset.css">
+<link rel="stylesheet" href="css/03-motion.css">
+<link rel="stylesheet" href="css/04-chrome.css">
+<link rel="stylesheet" href="css/05-specimen.css">
+<link rel="stylesheet" href="css/06-sections.css">
+<link rel="stylesheet" href="css/07-playground.css">
+<link rel="stylesheet" href="css/10-directions.css">
+
+<script>
+  /* Farbschema vor dem ersten Anstrich setzen – sonst blitzt die helle
+     Fassung auf, bevor das Modul geladen ist. */
+  try {
+    var t = JSON.parse(localStorage.getItem('prisma-theme') || 'null');
+    if (t) document.documentElement.dataset.uiTheme = t;
+  } catch (e) {}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#buehne">Zum Inhalt springen</a>
+
+<main id="app"></main>
+
+<noscript>
+  <div style="padding:2rem;max-width:44rem;margin:0 auto;line-height:1.6">
+    <h1>PRISMA</h1>
+    <p>Diese Seite führt Gestaltungsrichtungen live vor und braucht dafür JavaScript.
+       Die vollständigen Wireframe-Studien funktionieren jedoch ohne:</p>
+    <ul>
+      <li><a href="archive/nordfeld/index.html">NORDFELD — zehn Gestaltungsrichtungen</a></li>
+      <li><a href="archive/flowdesk/index.html">Flowdesk — dreizehn Layout-Strukturen</a></li>
+    </ul>
+  </div>
+</noscript>
+
+<script type="module" src="app/main.js"></script>
+</body>
+</html>

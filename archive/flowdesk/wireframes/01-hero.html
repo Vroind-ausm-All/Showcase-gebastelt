@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>01 — Hero Layout · Flowdesk Wireframe</title>
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+/* ===== 01 HERO LAYOUT =====================================================
+   Alles ordnet sich einem dominanten Hero unter. Der erste Viewport trägt die
+   gesamte Kernbotschaft; nachfolgende Sektionen nehmen im visuellen Gewicht
+   bewusst ab (Typo-Skala, Höhe, Kontrast).                                   */
+
+.wrap { width: min(1280px, 100% - 64px); margin-inline: auto; }
+
+/* Header – schlank, transparent, stört den Hero nicht */
+.hd { position: sticky; top: var(--wfchrome-h, 0px); z-index: 40; background: rgba(255,255,255,.92);
+      backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.hd__in { display: flex; align-items: center; gap: var(--s-6); height: 68px; }
+.hd__nav { display: flex; gap: var(--s-5); font-size: 14px; }
+.hd__nav a { text-decoration: none; color: var(--ink-2); }
+.hd__act { margin-left: auto; display: flex; align-items: center; gap: var(--s-4); }
+
+/* HERO – dominiert den ersten Viewport */
+.hero { border-bottom: 1px solid var(--line); background:
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
+.hero__in { display: grid; grid-template-columns: 1.05fr .95fr; gap: var(--s-8);
+            align-items: center; min-height: calc(100vh - 68px); padding: var(--s-8) 0 var(--s-7); }
+.hero h1 { font-size: clamp(44px, 5.6vw, 82px); line-height: .98; letter-spacing: -.035em; }
+.hero__lead { font-size: clamp(17px, 1.45vw, 21px); color: var(--ink-2); max-width: 46ch; margin-top: var(--s-5); }
+.hero__cta { margin-top: var(--s-6); }
+.hero__micro { margin-top: var(--s-3); font-size: 12px; color: var(--ink-3); }
+
+/* Social Proof direkt im Hero (Ebene 3) */
+.heroproof { margin-top: var(--s-7); padding-top: var(--s-5); border-top: 1px solid var(--line-2);
+             display: flex; align-items: center; gap: var(--s-5); flex-wrap: wrap; }
+.heroproof__faces { display: flex; }
+.heroproof__faces .avatar { margin-right: -12px; box-shadow: 0 0 0 2px var(--bg-2); }
+.heroproof__logos { display: flex; gap: var(--s-3); flex-wrap: wrap; }
+.heroproof__logos .logo-ph { height: 26px; font-size: 10px; }
+
+/* Produktvisualisierung mit gestapelten Ebenen */
+.heroviz { position: relative; padding: var(--s-6) var(--s-5) var(--s-7) var(--s-6); }
+.heroviz__main { position: relative; z-index: 2; }
+.heroviz__main .ui { padding: var(--s-4); box-shadow: 0 24px 48px rgba(0,0,0,.09); }
+.heroviz__float { position: absolute; z-index: 3; background: #fff; border: 1px solid var(--line-2);
+                  padding: var(--s-3) var(--s-4); box-shadow: 0 14px 30px rgba(0,0,0,.10); }
+.heroviz__float--a { top: 0; left: 0; }
+.heroviz__float--b { bottom: var(--s-4); right: 0; display: grid; gap: 6px; min-width: 190px; }
+.heroviz__ghost { position: absolute; inset: var(--s-8) 0 var(--s-5) var(--s-8); z-index: 1;
+                  background: var(--bg-3); border: 1px solid var(--line-2); transform: translate(18px, 18px); }
+
+/* Value-Proposition-Echo direkt unter dem Hero */
+.echo { padding: var(--s-8) 0; border-bottom: 1px solid var(--line); }
+.echo__claim { font-size: clamp(22px, 2.6vw, 34px); font-weight: 700; letter-spacing: -.02em; max-width: 24ch; }
+.echo__in { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-8); align-items: start; }
+.echo__list { display: grid; gap: var(--s-4); }
+.echo__item { display: grid; grid-template-columns: 32px 1fr; gap: var(--s-4); align-items: start; }
+
+/* Nachfolgende Sektionen: abnehmendes Gewicht */
+.sec { padding: var(--s-8) 0; border-bottom: 1px solid var(--line); }
+.sec--tight { padding: var(--s-7) 0; }
+.sec__head { max-width: 62ch; margin-bottom: var(--s-6); }
+.sec__head h2 { font-size: clamp(26px, 2.6vw, 34px); }
+.sec__head p { margin-top: var(--s-3); color: var(--ink-2); }
+
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-5); }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+.g2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-7); }
+
+.benefit h3 { font-size: 17px; margin: var(--s-4) 0 var(--s-2); }
+.feature { border-top: 1px solid var(--line); padding-top: var(--s-4); }
+.feature h3 { font-size: 16px; margin: var(--s-3) 0 var(--s-2); }
+
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-5); counter-reset: s; }
+.step { border-top: 2px solid var(--ink); padding-top: var(--s-4); }
+.step::before { counter-increment: s; content: "0" counter(s); font-size: 13px; font-weight: 700; color: var(--ink-3); }
+.step h3 { font-size: 16px; margin: var(--s-2) 0; }
+
+.quote { border-left: 2px solid var(--ink); padding-left: var(--s-5); }
+.quote p { font-size: 17px; line-height: 1.45; }
+.quote__by { display: flex; align-items: center; gap: var(--s-3); margin-top: var(--s-4); }
+
+.faqwrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: var(--s-8); }
+
+/* Abschluss-CTA – spiegelt die Hero-Komposition, kleiner und invertiert */
+.endcta { background: var(--ink-dark); color: #fff; padding: var(--s-9) 0; }
+.endcta__in { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--s-8); align-items: center; }
+.endcta h2 { font-size: clamp(30px, 3.6vw, 46px); letter-spacing: -.03em; }
+.endcta p { color: #b5b5b5; margin-top: var(--s-4); max-width: 42ch; }
+.endcta .btn-row { margin-top: var(--s-6); }
+
+.ft { background: var(--ink-dark); color: #a9a9a9; padding: var(--s-8) 0 var(--s-6);
+      border-top: 1px solid #2e2e2e; font-size: 13px; }
+.ft__in { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: var(--s-6); }
+.ft h4 { color: #fff; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: var(--s-4); }
+.ft li { margin-bottom: var(--s-2); }
+.ft a { text-decoration: none; }
+.ft__base { display: flex; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap;
+            margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid #2e2e2e; font-size: 12px; }
+
+/* ---- Mobile (390px): Hero bleibt dominant, Visual rutscht unter den Text -- */
+@media (max-width: 900px) {
+  .wrap { width: min(100% - 32px, 100%); }
+  .hd__nav { display: none; }
+  .hd__act .btn--ghost { display: none; }
+  .hero__in { grid-template-columns: 1fr; gap: var(--s-6); min-height: 0; padding: var(--s-6) 0; }
+  .hero h1 { font-size: 40px; }
+  .hero .btn { flex: 1 1 100%; }
+  .heroviz { padding: var(--s-5) var(--s-3) var(--s-6) var(--s-4); }
+  .heroviz__float--a { left: -4px; } .heroviz__float--b { right: -4px; min-width: 160px; }
+  .echo__in, .g4, .g3, .g2, .steps, .faqwrap, .endcta__in { grid-template-columns: 1fr; gap: var(--s-5); }
+  .ft__in { grid-template-columns: 1fr 1fr; gap: var(--s-5); }
+  .sec, .echo { padding: var(--s-7) 0; }
+  .endcta { padding: var(--s-7) 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="logo" href="#">Flowdesk</a>
+    <nav class="hd__nav">
+      <a href="#produkt">Produkt</a><a href="#features">Funktionen</a>
+      <a href="#usecases">Use Cases</a><a href="#preise">Preise</a><a href="#res">Ressourcen</a>
+    </nav>
+    <div class="hd__act">
+      <a class="btn btn--ghost btn--sm" href="#tour">Produkt-Tour ansehen</a>
+      <a class="btn btn--sm" href="#demo">Demo buchen</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO: trägt Value Proposition, CTA-Hierarchie, Produktbild und Social Proof -->
+<section class="hero">
+  <div class="wrap hero__in">
+    <div>
+      <p class="eyebrow">Ressourcenplanung für Agenturen</p>
+      <h1>Agenturplanung, die endlich zusammenpasst.</h1>
+      <p class="hero__lead">Flowdesk verbindet Projekte, Kapazitäten und Budgets in einer Oberfläche –
+        damit Ihr Team jederzeit weiß, wer wann woran arbeitet.</p>
+      <div class="btn-row hero__cta">
+        <a class="btn btn--lg" href="#demo">Demo buchen</a>
+        <a class="btn btn--sec btn--lg" href="#tour">Produkt-Tour ansehen</a>
+      </div>
+      <p class="hero__micro">14 Tage testen · keine Kreditkarte · Setup in unter 2 Wochen</p>
+
+      <div class="heroproof">
+        <div class="heroproof__faces">
+          <span class="avatar"></span><span class="avatar"></span><span class="avatar"></span><span class="avatar"></span>
+        </div>
+        <p class="t-small"><strong>480+ Agenturen</strong> planen mit Flowdesk · 4,7/5 aus 320 Bewertungen</p>
+        <div class="heroproof__logos">
+          <span class="logo-ph">Aurum</span><span class="logo-ph">Studio Nord</span>
+          <span class="logo-ph">Brandwerk</span><span class="logo-ph">Pixelhof</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="heroviz">
+      <div class="heroviz__ghost" aria-hidden="true"></div>
+      <div class="heroviz__main">
+        <div class="ui">
+          <div class="ui__bar ui__bar--sm"></div>
+          <div class="ui__grid">
+            <span class="ui__cell ui__cell--fill"></span><span class="ui__cell ui__cell--half"></span>
+            <span class="ui__cell"></span><span class="ui__cell ui__cell--fill"></span>
+            <span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span>
+            <span class="ui__cell"></span><span class="ui__cell"></span>
+            <span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span>
+            <span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span>
+          </div>
+          <div class="ui__bar ui__bar--xs"></div>
+          <div class="ui__row">
+            <i style="height:60%"></i><i style="height:85%"></i><i style="height:45%"></i>
+            <i style="height:100%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:55%"></i>
+          </div>
+          <p class="t-micro">Planungsboard · KW 38</p>
+        </div>
+      </div>
+      <div class="heroviz__float heroviz__float--a"><span class="t-micro">Auslastung Team</span><br><strong class="num">87 %</strong></div>
+      <div class="heroviz__float heroviz__float--b">
+        <span class="t-micro">Forecast Projekt Aurum</span>
+        <div class="ui__bar ui__bar--md"></div><div class="ui__bar ui__bar--xs"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Value Proposition als direkter Nachklang des Heros -->
+<section class="echo" id="produkt">
+  <div class="wrap echo__in">
+    <h2 class="echo__claim">Eine Quelle der Wahrheit für Auslastung, Timings und Margen.</h2>
+    <div class="echo__list">
+      <div class="echo__item"><span class="icon"></span>
+        <p class="t-body">Statt fünf Tabellen und drei Tools arbeitet die ganze Agentur auf demselben Plan.</p></div>
+      <div class="echo__item"><span class="icon"></span>
+        <p class="t-body">Änderungen an Timings laufen automatisch durch Kapazität, Budget und Forecast.</p></div>
+      <div class="echo__item"><span class="icon"></span>
+        <p class="t-body">Geschäftsführung und Projektleitung sehen dieselben Zahlen – in Echtzeit.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><h2>Vorteile</h2><p>Was sich in den ersten Wochen messbar verändert.</p></div>
+    <div class="g4">
+      <article class="benefit"><span class="icon icon--lg"></span><h3>Auslastung in Echtzeit</h3>
+        <p class="t-body">Kapazitäten pro Person, Team und Woche auf einen Blick.</p></article>
+      <article class="benefit"><span class="icon icon--lg"></span><h3>Weniger Planungs-Chaos</h3>
+        <p class="t-body">Ein Plan statt fünf Tabellen – Änderungen laufen automatisch durch.</p></article>
+      <article class="benefit"><span class="icon icon--lg"></span><h3>Projekte bleiben profitabel</h3>
+        <p class="t-body">Soll-Ist-Vergleich von Stunden und Budget ab Tag eins.</p></article>
+      <article class="benefit"><span class="icon icon--lg"></span><h3>Schnell startklar</h3>
+        <p class="t-body">Import aus Excel und Jira, Go-live in unter 14 Tagen.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="sec__head"><h2>Funktionen</h2><p>Alles, was zwischen Briefing und Rechnung passiert.</p></div>
+    <div class="g3">
+      <article class="feature"><span class="icon"></span><h3>Kapazitätsplanung</h3><p class="t-body">Wochen- und Tagesansicht, Skills, Teilzeit, Urlaube.</p></article>
+      <article class="feature"><span class="icon"></span><h3>Projekt-Timeline</h3><p class="t-body">Phasen, Meilensteine und Abhängigkeiten in einer Ansicht.</p></article>
+      <article class="feature"><span class="icon"></span><h3>Zeiterfassung</h3><p class="t-body">Erfassung in 15-Sekunden, mobil und im Browser.</p></article>
+      <article class="feature"><span class="icon"></span><h3>Budget &amp; Forecast</h3><p class="t-body">Soll-Ist je Projekt, Kunde und Quartal.</p></article>
+      <article class="feature"><span class="icon"></span><h3>Reporting</h3><p class="t-body">Dashboards für Leitung, Projektleitung und Controlling.</p></article>
+      <article class="feature"><span class="icon"></span><h3>Integrationen</h3><p class="t-body">Jira, Slack, DATEV, Google Kalender, API.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tight">
+  <div class="wrap">
+    <div class="sec__head"><h2>So funktioniert es</h2></div>
+    <div class="steps">
+      <div class="step"><h3>Daten importieren</h3><p class="t-body">Projekte, Stunden und Teams aus Excel oder Jira.</p></div>
+      <div class="step"><h3>Teams &amp; Rollen anlegen</h3><p class="t-body">Skills, Verfügbarkeiten und Stundensätze.</p></div>
+      <div class="step"><h3>Projekte planen</h3><p class="t-body">Kapazität zuweisen, Timings prüfen.</p></div>
+      <div class="step"><h3>Auslastung steuern</h3><p class="t-body">Wöchentlich nachjustieren statt quartalsweise raten.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tight" id="usecases">
+  <div class="wrap">
+    <div class="sec__head"><h2>Use Cases</h2></div>
+    <div class="g4">
+      <div class="feature"><h3>Kreativagenturen</h3><p class="t-body">Retainer und Projektgeschäft parallel steuern.</p></div>
+      <div class="feature"><h3>Design-Studios</h3><p class="t-body">Kleine Teams, viele parallele Kunden.</p></div>
+      <div class="feature"><h3>IT-Dienstleister</h3><p class="t-body">Sprints, Rollen und Abrechenbarkeit verbinden.</p></div>
+      <div class="feature"><h3>Inhouse-Teams</h3><p class="t-body">Interne Nachfrage sichtbar priorisieren.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tight">
+  <div class="wrap">
+    <div class="sec__head"><h2>Was Kundinnen und Kunden sagen</h2></div>
+    <div class="g3">
+      <blockquote class="quote"><p>„Wir haben unsere Wochenplanung von vier Stunden auf zwanzig Minuten reduziert.“</p>
+        <div class="quote__by"><span class="avatar"></span><span class="t-small">Lena Brandt<br>Head of Operations, Studio Nord</span></div></blockquote>
+      <blockquote class="quote"><p>„Zum ersten Mal sehen Geschäftsführung und Projektleitung dieselben Zahlen.“</p>
+        <div class="quote__by"><span class="avatar"></span><span class="t-small">Mirko Falk<br>Geschäftsführer, Brandwerk</span></div></blockquote>
+      <blockquote class="quote"><p>„Die Einführung war in zwei Wochen durch – ohne Beraterprojekt.“</p>
+        <div class="quote__by"><span class="avatar"></span><span class="t-small">Ayla Demir<br>Projektleitung, Vesta Group</span></div></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tight" id="res">
+  <div class="wrap faqwrap">
+    <div><h2 class="t-h2">Häufige Fragen</h2><p class="t-body" style="margin-top:12px">Noch offen? <a href="#demo">Im Demo-Termin klären wir alles.</a></p></div>
+    <div class="faq">
+      <details open><summary>Wie lange dauert die Einführung?</summary><p>Die meisten Teams sind in 10 bis 14 Tagen produktiv – inklusive Datenimport und Schulung.</p></details>
+      <details><summary>Können wir bestehende Daten importieren?</summary><p>Ja. Excel, CSV, Jira und Harvest werden direkt unterstützt, alles Weitere über die API.</p></details>
+      <details><summary>Welche Integrationen gibt es?</summary><p>Jira, Slack, DATEV, Google Kalender, Outlook sowie eine offene REST-API.</p></details>
+      <details><summary>Wie wird abgerechnet?</summary><p>Pro aktiver Person und Monat, monatlich kündbar. Staffelpreise ab 25 Personen.</p></details>
+      <details><summary>Wo liegen die Daten?</summary><p>Auf Servern in Frankfurt, DSGVO-konform, mit AVV und täglichem Backup.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="endcta" id="demo">
+  <div class="wrap endcta__in">
+    <div>
+      <p class="eyebrow" style="color:#8f8f8f">Nächster Schritt</p>
+      <h2>Sehen Sie Flowdesk an Ihrem eigenen Projektplan.</h2>
+      <p>30 Minuten, gemeinsam mit einer Person aus Ihrem Team – wir bauen Ihren realen Wochenplan nach.</p>
+      <div class="btn-row">
+        <a class="btn btn--on-dark btn--lg" href="#">Demo buchen</a>
+        <a class="btn btn--on-dark-sec btn--lg" href="#">Produkt-Tour ansehen</a>
+      </div>
+    </div>
+    <div class="ph ph--dark ph--wide"><span>Produktvorschau</span></div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div><span class="logo logo--dark" style="color:#fff">Flowdesk</span>
+        <p style="margin-top:12px;max-width:30ch">Ressourcenplanung für Agenturen und Studios.</p></div>
+      <div><h4>Produkt</h4><ul><li><a href="#">Funktionen</a></li><li><a href="#">Integrationen</a></li><li><a href="#">Preise</a></li><li><a href="#">Sicherheit</a></li></ul></div>
+      <div><h4>Unternehmen</h4><ul><li><a href="#">Über uns</a></li><li><a href="#">Karriere</a></li><li><a href="#">Kontakt</a></li></ul></div>
+      <div><h4>Ressourcen</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Hilfe-Center</a></li><li><a href="#">Webinare</a></li></ul></div>
+      <div><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul></div>
+    </div>
+    <div class="ft__base"><span>© 2026 Flowdesk GmbH</span><span>Hamburg · Server in Frankfurt · DSGVO-konform</span></div>
+  </div>
+</footer>
+
+<script src="../assets/wf.js"></script>
+</body>
+</html>

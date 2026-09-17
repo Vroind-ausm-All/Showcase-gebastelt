@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Showcase · 13 Layout-Konzepte für dieselbe Website</title>
+<meta name="description" content="Dreizehn Wireframe-Konzepte für dieselbe Website – gleicher Content, unterschiedliche Informationsarchitektur, Blickführung und Nutzerführung.">
+<link rel="stylesheet" href="assets/showcase.css">
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<header class="hd" id="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="#top"><span class="brand__mark"><i></i><i></i><i></i></span> Wireframe&nbsp;Showcase</a>
+    <nav class="hd__nav">
+      <a href="#konzepte">Konzepte</a>
+      <a href="#vergleich">Vergleich</a>
+      <a href="index.html">Prototyp-Tool</a>
+      <a href="docs/KONZEPTE.md">Dokumentation</a>
+    </nav>
+    <div class="hd__act">
+      <button class="iconbtn" id="theme" type="button" aria-label="Farbschema wechseln" title="Hell / Dunkel">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/>
+        </svg>
+      </button>
+      <a class="btn btn--sm" href="#konzepte">Konzepte ansehen</a>
+    </div>
+  </div>
+</header>
+
+<!-- ========================= HERO ========================= -->
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="wrap hero__in">
+    <div>
+      <p class="eyebrow">Wireframe-Serie · Low bis Mid Fidelity</p>
+      <h1>
+        <span class="ln"><span>Dreizehn Layouts.</span></span>
+        <span class="ln"><span>Eine Website.</span></span>
+        <span class="ln"><span class="hero__grad">Derselbe Inhalt.</span></span>
+      </h1>
+      <p class="hero__lead">Gleiche Botschaften, gleiche Funktionen, gleicher Content – verändert werden nur
+        Informationsarchitektur, visuelle Hierarchie, Anordnung, Contentflächen und Nutzerführung.
+        So wird sichtbar, was Struktur allein bewirkt.</p>
+      <div class="hero__cta">
+        <a class="btn" href="#konzepte">Alle 13 Konzepte</a>
+        <a class="btn btn--ghost" href="index.html">Prototypen vergleichen</a>
+      </div>
+      <div class="hero__facts">
+        <div><div class="fact__v" data-count="13">0</div><div class="fact__l">Layout-Konzepte</div></div>
+        <div><div class="fact__v" data-count="26">0</div><div class="fact__l">Ansichten (Desktop + Mobile)</div></div>
+        <div><div class="fact__v" data-count="1">0</div><div class="fact__l">gemeinsamer Content-Satz</div></div>
+        <div><div class="fact__v" data-count="9">0</div><div class="fact__l">Vergleichskriterien</div></div>
+      </div>
+    </div>
+
+    <div class="stack__wrap" id="stackWrap">
+      <div class="stack" id="stack" aria-hidden="true"></div>
+      <span class="stack__tag" id="stackTag">01 — Hero Layout</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= KONTEXT ========================= -->
+<section class="context">
+  <dl class="wrap context__in">
+    <div data-reveal><dt>Website-Typ</dt><dd>SaaS / Produktwebsite (B2B)</dd></div>
+    <div data-reveal><dt>Projekt</dt><dd>Flowdesk — Ressourcenplanung für Agenturen</dd></div>
+    <div data-reveal><dt>Zielgruppe</dt><dd>Agenturleitung, Operations, Projektleitung · 8–200 Personen</dd></div>
+    <div data-reveal><dt>Primäres Ziel</dt><dd>Demo-Buchungen / Leads</dd></div>
+    <div data-reveal><dt>CTAs</dt><dd>Primär „Demo buchen“ · Sekundär „Produkt-Tour ansehen“</dd></div>
+  </dl>
+</section>
+
+<!-- ========================= KONZEPTE ========================= -->
+<section class="sec" id="konzepte">
+  <div class="wrap">
+    <div class="sec__head" data-reveal>
+      <p class="eyebrow">Die Konzepte</p>
+      <h2>Jede Variante verkörpert ein eigenes Layout-Prinzip.</h2>
+      <p>Die Miniaturen zeigen die Struktur, nicht das Design. Der farbige Block markiert jeweils die Position
+        der primären CTA. Karte anklicken öffnet den lebenden Prototypen in Desktop- und Mobilansicht.</p>
+    </div>
+
+    <div class="filters" data-reveal>
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">Alle 13</button>
+      <button class="chip" type="button" data-filter="conv" aria-pressed="false">Conversion-stark</button>
+      <button class="chip" type="button" data-filter="inhalte" aria-pressed="false">Viel Inhalt</button>
+      <button class="chip" type="button" data-filter="visuals" aria-pressed="false">Starke Visuals</button>
+      <button class="chip" type="button" data-filter="mobile" aria-pressed="false">Mobil unkritisch</button>
+      <button class="chip" type="button" data-filter="dynamik" aria-pressed="false">Visuell dynamisch</button>
+      <span class="filters__count" id="count">13 von 13</span>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- ========================= VERGLEICH ========================= -->
+<section class="sec" id="vergleich" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec__head" data-reveal>
+      <p class="eyebrow">Gegenüberstellung</p>
+      <h2>Neun Kriterien, dreizehn Strukturen.</h2>
+      <p>Die Skala beschreibt die <strong>Ausprägung</strong> eines Merkmals, nicht dessen Qualität: Hohe
+        Informationsdichte ist für ein Wissensportal ein Vorteil und für eine Kampagnenseite ein Nachteil.
+        Deshalb gibt es hier bewusst keinen pauschalen Gewinner – Spaltenkopf anklicken, um nach dem eigenen
+        Kriterium zu sortieren.</p>
+    </div>
+    <div class="matrix" id="matrix" data-reveal>
+      <div class="matrix__scroll">
+        <table id="table"><thead></thead><tbody></tbody></table>
+      </div>
+      <div class="matrix__foot">
+        <span>Skala 1–5 · Balkenlänge = Ausprägung</span>
+        <span>Sortierung: Klick auf einen Spaltenkopf</span>
+        <span>Alle Varianten nutzen denselben Beispiel-Content</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= ABSCHLUSS ========================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" id="ticker"></div>
+</div>
+
+<section class="end">
+  <div class="wrap end__in" data-reveal>
+    <h2>Struktur ist die erste Designentscheidung.</h2>
+    <p>Alle Prototypen sind responsiv, teilen denselben Content und sind sofort im Browser vergleichbar –
+      als Grundlage für die Entscheidung, welche Struktur zum Ziel der Website passt.</p>
+    <div class="end__cta">
+      <a class="btn" href="index.html">Prototypen nebeneinander vergleichen</a>
+      <a class="btn btn--ghost" href="docs/KONZEPTE.md">Konzeptdokumentation lesen</a>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap ft__in">
+    <span>13 Wireframe-Konzepte · Beispielprojekt „Flowdesk“ · fiktive Inhalte</span>
+    <span><a href="index.html">Prototyp-Tool</a> · <a href="docs/KONZEPTE.md">Dokumentation</a> · <a href="#top">Nach oben</a></span>
+  </div>
+</footer>
+
+<!-- ========================= LIGHTBOX ========================= -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbTitle" hidden>
+  <div class="lb__scrim" data-close></div>
+  <div class="lb__panel">
+    <div class="lb__hd">
+      <span class="lb__n" id="lbN">01</span>
+      <h2 id="lbTitle">—</h2>
+      <div class="lb__tools">
+        <div class="seg" role="group" aria-label="Ansicht">
+          <button type="button" id="vDesk" aria-pressed="true">Desktop 1440</button>
+          <button type="button" id="vMob" aria-pressed="false">Mobile 390</button>
+        </div>
+        <a class="btn btn--ghost btn--sm" id="lbOpen" href="#" target="_blank" rel="noopener">Neuer Tab ↗</a>
+        <button class="iconbtn" type="button" id="lbPrev" aria-label="Vorheriges Konzept">←</button>
+        <button class="iconbtn" type="button" id="lbNext" aria-label="Nächstes Konzept">→</button>
+        <button class="iconbtn" type="button" data-close aria-label="Schliessen">✕</button>
+      </div>
+    </div>
+    <div class="lb__body">
+      <div class="viewer">
+        <div class="viewer__device" id="device">
+          <div class="viewer__bar" id="vBar">Desktop · 1440 px</div>
+          <iframe id="vFrame" title="Live-Vorschau des Wireframes" loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="facts" id="lbFacts"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================= MINI-WIREFRAMES ========================= -->
+<template data-mini="01">
+  <div class="mini">
+    <div class="mhd"><i class="dot"></i><i class="nav"></i><i class="cta acc"></i></div>
+    <div class="row fill" style="gap:8px">
+      <div class="col" style="flex:1.05;justify-content:center">
+        <i class="t" style="width:32%"></i>
+        <i class="t lg" style="width:94%"></i><i class="t lg" style="width:72%"></i>
+        <i class="t" style="width:84%;margin-top:3px"></i><i class="t" style="width:64%"></i>
+        <div class="row" style="margin-top:5px"><i class="btn2"></i><i class="btn2 ghost"></i></div>
+        <div class="row" style="margin-top:4px;gap:3px"><i class="t" style="width:14px"></i><i class="t" style="width:14px"></i><i class="t" style="width:14px"></i></div>
+      </div>
+      <div class="col" style="flex:.95"><div class="img fill"></div></div>
+    </div>
+    <div class="row" style="height:16px"><div class="img fill"></div><div class="img fill"></div><div class="img fill"></div><div class="img fill"></div></div>
+  </div>
+</template>
+
+<template data-mini="02">
+  <div class="mini">
+    <div class="mhd"><i class="dot"></i><i class="nav" style="max-width:34%;margin-inline:auto"></i><i class="cta"></i></div>
+    <div class="fill" style="position:relative">
+      <svg class="guide" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <line x1="4" y1="8" x2="96" y2="8" vector-effect="non-scaling-stroke"/>
+        <line x1="96" y1="8" x2="6" y2="90" vector-effect="non-scaling-stroke"/>
+        <line x1="6" y1="90" x2="96" y2="90" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <div class="col" style="position:absolute;left:0;top:10%;width:48%">
+        <i class="t lg" style="width:92%"></i><i class="t lg" style="width:66%"></i><i class="t" style="width:78%"></i>
+      </div>
+      <div class="img" style="position:absolute;right:0;top:6%;width:42%;height:40%"></div>
+      <div class="col" style="position:absolute;left:0;bottom:16%;width:42%">
+        <i class="t md" style="width:60%"></i><i class="t" style="width:80%"></i>
+      </div>
+      <div class="col" style="position:absolute;right:0;bottom:6%;width:40%;align-items:flex-end">
+        <i class="t" style="width:70%"></i><i class="btn2" style="width:58%"></i>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-mini="03">
+  <div class="mini">
+    <div class="mhd"><i class="dot"></i><i class="nav" style="max-width:40%"></i><i class="cta"></i></div>
+    <div class="row fill" style="gap:6px">
+      <div class="col" style="flex:0 0 20%">
+        <i class="t" style="width:90%"></i><i class="t" style="width:70%"></i><i class="t" style="width:80%"></i>
+        <i class="t" style="width:60%"></i><i class="btn2" style="width:100%;margin-top:4px"></i>
+      </div>
+      <div class="col fill" style="gap:4px">
+        <i class="t lg" style="width:80%"></i>
+        <i class="t" style="width:96%"></i><i class="t" style="width:90%"></i>
+        <i class="t md" style="width:62%;margin-top:3px"></i>
+        <i class="t" style="width:94%"></i><i class="t" style="width:86%"></i><i class="t" style="width:92%"></i>
+        <i class="t md" style="width:48%;margin-top:3px"></i>
+        <i class="t" style="width:90%"></i><i class="t" style="width:76%"></i>
+      </div>
+      <div class="col" style="flex:0 0 16%"><div class="box fill"></div><div class="box" style="height:20px"></div></div>
+    </div>
+  </div>
+</template>
+
+<template data-mini="04">
+  <div class="mini">
+    <div class="mhd"><i class="dot"></i><i class="nav"></i><i class="cta"></i></div>
+    <div class="fill" style="position:relative">
+      <svg class="guide" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <line x1="16" y1="0" x2="16" y2="100" vector-effect="non-scaling-stroke"/>
+        <line x1="33" y1="0" x2="33" y2="100" vector-effect="non-scaling-stroke"/>
+        <line x1="50" y1="0" x2="50" y2="100" vector-effect="non-scaling-stroke"/>
+        <line x1="67" y1="0" x2="67" y2="100" vector-effect="non-scaling-stroke"/>
+        <line x1="84" y1="0" x2="84" y2="100" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <div class="img" style="position:absolute;right:-14%;top:4%;width:64%;height:46%"></div>
+      <i class="t lg" style="position:absolute;left:0;top:12%;width:74%;height:13px;z-index:2"></i>
+      <i class="t" style="position:absolute;left:0;top:42%;width:38%"></i>
+      <i class="btn2" style="position:absolute;left:0;top:52%;z-index:2"></i>
+      <div class="img" style="position:absolute;left:-10%;bottom:2%;width:44%;height:28%"></div>
+      <div class="box" style="position:absolute;right:2%;bottom:12%;width:38%;height:30%;background:var(--m-bg)"></div>
+      <div class="box" style="position:absolute;right:26%;bottom:2%;width:30%;height:16%;background:var(--m-bg)"></div>
+    </div>
+  </div>
+</template>
+
+<template data-mini="05">
+  <div class="mini">
+    <div class="mhd"><i class="dot"></i><i class="nav" style="max-width:38%;margin-left:auto"></i></div>
+    <div class="col fill" style="align-items:center;gap:4px">
+      <i class="t" style="width:22%"></i>
+      <i class="t lg" style="width:64%"></i><i class="t lg" style="width:48%"></i>
+      <i class="t" style="width:64%;margin-top:4px"></i><i class="t" style="width:64%"></i><i class="t" style="width:58%"></i>
+      <div class="img" style="width:64%;height:24px;margin-block:2px"></div>
+      <i class="t" style="width:64%"></i><i class="t" style="width:64%"></i><i class="t" style="width:52%"></i>
+      <i class="btn2" style="width:26%;margin-top:4px"></i>
+      <i class="t" style="width:64%;margin-top:4px"></i><i class="t" style="width:44%"></i>
+    </div>
+  </div>
+</template>
+
+<template data-mini="06">
+  <div class="mini" style="padding:0">
+    <div class="fill img dark" style="position:relative;border:0;border-radius:0">
+      <div class="row" style="position:absolute;left:8px;right:8px;top:8px;align-items:center;gap:4px">
+        <i class="dot" style="background:#fff"></i><i class="nav" style="background:#4b515d;max-width:34%"></i>
+        <i class="cta" style="background:#fff;margin-left:auto"></i>
+      </div>
+      <div class="col" style="position:absolute;left:10px;bottom:10px;width:62%;gap:4px">
+        <i class="t lg" style="background:#fff;width:92%"></i>
+        <i class="t lg" style="background:#fff;width:62%"></i>
+        <i class="t" style="background:#767c88;width:84%"></i>
+        <div class="row" style="margin-top:4px"><i class="btn2"></i><i class="btn2 ghost" style="border-color:#5c626e"></i></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-mini="07">
+  <div class="mini">
+    <div class="mhd"><i class="dot"></i><i class="nav"></i><i class="cta"></i></div>
+    <div class="col fill" style="gap:6px">
+      <div class="row fill" style="gap:6px">
+        <div class="col fill" style="justify-content:center"><i class="t md" style="width:86%"></i><i class="t" style="width:70%"></i><i class="btn2" style="margin-top:3px"></i></div>
+        <div class="img" style="flex:1"></div>
+      </div>
+      <div class="row fill" style="gap:6px;background:var(--m-soft);margin-inline:-8px;padding:4px 8px">
+        <div class="img" style="flex:1.3"></div>
+        <div class="col fill" style="justify-content:center"><i class="t md" style="width:78%"></i><i class="t" style="width:62%"></i></div>
+      </div>
+      <div class="row fill" style="gap:6px">
+        <div class="col fill" style="justify-content:center"><i class="t md" style="width:82%"></i><i class="t" style="width:58%"></i></div>
+        <div class="img" style="flex:.7"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-mini="08">
+  <div class="mini">
+    <div class="mhd"><i class="dot" style="margin-left:8%"></i><i class="nav" style="max-width:30%;margin-left:14%"></i><i class="cta"></i></div>
+    <div class="fill" style="position:relative">
+      <i class="t lg" style="position:absolute;left:6%;top:10%;width:54%;height:12px"></i>
+      <i class="t lg" style="position:absolute;left:6%;top:28%;width:34%;height:12px"></i>
+      <div class="img" style="position:absolute;right:0;top:0;width:26%;height:66%"></div>
+      <i class="t" style="position:absolute;left:6%;top:52%;width:28%"></i>
+      <i class="btn2" style="position:absolute;left:6%;top:66%"></i>
+      <i class="t md" style="position:absolute;left:34%;bottom:10%;width:24%"></i>
+      <i class="t" style="position:absolute;left:34%;bottom:4%;width:18%"></i>
+      <i class="t md" style="position:absolute;right:4%;bottom:20%;width:20%"></i>
+    </div>
+  </div>
+</template>
+
+<template data-mini="09">
+  <div class="mini" style="padding-bottom:0">
+    <div class="mhd"><i class="dot"></i><i class="cta acc"></i></div>
+    <div class="col fill" style="align-items:center;gap:5px">
+      <i class="t lg" style="width:58%"></i><i class="t" style="width:52%"></i>
+      <i class="btn2" style="width:58%"></i>
+      <div class="img" style="width:58%;height:22px"></div>
+      <div class="box" style="width:58%;height:15px"></div>
+      <div class="box" style="width:58%;height:15px"></div>
+      <i class="t md" style="width:40%"></i>
+    </div>
+    <div style="height:11px;background:var(--m-ink);margin-inline:-8px;display:flex;align-items:center;justify-content:center">
+      <i style="display:block;height:4px;width:34%;background:var(--acc);border-radius:2px"></i>
+    </div>
+  </div>
+</template>
+
+<template data-mini="10">
+  <div class="mini" style="background:var(--m-soft);gap:6px">
+    <div class="box" style="background:var(--m-bg);height:14px;flex-direction:row;align-items:center;gap:4px;padding:3px 5px">
+      <i class="dot" style="width:6px;height:6px"></i><i class="nav" style="max-width:36%"></i><i class="cta" style="height:6px;width:16px"></i>
+    </div>
+    <div class="row fill" style="gap:6px">
+      <div class="box" style="flex:1.35;background:var(--m-bg)">
+        <i class="t md" style="width:34%"></i><i class="t lg" style="width:82%"></i><i class="t" style="width:64%"></i>
+        <div class="row fill" style="gap:4px"><div class="box fill"></div><div class="box fill"></div></div>
+      </div>
+      <div class="box" style="flex:.65;background:var(--m-bg)">
+        <i class="t md" style="width:52%"></i><div class="img fill"></div>
+        <div class="row" style="gap:4px"><div class="box fill" style="height:14px"></div><div class="box fill" style="height:14px"></div></div>
+      </div>
+    </div>
+    <div class="row" style="gap:6px;height:30px">
+      <div class="box fill" style="background:var(--m-bg)"></div><div class="box fill" style="background:var(--m-bg)"></div>
+      <div class="box fill" style="background:var(--m-bg)"></div><div class="box fill" style="background:var(--m-bg)"></div>
+    </div>
+  </div>
+</template>
+
+<template data-mini="11">
+  <div class="mini" style="background:var(--m-soft);gap:6px">
+    <div class="box" style="background:var(--m-bg);border-radius:6px;height:14px;flex-direction:row;align-items:center;gap:4px;padding:3px 5px">
+      <i class="dot" style="width:6px;height:6px"></i><i class="nav" style="max-width:40%"></i><i class="cta" style="height:6px;width:16px"></i>
+    </div>
+    <div class="row fill" style="gap:6px">
+      <div class="box" style="flex:1.5;background:var(--m-bg);border-radius:6px;justify-content:center">
+        <i class="t lg" style="width:76%"></i><i class="t" style="width:56%"></i><i class="btn2" style="margin-top:3px"></i>
+      </div>
+      <div class="box" style="flex:1;background:var(--m-bg);border-radius:6px"><div class="img fill"></div></div>
+    </div>
+    <div class="row" style="gap:6px;height:24px">
+      <div class="box fill" style="background:var(--m-bg);border-radius:6px"></div><div class="box fill" style="background:var(--m-bg);border-radius:6px"></div>
+      <div class="box fill" style="background:var(--m-bg);border-radius:6px"></div><div class="box fill" style="background:var(--m-bg);border-radius:6px"></div>
+    </div>
+    <div class="row" style="gap:6px;height:26px">
+      <div class="box" style="flex:2;background:var(--m-bg);border-radius:6px"></div>
+      <div class="box fill" style="background:var(--m-bg);border-radius:6px"></div>
+      <div class="box fill" style="background:var(--m-bg);border-radius:6px"></div>
+    </div>
+  </div>
+</template>
+
+<template data-mini="12">
+  <div class="mini" style="gap:4px">
+    <div class="col" style="align-items:center;gap:3px">
+      <i class="t" style="width:14%"></i><i class="t md" style="width:30%"></i>
+      <i style="display:block;height:2px;width:100%;background:var(--m-ink)"></i>
+    </div>
+    <div class="row fill" style="gap:6px">
+      <div class="col" style="flex:2.3;gap:4px">
+        <i class="t lg" style="width:96%;height:12px"></i><i class="t lg" style="width:70%;height:12px"></i>
+        <div class="img" style="height:30px"></div>
+        <div class="row fill" style="gap:6px">
+          <div class="col fill" style="gap:3px"><i class="t" style="width:100%"></i><i class="t" style="width:94%"></i><i class="t" style="width:98%"></i><i class="t" style="width:86%"></i><i class="t" style="width:92%"></i></div>
+          <div class="col fill" style="gap:3px"><i class="t" style="width:96%"></i><i class="t" style="width:100%"></i><i class="t" style="width:88%"></i><i class="t" style="width:94%"></i><i class="t" style="width:70%"></i></div>
+        </div>
+      </div>
+      <div class="col" style="flex:.8;gap:4px;border-left:1px solid var(--m-bd);padding-left:6px">
+        <i class="t md" style="width:60%"></i><i class="t" style="width:94%"></i><i class="t" style="width:80%"></i>
+        <div class="img" style="height:22px"></div>
+        <i class="t md" style="width:50%"></i><i class="t" style="width:88%"></i>
+        <i class="btn2" style="width:100%;margin-top:auto"></i>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-mini="13">
+  <div class="mini" style="padding:0;gap:0">
+    <div class="mhd" style="padding:6px 8px;height:auto"><i class="dot"></i><i class="nav" style="max-width:34%"></i><i class="cta"></i></div>
+    <div class="col fill" style="gap:3px">
+      <div class="row" style="flex:1.7;background:var(--m-img);padding:6px 8px;gap:6px;align-items:center">
+        <div class="col fill"><i class="t lg" style="width:82%"></i><i class="t" style="width:60%"></i><i class="btn2" style="margin-top:3px"></i></div>
+        <div class="img" style="width:40%;height:74%;background:#fff"></div>
+      </div>
+      <div style="height:9px;background:var(--m-soft)"></div>
+      <div class="col" style="flex:.9;padding:5px 8px;justify-content:center;gap:3px"><i class="t md" style="width:52%"></i><i class="t" style="width:74%"></i></div>
+      <div class="row" style="flex:1.1;background:#2b2f38;padding:6px 8px;gap:5px;align-items:center">
+        <div class="col fill" style="gap:3px"><i class="t" style="background:#fff;width:64%"></i><i class="t" style="background:#5c626e;width:82%"></i></div>
+        <div style="width:38%;height:72%;background:#3c414c;border-radius:2px"></div>
+      </div>
+      <div class="row" style="height:16px;gap:4px;padding:0 8px;align-items:center">
+        <div class="box fill" style="height:12px"></div><div class="box fill" style="height:12px"></div><div class="box fill" style="height:12px"></div>
+      </div>
+      <div style="height:14px;background:var(--m-ink)"></div>
+    </div>
+  </div>
+</template>
+
+<script src="assets/concepts.js"></script>
+<script src="assets/showcase.js"></script>
+</body>
+</html>

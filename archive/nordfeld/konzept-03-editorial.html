@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Konzept 03 – Editorial / Magazine · NORDFELD Wireframes</title>
+<link rel="stylesheet" href="assets/wf.css">
+<style>
+.c03{font-family:var(--serif);color:var(--ink)}
+.c03 .pad{padding-left:72px;padding-right:72px}
+.c03 .g12{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+.c03 .kick{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink2)}
+.c03 .cap{font:400 12px/1.45 var(--sans);color:var(--ink3)}
+.c03 .byl{font:500 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.c03 h1{font-size:92px;line-height:.94;letter-spacing:-.02em;font-weight:600;margin:0}
+.c03 h2{font-size:44px;line-height:1.06;letter-spacing:-.015em;font-weight:600;margin:0}
+.c03 h3{font-size:25px;line-height:1.2;font-weight:600;margin:0}
+.c03 h4{font-size:19px;line-height:1.25;font-weight:600;margin:0}
+.c03 .rules{border-top:3px solid var(--ink);border-bottom:1px solid var(--ink)}
+.c03 .cols2{column-count:2;column-gap:32px}
+.c03 .cols3{column-count:3;column-gap:28px}
+.c03 .drop{float:left;font-size:76px;line-height:.78;font-weight:600;margin:6px 10px 0 0}
+.c03 .sec{padding-top:64px;padding-bottom:64px}
+.c03 .hairs{border-top:1px solid var(--l1)}
+.c03 .qm{font-size:110px;line-height:.6;font-weight:600;color:var(--l1)}
+.c03.m .pad{padding-left:20px;padding-right:20px}
+.c03.m h1{font-size:40px}.c03.m h2{font-size:27px}.c03.m h3{font-size:20px}.c03.m h4{font-size:17px}
+.c03.m .sec{padding-top:38px;padding-bottom:38px}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-bar">
+    <b>NORDFELD · Wireframe-Studie</b>
+    <span style="color:var(--ink3);font-size:12px">Konzept 03 von 10</span>
+    <span class="sp"></span>
+    <a href="index.html">Übersicht &amp; Vergleichsmatrix</a>
+  </div>
+
+  <div class="doc-head">
+    <div class="num">Konzept 03</div>
+    <h1>Editorial / Magazine</h1>
+    <p class="sub">Aufbau wie ein Magazin: Masthead statt Navigationsleiste, Aufmacher mit überlappender Headline, mehrspaltiger Fließtext, Initial, Bildunterschriften und Pull-Quote.</p>
+    <div class="tags"><span class="tag">Masthead</span><span class="tag">Überlappender Aufmacher</span><span class="tag">Mehrspaltiger Satz</span><span class="tag">Initial</span><span class="tag">Bildunterschriften</span><span class="tag">Pull-Quote</span></div>
+  </div>
+
+  <div class="sec-label"><h2>Desktop</h2><span>1440 px</span></div>
+  <div class="stage" data-w="1440"><div class="frame c03 d"><!-- MASTHEAD -->
+<div class="pad" style="padding-top:18px">
+  <div style="display:flex;justify-content:space-between;font:400 11px/1 var(--sans);color:var(--ink3);letter-spacing:.08em;margin-bottom:16px">
+    <span>AUSGABE 14 · LIEFERKETTE</span><span>HAMBURG, 16. SEPTEMBER 2026</span><span>ABONNIEREN</span>
+  </div>
+</div>
+<div class="rules pad pinhost" style="padding-top:18px;padding-bottom:16px">
+  <span class="pin" style="top:24px;left:1300px">1</span>
+  <div style="text-align:center;font-size:56px;line-height:1;letter-spacing:.14em;font-weight:600">NORDFELD</div>
+</div>
+<div class="pad" style="border-bottom:1px solid var(--ink);padding-top:12px;padding-bottom:12px">
+  <div style="display:flex;justify-content:center;gap:44px;font:500 13px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase">
+    <span style="font-weight:700">Produkt</span><span>Lösungen</span><span>Preise</span><span>Dossiers</span><span>Über uns</span><span>Kontakt</span>
+  </div>
+</div>
+
+<!-- AUFMACHER: Headline ragt ins Bild -->
+<div class="pad pinhost" style="padding-top:52px;padding-bottom:52px">
+  <span class="pin" style="top:230px;left:640px">2</span>
+  <div class="g12" style="align-items:start">
+    <div style="grid-column:1/8;grid-row:1;position:relative">
+      <div class="img" style="height:560px"></div>
+      <div class="cap" style="margin-top:10px">Werkshalle eines Zulieferers, Bild: Platzhalter 3:2</div>
+    </div>
+    <div style="grid-column:7/13;grid-row:1;position:relative;z-index:5;padding-top:64px">
+      <div style="background:var(--paper);padding:26px 0 0 28px">
+        <div class="kick" style="margin-bottom:18px">Titelthema</div>
+        <h1 style="margin-bottom:24px">Lieferketten, die man nachweisen kann.</h1>
+        <div style="font-size:19px;line-height:1.5;color:var(--ink2);margin-bottom:22px;max-width:34ch">
+          Warum Nachweispflicht kein Verwaltungsproblem ist, sondern eine Frage der Datenarchitektur.</div>
+        <div class="byl" style="margin-bottom:24px">Von der NORDFELD-Redaktion · 6 Min. Lesezeit</div>
+        <span class="btn">Demo buchen</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EINSTIEG: Initial + 3 Spalten -->
+<div class="pad pinhost" style="padding-bottom:56px">
+  <span class="pin" style="top:6px;left:40px">3</span>
+  <div class="rules" style="border-bottom:1px solid var(--l1);padding:26px 0 0"></div>
+  <div class="cols3" style="padding-top:26px;font-size:15px;line-height:1.62;color:var(--ink2)">
+    <p style="margin:0 0 14px"><span class="drop">D</span>Wer heute belegen muss, woher ein Bauteil stammt, arbeitet in vier Systemen gleichzeitig.</p>
+    <div class="tx n8" style="--lh:24px;--th:10px"></div>
+    <div class="tx n8" style="--lh:24px;--th:10px;margin-top:14px"></div>
+  </div>
+</div>
+
+<!-- VORTEILE ALS DREI AUFMACHER -->
+<div class="pad sec" style="border-top:3px solid var(--ink)">
+  <div class="g12" style="margin-bottom:34px">
+    <div class="kick" style="grid-column:1/3;padding-top:12px">Drei Befunde</div>
+    <h2 style="grid-column:3/10">Was sich ändert, wenn Nachweise zu Daten werden.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px">
+    <div><div class="img" style="height:230px;margin-bottom:16px"></div>
+      <div class="kick" style="margin-bottom:12px">01 · Transparenz</div>
+      <h3 style="margin-bottom:14px">Echtzeit statt Quartalsbericht</h3>
+      <div class="tx n5" style="--lh:22px;--th:9px"></div></div>
+    <div><div class="img" style="height:230px;margin-bottom:16px"></div>
+      <div class="kick" style="margin-bottom:12px">02 · Nachweis</div>
+      <h3 style="margin-bottom:14px">Prüfsicher, ohne Mehrarbeit</h3>
+      <div class="tx n5" style="--lh:22px;--th:9px"></div></div>
+    <div><div class="img" style="height:230px;margin-bottom:16px"></div>
+      <div class="kick" style="margin-bottom:12px">03 · Aufwand</div>
+      <h3 style="margin-bottom:14px">68 Prozent weniger Handarbeit</h3>
+      <div class="tx n5" style="--lh:22px;--th:9px"></div></div>
+  </div>
+</div>
+
+<!-- MODULE ALS ARTIKEL-LISTE, Thumbnails wechseln die Seite -->
+<div class="pad sec pinhost" style="border-top:1px solid var(--l1)">
+  <span class="pin" style="top:70px;left:40px">4</span>
+  <div class="kick" style="margin-bottom:30px">Die vier Module</div>
+  <div class="hairs" style="padding:28px 0;display:grid;grid-template-columns:200px 1fr 200px;gap:32px;align-items:start">
+    <div class="img" style="height:130px"></div>
+    <div><h3 style="margin-bottom:12px">Lieferanten-Cockpit</h3><div class="cols2"><div class="tx n4" style="--lh:22px;--th:9px"></div></div></div>
+    <div class="byl" style="text-align:right">Modul 01</div>
+  </div>
+  <div class="hairs" style="padding:28px 0;display:grid;grid-template-columns:200px 1fr 200px;gap:32px;align-items:start">
+    <div class="byl">Modul 02</div>
+    <div><h3 style="margin-bottom:12px">Risiko-Radar</h3><div class="cols2"><div class="tx n4" style="--lh:22px;--th:9px"></div></div></div>
+    <div class="img" style="height:130px"></div>
+  </div>
+  <div class="hairs" style="padding:28px 0;display:grid;grid-template-columns:200px 1fr 200px;gap:32px;align-items:start">
+    <div class="img" style="height:130px"></div>
+    <div><h3 style="margin-bottom:12px">Nachweis-Archiv</h3><div class="cols2"><div class="tx n4" style="--lh:22px;--th:9px"></div></div></div>
+    <div class="byl" style="text-align:right">Modul 03</div>
+  </div>
+  <div class="hairs" style="padding:28px 0;border-bottom:1px solid var(--l1);display:grid;grid-template-columns:200px 1fr 200px;gap:32px;align-items:start">
+    <div class="byl">Modul 04</div>
+    <div><h3 style="margin-bottom:12px">Reporting-Studio</h3><div class="cols2"><div class="tx n4" style="--lh:22px;--th:9px"></div></div></div>
+    <div class="img" style="height:130px"></div>
+  </div>
+</div>
+
+<!-- PULL-QUOTE -->
+<div style="background:var(--fill2);padding:72px 0" class="pinhost">
+  <span class="pin" style="top:50px;left:40px">5</span>
+  <div class="pad g12" style="align-items:center">
+    <div style="grid-column:1/3"><div class="img" style="height:180px"></div>
+      <div class="cap" style="margin-top:8px">M. Keller</div></div>
+    <div style="grid-column:4/12">
+      <div class="qm">„</div>
+      <div style="font-size:40px;line-height:1.28;letter-spacing:-.015em;margin-top:-18px">
+        Wir haben den Nachweis für 340 Lieferanten von vier Wochen auf zwei Tage gebracht.</div>
+      <div class="byl" style="margin-top:22px">Head of Supply Chain · Werk Nord</div>
+    </div>
+  </div>
+</div>
+
+<!-- KUNDENLOGOS -->
+<div class="pad" style="padding-top:40px;padding-bottom:40px;border-bottom:1px solid var(--l1)">
+  <div class="kick" style="margin-bottom:22px;text-align:center">Im Einsatz bei</div>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div class="logo"></div><div class="logo"></div><div class="logo"></div>
+    <div class="logo"></div><div class="logo"></div><div class="logo"></div>
+  </div>
+</div>
+
+<!-- ÜBER UNS: Langtext zweispaltig + Porträt -->
+<div class="pad sec">
+  <div class="g12">
+    <div style="grid-column:1/4">
+      <div class="img" style="height:340px;margin-bottom:10px"></div>
+      <div class="cap">Das Team in der Hamburger Speicherstadt</div>
+      <div style="margin-top:22px;display:flex;flex-direction:column;gap:8px">
+        <span class="chip">ISO 27001</span><span class="chip">DSGVO-konform</span><span class="chip">Hosting in der EU</span>
+      </div>
+    </div>
+    <div style="grid-column:5/13">
+      <div class="kick" style="margin-bottom:16px">In eigener Sache</div>
+      <h2 style="margin-bottom:26px">28 Leute in Hamburg, seit 2019.</h2>
+      <div class="cols2" style="font-size:15px;line-height:1.62">
+        <div class="tx n8" style="--lh:24px;--th:10px"></div>
+        <div class="tx n8" style="--lh:24px;--th:10px;margin-top:14px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ ALS INTERVIEW -->
+<div class="pad sec pinhost" style="border-top:3px solid var(--ink)">
+  <span class="pin" style="top:70px;left:40px">6</span>
+  <div class="g12" style="margin-bottom:30px">
+    <div class="kick" style="grid-column:1/3;padding-top:8px">Nachgefragt</div>
+    <h2 style="grid-column:3/9">Fünf Fragen an die Produktleitung.</h2>
+  </div>
+  <div class="g12">
+    <div style="grid-column:3/12">
+      <div class="hairs" style="padding:24px 0"><h4 style="margin-bottom:12px">Wie lange dauert die Einführung?</h4><div class="cols2"><div class="tx n4" style="--lh:23px;--th:9px"></div></div></div>
+      <div class="hairs" style="padding:24px 0"><h4 style="margin-bottom:12px">Welche Systeme lassen sich anbinden?</h4><div class="cols2"><div class="tx n4" style="--lh:23px;--th:9px"></div></div></div>
+      <div class="hairs" style="padding:24px 0"><h4 style="margin-bottom:12px">Wie sicher sind unsere Daten?</h4><div class="cols2"><div class="tx n3" style="--lh:23px;--th:9px"></div></div></div>
+      <div class="hairs" style="padding:24px 0"><h4 style="margin-bottom:12px">Was kostet NORDFELD?</h4><div class="cols2"><div class="tx n3" style="--lh:23px;--th:9px"></div></div></div>
+      <div class="hairs" style="padding:24px 0;border-bottom:1px solid var(--l1)"><h4 style="margin-bottom:12px">Brauchen wir eigene IT-Ressourcen?</h4><div class="cols2"><div class="tx n3" style="--lh:23px;--th:9px"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABSCHLUSS-CTA IM ABO-STIL -->
+<div class="pad" style="padding-top:56px;padding-bottom:56px;background:var(--inv-bg);color:var(--inv-fg)">
+  <div class="g12" style="align-items:center">
+    <div style="grid-column:1/7">
+      <div class="kick" style="color:var(--inv-fill);margin-bottom:14px">In eigener Sache</div>
+      <h2 style="font-size:40px">In 30 Minuten sehen, wie Ihre Lieferkette aussieht.</h2>
+    </div>
+    <div style="grid-column:8/13">
+      <div class="tx n2 on-inv" style="--lh:22px;--th:9px;margin-bottom:22px"></div>
+      <div style="display:flex;gap:12px"><span class="btn on-inv">Demo buchen</span><span class="btn on-inv ghost">Dossier lesen</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER: dichte Heft-Anmutung -->
+<div class="pad" style="padding-top:46px;padding-bottom:36px">
+  <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:28px;border-bottom:1px solid var(--l1);padding-bottom:34px">
+    <div><div style="font-size:26px;letter-spacing:.12em;font-weight:600;margin-bottom:14px">NORDFELD</div>
+      <div class="tx n3" style="--lh:20px;--th:8px"></div></div>
+    <div><div class="kick" style="margin-bottom:14px">Produkt</div><div class="tx n5" style="--lh:20px;--th:7px"></div></div>
+    <div><div class="kick" style="margin-bottom:14px">Dossiers</div><div class="tx n5" style="--lh:20px;--th:7px"></div></div>
+    <div><div class="kick" style="margin-bottom:14px">Unternehmen</div><div class="tx n5" style="--lh:20px;--th:7px"></div></div>
+    <div><div class="kick" style="margin-bottom:14px">Rechtliches</div><div class="tx n5" style="--lh:20px;--th:7px"></div></div>
+  </div>
+  <div class="cap" style="padding-top:16px;display:flex;justify-content:space-between">
+    <span>© 2026 NORDFELD GmbH · Ausgabe 14</span><span>Impressum · Datenschutz · Kontakt</span>
+  </div>
+</div></div></div>
+  <ol class="legend"><li><b>Masthead statt Navigationsleiste.</b> Datumszeile, zentrierter Wortmarken-Block zwischen zwei Linien, darunter die Navigationszeile – die Marke wird zum Kopf einer Ausgabe, nicht zum Logo in einer Toolbar.</li>
+<li><b>Headline ragt über die Bildkante.</b> Die Textspalte startet auf Spalte 7, das Bild endet auf Spalte 8 – die Überlappung verzahnt Bild und Titel und erzeugt den Aufmacher-Effekt.</li>
+<li><b>Dreispaltiger Einstieg mit Initial.</b> Der einzige echte Fließtextblock der Studie. Er signalisiert: Hier wird gelesen, nicht gescannt.</li>
+<li><b>Module als Artikelzeilen mit wechselnder Thumbnail-Seite.</b> Das Zickzack hält vier gleichartige Einträge lebendig, ohne das Raster zu verlassen.</li>
+<li><b>Pull-Quote mit Porträt auf eigener Fläche.</b> Der Social Proof wird zum Zitat-Spread und nicht zur Testimonial-Card – er unterbricht den Lesefluss bewusst.</li>
+<li><b>FAQ als Interview.</b> Frage in Serifen-Fett, Antwort zweispaltig gesetzt. Die Form macht aus Pflichtinhalt einen Inhaltsbaustein.</li></ol>
+
+  <div class="sec-label"><h2>Mobile</h2><span>390 px</span></div>
+  <div class="mobile-row">
+    <div class="stage" data-w="390"><div class="frame c03 m"><div class="pad" style="padding-top:12px;padding-bottom:10px">
+  <div style="display:flex;justify-content:space-between;font:400 9.5px/1 var(--sans);color:var(--ink3);letter-spacing:.08em">
+    <span>AUSGABE 14</span><span>16. SEP 2026</span></div>
+</div>
+<div class="rules pad pinhost" style="padding-top:12px;padding-bottom:10px">
+  <span class="pin" style="top:16px;left:346px">1</span>
+  <div style="text-align:center;font-size:27px;letter-spacing:.14em;font-weight:600">NORDFELD</div>
+</div>
+<div class="pad" style="border-bottom:1px solid var(--ink);padding:9px 0;overflow:hidden">
+  <div style="display:flex;gap:20px;font:500 11px/1 var(--sans);letter-spacing:.05em;text-transform:uppercase;padding:0 20px">
+    <span style="font-weight:700">Produkt</span><span>Lösungen</span><span>Preise</span><span>Dossiers</span><span>Mehr</span></div>
+</div>
+<div class="pad pinhost" style="padding-top:26px">
+  <span class="pin" style="top:214px;left:-2px">2</span>
+  <div class="img" style="height:230px"></div>
+  <div class="cap" style="margin-top:8px">Werkshalle eines Zulieferers</div>
+  <div style="background:var(--paper);margin-top:-30px;position:relative;padding:20px 0 0 14px;margin-left:12px">
+    <div class="kick" style="margin-bottom:14px">Titelthema</div>
+    <h1 style="margin-bottom:16px">Lieferketten, die man nachweisen kann.</h1>
+  </div>
+  <div style="font-size:16px;line-height:1.5;color:var(--ink2);margin-bottom:16px">Warum Nachweispflicht kein Verwaltungsproblem ist, sondern eine Frage der Datenarchitektur.</div>
+  <div class="byl" style="margin-bottom:20px">Von der NORDFELD-Redaktion · 6 Min.</div>
+  <span class="btn block">Demo buchen</span>
+</div>
+<div class="pad" style="padding-top:30px;padding-bottom:30px">
+  <div style="border-top:3px solid var(--ink);padding-top:20px;font-size:15px;line-height:1.62;color:var(--ink2)">
+    <p style="margin:0 0 12px"><span class="drop" style="font-size:52px">D</span>Wer heute belegen muss, woher ein Bauteil stammt, arbeitet in vier Systemen gleichzeitig.</p>
+    <div class="tx n6" style="--lh:24px;--th:10px"></div></div>
+</div>
+<div class="pad sec" style="border-top:3px solid var(--ink)">
+  <div class="kick" style="margin-bottom:14px">Drei Befunde</div>
+  <h2 style="margin-bottom:26px">Was sich ändert, wenn Nachweise zu Daten werden.</h2>
+  <div style="display:grid;gap:30px">
+    <div><div class="img" style="height:180px;margin-bottom:14px"></div><div class="kick" style="margin-bottom:10px">01 · Transparenz</div>
+      <h3 style="margin-bottom:10px">Echtzeit statt Quartalsbericht</h3><div class="tx n4" style="--lh:22px;--th:9px"></div></div>
+    <div><div class="img" style="height:180px;margin-bottom:14px"></div><div class="kick" style="margin-bottom:10px">02 · Nachweis</div>
+      <h3 style="margin-bottom:10px">Prüfsicher, ohne Mehrarbeit</h3><div class="tx n4" style="--lh:22px;--th:9px"></div></div>
+    <div><div class="img" style="height:180px;margin-bottom:14px"></div><div class="kick" style="margin-bottom:10px">03 · Aufwand</div>
+      <h3 style="margin-bottom:10px">68 Prozent weniger Handarbeit</h3><div class="tx n4" style="--lh:22px;--th:9px"></div></div>
+  </div>
+</div>
+<div class="pad sec" style="border-top:1px solid var(--l1)">
+  <div class="kick" style="margin-bottom:20px">Die vier Module</div>
+  <div class="hairs" style="padding:18px 0;display:flex;gap:16px"><div class="img" style="width:92px;height:70px;flex:none"></div>
+    <div><div class="byl" style="margin-bottom:6px">Modul 01</div><h4>Lieferanten-Cockpit</h4></div></div>
+  <div class="hairs" style="padding:18px 0;display:flex;gap:16px"><div class="img" style="width:92px;height:70px;flex:none"></div>
+    <div><div class="byl" style="margin-bottom:6px">Modul 02</div><h4>Risiko-Radar</h4></div></div>
+  <div class="hairs" style="padding:18px 0;display:flex;gap:16px"><div class="img" style="width:92px;height:70px;flex:none"></div>
+    <div><div class="byl" style="margin-bottom:6px">Modul 03</div><h4>Nachweis-Archiv</h4></div></div>
+  <div class="hairs" style="padding:18px 0;border-bottom:1px solid var(--l1);display:flex;gap:16px"><div class="img" style="width:92px;height:70px;flex:none"></div>
+    <div><div class="byl" style="margin-bottom:6px">Modul 04</div><h4>Reporting-Studio</h4></div></div>
+</div>
+<div style="background:var(--fill2);padding:38px 0">
+  <div class="pad">
+    <div class="qm" style="font-size:70px">„</div>
+    <div style="font-size:23px;line-height:1.3;margin-top:-10px">Wir haben den Nachweis für 340 Lieferanten von vier Wochen auf zwei Tage gebracht.</div>
+    <div style="display:flex;gap:12px;align-items:center;margin-top:18px">
+      <div class="img" style="width:52px;height:52px;flex:none"></div>
+      <div class="byl">M. Keller · Werk Nord</div></div>
+  </div>
+</div>
+<div class="pad" style="padding-top:26px;padding-bottom:26px;border-bottom:1px solid var(--l1)">
+  <div class="kick" style="margin-bottom:16px;text-align:center">Im Einsatz bei</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;justify-items:center">
+    <div class="logo sm"></div><div class="logo sm"></div><div class="logo sm"></div>
+    <div class="logo sm"></div><div class="logo sm"></div><div class="logo sm"></div></div>
+</div>
+<div class="pad sec">
+  <div class="img" style="height:230px;margin-bottom:8px"></div>
+  <div class="cap" style="margin-bottom:22px">Das Team in der Hamburger Speicherstadt</div>
+  <div class="kick" style="margin-bottom:12px">In eigener Sache</div>
+  <h2 style="margin-bottom:18px">28 Leute in Hamburg, seit 2019.</h2>
+  <div class="tx n6" style="--lh:24px;--th:10px;margin-bottom:20px"></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="chip">ISO 27001</span><span class="chip">DSGVO</span><span class="chip">EU-Hosting</span></div>
+</div>
+<div class="pad sec" style="border-top:3px solid var(--ink)">
+  <div class="kick" style="margin-bottom:12px">Nachgefragt</div>
+  <h2 style="margin-bottom:22px">Fünf Fragen an die Produktleitung.</h2>
+  <div class="hairs" style="padding:18px 0"><h4 style="margin-bottom:10px">Wie lange dauert die Einführung?</h4><div class="tx n3" style="--lh:22px;--th:9px"></div></div>
+  <div class="hairs" style="padding:18px 0"><h4 style="margin-bottom:10px">Welche Systeme lassen sich anbinden?</h4><div class="tx n3" style="--lh:22px;--th:9px"></div></div>
+  <div class="hairs" style="padding:18px 0"><h4 style="margin-bottom:10px">Wie sicher sind unsere Daten?</h4><div class="tx n2" style="--lh:22px;--th:9px"></div></div>
+  <div class="hairs" style="padding:18px 0"><h4 style="margin-bottom:10px">Was kostet NORDFELD?</h4><div class="tx n2" style="--lh:22px;--th:9px"></div></div>
+  <div class="hairs" style="padding:18px 0;border-bottom:1px solid var(--l1)"><h4 style="margin-bottom:10px">Brauchen wir eigene IT-Ressourcen?</h4><div class="tx n2" style="--lh:22px;--th:9px"></div></div>
+</div>
+<div class="pad" style="padding-top:38px;padding-bottom:38px;background:var(--inv-bg);color:var(--inv-fg)">
+  <div class="kick" style="color:var(--inv-fill);margin-bottom:12px">In eigener Sache</div>
+  <h2 style="margin-bottom:20px">In 30 Minuten sehen, wie Ihre Lieferkette aussieht.</h2>
+  <div class="tx n2 on-inv" style="--lh:22px;--th:9px;margin-bottom:20px"></div>
+  <span class="btn on-inv block" style="margin-bottom:10px">Demo buchen</span>
+  <span class="btn on-inv ghost block">Dossier lesen</span>
+</div>
+<div class="pad" style="padding-top:32px;padding-bottom:28px">
+  <div style="font-size:20px;letter-spacing:.12em;font-weight:600;margin-bottom:20px">NORDFELD</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 16px;border-bottom:1px solid var(--l1);padding-bottom:24px">
+    <div><div class="kick" style="margin-bottom:10px">Produkt</div><div class="tx n4" style="--lh:18px;--th:7px"></div></div>
+    <div><div class="kick" style="margin-bottom:10px">Dossiers</div><div class="tx n4" style="--lh:18px;--th:7px"></div></div>
+    <div><div class="kick" style="margin-bottom:10px">Unternehmen</div><div class="tx n4" style="--lh:18px;--th:7px"></div></div>
+    <div><div class="kick" style="margin-bottom:10px">Rechtliches</div><div class="tx n4" style="--lh:18px;--th:7px"></div></div>
+  </div>
+  <div class="cap" style="padding-top:14px">© 2026 NORDFELD GmbH · Ausgabe 14</div>
+</div></div></div>
+    <div class="notes"><ol class="legend" style="grid-template-columns:1fr"><li><b>Der Masthead überlebt die Verkleinerung</b> – Datumszeile, zentrierte Wortmarke, Linien. Die Navigationszeile wird zur horizontal scrollbaren Leiste mit „Mehr", statt in ein Burger-Menü zu verschwinden.</li>
+<li><b>Die Überlappung bleibt erhalten.</b> Der Titelblock schiebt sich mit negativem Abstand über die Bildunterkante und wird um 12 px eingerückt – der Aufmacher-Charakter überträgt sich damit auch auf 390 px.</li></ol></div>
+  </div>
+
+  <div class="sec-label"><h2>Einordnung</h2><span>Designidee · Blickführung · Differenz · Positionierung</span></div>
+  <div class="rationale"><div><h3>Zentrale Designidee</h3><p>Die Seite wird als Ausgabe gedacht, nicht als Funnel. Ein Aufmacher trägt den Einstieg, danach folgt Storytelling in typografisch differenzierten Content-Blöcken statt in gleichförmigen Sektionen.</p></div><div><h3>Blickführung</h3><p>Kicker → überlappende Headline → Initial → Textspalten. Der Blick springt wie im Heft zwischen Bildunterschrift, Pull-Quote und Fließtext und wird von wechselnden Spaltenbreiten neu justiert.</p></div><div><h3>Unterschied zu den anderen</h3><p>Einziges Konzept mit mehrspaltigem Fließtext, Masthead-Navigation und einer Headline, die ins Bild hineinragt. Höchste Informationsdichte aller zehn Richtungen.</p></div><div><h3>Passende Markenpositionierung</h3><p>Marken, die Autorität durch Inhalt aufbauen und Content-Marketing als Kern und nicht als Beiwerk betreiben.</p></div></div>
+
+  <div class="pager">
+    <a href="konzept-02-minimal.html">&larr; Vorheriges Konzept</a>
+    <a href="index.html">Alle Konzepte</a>
+    <a href="konzept-04-brutalist.html">Nächstes Konzept &rarr;</a>
+  </div>
+</div>
+<script src="assets/wf.js"></script>
+</body>
+</html>

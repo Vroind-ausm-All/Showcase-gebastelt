@@ -1,0 +1,142 @@
+/* ============================================================================
+   PLAYGROUND-EXPERIMENTE
+   Jeder Block gehört zu einem Eintrag in app/data/playground.js.
+   Bewusst eigenständig: Ein Experiment lässt sich mit seinem CSS-Block und
+   seinem Daten-Eintrag zusammen herauslösen oder in ein Projekt übernehmen.
+   ========================================================================== */
+
+/* --- Buttons ---------------------------------------------------------------- */
+.xb {
+  position: relative; overflow: hidden; padding: 12px 20px; border-radius: var(--r-full);
+  border: 1px solid var(--ui-line-2); font: 600 var(--fs-xs)/1 var(--font-sans);
+  color: var(--ui-ink); background: transparent; isolation: isolate;
+}
+.xb > span { position: relative; z-index: 1; }
+.xb::before { content: ""; position: absolute; inset: 0; z-index: 0; background: var(--ui-inverse); }
+
+.xb--fill::before { transform: scaleY(0); transform-origin: 50% 100%; transition: transform var(--t-base) var(--ease-out); }
+.xb--fill:hover::before, .xb--fill:focus-visible::before { transform: scaleY(1); }
+.xb--fill:hover, .xb--fill:focus-visible { color: var(--ui-inverse-ink); }
+
+.xb--slide::before { transform: translateX(-101%); transition: transform var(--t-base) var(--ease-out); }
+.xb--slide:hover::before, .xb--slide:focus-visible::before { transform: none; }
+.xb--slide:hover, .xb--slide:focus-visible { color: var(--ui-inverse-ink); }
+
+.xb--swap { display: grid; }
+.xb--swap::before { display: none; }
+.xb--swap .xb__a, .xb--swap .xb__b { grid-area: 1 / 1; transition: transform var(--t-base) var(--ease-out), opacity var(--t-base); }
+.xb--swap .xb__b { transform: translateY(110%); opacity: 0; }
+.xb--swap:hover .xb__a, .xb--swap:focus-visible .xb__a { transform: translateY(-110%); opacity: 0; }
+.xb--swap:hover .xb__b, .xb--swap:focus-visible .xb__b { transform: none; opacity: 1; }
+
+.xb--arrow::before { display: none; }
+.xb--arrow i { font-style: normal; display: inline-block; transition: transform var(--t-base) var(--ease-out); }
+.xb--arrow:hover i, .xb--arrow:focus-visible i { transform: translateX(6px); }
+
+.xb--mag::before { display: none; }
+.xb--mag { border-color: var(--sig); color: var(--sig); }
+
+/* --- Zeiger ------------------------------------------------------------------ */
+.xc {
+  position: relative; overflow: hidden; width: 128px; height: 92px; border-radius: var(--r-2);
+  border: 1px solid var(--ui-line); background: var(--ui-bg-2);
+  display: grid; place-items: end start; padding: var(--sp-3);
+}
+.xc--light::before {
+  content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity var(--t-base);
+  background: radial-gradient(90px circle at var(--sx, 50%) var(--sy, 50%), color-mix(in oklab, var(--sig) 42%, transparent), transparent 70%);
+}
+.xc--light:hover::before, .xc--light:focus-visible::before { opacity: 1; }
+.xc--zoom .xc__img { position: absolute; inset: 0; background: repeating-linear-gradient(48deg, var(--ui-line) 0 9px, var(--ui-bg-2) 9px 18px); transition: transform var(--t-slow) var(--ease-out); }
+.xc--zoom:hover .xc__img, .xc--zoom:focus-visible .xc__img { transform: scale(1.18); }
+.xc--peek .xc__peek {
+  position: absolute; inset: auto var(--sp-3) var(--sp-3) auto; width: 42px; height: 42px;
+  border-radius: var(--r-2); background: var(--ui-inverse); color: var(--ui-inverse-ink);
+  display: grid; place-items: center; font: 600 15px/1 var(--font-serif); font-style: normal;
+  transform: scale(.4) rotate(-12deg); opacity: 0; transition: transform var(--t-base) var(--ease-out), opacity var(--t-base);
+}
+.xc--peek:hover .xc__peek, .xc--peek:focus-visible .xc__peek { transform: none; opacity: 1; }
+.xc .pg__label { position: relative; z-index: 2; }
+
+/* --- Aufdecken ---------------------------------------------------------------- */
+.xr { position: relative; overflow: hidden; width: 128px; height: 92px; border: 1px solid var(--ui-line); border-radius: var(--r-2); display: grid; place-items: end start; padding: var(--sp-3); background: var(--ui-bg-2); }
+.xr i { position: absolute; inset: 0; background: var(--ui-inverse); }
+.xr .pg__label { position: relative; z-index: 2; }
+.xr--mask i  { transform-origin: 50% 0;   transition: transform var(--t-scene) var(--ease-both); }
+.xr--mask:hover i, .xr--mask:focus-visible i { transform: scaleY(0); }
+.xr--wipe i  { transform-origin: 100% 50%; transition: transform var(--t-scene) var(--ease-both); }
+.xr--wipe:hover i, .xr--wipe:focus-visible i { transform: scaleX(0); }
+.xr--clip i  { clip-path: circle(140% at 50% 50%); transition: clip-path var(--t-scene) var(--ease-both); }
+.xr--clip:hover i, .xr--clip:focus-visible i { clip-path: circle(0% at 50% 50%); }
+.xr--split i { clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%, 0 0); transition: transform var(--t-scene) var(--ease-both); }
+.xr--split::after { content: ""; position: absolute; inset: 0; background: var(--ui-inverse); clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); transition: transform var(--t-scene) var(--ease-both); }
+.xr--split:hover i, .xr--split:focus-visible i { transform: translateY(-100%); }
+.xr--split:hover::after, .xr--split:focus-visible::after { transform: translateY(100%); }
+
+/* --- Typografie ---------------------------------------------------------------- */
+.xt { font-size: var(--fs-md); cursor: default; }
+.xt--stagger span { display: inline-block; transition: transform var(--t-base) var(--ease-out); transition-delay: calc(var(--i) * 22ms); }
+.xt--stagger:hover span, .xt--stagger:focus-visible span { transform: translateY(-6px); }
+.xt--underline { position: relative; display: inline-block; }
+.xt--underline::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; background: var(--sig); transform: scaleX(0); transition: transform var(--t-base) var(--ease-out); }
+.xt--underline:hover::after, .xt--underline:focus-visible::after { transform: scaleX(1); }
+.xt--rotate .xt__win { display: inline-block; height: 1.25em; overflow: hidden; vertical-align: bottom; }
+.xt--rotate .xt__list { display: block; animation: rot 7.2s steps(1) infinite; }
+.xt--rotate b { display: block; height: 1.25em; line-height: 1.25em; color: var(--sig); }
+@keyframes rot { 0%,24% { transform: translateY(0); } 25%,49% { transform: translateY(-1.25em); } 50%,74% { transform: translateY(-2.5em); } 75%,100% { transform: translateY(-3.75em); } }
+
+/* --- Flächen -------------------------------------------------------------------- */
+.xs { width: 118px; height: 84px; border-radius: var(--r-3); display: grid; place-items: end start; padding: var(--sp-3); position: relative; }
+.xs--flat   { background: var(--ui-bg-2); border: 1px solid var(--ui-line); }
+.xs--shadow { background: var(--ui-panel); box-shadow: var(--e-3); }
+.xs--glass  { background: color-mix(in oklab, var(--ui-panel) 45%, transparent); border: 1px solid color-mix(in oklab, var(--ui-ink) 14%, transparent); backdrop-filter: blur(10px); box-shadow: inset 0 1px 0 color-mix(in oklab, #fff 40%, transparent); }
+.xs--hard   { background: var(--ui-panel); border: 2px solid var(--ui-ink); box-shadow: 5px 5px 0 var(--ui-ink); }
+
+/* --- Raster ---------------------------------------------------------------------- */
+.xg { display: grid; gap: var(--sp-3); }
+.xg__grid { display: grid; gap: 5px; }
+.xg__c { display: grid; place-items: center; background: var(--ui-bg-2); border: 1px solid var(--ui-line); border-radius: var(--r-1); font: 500 var(--fs-micro)/1 var(--font-mono); color: var(--ui-ink-3); min-height: 26px; font-style: normal; }
+.xg__grid[data-mode="gleich"]   { grid-template-columns: repeat(3, 1fr); }
+.xg__grid[data-mode="bento"]    { grid-template-columns: repeat(4, 1fr); }
+.xg__grid[data-mode="bento"] .xg__c:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.xg__grid[data-mode="bento"] .xg__c:nth-child(4) { grid-column: span 2; }
+.xg__grid[data-mode="spalten"]  { grid-template-columns: repeat(9, 1fr); }
+.xg__grid[data-mode="versetzt"] { grid-template-columns: repeat(3, 1fr); }
+.xg__grid[data-mode="versetzt"] .xg__c:nth-child(3n+2) { transform: translateY(9px); }
+
+/* --- Navigation ------------------------------------------------------------------- */
+.xn { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+.xn a { font: 500 var(--fs-xs)/1 var(--font-sans); color: var(--ui-ink-3); }
+.xn--underline a { padding: 6px 2px; margin-right: var(--sp-3); border-bottom: 2px solid transparent; }
+.xn--underline a:hover, .xn--underline a[data-on] { color: var(--ui-ink); border-color: var(--sig); }
+.xn--pill a { padding: 7px 13px; border-radius: var(--r-full); border: 1px solid var(--ui-line); }
+.xn--pill a:hover, .xn--pill a[data-on] { background: var(--ui-inverse); color: var(--ui-inverse-ink); border-color: var(--ui-inverse); }
+.xn--rail { flex-direction: column; align-items: flex-start; gap: 0; border-left: 1px solid var(--ui-line); padding-left: var(--sp-3); }
+.xn--rail a { padding: 5px 0; font-family: var(--font-mono); position: relative; }
+.xn--rail a::before { content: ""; position: absolute; left: calc(var(--sp-3) * -1 - 1px); top: 50%; width: 2px; height: 0; background: var(--sig); transform: translateY(-50%); transition: height var(--t-base) var(--ease-out); }
+.xn--rail a:hover::before, .xn--rail a[data-on]::before { height: 100%; }
+.xn--rail a:hover, .xn--rail a[data-on] { color: var(--ui-ink); }
+
+/* --- Zustände ---------------------------------------------------------------------- */
+.xl { width: 118px; display: grid; gap: 6px; align-content: start; padding: var(--sp-3); border: 1px solid var(--ui-line); border-radius: var(--r-2); background: var(--ui-bg-2); min-height: 84px; }
+.xl__skel { display: block; height: 8px; border-radius: 2px; background: linear-gradient(90deg, var(--ui-line) 25%, var(--ui-bg-2) 50%, var(--ui-line) 75%) 0 0 / 260% 100%; animation: skel 1.5s linear infinite; }
+.xl__skel:last-of-type { width: 62%; }
+@keyframes skel { to { background-position: -260% 0; } }
+.xl__spin { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--ui-line); border-top-color: var(--sig); animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.xl__bar { display: block; height: 4px; border-radius: var(--r-full); background: var(--ui-line); overflow: hidden; position: relative; }
+.xl__bar::after { content: ""; position: absolute; inset: 0; width: 62%; background: var(--sig); border-radius: inherit; }
+.xl__empty { display: block; height: 26px; border: 1px dashed var(--ui-line-2); border-radius: var(--r-2); }
+@media (prefers-reduced-motion: reduce) {
+  .xl__skel { animation: none; background: var(--ui-line); }
+  .xl__spin { animation: none; border-top-color: var(--sig); }
+}
+
+/* --- Ein- und Ausklappen ------------------------------------------------------------ */
+.xd { display: grid; }
+.xd__i { border-bottom: 1px solid var(--ui-line); }
+.xd__i summary { list-style: none; cursor: pointer; padding: 11px 0; display: flex; justify-content: space-between; gap: var(--sp-4); font: 600 var(--fs-sm)/1.4 var(--font-sans); }
+.xd__i summary::-webkit-details-marker { display: none; }
+.xd__i summary::after { content: "+"; color: var(--ui-ink-3); font-weight: 400; }
+.xd__i[open] summary::after { content: "–"; color: var(--sig); }
+.xd__i p { padding-bottom: 11px; font-size: var(--fs-xs); color: var(--ui-ink-2); line-height: 1.6; }

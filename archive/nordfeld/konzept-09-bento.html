@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Konzept 09 – Bento Grid / Modular · NORDFELD Wireframes</title>
+<link rel="stylesheet" href="assets/wf.css">
+<style>
+.c09{font-family:var(--sans);color:var(--ink);background:var(--canvas)}
+.c09 .wrap{max-width:1360px;margin:0 auto;padding:0 32px}
+.c09 h1{font-size:64px;line-height:1.03;letter-spacing:-.035em;font-weight:650;margin:0}
+.c09 h2{font-size:34px;line-height:1.1;letter-spacing:-.028em;font-weight:650;margin:0}
+.c09 h3{font-size:19px;line-height:1.26;letter-spacing:-.012em;font-weight:600;margin:0}
+.c09 .t{background:var(--paper);border-radius:18px;padding:28px;position:relative;overflow:hidden}
+.c09 .t.fill{background:var(--fill2)}
+.c09 .t.inv{background:var(--inv-bg);color:var(--inv-fg)}
+.c09 .t.flat{background:transparent;padding:0}
+.c09 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.c09 .lbl{font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.c09 .num{font-size:46px;line-height:1;letter-spacing:-.035em;font-weight:650}
+.c09 .gap{height:16px}
+.c09.m .wrap{padding:0 14px}
+.c09.m h1{font-size:34px}.c09.m h2{font-size:24px}.c09.m h3{font-size:17px}
+.c09.m .t{border-radius:16px;padding:20px}
+.c09.m .num{font-size:32px}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc-bar">
+    <b>NORDFELD · Wireframe-Studie</b>
+    <span style="color:var(--ink3);font-size:12px">Konzept 09 von 10</span>
+    <span class="sp"></span>
+    <a href="index.html">Übersicht &amp; Vergleichsmatrix</a>
+  </div>
+
+  <div class="doc-head">
+    <div class="num">Konzept 09</div>
+    <h1>Bento Grid / Modular</h1>
+    <p class="sub">Die ganze Seite ist ein Kachelraster – auch der Hero. Einheitliche Abstände, gleiche Radien, keine Schatten, keine Überlagerungen: Gewichtung entsteht ausschließlich über die Kachelgröße.</p>
+    <div class="tags"><span class="tag">Durchgehendes Kachelraster</span><span class="tag">Hero als Bento</span><span class="tag">Einheitliche Gaps</span><span class="tag">Flach ohne Schatten</span><span class="tag">Hohe Scanbarkeit</span></div>
+  </div>
+
+  <div class="sec-label"><h2>Desktop</h2><span>1440 px</span></div>
+  <div class="stage" data-w="1440"><div class="frame c09 d"><div class="wrap" style="padding-top:16px;padding-bottom:16px">
+
+  <!-- NAVIGATION ALS KACHEL -->
+  <div class="t pinhost" style="padding:14px 14px 14px 24px;display:flex;align-items:center;gap:30px;margin-bottom:16px">
+    <span class="pin" style="top:14px;left:1300px">1</span>
+    <span style="display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:-.02em">
+      <span style="width:22px;height:22px;border-radius:7px;background:var(--inv-bg)"></span>NORDFELD</span>
+    <span style="display:flex;gap:24px;color:var(--ink2);font-size:14.5px">
+      <span style="color:var(--ink)">Plattform</span><span>Module</span><span>Preise</span><span>Docs</span><span>Über uns</span></span>
+    <span style="margin-left:auto;display:flex;gap:10px;align-items:center">
+      <span style="font-size:14.5px;color:var(--ink2)">Login</span><span class="btn sm" style="border-radius:11px">Demo buchen</span></span>
+  </div>
+
+  <!-- HERO ALS BENTO: kein Heldenblock, sondern verteilte Kacheln -->
+  <div class="grid pinhost" style="margin-bottom:16px">
+    <span class="pin" style="top:250px;left:-14px">2</span>
+    <span class="pin" style="top:24px;left:1020px">3</span>
+    <div class="t" style="grid-column:span 7;padding:46px">
+      <div class="lbl" style="margin-bottom:26px">Lieferketten-Transparenz</div>
+      <h1 style="margin-bottom:22px">Lieferketten,<br>die man<br>nachweisen kann.</h1>
+      <p style="font-size:17.5px;line-height:1.6;color:var(--ink2);margin:0;max-width:42ch">
+        Eine Datenschicht für Nachweise, Risiken und Berichte – über alle Lieferanten hinweg.</p>
+    </div>
+    <div style="grid-column:span 5;display:grid;gap:16px;grid-template-rows:auto auto 1fr">
+      <div class="t inv" style="display:flex;flex-direction:column;justify-content:space-between;min-height:150px">
+        <div class="lbl" style="color:var(--inv-fill)">Nächster Schritt</div>
+        <div><div style="font-size:22px;font-weight:600;letter-spacing:-.02em;margin-bottom:18px">30 Minuten, unverbindlich</div>
+          <span class="btn on-inv" style="border-radius:11px">Demo buchen →</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="t fill"><div class="num" style="margin-bottom:10px">−68 %</div><div style="font-size:13px;color:var(--ink2)">manueller Aufwand</div></div>
+        <div class="t fill"><div class="num" style="margin-bottom:10px">12 Tg.</div><div style="font-size:13px;color:var(--ink2)">Time-to-Value</div></div>
+      </div>
+      <div class="t" style="padding:0"><div class="img" style="height:100%;min-height:140px;border:0"></div></div>
+    </div>
+  </div>
+
+  <!-- PRODUKTKACHEL BREIT + LOGOS -->
+  <div class="grid" style="margin-bottom:16px">
+    <div class="t" style="grid-column:span 9;padding:0"><div class="img" style="height:420px;border:0"></div></div>
+    <div class="t" style="grid-column:span 3;display:flex;flex-direction:column;justify-content:space-between">
+      <div class="lbl">Im Einsatz bei</div>
+      <div style="display:grid;gap:22px;padding:24px 0">
+        <div class="logo sm"></div><div class="logo sm"></div><div class="logo sm"></div>
+        <div class="logo sm"></div><div class="logo sm"></div></div>
+      <div style="font-size:13px;color:var(--ink2)">120 Industrieunternehmen</div>
+    </div>
+  </div>
+
+  <!-- VORTEILE: sechs Kacheln mit unterschiedlichen Spans -->
+  <div class="t flat" style="padding:44px 4px 20px">
+    <div class="lbl" style="margin-bottom:14px">Warum NORDFELD</div>
+    <h2>Ein System, drei Effekte.</h2>
+  </div>
+  <div class="grid pinhost" style="margin-bottom:16px">
+    <span class="pin" style="top:-10px;left:-14px">4</span>
+    <div class="t" style="grid-column:span 5;grid-row:span 2;display:flex;flex-direction:column">
+      <div class="lbl" style="margin-bottom:18px">01 · Transparenz</div>
+      <h3 style="font-size:26px;margin-bottom:14px">Echtzeit statt Quartalsbericht</h3>
+      <div class="tx n4" style="margin-bottom:24px"></div>
+      <div class="img" style="flex:1;min-height:150px;border-radius:12px"></div></div>
+    <div class="t fill" style="grid-column:span 4"><div class="lbl" style="margin-bottom:16px">02 · Nachweis</div>
+      <h3 style="margin-bottom:12px">Prüfsichere Nachweise</h3><div class="tx n3" style="--bg:var(--fill2)"></div></div>
+    <div class="t" style="grid-column:span 3"><div class="lbl" style="margin-bottom:16px">03 · Aufwand</div>
+      <h3 style="margin-bottom:12px">Weniger Handarbeit</h3><div class="tx n3"></div></div>
+    <div class="t" style="grid-column:span 3"><div class="lbl" style="margin-bottom:14px">Datenquellen</div>
+      <div class="num">40+</div></div>
+    <div class="t" style="grid-column:span 4;display:flex;align-items:center;gap:18px">
+      <div class="b" style="width:44px;height:44px;border-radius:13px;flex:none"></div>
+      <div style="flex:1"><h3 style="margin-bottom:8px">Schnittstellen</h3><div class="tx n1"></div></div></div>
+  </div>
+
+  <!-- MODULE: vier gleich große Kacheln -->
+  <div class="t flat" style="padding:44px 4px 20px">
+    <div class="lbl" style="margin-bottom:14px">Die Plattform</div>
+    <h2>Vier Module, ein Datenmodell.</h2>
+  </div>
+  <div class="grid pinhost" style="margin-bottom:16px">
+    <span class="pin" style="top:-10px;left:-14px">5</span>
+    <div class="t" style="grid-column:span 3;padding:0"><div class="img" style="height:180px;border:0"></div>
+      <div style="padding:24px"><div class="lbl" style="margin-bottom:12px">Modul 01</div>
+        <h3 style="margin-bottom:12px">Lieferanten-Cockpit</h3><div class="tx n3"></div></div></div>
+    <div class="t" style="grid-column:span 3;padding:0"><div class="img" style="height:180px;border:0"></div>
+      <div style="padding:24px"><div class="lbl" style="margin-bottom:12px">Modul 02</div>
+        <h3 style="margin-bottom:12px">Risiko-Radar</h3><div class="tx n3"></div></div></div>
+    <div class="t" style="grid-column:span 3;padding:0"><div class="img" style="height:180px;border:0"></div>
+      <div style="padding:24px"><div class="lbl" style="margin-bottom:12px">Modul 03</div>
+        <h3 style="margin-bottom:12px">Nachweis-Archiv</h3><div class="tx n3"></div></div></div>
+    <div class="t" style="grid-column:span 3;padding:0"><div class="img" style="height:180px;border:0"></div>
+      <div style="padding:24px"><div class="lbl" style="margin-bottom:12px">Modul 04</div>
+        <h3 style="margin-bottom:12px">Reporting-Studio</h3><div class="tx n3"></div></div></div>
+  </div>
+
+  <!-- SOCIAL PROOF ALS KACHELGRUPPE -->
+  <div class="grid" style="margin-bottom:16px">
+    <div class="t" style="grid-column:span 6;padding:40px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="font-size:26px;line-height:1.36;letter-spacing:-.018em;margin-bottom:28px">
+        „Wir haben den Nachweis für 340 Lieferanten von vier Wochen auf zwei Tage gebracht."</div>
+      <div style="display:flex;gap:14px;align-items:center"><div class="av" style="width:44px;height:44px"></div>
+        <div><div style="font-size:14px;font-weight:600">M. Keller</div>
+          <div style="font-size:12.5px;color:var(--ink3)">Head of Supply Chain · Werk Nord</div></div></div></div>
+    <div class="t fill" style="grid-column:span 3"><div class="lbl" style="margin-bottom:16px">Lieferanten Ø</div>
+      <div class="num" style="margin-bottom:12px">340</div><div class="tx n2" style="--bg:var(--fill2)"></div></div>
+    <div class="t fill" style="grid-column:span 3"><div class="lbl" style="margin-bottom:16px">Bewertung</div>
+      <div class="num" style="margin-bottom:12px">4,8</div><div class="tx n2" style="--bg:var(--fill2)"></div></div>
+  </div>
+
+  <!-- ÜBER UNS + VERTRAUEN -->
+  <div class="grid" style="margin-bottom:16px">
+    <div class="t" style="grid-column:span 4;padding:0"><div class="img" style="height:100%;min-height:300px;border:0"></div></div>
+    <div class="t" style="grid-column:span 5;padding:40px">
+      <div class="lbl" style="margin-bottom:16px">Über uns</div>
+      <h2 style="margin-bottom:18px">28 Leute in Hamburg, seit 2019.</h2>
+      <div class="tx n5"></div></div>
+    <div style="grid-column:span 3;display:grid;gap:16px;grid-template-rows:1fr 1fr 1fr">
+      <div class="t fill" style="display:flex;align-items:center"><span style="font-size:14px;font-weight:600">ISO 27001</span></div>
+      <div class="t fill" style="display:flex;align-items:center"><span style="font-size:14px;font-weight:600">DSGVO-konform</span></div>
+      <div class="t fill" style="display:flex;align-items:center"><span style="font-size:14px;font-weight:600">Hosting in der EU</span></div>
+    </div>
+  </div>
+
+  <!-- FAQ ALS KACHELPAAR -->
+  <div class="grid pinhost" style="margin-bottom:16px">
+    <span class="pin" style="top:-10px;left:-14px">6</span>
+    <div class="t" style="grid-column:span 4;display:flex;flex-direction:column;justify-content:space-between;padding:40px">
+      <div><div class="lbl" style="margin-bottom:16px">FAQ</div><h2>Fragen vor der Demo.</h2></div>
+      <span class="btn ghost" style="border-radius:11px;align-self:flex-start;margin-top:26px">Team kontaktieren</span></div>
+    <div class="t" style="grid-column:span 8;padding:12px 28px">
+      <div style="padding:22px 0;border-bottom:1px solid var(--l2)"><div style="display:flex;gap:20px;margin-bottom:14px">
+        <h3 style="flex:1">Wie lange dauert die Einführung?</h3><span style="color:var(--ink3)">−</span></div><div class="tx n2"></div></div>
+      <div style="padding:22px 0;border-bottom:1px solid var(--l2);display:flex;gap:20px"><h3 style="flex:1">Welche Systeme lassen sich anbinden?</h3><span style="color:var(--ink3)">+</span></div>
+      <div style="padding:22px 0;border-bottom:1px solid var(--l2);display:flex;gap:20px"><h3 style="flex:1">Wie sicher sind unsere Daten?</h3><span style="color:var(--ink3)">+</span></div>
+      <div style="padding:22px 0;border-bottom:1px solid var(--l2);display:flex;gap:20px"><h3 style="flex:1">Was kostet NORDFELD?</h3><span style="color:var(--ink3)">+</span></div>
+      <div style="padding:22px 0;display:flex;gap:20px"><h3 style="flex:1">Brauchen wir eigene IT-Ressourcen?</h3><span style="color:var(--ink3)">+</span></div>
+    </div>
+  </div>
+
+  <!-- ABSCHLUSS-CTA ALS VOLLBREITE KACHEL -->
+  <div class="t inv" style="padding:72px 56px;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;margin-bottom:16px">
+    <div>
+      <h2 style="font-size:44px;margin-bottom:16px">In 30 Minuten sehen, wie Ihre Lieferkette aussieht.</h2>
+      <p style="font-size:16.5px;color:var(--inv-fill);margin:0;max-width:48ch">Demo mit Ihren eigenen Lieferantendaten – unverbindlich.</p></div>
+    <div style="display:flex;gap:12px;justify-content:flex-end">
+      <span class="btn lg on-inv" style="border-radius:12px">Demo buchen</span>
+      <span class="btn lg on-inv ghost" style="border-radius:12px">Preise</span></div>
+  </div>
+
+  <!-- FOOTER ALS KACHELREIHE -->
+  <div class="grid">
+    <div class="t" style="grid-column:span 4">
+      <span style="display:flex;align-items:center;gap:9px;font-weight:700;margin-bottom:16px">
+        <span style="width:22px;height:22px;border-radius:7px;background:var(--inv-bg)"></span>NORDFELD</span>
+      <div class="tx n2" style="margin-bottom:20px"></div>
+      <div style="font-size:12.5px;color:var(--ink3)">© 2026 NORDFELD GmbH · Hamburg</div></div>
+    <div class="t" style="grid-column:span 2"><div class="lbl" style="margin-bottom:16px">Plattform</div><div class="tx n4" style="--lh:22px;--th:8px"></div></div>
+    <div class="t" style="grid-column:span 2"><div class="lbl" style="margin-bottom:16px">Module</div><div class="tx n4" style="--lh:22px;--th:8px"></div></div>
+    <div class="t" style="grid-column:span 2"><div class="lbl" style="margin-bottom:16px">Ressourcen</div><div class="tx n4" style="--lh:22px;--th:8px"></div></div>
+    <div class="t" style="grid-column:span 2"><div class="lbl" style="margin-bottom:16px">Rechtliches</div><div class="tx n4" style="--lh:22px;--th:8px"></div></div>
+  </div>
+</div></div></div>
+  <ol class="legend"><li><b>Auch die Navigation ist eine Kachel.</b> Gleicher Radius, gleiche Fläche, gleicher Abstand wie jedes andere Modul – die Kopfzeile ist kein Sonderfall, sondern Teil des Systems.</li>
+<li><b>Der Hero ist verteilt, nicht zentriert.</b> Aussage (7 Spalten), Handlung (invertierte Kachel), Beleg (zwei Kennzahlen) und Produktbild sind vier getrennte Module – es gibt bewusst keinen klassischen Heldenblock.</li>
+<li><b>Die CTA-Kachel ist die einzige invertierte Fläche im Hero.</b> Sie ist kleiner als die Headline-Kachel, gewinnt aber durch Kontrast – Hierarchie entsteht aus Fläche × Kontrast, nicht aus Position.</li>
+<li><b>Ungleiche Spans (5 / 4 / 3 / 3 / 4) in einer Reihe.</b> Die Gewichtung der Vorteile ist am Flächenverhältnis ablesbar, während alle Abstände konstant 16 px bleiben.</li>
+<li><b>Vier Module in vier gleich großen Kacheln.</b> Wo Inhalte gleichrangig sind, wird auch die Fläche gleich – das ist die Gegenprobe zur Vorteile-Reihe darüber.</li>
+<li><b>Konsequent flach: keine Schatten, keine Überlagerung, ein Radius.</b> Genau das trennt diese Richtung von Konzept 06, das mit Tiefe und Überhang arbeitet.</li></ol>
+
+  <div class="sec-label"><h2>Mobile</h2><span>390 px</span></div>
+  <div class="mobile-row">
+    <div class="stage" data-w="390"><div class="frame c09 m"><div class="wrap" style="padding-top:12px;padding-bottom:12px">
+  <div class="t pinhost" style="padding:10px 10px 10px 16px;display:flex;align-items:center;gap:10px;margin-bottom:12px">
+    <span class="pin" style="top:10px;left:330px">1</span>
+    <span style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;flex:1">
+      <span style="width:20px;height:20px;border-radius:6px;background:var(--inv-bg)"></span>NORDFELD</span>
+    <span class="btn sm" style="border-radius:10px;padding:9px 13px;font-size:12.5px">Demo</span>
+    <span style="width:20px;display:flex;flex-direction:column;gap:3.5px">
+      <span class="b" style="height:2px;display:block;border-radius:2px"></span>
+      <span class="b" style="height:2px;display:block;border-radius:2px"></span>
+      <span class="b" style="height:2px;display:block;border-radius:2px"></span></span>
+  </div>
+  <div style="display:grid;gap:12px;margin-bottom:12px" class="pinhost">
+    <span class="pin" style="top:180px;left:330px">2</span>
+    <div class="t" style="padding:28px 22px">
+      <div class="lbl" style="margin-bottom:18px">Lieferketten-Transparenz</div>
+      <h1 style="margin-bottom:16px">Lieferketten, die man nachweisen kann.</h1>
+      <p style="font-size:15.5px;line-height:1.6;color:var(--ink2);margin:0">Eine Datenschicht für Nachweise, Risiken und Berichte.</p></div>
+    <div class="t inv">
+      <div class="lbl" style="color:var(--inv-fill);margin-bottom:14px">Nächster Schritt</div>
+      <div style="font-size:18px;font-weight:600;letter-spacing:-.02em;margin-bottom:16px">30 Minuten, unverbindlich</div>
+      <span class="btn on-inv block" style="border-radius:10px">Demo buchen →</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="t fill"><div class="num" style="margin-bottom:8px">−68 %</div><div style="font-size:12px;color:var(--ink2)">manueller Aufwand</div></div>
+      <div class="t fill"><div class="num" style="margin-bottom:8px">12 Tg.</div><div style="font-size:12px;color:var(--ink2)">Time-to-Value</div></div>
+    </div>
+    <div class="t" style="padding:0"><div class="img" style="height:200px;border:0"></div></div>
+  </div>
+  <div class="t" style="margin-bottom:12px"><div class="lbl" style="margin-bottom:16px">Im Einsatz bei</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;justify-items:center;margin-bottom:16px">
+      <div class="logo sm"></div><div class="logo sm"></div><div class="logo sm"></div>
+      <div class="logo sm"></div><div class="logo sm"></div><div class="logo sm"></div></div>
+    <div style="font-size:12.5px;color:var(--ink2);text-align:center">120 Industrieunternehmen</div></div>
+  <div style="padding:26px 4px 14px"><div class="lbl" style="margin-bottom:12px">Warum NORDFELD</div><h2>Ein System, drei Effekte.</h2></div>
+  <div style="display:grid;gap:12px;margin-bottom:12px" class="pinhost">
+    <span class="pin" style="top:-8px;left:330px">4</span>
+    <div class="t"><div class="lbl" style="margin-bottom:14px">01 · Transparenz</div>
+      <h3 style="font-size:21px;margin-bottom:12px">Echtzeit statt Quartalsbericht</h3><div class="tx n3" style="margin-bottom:18px"></div>
+      <div class="img" style="height:140px;border-radius:12px"></div></div>
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:12px">
+      <div class="t fill"><div class="lbl" style="margin-bottom:12px">02 · Nachweis</div><h3>Prüfsichere Nachweise</h3></div>
+      <div class="t"><div class="lbl" style="margin-bottom:12px">Quellen</div><div class="num">40+</div></div></div>
+    <div class="t"><div class="lbl" style="margin-bottom:12px">03 · Aufwand</div><h3 style="margin-bottom:10px">Weniger Handarbeit</h3><div class="tx n2"></div></div>
+  </div>
+  <div style="padding:26px 4px 14px"><div class="lbl" style="margin-bottom:12px">Die Plattform</div><h2>Vier Module, ein Datenmodell.</h2></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+    <div class="t" style="padding:0"><div class="img" style="height:110px;border:0"></div>
+      <div style="padding:16px"><div class="lbl" style="margin-bottom:10px">01</div><h3 style="font-size:15px">Lieferanten-Cockpit</h3></div></div>
+    <div class="t" style="padding:0"><div class="img" style="height:110px;border:0"></div>
+      <div style="padding:16px"><div class="lbl" style="margin-bottom:10px">02</div><h3 style="font-size:15px">Risiko-Radar</h3></div></div>
+    <div class="t" style="padding:0"><div class="img" style="height:110px;border:0"></div>
+      <div style="padding:16px"><div class="lbl" style="margin-bottom:10px">03</div><h3 style="font-size:15px">Nachweis-Archiv</h3></div></div>
+    <div class="t" style="padding:0"><div class="img" style="height:110px;border:0"></div>
+      <div style="padding:16px"><div class="lbl" style="margin-bottom:10px">04</div><h3 style="font-size:15px">Reporting-Studio</h3></div></div>
+  </div>
+  <div style="display:grid;gap:12px;margin-bottom:12px">
+    <div class="t" style="padding:26px">
+      <div style="font-size:19px;line-height:1.4;letter-spacing:-.015em;margin-bottom:20px">„Wir haben den Nachweis für 340 Lieferanten von vier Wochen auf zwei Tage gebracht."</div>
+      <div style="display:flex;gap:12px;align-items:center"><div class="av" style="width:40px;height:40px"></div>
+        <div><div style="font-size:13.5px;font-weight:600">M. Keller</div><div style="font-size:12px;color:var(--ink3)">Werk Nord</div></div></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="t fill"><div class="lbl" style="margin-bottom:12px">Lieferanten Ø</div><div class="num">340</div></div>
+      <div class="t fill"><div class="lbl" style="margin-bottom:12px">Bewertung</div><div class="num">4,8</div></div></div>
+  </div>
+  <div style="display:grid;gap:12px;margin-bottom:12px">
+    <div class="t" style="padding:0"><div class="img" style="height:190px;border:0"></div></div>
+    <div class="t"><div class="lbl" style="margin-bottom:12px">Über uns</div>
+      <h2 style="margin-bottom:14px">28 Leute in Hamburg, seit 2019.</h2><div class="tx n4"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="t fill" style="padding:16px"><span style="font-size:13px;font-weight:600">ISO 27001</span></div>
+      <div class="t fill" style="padding:16px"><span style="font-size:13px;font-weight:600">DSGVO</span></div>
+      <div class="t fill" style="padding:16px"><span style="font-size:13px;font-weight:600">EU-Hosting</span></div>
+      <div class="t fill" style="padding:16px"><span style="font-size:13px;font-weight:600">SOC 2 geplant</span></div></div>
+  </div>
+  <div style="display:grid;gap:12px;margin-bottom:12px">
+    <div class="t"><div class="lbl" style="margin-bottom:12px">FAQ</div><h2>Fragen vor der Demo.</h2></div>
+    <div class="t" style="padding:6px 20px">
+      <div style="padding:18px 0;border-bottom:1px solid var(--l2)"><div style="display:flex;gap:16px;margin-bottom:12px">
+        <h3 style="flex:1">Wie lange dauert die Einführung?</h3><span style="color:var(--ink3)">−</span></div><div class="tx n2"></div></div>
+      <div style="padding:18px 0;border-bottom:1px solid var(--l2);display:flex;gap:16px"><h3 style="flex:1">Welche Systeme lassen sich anbinden?</h3><span style="color:var(--ink3)">+</span></div>
+      <div style="padding:18px 0;border-bottom:1px solid var(--l2);display:flex;gap:16px"><h3 style="flex:1">Wie sicher sind unsere Daten?</h3><span style="color:var(--ink3)">+</span></div>
+      <div style="padding:18px 0;border-bottom:1px solid var(--l2);display:flex;gap:16px"><h3 style="flex:1">Was kostet NORDFELD?</h3><span style="color:var(--ink3)">+</span></div>
+      <div style="padding:18px 0;display:flex;gap:16px"><h3 style="flex:1">Brauchen wir IT-Ressourcen?</h3><span style="color:var(--ink3)">+</span></div>
+    </div>
+  </div>
+  <div class="t inv" style="padding:34px 22px;margin-bottom:12px">
+    <h2 style="margin-bottom:14px">In 30 Minuten sehen, wie Ihre Lieferkette aussieht.</h2>
+    <p style="font-size:14.5px;color:var(--inv-fill);margin:0 0 22px">Demo mit Ihren eigenen Lieferantendaten.</p>
+    <span class="btn lg on-inv block" style="border-radius:11px;margin-bottom:10px">Demo buchen</span>
+    <span class="btn lg on-inv ghost block" style="border-radius:11px">Preise</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div class="t" style="grid-column:span 2">
+      <span style="display:flex;align-items:center;gap:8px;font-weight:700;margin-bottom:14px">
+        <span style="width:20px;height:20px;border-radius:6px;background:var(--inv-bg)"></span>NORDFELD</span>
+      <div style="font-size:12px;color:var(--ink3)">© 2026 NORDFELD GmbH · Hamburg</div></div>
+    <div class="t"><div class="lbl" style="margin-bottom:12px">Plattform</div><div class="tx n4" style="--lh:20px;--th:7px"></div></div>
+    <div class="t"><div class="lbl" style="margin-bottom:12px">Module</div><div class="tx n4" style="--lh:20px;--th:7px"></div></div>
+    <div class="t"><div class="lbl" style="margin-bottom:12px">Ressourcen</div><div class="tx n4" style="--lh:20px;--th:7px"></div></div>
+    <div class="t"><div class="lbl" style="margin-bottom:12px">Rechtliches</div><div class="tx n4" style="--lh:20px;--th:7px"></div></div>
+  </div>
+</div></div></div>
+    <div class="notes"><ol class="legend" style="grid-template-columns:1fr"><li><b>Aus 12 Spalten werden 1 bis 2.</b> Das Kachelprinzip bleibt vollständig erhalten – nur die Spans kollabieren. Der Abstand geht von 16 px auf 12 px zurück, damit die Kacheln nicht zu schmal werden.</li>
+<li><b>Die vier Module bleiben zweispaltig.</b> Weil sie gleichrangig sind, dürfen sie klein sein – die Vorteile-Kacheln darüber bleiben dagegen vollbreit. Die Größenlogik des Desktops überträgt sich damit unverändert.</li></ol></div>
+  </div>
+
+  <div class="sec-label"><h2>Einordnung</h2><span>Designidee · Blickführung · Differenz · Positionierung</span></div>
+  <div class="rationale"><div><h3>Zentrale Designidee</h3><p>Jede Information ist ein Modul mit fester Rasterposition. Statt Abschnitten gibt es Kacheln – die Seite lässt sich in jeder Reihenfolge scannen, weil jedes Modul für sich verständlich ist.</p></div><div><h3>Blickführung</h3><p>Der Blick springt nicht linear, sondern nach Flächengröße: zuerst die 7-Spalten-Headline-Kachel, dann die kontrastreiche CTA-Kachel, danach reihenweise über die kleineren Module. Gleiche Abstände halten das Springen ruhig.</p></div><div><h3>Unterschied zu den anderen</h3><p>Anders als Konzept 06 arbeitet Bento bewusst flach: keine Überlappung, keine Tiefe, kein horizontales Scrollen. Auch der Hero ist verteilt statt zentriert – es gibt keinen klassischen Heldenblock.</p></div><div><h3>Passende Markenpositionierung</h3><p>Produktmarken, deren Angebot aus vielen gleichrangigen Bausteinen besteht und die Klarheit über Inszenierung stellen.</p></div></div>
+
+  <div class="pager">
+    <a href="konzept-08-organic.html">&larr; Vorheriges Konzept</a>
+    <a href="index.html">Alle Konzepte</a>
+    <a href="konzept-10-experimental.html">Nächstes Konzept &rarr;</a>
+  </div>
+</div>
+<script src="assets/wf.js"></script>
+</body>
+</html>

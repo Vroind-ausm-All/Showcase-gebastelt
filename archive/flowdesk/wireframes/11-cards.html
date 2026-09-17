@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11 — Cards Layout · Flowdesk Wireframe</title>
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+/* ===== 11 CARDS LAYOUT ====================================================
+   Die gesamte Seite besteht aus modularen Cards in einem Bento-Raster:
+   gleich grosse, grosse und horizontale Cards, 2-, 3- und 4-spaltig. Jede
+   Card ist ein eigenständiges, wiederverwendbares Inhaltsmodul.               */
+
+body { background: var(--bg-2); }
+.wrap { width: min(1340px, 100% - 48px); margin-inline: auto; }
+
+/* Card-Grundform */
+.card { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: var(--s-5);
+        display: flex; flex-direction: column; gap: var(--s-3); box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+.card__media { border-radius: 6px; overflow: hidden; }
+.card h3 { font-size: 17px; }
+.card__foot { margin-top: auto; padding-top: var(--s-3); border-top: 1px solid var(--line);
+              display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); font-size: 13px; color: var(--ink-3); }
+.card--flat { background: var(--bg-3); box-shadow: none; }
+.card--dark { background: var(--ink-dark); border-color: #000; color: #fff; }
+.card--dark .t-body, .card--dark .t-small { color: #b4b4b4; }
+.card--dark .card__foot { border-color: #333; color: #9a9a9a; }
+.card--outline { background: transparent; border-style: dashed; }
+.card--feature { padding: var(--s-6); border-width: 2px; border-color: var(--ink); }
+.card--h { flex-direction: row; align-items: center; gap: var(--s-5); }
+.card--h .card__media { flex: 0 0 38%; }
+
+/* Bento-Raster */
+.bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--s-4); }
+.c-3 { grid-column: span 3; } .c-4 { grid-column: span 4; } .c-5 { grid-column: span 5; }
+.c-6 { grid-column: span 6; } .c-7 { grid-column: span 7; } .c-8 { grid-column: span 8; } .c-12 { grid-column: span 12; }
+
+/* Header als Card-Leiste */
+.hd { padding: var(--s-4) 0 0; position: sticky; top: var(--wfchrome-h, 0px); z-index: 40; }
+.hd__card { display: flex; align-items: center; gap: var(--s-5); padding: var(--s-3) var(--s-5); border-radius: 12px; }
+.hd__nav { display: flex; gap: var(--s-2); font-size: 14px; }
+.hd__nav a { text-decoration: none; color: var(--ink-2); padding: 6px 12px; border-radius: 999px; }
+.hd__nav a.is-active { background: var(--bg-3); }
+.hd__act { margin-left: auto; display: flex; gap: var(--s-3); }
+
+.main { padding: var(--s-4) 0 var(--s-7); display: grid; gap: var(--s-4); }
+
+/* Hero-Card */
+.hero { padding: var(--s-8); gap: var(--s-4); }
+.hero h1 { font-size: clamp(32px, 4.2vw, 56px); line-height: 1.02; letter-spacing: -.03em; }
+.hero .btn-row { margin-top: var(--s-4); }
+
+.statcard { align-items: flex-start; }
+.statcard .stat__value { font-size: clamp(28px, 3vw, 40px); }
+
+.sectionhead { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4);
+               padding: var(--s-5) var(--s-2) 0; }
+.sectionhead h2 { font-size: clamp(22px, 2.4vw, 30px); }
+
+.logocard { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--s-3); align-items: center; }
+
+.tagrow { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.faqcard details { border-bottom: 1px solid var(--line); }
+.faqcard details:last-child { border-bottom: 0; }
+
+/* Abschluss-CTA als grosse Highlight-Card */
+.ctacard { padding: var(--s-8); display: grid; grid-template-columns: 1.2fr .8fr; gap: var(--s-7); align-items: center; }
+.ctacard h2 { font-size: clamp(26px, 3.2vw, 42px); letter-spacing: -.03em; }
+
+.ft { padding-bottom: var(--s-6); }
+.ftcard { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: var(--s-5); padding: var(--s-6); }
+.ft h4 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: var(--s-3); }
+.ft li { margin-bottom: 6px; font-size: 13px; color: var(--ink-3); }
+.ft a { text-decoration: none; }
+.ft__base { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: var(--s-4); margin-top: var(--s-2);
+            display: flex; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; font-size: 13px; color: var(--ink-3); }
+
+/* ---- Mobile: identisches Kartenprinzip, einspaltig gestapelt ------------- */
+@media (max-width: 1000px) {
+  .c-3 { grid-column: span 6; } .c-4 { grid-column: span 6; } .c-5, .c-7, .c-8 { grid-column: span 12; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 24px); }
+  .hd { position: static; }
+  .hd__nav { display: none; }
+  .bento > * { grid-column: span 12 !important; }
+  .hero { padding: var(--s-6); }
+  .hero h1 { font-size: 32px; }
+  .hero .btn { flex: 1 1 100%; }
+  .card--h { flex-direction: column; align-items: stretch; }
+  .card--h .card__media { flex: none; }
+  .ctacard, .ftcard { grid-template-columns: 1fr; padding: var(--s-6); }
+  .logocard { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap">
+    <div class="card hd__card">
+      <a class="logo" href="#">Flowdesk</a>
+      <nav class="hd__nav"><a class="is-active" href="#">Produkt</a><a href="#">Funktionen</a><a href="#usecases">Use Cases</a><a href="#">Preise</a><a href="#">Ressourcen</a></nav>
+      <div class="hd__act"><a class="btn btn--sec btn--sm" href="#tour">Produkt-Tour</a><a class="btn btn--sm" href="#demo">Demo buchen</a></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap main">
+
+  <!-- Hero-Bento: eine grosse Card + Produkt-Card + Stat-Cards -->
+  <div class="bento">
+    <section class="card hero c-7">
+      <span class="chip">Ressourcenplanung für Agenturen</span>
+      <h1>Agenturplanung, die endlich zusammenpasst.</h1>
+      <p class="t-lead">Flowdesk verbindet Projekte, Kapazitäten und Budgets in einer Oberfläche –
+        damit Ihr Team jederzeit weiß, wer wann woran arbeitet.</p>
+      <div class="btn-row"><a class="btn btn--lg" href="#demo">Demo buchen</a><a class="btn btn--sec btn--lg" href="#tour">Produkt-Tour ansehen</a></div>
+      <p class="t-small">14 Tage testen · keine Kreditkarte · Go-live in unter 14 Tagen</p>
+    </section>
+
+    <section class="card c-5">
+      <div class="card__media"><div class="ui" style="border-radius:6px">
+        <div class="ui__bar ui__bar--sm"></div>
+        <div class="ui__grid">
+          <span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span>
+          <span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell"></span>
+        </div>
+        <div class="ui__row"><i style="height:55%"></i><i style="height:85%"></i><i style="height:45%"></i><i style="height:100%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:60%"></i></div>
+      </div></div>
+      <div class="card__foot"><span>Planungsboard · KW 38</span><a href="#tour">Ansehen →</a></div>
+    </section>
+
+    <section class="card statcard c-3"><div class="stat__value num">480+</div><div class="stat__label">Agenturen planen mit Flowdesk</div></section>
+    <section class="card statcard c-3"><div class="stat__value num">12.000</div><div class="stat__label">geplante Projekte pro Monat</div></section>
+    <section class="card statcard c-3"><div class="stat__value num">31 %</div><div class="stat__label">weniger Planungsaufwand</div></section>
+    <section class="card statcard c-3"><div class="stat__value num">4,7/5</div><div class="stat__label">aus 320 Bewertungen</div></section>
+
+    <section class="card c-12 logocard card--flat">
+      <span class="logo-ph">Aurum</span><span class="logo-ph">Kessler &amp; Co.</span><span class="logo-ph">Studio Nord</span>
+      <span class="logo-ph">Brandwerk</span><span class="logo-ph">Pixelhof</span><span class="logo-ph">Vesta Group</span>
+    </section>
+  </div>
+
+  <!-- Vorteile: eine Highlight-Card + drei gleich grosse Cards -->
+  <div class="sectionhead"><h2>Vorteile</h2><span class="t-small">Was sich in den ersten Wochen verändert</span></div>
+  <div class="bento">
+    <article class="card card--feature c-6">
+      <span class="icon icon--lg"></span>
+      <h3 style="font-size:22px">Eine Quelle der Wahrheit für Auslastung, Timings und Margen</h3>
+      <p class="t-body">Statt fünf Tabellen und drei Tools arbeitet die ganze Agentur auf demselben Plan.
+        Änderungen laufen automatisch durch Kapazität, Budget und Forecast.</p>
+      <div class="card__media"><div class="ph ph--wide"><span>Highlight-Visual</span></div></div>
+      <div class="card__foot"><span class="tagrow"><span class="chip">Planung</span><span class="chip">Controlling</span></span><a href="#demo">Demo buchen →</a></div>
+    </article>
+    <article class="card c-6" style="gap:var(--s-4)">
+      <div class="bento" style="gap:var(--s-4)">
+        <div class="card card--flat c-12"><span class="icon"></span><h3>Auslastung in Echtzeit</h3><p class="t-body">Kapazitäten pro Person, Team und Woche auf einen Blick.</p></div>
+        <div class="card card--flat c-6"><span class="icon"></span><h3>Weniger Chaos</h3><p class="t-body">Ein Plan statt fünf Tabellen.</p></div>
+        <div class="card card--flat c-6"><span class="icon"></span><h3>Schnell startklar</h3><p class="t-body">Go-live in unter 14 Tagen.</p></div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Funktionen: 3-spaltiges Kartenraster -->
+  <div class="sectionhead"><h2>Funktionen</h2><a class="btn btn--ghost btn--sm" href="#">Alle ansehen</a></div>
+  <div class="bento">
+    <article class="card c-4"><span class="icon"></span><h3>Kapazitätsplanung</h3><p class="t-body">Wochen- und Tagesansicht, Skills, Teilzeit, Urlaube.</p><div class="card__foot"><span>Kern</span><a href="#">Details →</a></div></article>
+    <article class="card c-4"><span class="icon"></span><h3>Projekt-Timeline</h3><p class="t-body">Phasen, Meilensteine und Abhängigkeiten in einer Ansicht.</p><div class="card__foot"><span>Kern</span><a href="#">Details →</a></div></article>
+    <article class="card c-4"><span class="icon"></span><h3>Zeiterfassung</h3><p class="t-body">Erfassung in 15 Sekunden, mobil und im Browser.</p><div class="card__foot"><span>Kern</span><a href="#">Details →</a></div></article>
+    <article class="card c-4"><span class="icon"></span><h3>Budget &amp; Forecast</h3><p class="t-body">Soll-Ist je Projekt, Kunde und Quartal.</p><div class="card__foot"><span>Finanzen</span><a href="#">Details →</a></div></article>
+    <article class="card c-4"><span class="icon"></span><h3>Reporting</h3><p class="t-body">Dashboards für Leitung, PM und Controlling.</p><div class="card__foot"><span>Analyse</span><a href="#">Details →</a></div></article>
+    <article class="card c-4"><span class="icon"></span><h3>Integrationen</h3><p class="t-body">Jira, Slack, DATEV, Google Kalender, REST-API.</p><div class="card__foot"><span>Plattform</span><a href="#">Details →</a></div></article>
+  </div>
+
+  <!-- Prozess: vier gleich grosse Schritt-Cards -->
+  <div class="sectionhead"><h2>So funktioniert es</h2><span class="t-small">Vier Schritte bis zum ersten Wochenplan</span></div>
+  <div class="bento">
+    <article class="card c-3"><span class="chip">Schritt 01</span><h3>Daten importieren</h3><p class="t-body">Projekte, Stunden und Teams aus Excel oder Jira.</p></article>
+    <article class="card c-3"><span class="chip">Schritt 02</span><h3>Teams &amp; Rollen anlegen</h3><p class="t-body">Skills, Verfügbarkeiten und Stundensätze.</p></article>
+    <article class="card c-3"><span class="chip">Schritt 03</span><h3>Projekte planen</h3><p class="t-body">Kapazität zuweisen, Timings prüfen.</p></article>
+    <article class="card c-3"><span class="chip">Schritt 04</span><h3>Auslastung steuern</h3><p class="t-body">Wöchentlich nachjustieren statt raten.</p></article>
+  </div>
+
+  <!-- Use Cases: horizontale Cards -->
+  <div class="sectionhead" id="usecases"><h2>Use Cases</h2><span class="t-small">Für Teams von 8 bis 200 Personen</span></div>
+  <div class="bento">
+    <article class="card card--h c-6"><div class="card__media"><div class="ph ph--photo"><span>Bild</span></div></div>
+      <div><h3>Kreativagenturen</h3><p class="t-body">Retainer und Projektgeschäft parallel steuern.</p></div></article>
+    <article class="card card--h c-6"><div class="card__media"><div class="ph ph--photo"><span>Bild</span></div></div>
+      <div><h3>Design-Studios</h3><p class="t-body">Kleine Teams, viele parallele Kunden.</p></div></article>
+    <article class="card card--h c-6"><div class="card__media"><div class="ph ph--photo"><span>Bild</span></div></div>
+      <div><h3>IT-Dienstleister</h3><p class="t-body">Sprints, Rollen und Abrechenbarkeit verbinden.</p></div></article>
+    <article class="card card--h c-6"><div class="card__media"><div class="ph ph--photo"><span>Bild</span></div></div>
+      <div><h3>Inhouse-Teams</h3><p class="t-body">Interne Nachfrage sichtbar priorisieren.</p></div></article>
+  </div>
+
+  <!-- Testimonials: eine grosse und zwei kleine Cards -->
+  <div class="sectionhead"><h2>Stimmen aus der Praxis</h2><span class="t-small">4,7/5 aus 320 Bewertungen</span></div>
+  <div class="bento">
+    <blockquote class="card card--dark c-6" style="padding:var(--s-6)">
+      <p style="font-size:20px;line-height:1.35">„Wir haben unsere Wochenplanung von vier Stunden auf zwanzig Minuten reduziert.“</p>
+      <div class="card__foot"><span style="display:flex;gap:10px;align-items:center"><span class="avatar"></span>Lena Brandt · Studio Nord</span></div>
+    </blockquote>
+    <blockquote class="card c-3"><p class="t-body">„Zum ersten Mal sehen Geschäftsführung und Projektleitung dieselben Zahlen.“</p>
+      <div class="card__foot"><span style="display:flex;gap:10px;align-items:center"><span class="avatar"></span>Mirko Falk · Brandwerk</span></div></blockquote>
+    <blockquote class="card c-3"><p class="t-body">„Die Einführung war in zwei Wochen durch – ohne Beraterprojekt.“</p>
+      <div class="card__foot"><span style="display:flex;gap:10px;align-items:center"><span class="avatar"></span>Ayla Demir · Vesta</span></div></blockquote>
+  </div>
+
+  <!-- FAQ und Ressourcen als Card-Paar -->
+  <div class="bento" style="margin-top:var(--s-4)">
+    <section class="card faqcard c-8">
+      <h2 class="t-h3">Häufige Fragen</h2>
+      <div class="faq">
+        <details open><summary>Wie lange dauert die Einführung?</summary><p>10 bis 14 Tage, inklusive Datenimport und Schulung.</p></details>
+        <details><summary>Können wir bestehende Daten importieren?</summary><p>Excel, CSV, Jira und Harvest direkt, alles Weitere über die API.</p></details>
+        <details><summary>Welche Integrationen gibt es?</summary><p>Jira, Slack, DATEV, Google Kalender, Outlook, REST-API.</p></details>
+        <details><summary>Wie wird abgerechnet?</summary><p>Pro aktiver Person und Monat, monatlich kündbar.</p></details>
+        <details><summary>Wo liegen die Daten?</summary><p>Server in Frankfurt, DSGVO-konform, AVV inklusive.</p></details>
+      </div>
+    </section>
+    <section class="card card--outline c-4">
+      <h3>Ressourcen</h3>
+      <div class="card card--flat"><span class="chip">Guide</span><h3 style="font-size:15px">Kapazitätsplanung in Agenturen</h3></div>
+      <div class="card card--flat"><span class="chip">Webinar</span><h3 style="font-size:15px">Forecast ohne Excel</h3></div>
+      <div class="card card--flat"><span class="chip">Case</span><h3 style="font-size:15px">Studio Nord: 31 % weniger Aufwand</h3></div>
+    </section>
+  </div>
+
+  <!-- Abschluss-CTA als Highlight-Card -->
+  <section class="card card--dark ctacard" id="demo">
+    <div>
+      <span class="chip" style="background:#262626;border-color:#4a4a4a;color:#c9c9c9">Nächster Schritt</span>
+      <h2 style="margin-top:12px">Sehen Sie Flowdesk an Ihrem eigenen Projektplan.</h2>
+      <p class="t-lead" style="margin-top:12px">30 Minuten, gemeinsam mit einer Person aus Ihrem Team.</p>
+    </div>
+    <div class="btn-row" style="flex-direction:column;align-items:stretch">
+      <a class="btn btn--on-dark btn--lg" href="#">Demo buchen</a>
+      <a class="btn btn--on-dark-sec btn--lg" href="#tour">Produkt-Tour ansehen</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap ft">
+  <div class="card ftcard">
+    <div><span class="logo">Flowdesk</span><p class="t-small" style="margin-top:8px">Ressourcenplanung für Agenturen und Studios.</p></div>
+    <div><h4>Produkt</h4><ul><li><a href="#">Funktionen</a></li><li><a href="#">Integrationen</a></li><li><a href="#">Preise</a></li></ul></div>
+    <div><h4>Unternehmen</h4><ul><li><a href="#">Über uns</a></li><li><a href="#">Karriere</a></li><li><a href="#">Kontakt</a></li></ul></div>
+    <div><h4>Ressourcen</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Hilfe-Center</a></li><li><a href="#">Webinare</a></li></ul></div>
+    <div><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul></div>
+    <div class="ft__base"><span>© 2026 Flowdesk GmbH</span><span>Hamburg · Server in Frankfurt · DSGVO-konform</span></div>
+  </div>
+</footer>
+
+<script src="../assets/wf.js"></script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06 — Fullscreen Image Layout · Flowdesk Wireframe</title>
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+/* ===== 06 FULLSCREEN IMAGE LAYOUT =========================================
+   Grosse Bildflächen tragen das Layout. Der erste Viewport ist ein
+   bildschirmfüllendes Visual mit Text-Overlay; Inhalte liegen als Overlay oder
+   in schmalen Textinseln auf bzw. zwischen den Bildflächen.                   */
+
+.wrap { width: min(1320px, 100% - 56px); margin-inline: auto; }
+
+/* Header liegt über dem Bild */
+.hd { position: fixed; top: var(--wfchrome-h, 0px); left: 0; right: 0; z-index: 60; color: #fff;
+      background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,0)); }
+.hd__in { display: flex; align-items: center; gap: var(--s-6); height: 76px; }
+.hd .logo { color: #fff; }
+.hd .logo::before { background: #fff; }
+.hd__nav { display: flex; gap: var(--s-5); font-size: 14px; }
+.hd__nav a { color: rgba(255,255,255,.85); text-decoration: none; }
+.hd__act { margin-left: auto; display: flex; gap: var(--s-3); align-items: center; }
+
+/* HERO: 100vh Bild mit Overlay */
+.shot { position: relative; isolation: isolate; }
+.shot__img { position: absolute; inset: 0; z-index: -2; }
+.shot__img .ph { height: 100%; width: 100%; border: 0; align-items: flex-start; justify-content: flex-start; padding: 14px 18px; }
+.shot__scrim { position: absolute; inset: 0; z-index: -1;
+               background: linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.45) 45%, rgba(0,0,0,.15) 100%); }
+.shot--center .shot__scrim { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)); }
+
+.hero { min-height: 100vh; display: flex; align-items: flex-end; color: #fff; padding: var(--s-9) 0 var(--s-8); }
+.hero__in { max-width: min(100%, 820px); }
+.hero h1 { font-size: clamp(40px, 6vw, 82px); line-height: .97; letter-spacing: -.035em; }
+.hero p { margin-top: var(--s-4); font-size: clamp(17px, 1.5vw, 21px); color: rgba(255,255,255,.85); }
+.hero .btn-row { margin-top: var(--s-6); }
+.hero__proof { margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid rgba(255,255,255,.3);
+               display: flex; gap: var(--s-4); align-items: center; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,.8); }
+.hero__logos { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+.hero__logos span { border: 1px solid rgba(255,255,255,.35); color: rgba(255,255,255,.8);
+                    padding: 4px 10px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+.scrollhint { position: absolute; bottom: var(--s-5); right: 0; color: rgba(255,255,255,.7); font-size: 12px;
+              letter-spacing: .14em; text-transform: uppercase; }
+
+/* Value Proposition als Textinsel auf dunklem Grund */
+.claim { background: var(--ink-dark); color: #fff; padding: var(--s-9) 0; text-align: center; }
+.claim h2 { font-size: clamp(26px, 3.4vw, 46px); letter-spacing: -.03em; max-width: 20ch; margin-inline: auto; }
+.claim p { color: #a9a9a9; margin-top: var(--s-4); max-width: 56ch; margin-inline: auto; }
+
+/* Benefits als Overlay über einem Vollbild */
+.benefits { min-height: 82vh; display: flex; align-items: center; color: #fff; padding: var(--s-9) 0; }
+.benefits__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-6); margin-top: var(--s-6); }
+.benefits__grid h3 { font-size: 18px; margin: var(--s-3) 0 var(--s-2); }
+.benefits__grid p { color: rgba(255,255,255,.78); font-size: 14px; }
+.benefits__grid .icon { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.08); }
+.benefits__grid .icon::after { border-color: rgba(255,255,255,.7); }
+.benefits h2 { font-size: clamp(26px, 3vw, 40px); max-width: 18ch; }
+
+/* Split-Screen: halbes Bild, halber Text */
+.split { display: grid; grid-template-columns: 1fr 1fr; min-height: 90vh; }
+.split__img .ph { height: 100%; border: 0; }
+.split__text { display: flex; align-items: center; padding: var(--s-9) var(--s-8); background: var(--bg); }
+.split__text .in { max-width: 44ch; }
+.split__text h2 { font-size: clamp(24px, 2.8vw, 36px); }
+.split__text p { color: var(--ink-2); margin-top: var(--s-4); }
+.split--rev .split__img { order: 2; }
+.featlist { margin-top: var(--s-5); }
+.featlist li { display: grid; grid-template-columns: 30px 1fr; gap: var(--s-3); padding: var(--s-3) 0; border-top: 1px solid var(--line); }
+.featlist li:last-child { border-bottom: 1px solid var(--line); }
+.featlist strong { display: block; font-size: 15px; }
+.featlist span { font-size: 14px; color: var(--ink-3); }
+
+/* Produktvisualisierung bildschirmfüllend mit Bildunterschrift */
+.showcase { min-height: 100vh; display: flex; align-items: center; justify-content: center; color: #fff; padding: var(--s-9) 0; }
+.showcase__frame { width: min(1000px, 100% - 56px); }
+.showcase .ui { background: rgba(255,255,255,.96); }
+.showcase__cap { display: flex; justify-content: space-between; gap: var(--s-4); margin-top: var(--s-4);
+                 color: rgba(255,255,255,.8); font-size: 13px; flex-wrap: wrap; }
+.playbtn { width: 74px; height: 74px; border-radius: 50%; border: 2px solid rgba(255,255,255,.8);
+           display: flex; align-items: center; justify-content: center; color: #fff; margin: 0 auto var(--s-5); }
+
+/* Use Cases als Bildkacheln mit Overlay-Label */
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.tile { position: relative; min-height: 46vh; display: flex; align-items: flex-end; color: #fff; padding: var(--s-5); }
+.tile .ph { position: absolute; inset: 0; border: 0; }
+.tile__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.7)); }
+.tile__txt { position: relative; }
+.tile h3 { font-size: 19px; } .tile p { font-size: 13px; color: rgba(255,255,255,.8); margin-top: 6px; }
+
+/* Testimonial über Bild */
+.tquote { min-height: 70vh; display: flex; align-items: center; color: #fff; text-align: center; }
+.tquote blockquote { max-width: 24ch; margin-inline: auto; }
+.tquote p { font-size: clamp(24px, 3.2vw, 42px); font-weight: 600; letter-spacing: -.025em; line-height: 1.2; }
+.tquote cite { display: block; margin-top: var(--s-5); font-style: normal; font-size: 14px; color: rgba(255,255,255,.75); }
+.tquote__more { display: flex; justify-content: center; gap: var(--s-7); margin-top: var(--s-7); flex-wrap: wrap; color: rgba(255,255,255,.8); font-size: 13px; }
+
+/* Ruhige, helle Fläche für FAQ – Lesbarkeit vor Bildwirkung */
+.faqsec { padding: var(--s-9) 0; }
+.faqsec__in { display: grid; grid-template-columns: .8fr 1.2fr; gap: var(--s-8); }
+
+/* Abschluss-CTA wieder bildschirmfüllend */
+.endcta { min-height: 88vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding: var(--s-9) 0; }
+.endcta h2 { font-size: clamp(30px, 4.4vw, 60px); letter-spacing: -.035em; max-width: 18ch; margin-inline: auto; }
+.endcta p { color: rgba(255,255,255,.82); margin-top: var(--s-4); max-width: 50ch; margin-inline: auto; }
+.endcta .btn-row { justify-content: center; margin-top: var(--s-6); }
+
+.ft { background: var(--ink-dark); color: #9f9f9f; padding: var(--s-8) 0 var(--s-5); font-size: 13px; }
+.ft__in { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: var(--s-6); }
+.ft h4 { color: #fff; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: var(--s-3); }
+.ft li { margin-bottom: 6px; } .ft a { text-decoration: none; }
+.ft__base { margin-top: var(--s-6); padding-top: var(--s-4); border-top: 1px solid #2f2f2f; display: flex; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; }
+
+/* ---- Mobile: Bilder bleiben gross, CTA wird fixiert ---------------------- */
+@media (max-width: 900px) {
+  .wrap { width: calc(100% - 28px); }
+  .hd__nav { display: none; } .hd__in { height: 62px; }
+  .hero { min-height: 92vh; padding-bottom: var(--s-8); }
+  .hero h1 { font-size: 38px; }
+  .hero .btn { flex: 1 1 100%; }
+  .scrollhint { display: none; }
+  .benefits__grid { grid-template-columns: 1fr 1fr; gap: var(--s-5); }
+  .split { grid-template-columns: 1fr; min-height: 0; }
+  .split--rev .split__img { order: 0; }
+  .split__img .ph { aspect-ratio: 4/3; height: auto; }
+  .split__text { padding: var(--s-7) 16px; }
+  .showcase, .tquote, .endcta { min-height: 0; padding: var(--s-8) 0; }
+  .tiles { grid-template-columns: 1fr 1fr; }
+  .tile { min-height: 200px; }
+  .faqsec__in { grid-template-columns: 1fr; gap: var(--s-5); }
+  .ft__in { grid-template-columns: 1fr 1fr; }
+  body { padding-bottom: 72px; }
+  .mobilecta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 80; display: flex; gap: 8px;
+               background: rgba(20,20,20,.95); padding: 10px 14px; }
+  .mobilecta .btn { flex: 1; }
+}
+.mobilecta { display: none; }
+@media (max-width: 900px) { .mobilecta { display: flex; } }
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="logo" href="#">Flowdesk</a>
+    <nav class="hd__nav"><a href="#">Produkt</a><a href="#">Funktionen</a><a href="#usecases">Use Cases</a><a href="#">Preise</a></nav>
+    <div class="hd__act">
+      <a class="btn btn--on-dark-sec btn--sm" href="#tour">Produkt-Tour</a>
+      <a class="btn btn--on-dark btn--sm" href="#demo">Demo buchen</a>
+    </div>
+  </div>
+</header>
+
+<!-- Bildschirmfüllender Hero -->
+<section class="shot hero">
+  <div class="shot__img"><div class="ph ph--dark ph--plain"><span>Fullscreen Hero Image · Team bei der Wochenplanung</span></div></div>
+  <div class="shot__scrim"></div>
+  <div class="wrap" style="position:relative">
+    <div class="hero__in">
+      <p class="eyebrow" style="color:rgba(255,255,255,.75)">Ressourcenplanung für Agenturen</p>
+      <h1>Agenturplanung, die endlich zusammenpasst.</h1>
+      <p>Projekte, Kapazitäten und Budgets in einer Oberfläche – damit Ihr Team jederzeit weiß, wer wann woran arbeitet.</p>
+      <div class="btn-row">
+        <a class="btn btn--on-dark btn--lg" href="#demo">Demo buchen</a>
+        <a class="btn btn--on-dark-sec btn--lg" href="#tour">Produkt-Tour ansehen</a>
+      </div>
+      <div class="hero__proof">
+        <span><strong>480+ Agenturen</strong> · 4,7/5</span>
+        <span class="hero__logos"><span>Aurum</span><span>Studio Nord</span><span>Brandwerk</span><span>Pixelhof</span></span>
+      </div>
+    </div>
+    <span class="scrollhint">Scrollen ↓</span>
+  </div>
+</section>
+
+<section class="claim">
+  <div class="wrap">
+    <h2>Eine Quelle der Wahrheit für Auslastung, Timings und Margen.</h2>
+    <p>Statt fünf Tabellen und drei Tools arbeitet die ganze Agentur auf demselben Plan.</p>
+  </div>
+</section>
+
+<!-- Vorteile als Overlay über Vollbild -->
+<section class="shot benefits">
+  <div class="shot__img"><div class="ph ph--dark ph--plain"><span>Grossflächiges Bild · Studio</span></div></div>
+  <div class="shot__scrim" style="background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.72))"></div>
+  <div class="wrap" style="position:relative">
+    <p class="eyebrow" style="color:rgba(255,255,255,.7)">Vorteile</p>
+    <h2>Was sich in den ersten Wochen messbar verändert.</h2>
+    <div class="benefits__grid">
+      <article><span class="icon icon--lg"></span><h3>Auslastung in Echtzeit</h3><p>Kapazitäten pro Person, Team und Woche auf einen Blick.</p></article>
+      <article><span class="icon icon--lg"></span><h3>Weniger Planungs-Chaos</h3><p>Ein Plan statt fünf Tabellen, Änderungen laufen automatisch durch.</p></article>
+      <article><span class="icon icon--lg"></span><h3>Projekte bleiben profitabel</h3><p>Soll-Ist von Stunden und Budget ab Tag eins.</p></article>
+      <article><span class="icon icon--lg"></span><h3>Schnell startklar</h3><p>Import aus Excel und Jira, Go-live in unter 14 Tagen.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- Split-Screen: Bild und Funktionen -->
+<section class="split">
+  <div class="split__img"><div class="ph ph--plain"><span>Grossaufnahme · Planung am Screen</span></div></div>
+  <div class="split__text"><div class="in">
+    <p class="eyebrow">Funktionen</p>
+    <h2>Alles zwischen Briefing und Rechnung.</h2>
+    <ul class="featlist">
+      <li><span class="icon"></span><div><strong>Kapazitätsplanung</strong><span>Wochen- und Tagesansicht, Skills, Urlaube.</span></div></li>
+      <li><span class="icon"></span><div><strong>Projekt-Timeline</strong><span>Phasen, Meilensteine, Abhängigkeiten.</span></div></li>
+      <li><span class="icon"></span><div><strong>Zeiterfassung</strong><span>15 Sekunden, mobil und im Browser.</span></div></li>
+      <li><span class="icon"></span><div><strong>Budget &amp; Forecast</strong><span>Soll-Ist je Projekt, Kunde, Quartal.</span></div></li>
+      <li><span class="icon"></span><div><strong>Reporting</strong><span>Dashboards für Leitung und Controlling.</span></div></li>
+      <li><span class="icon"></span><div><strong>Integrationen</strong><span>Jira, Slack, DATEV, Kalender, API.</span></div></li>
+    </ul>
+    <div class="btn-row" style="margin-top:24px"><a class="btn" href="#demo">Demo buchen</a></div>
+  </div></div>
+</section>
+
+<!-- Produktvisualisierung bildschirmfüllend -->
+<section class="shot showcase">
+  <div class="shot__img"><div class="ph ph--dark ph--plain"><span>Immersive Bildfläche</span></div></div>
+  <div class="shot__scrim" style="background:rgba(0,0,0,.7)"></div>
+  <div class="showcase__frame" style="position:relative">
+    <div class="playbtn">▶</div>
+    <div class="ui" style="padding:20px">
+      <div class="ui__bar ui__bar--sm"></div>
+      <div class="ui__grid">
+        <span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span>
+        <span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell"></span>
+        <span class="ui__cell"></span><span class="ui__cell ui__cell--fill"></span><span class="ui__cell ui__cell--half"></span><span class="ui__cell"></span>
+      </div>
+      <div class="ui__row"><i style="height:55%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:100%"></i><i style="height:65%"></i><i style="height:30%"></i><i style="height:72%"></i></div>
+    </div>
+    <div class="showcase__cap"><span>Produkt-Tour · 2:40 Minuten</span><span>Planungsboard, Heatmap und Forecast in Aktion</span></div>
+  </div>
+</section>
+
+<!-- Use Cases als Bildkacheln -->
+<section class="tiles" id="usecases">
+  <article class="tile"><div class="ph ph--dark ph--plain"></div><div class="tile__scrim"></div>
+    <div class="tile__txt"><h3>Kreativagenturen</h3><p>Retainer und Projektgeschäft parallel steuern.</p></div></article>
+  <article class="tile"><div class="ph ph--dark ph--plain"></div><div class="tile__scrim"></div>
+    <div class="tile__txt"><h3>Design-Studios</h3><p>Kleine Teams, viele parallele Kunden.</p></div></article>
+  <article class="tile"><div class="ph ph--dark ph--plain"></div><div class="tile__scrim"></div>
+    <div class="tile__txt"><h3>IT-Dienstleister</h3><p>Sprints, Rollen und Abrechenbarkeit verbinden.</p></div></article>
+  <article class="tile"><div class="ph ph--dark ph--plain"></div><div class="tile__scrim"></div>
+    <div class="tile__txt"><h3>Inhouse-Teams</h3><p>Interne Nachfrage sichtbar priorisieren.</p></div></article>
+</section>
+
+<!-- Prozess als helle Zwischenfläche -->
+<section class="split split--rev">
+  <div class="split__img"><div class="ph ph--plain"><span>Prozessbild · Onboarding</span></div></div>
+  <div class="split__text"><div class="in">
+    <p class="eyebrow">So funktioniert es</p>
+    <h2>In vier Schritten zum ersten sauberen Wochenplan.</h2>
+    <ul class="featlist">
+      <li><span class="chip">01</span><div><strong>Daten importieren</strong><span>Projekte, Stunden, Teams aus Excel oder Jira.</span></div></li>
+      <li><span class="chip">02</span><div><strong>Teams &amp; Rollen anlegen</strong><span>Skills, Verfügbarkeiten, Stundensätze.</span></div></li>
+      <li><span class="chip">03</span><div><strong>Projekte planen</strong><span>Kapazität zuweisen, Timings prüfen.</span></div></li>
+      <li><span class="chip">04</span><div><strong>Auslastung steuern</strong><span>Wöchentlich nachjustieren.</span></div></li>
+    </ul>
+  </div></div>
+</section>
+
+<!-- Testimonial über Bild -->
+<section class="shot tquote">
+  <div class="shot__img"><div class="ph ph--dark ph--plain"><span>Portraitfläche</span></div></div>
+  <div class="shot__scrim" style="background:rgba(0,0,0,.65)"></div>
+  <div class="wrap" style="position:relative">
+    <blockquote>
+      <p>„Wir haben unsere Wochenplanung von vier Stunden auf zwanzig Minuten reduziert.“</p>
+      <cite>Lena Brandt · Head of Operations, Studio Nord</cite>
+    </blockquote>
+    <div class="tquote__more">
+      <span>„Erstmals dieselben Zahlen für GF und PM.“ — Mirko Falk, Brandwerk</span>
+      <span>„In zwei Wochen eingeführt.“ — Ayla Demir, Vesta Group</span>
+    </div>
+  </div>
+</section>
+
+<section class="faqsec">
+  <div class="wrap faqsec__in">
+    <div><h2 class="t-h2">Häufige Fragen</h2><p class="t-body" style="margin-top:12px">Alles Weitere klären wir im Demo-Termin.</p></div>
+    <div class="faq">
+      <details open><summary>Wie lange dauert die Einführung?</summary><p>10 bis 14 Tage, inklusive Datenimport und Schulung.</p></details>
+      <details><summary>Können wir bestehende Daten importieren?</summary><p>Excel, CSV, Jira und Harvest direkt, alles Weitere über die API.</p></details>
+      <details><summary>Welche Integrationen gibt es?</summary><p>Jira, Slack, DATEV, Google Kalender, Outlook, REST-API.</p></details>
+      <details><summary>Wie wird abgerechnet?</summary><p>Pro aktiver Person und Monat, monatlich kündbar.</p></details>
+      <details><summary>Wo liegen die Daten?</summary><p>Server in Frankfurt, DSGVO-konform, AVV inklusive.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="shot endcta" id="demo">
+  <div class="shot__img"><div class="ph ph--dark ph--plain"><span>Abschlussbild</span></div></div>
+  <div class="shot__scrim" style="background:rgba(0,0,0,.68)"></div>
+  <div class="wrap" style="position:relative">
+    <h2>Sehen Sie Flowdesk an Ihrem eigenen Projektplan.</h2>
+    <p>30 Minuten, gemeinsam mit einer Person aus Ihrem Team – wir bauen Ihren realen Wochenplan nach.</p>
+    <div class="btn-row">
+      <a class="btn btn--on-dark btn--lg" href="#">Demo buchen</a>
+      <a class="btn btn--on-dark-sec btn--lg" href="#tour">Produkt-Tour ansehen</a>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__in">
+      <div><span class="logo logo--dark" style="color:#fff">Flowdesk</span><p style="margin-top:10px;max-width:30ch">Ressourcenplanung für Agenturen und Studios.</p></div>
+      <div><h4>Produkt</h4><ul><li><a href="#">Funktionen</a></li><li><a href="#">Integrationen</a></li><li><a href="#">Preise</a></li></ul></div>
+      <div><h4>Unternehmen</h4><ul><li><a href="#">Über uns</a></li><li><a href="#">Karriere</a></li><li><a href="#">Kontakt</a></li></ul></div>
+      <div><h4>Ressourcen</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Hilfe-Center</a></li><li><a href="#">Webinare</a></li></ul></div>
+      <div><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul></div>
+    </div>
+    <div class="ft__base"><span>© 2026 Flowdesk GmbH</span><span>Hamburg · Server in Frankfurt</span></div>
+  </div>
+</footer>
+
+<div class="mobilecta">
+  <a class="btn btn--on-dark btn--sm" href="#demo">Demo buchen</a>
+  <a class="btn btn--on-dark-sec btn--sm" href="#tour">Produkt-Tour</a>
+</div>
+
+<script src="../assets/wf.js"></script>
+</body>
+</html>

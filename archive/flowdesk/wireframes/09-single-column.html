@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>09 — Single Column Layout · Flowdesk Wireframe</title>
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+/* ===== 09 SINGLE COLUMN LAYOUT ============================================
+   Eine einzige vertikale Achse (720px), mobile-first gedacht. Kein Element
+   steht neben einem anderen; Dramaturgie entsteht ausschliesslich über
+   Reihenfolge, Sektionsgrösse, Abstand und Schriftgrad.                       */
+
+.axis { width: min(720px, 100% - 40px); margin-inline: auto; }
+
+/* Header: reduziert auf Marke und Handlung */
+.hd { border-bottom: 1px solid var(--line); position: sticky; top: var(--wfchrome-h, 0px); background: rgba(255,255,255,.96); z-index: 40; }
+.hd__in { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: var(--s-4); }
+.hd__burger { width: 34px; height: 34px; border: 1px solid var(--line-2); display: grid; place-content: center; gap: 4px; }
+.hd__burger i { display: block; width: 16px; height: 1.5px; background: var(--ink); }
+
+/* Sektionen: gleiche Achse, bewusst unterschiedliche Höhen */
+.sec { padding: var(--s-9) 0; border-bottom: 1px solid var(--line); text-align: left; }
+.sec--xl { padding: var(--s-10) 0; }
+.sec--sm { padding: var(--s-7) 0; }
+.sec--grey { background: var(--bg-2); }
+.sec--dark { background: var(--ink-dark); color: #fff; border-bottom-color: #000; }
+.sec--dark .t-lead, .sec--dark .t-body, .sec--dark .t-small { color: #b4b4b4; }
+.sec--center { text-align: center; }
+.sec__num { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-4); margin-bottom: var(--s-4); }
+.sec h2 { font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -.025em; }
+.sec > .axis > .t-lead { margin-top: var(--s-4); }
+
+/* Hero: gleiche Achse, maximale Typo */
+.hero { padding: var(--s-9) 0 var(--s-8); }
+.hero h1 { font-size: clamp(38px, 5.2vw, 60px); line-height: 1.02; letter-spacing: -.035em; }
+.hero .t-lead { margin-top: var(--s-5); font-size: clamp(17px, 1.5vw, 20px); }
+.hero .btn-row { margin-top: var(--s-6); flex-direction: column; align-items: stretch; }
+.hero .btn { width: 100%; }
+.hero__micro { margin-top: var(--s-3); }
+.hero__viz { margin-top: var(--s-7); }
+
+/* Stapel-Bausteine – alle volle Achsenbreite */
+.stackitem { padding: var(--s-5) 0; border-bottom: 1px solid var(--line); }
+.stackitem:first-of-type { border-top: 1px solid var(--line); }
+.stackitem h3 { font-size: 19px; margin: var(--s-3) 0 var(--s-2); }
+.sec--dark .stackitem { border-color: #2f2f2f; }
+
+.bigstep { padding: var(--s-6) 0; border-top: 2px solid var(--ink); }
+.bigstep__n { font-size: clamp(30px, 4vw, 46px); font-weight: 700; letter-spacing: -.04em; line-height: 1; }
+.bigstep h3 { font-size: 20px; margin: var(--s-3) 0 var(--s-2); }
+
+.statstack { display: grid; gap: var(--s-6); margin-top: var(--s-5); }
+.statstack .stat__value { font-size: clamp(34px, 5vw, 52px); }
+.logostack { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3); margin-top: var(--s-6); }
+
+.quotestack { display: grid; gap: var(--s-6); }
+.quotestack blockquote { border-top: 1px solid var(--line); padding-top: var(--s-4); }
+.quotestack p { font-size: 18px; line-height: 1.4; }
+.quotestack .by { display: flex; gap: var(--s-3); align-items: center; margin-top: var(--s-4); }
+
+figure { margin: var(--s-6) 0 0; }
+figcaption { margin-top: var(--s-2); font-size: 13px; color: var(--ink-3); }
+
+/* Abschluss-CTA: grösster Block der Seite, gleiche Achse */
+.endcta { padding: var(--s-10) 0; text-align: center; }
+.endcta h2 { font-size: clamp(30px, 4.4vw, 50px); letter-spacing: -.03em; }
+.endcta p { margin-top: var(--s-4); }
+.endcta .btn-row { margin-top: var(--s-6); flex-direction: column; align-items: stretch; }
+
+.ft { padding: var(--s-8) 0 var(--s-9); font-size: 14px; color: var(--ink-3); }
+.ft h4 { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); margin: var(--s-5) 0 var(--s-3); }
+.ft li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.ft a { text-decoration: none; }
+.ft__base { margin-top: var(--s-6); display: grid; gap: 6px; font-size: 13px; }
+
+/* Fixierte CTA-Leiste – der Conversion-Anker der vertikalen Story */
+.stickycta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: rgba(255,255,255,.97);
+             border-top: 1px solid var(--line-2); padding: 10px 0; }
+.stickycta__in { display: flex; gap: var(--s-3); align-items: center; }
+.stickycta .btn { flex: 1; }
+.stickycta__txt { font-size: 13px; color: var(--ink-3); }
+body { padding-bottom: 76px; }
+
+@media (min-width: 900px) {
+  .hd__burger { display: none; }
+  .hero .btn-row, .endcta .btn-row { flex-direction: row; align-items: center; justify-content: flex-start; }
+  .endcta .btn-row { justify-content: center; }
+  .hero .btn { width: auto; }
+  .logostack { grid-template-columns: repeat(6, 1fr); }
+  .statstack { grid-template-columns: repeat(3, 1fr); }
+}
+/* ---- Mobile: identische Achse, nur enger – das Konzept bleibt unverändert - */
+@media (max-width: 899px) {
+  .stickycta__txt { display: none; }
+  .logostack { grid-template-columns: 1fr 1fr; }
+  .sec, .sec--xl { padding: var(--s-7) 0; }
+  .endcta { padding: var(--s-8) 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="axis hd__in">
+    <a class="logo" href="#">Flowdesk</a>
+    <div style="display:flex;gap:12px;align-items:center">
+      <a class="btn btn--sm" href="#demo">Demo buchen</a>
+      <div class="hd__burger" role="button" aria-label="Menü"><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="axis">
+    <p class="eyebrow">Ressourcenplanung für Agenturen</p>
+    <h1>Agenturplanung, die endlich zusammenpasst.</h1>
+    <p class="t-lead">Flowdesk verbindet Projekte, Kapazitäten und Budgets in einer Oberfläche –
+      damit Ihr Team jederzeit weiß, wer wann woran arbeitet.</p>
+    <div class="btn-row">
+      <a class="btn btn--lg" href="#demo">Demo buchen</a>
+      <a class="btn btn--sec btn--lg" href="#tour">Produkt-Tour ansehen</a>
+    </div>
+    <p class="t-small hero__micro">14 Tage testen · keine Kreditkarte · Go-live in unter 14 Tagen</p>
+    <figure class="hero__viz">
+      <div class="ui" style="padding:16px">
+        <div class="ui__bar ui__bar--sm"></div>
+        <div class="ui__grid">
+          <span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span>
+          <span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell"></span>
+        </div>
+        <div class="ui__row"><i style="height:55%"></i><i style="height:85%"></i><i style="height:45%"></i><i style="height:100%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:62%"></i></div>
+      </div>
+      <figcaption>Planungsboard mit Auslastung je Team, Kalenderwoche 38.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec sec--grey sec--sm">
+  <div class="axis">
+    <p class="sec__num">Vertrauen</p>
+    <p class="t-lead"><strong>480+ Agenturen</strong> planen mit Flowdesk. 4,7 von 5 Sternen aus 320 Bewertungen.</p>
+    <div class="logostack">
+      <span class="logo-ph">Aurum</span><span class="logo-ph">Kessler</span><span class="logo-ph">Studio Nord</span>
+      <span class="logo-ph">Brandwerk</span><span class="logo-ph">Pixelhof</span><span class="logo-ph">Vesta</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--xl">
+  <div class="axis">
+    <p class="sec__num">01 — Warum</p>
+    <h2>Eine Quelle der Wahrheit für Auslastung, Timings und Margen.</h2>
+    <p class="t-lead">Statt fünf Tabellen und drei Tools arbeitet die ganze Agentur auf demselben Plan.
+      Änderungen an Timings laufen automatisch durch Kapazität, Budget und Forecast.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="axis">
+    <p class="sec__num">02 — Vorteile</p>
+    <h2>Was sich messbar verändert.</h2>
+    <div style="margin-top:28px">
+      <article class="stackitem"><span class="icon icon--lg"></span><h3>Auslastung in Echtzeit</h3>
+        <p class="t-body">Kapazitäten pro Person, Team und Woche auf einen Blick – inklusive Teilzeit, Urlaub und Skills.</p></article>
+      <article class="stackitem"><span class="icon icon--lg"></span><h3>Weniger Planungs-Chaos</h3>
+        <p class="t-body">Ein Plan statt fünf Tabellen; Änderungen laufen automatisch durch alle Ansichten.</p></article>
+      <article class="stackitem"><span class="icon icon--lg"></span><h3>Projekte bleiben profitabel</h3>
+        <p class="t-body">Soll-Ist-Vergleich von Stunden und Budget ab Tag eins.</p></article>
+      <article class="stackitem"><span class="icon icon--lg"></span><h3>Schnell startklar</h3>
+        <p class="t-body">Import aus Excel und Jira, Go-live in unter 14 Tagen.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--dark">
+  <div class="axis">
+    <p class="sec__num" style="color:#8a8a8a">03 — Funktionen</p>
+    <h2>Alles zwischen Briefing und Rechnung.</h2>
+    <div style="margin-top:28px">
+      <article class="stackitem"><h3>Kapazitätsplanung</h3><p class="t-body">Wochen- und Tagesansicht, Skills, Teilzeit, Urlaube.</p></article>
+      <article class="stackitem"><h3>Projekt-Timeline</h3><p class="t-body">Phasen, Meilensteine und Abhängigkeiten in einer Ansicht.</p></article>
+      <article class="stackitem"><h3>Zeiterfassung</h3><p class="t-body">Erfassung in 15 Sekunden, mobil und im Browser.</p></article>
+      <article class="stackitem"><h3>Budget &amp; Forecast</h3><p class="t-body">Soll-Ist je Projekt, Kunde und Quartal.</p></article>
+      <article class="stackitem"><h3>Reporting</h3><p class="t-body">Dashboards für Leitung, Projektleitung und Controlling.</p></article>
+      <article class="stackitem"><h3>Integrationen</h3><p class="t-body">Jira, Slack, DATEV, Google Kalender, REST-API.</p></article>
+    </div>
+    <div class="btn-row" style="margin-top:28px"><a class="btn btn--on-dark" href="#demo">Demo buchen</a></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="axis">
+    <p class="sec__num">04 — Produkt</p>
+    <h2>So sieht die Planung aus.</h2>
+    <figure><div class="ph ph--wide"><span>Produktvisualisierung · Heatmap</span></div>
+      <figcaption>Überbuchung wird sichtbar, bevor sie zum Problem wird.</figcaption></figure>
+    <figure><div class="ph ph--wide"><span>Produktvisualisierung · Forecast</span></div>
+      <figcaption>Prognose für die nächsten zwölf Wochen je Kunde.</figcaption></figure>
+  </div>
+</section>
+
+<section class="sec sec--grey">
+  <div class="axis">
+    <p class="sec__num">05 — Ablauf</p>
+    <h2>In vier Schritten produktiv.</h2>
+    <div style="margin-top:24px">
+      <div class="bigstep"><div class="bigstep__n num">01</div><h3>Daten importieren</h3><p class="t-body">Projekte, Stunden und Teams aus Excel, CSV oder Jira.</p></div>
+      <div class="bigstep"><div class="bigstep__n num">02</div><h3>Teams &amp; Rollen anlegen</h3><p class="t-body">Skills, Verfügbarkeiten und Stundensätze hinterlegen.</p></div>
+      <div class="bigstep"><div class="bigstep__n num">03</div><h3>Projekte planen</h3><p class="t-body">Kapazität zuweisen, Timings prüfen, Konflikte auflösen.</p></div>
+      <div class="bigstep"><div class="bigstep__n num">04</div><h3>Auslastung steuern</h3><p class="t-body">Wöchentlich nachjustieren statt quartalsweise raten.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--sm">
+  <div class="axis">
+    <p class="sec__num">06 — Zahlen</p>
+    <div class="statstack">
+      <div><div class="stat__value num">480+</div><div class="stat__label">Agenturen</div></div>
+      <div><div class="stat__value num">12.000</div><div class="stat__label">geplante Projekte pro Monat</div></div>
+      <div><div class="stat__value num">31 %</div><div class="stat__label">weniger Planungsaufwand</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="axis">
+    <p class="sec__num">07 — Use Cases</p>
+    <h2>Wer so arbeitet.</h2>
+    <div style="margin-top:24px">
+      <article class="stackitem"><h3>Kreativagenturen</h3><p class="t-body">Retainer und Projektgeschäft parallel steuern.</p></article>
+      <article class="stackitem"><h3>Design-Studios</h3><p class="t-body">Kleine Teams, viele parallele Kunden.</p></article>
+      <article class="stackitem"><h3>IT-Dienstleister</h3><p class="t-body">Sprints, Rollen und Abrechenbarkeit verbinden.</p></article>
+      <article class="stackitem"><h3>Inhouse-Teams</h3><p class="t-body">Interne Nachfrage sichtbar priorisieren.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--grey">
+  <div class="axis">
+    <p class="sec__num">08 — Stimmen</p>
+    <div class="quotestack" style="margin-top:20px">
+      <blockquote><p>„Wir haben unsere Wochenplanung von vier Stunden auf zwanzig Minuten reduziert.“</p>
+        <div class="by"><span class="avatar"></span><span class="t-small">Lena Brandt · Studio Nord</span></div></blockquote>
+      <blockquote><p>„Zum ersten Mal sehen Geschäftsführung und Projektleitung dieselben Zahlen.“</p>
+        <div class="by"><span class="avatar"></span><span class="t-small">Mirko Falk · Brandwerk</span></div></blockquote>
+      <blockquote><p>„Die Einführung war in zwei Wochen durch – ohne Beraterprojekt.“</p>
+        <div class="by"><span class="avatar"></span><span class="t-small">Ayla Demir · Vesta Group</span></div></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="axis">
+    <p class="sec__num">09 — FAQ</p>
+    <h2>Häufige Fragen</h2>
+    <div class="faq" style="margin-top:20px">
+      <details open><summary>Wie lange dauert die Einführung?</summary><p>10 bis 14 Tage, inklusive Datenimport und Schulung.</p></details>
+      <details><summary>Können wir bestehende Daten importieren?</summary><p>Excel, CSV, Jira und Harvest direkt, alles Weitere über die API.</p></details>
+      <details><summary>Welche Integrationen gibt es?</summary><p>Jira, Slack, DATEV, Google Kalender, Outlook, REST-API.</p></details>
+      <details><summary>Wie wird abgerechnet?</summary><p>Pro aktiver Person und Monat, monatlich kündbar.</p></details>
+      <details><summary>Wo liegen die Daten?</summary><p>Server in Frankfurt, DSGVO-konform, AVV inklusive.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="endcta sec--dark" id="demo">
+  <div class="axis">
+    <p class="sec__num" style="color:#8a8a8a">10 — Nächster Schritt</p>
+    <h2>Sehen Sie Flowdesk an Ihrem eigenen Projektplan.</h2>
+    <p class="t-lead">30 Minuten, gemeinsam mit einer Person aus Ihrem Team.</p>
+    <div class="btn-row">
+      <a class="btn btn--on-dark btn--lg" href="#">Demo buchen</a>
+      <a class="btn btn--on-dark-sec btn--lg" href="#tour">Produkt-Tour ansehen</a>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="axis">
+    <span class="logo">Flowdesk</span>
+    <p style="margin-top:8px">Ressourcenplanung für Agenturen und Studios.</p>
+    <h4>Produkt</h4><ul><li><a href="#">Funktionen</a></li><li><a href="#">Integrationen</a></li><li><a href="#">Preise</a></li><li><a href="#">Sicherheit</a></li></ul>
+    <h4>Unternehmen</h4><ul><li><a href="#">Über uns</a></li><li><a href="#">Karriere</a></li><li><a href="#">Kontakt</a></li></ul>
+    <h4>Ressourcen</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Hilfe-Center</a></li><li><a href="#">Webinare</a></li></ul>
+    <h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul>
+    <div class="ft__base"><span>© 2026 Flowdesk GmbH · Hamburg</span><span>Server in Frankfurt · DSGVO-konform</span></div>
+  </div>
+</footer>
+
+<div class="stickycta">
+  <div class="axis stickycta__in">
+    <span class="stickycta__txt">30 Minuten an Ihrem eigenen Plan</span>
+    <a class="btn btn--sm" href="#demo">Demo buchen</a>
+    <a class="btn btn--sec btn--sm" href="#tour">Produkt-Tour</a>
+  </div>
+</div>
+
+<script src="../assets/wf.js"></script>
+</body>
+</html>

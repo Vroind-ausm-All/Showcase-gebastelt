@@ -1,0 +1,97 @@
+/* ============================================================================
+   BEWEGUNGS-SYSTEM (CSS-Hälfte)
+   Die JS-Hälfte liegt in app/motion/. Hier stehen nur die Zustände, die
+   IntersectionObserver und Zeiger-Handler umschalten. Jede Bewegung nutzt
+   ausschließlich transform und opacity.
+   ========================================================================== */
+
+/* --- Reveal: Grundzustände ------------------------------------------------ */
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity var(--t-scene) var(--ease-out) var(--reveal-delay, 0ms),
+    transform var(--t-scene) var(--ease-out) var(--reveal-delay, 0ms),
+    clip-path var(--t-scene) var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal="up"]    { transform: translate3d(0, 26px, 0); }
+[data-reveal="down"]  { transform: translate3d(0, -22px, 0); }
+[data-reveal="left"]  { transform: translate3d(28px, 0, 0); }
+[data-reveal="right"] { transform: translate3d(-28px, 0, 0); }
+[data-reveal="scale"] { transform: scale(.955); }
+[data-reveal="fade"]  { transform: none; }
+[data-reveal="mask"]  { clip-path: inset(0 0 100% 0); opacity: 1; }
+[data-reveal="wipe"]  { clip-path: inset(0 100% 0 0); opacity: 1; }
+[data-reveal="rise"]  { transform: translate3d(0, 44px, 0) scale(.985); }
+
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+  will-change: auto;
+}
+
+/* --- Zeilenweiser Typo-Einzug -------------------------------------------- */
+.line { display: block; overflow: hidden; }
+.line > span {
+  display: block;
+  transform: translate3d(0, 108%, 0);
+  transition: transform var(--t-scene) var(--ease-out) var(--reveal-delay, 0ms);
+}
+[data-reveal].is-in .line > span,
+.is-in > .line > span { transform: none; }
+
+/* --- Magnetische Elemente ------------------------------------------------- */
+[data-magnetic] {
+  transform: translate3d(var(--mx, 0), var(--my, 0), 0);
+  transition: transform var(--t-slow) var(--ease-soft);
+}
+[data-magnetic].is-pulling { transition: transform var(--t-fast) linear; }
+[data-magnetic] > * {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  transform: translate3d(calc(var(--mx, 0px) * .35), calc(var(--my, 0px) * .35), 0);
+  transition: inherit;
+}
+
+/* --- Parallaxe ------------------------------------------------------------ */
+[data-parallax] { transform: translate3d(0, var(--py, 0px), 0); will-change: transform; }
+
+/* --- 3D-Neigung ----------------------------------------------------------- */
+[data-tilt] {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0);
+  transition: transform var(--t-slow) var(--ease-soft);
+}
+[data-tilt].is-tilting { transition: transform 80ms linear; }
+
+/* --- Zähler --------------------------------------------------------------- */
+[data-count] { font-variant-numeric: tabular-nums; }
+
+/* --- Laufband ------------------------------------------------------------- */
+@keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.marquee__track { display: flex; width: max-content; animation: marquee var(--marquee-dur, 46s) linear infinite; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+@keyframes pulse-ring { 0% { transform: scale(.85); opacity: .9; } 70%, 100% { transform: scale(1.9); opacity: 0; } }
+@keyframes drift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(2%, -3%, 0) scale(1.06); } }
+@keyframes sweep { from { transform: translate3d(-120%,0,0) skewX(-18deg); } to { transform: translate3d(220%,0,0) skewX(-18deg); } }
+@keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+/* ==========================================================================
+   REDUCED MOTION
+   Nichts verschwindet – alles wird sofort sichtbar und hört auf, sich zu
+   bewegen. Zustandswechsel bleiben lesbar, nur die Strecke entfällt.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .line > span { transform: none !important; }
+  [data-magnetic], [data-tilt], [data-parallax] { transform: none !important; }
+  .marquee__track { animation: none !important; transform: none !important; }
+  .marquee { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+}

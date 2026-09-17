@@ -1,0 +1,478 @@
+/* ============================================================================
+   DIE ZWÖLF RICHTUNGEN
+   Jeder Block ist eine vollständige Gestaltungsrichtung. Die meisten Zeilen
+   sind Token-Zuweisungen; nur wenige strukturelle Regeln je Richtung.
+
+   NEUE RICHTUNG ANLEGEN
+   1. Eintrag in app/data/directions.js (id, Texte, scores, traits)
+   2. Hier einen Block [data-direction="<id>"] nach demselben Muster
+   Mehr ist nicht nötig – Vergleich, Beratung, Bühne und Galerie ziehen sich
+   alles Weitere aus den Daten.
+   ========================================================================== */
+
+/* ── 01 SWISS ─────────────────────────────────────────────────────────────
+   Das Raster ist das Gestaltungsmittel. Keine Fläche, kein Radius, kein
+   gefüllter Button im Hero – nur Linie, Größe und Weißraum.               */
+[data-direction="swiss"] {
+  --s-bg: #ffffff; --s-bg2: #ffffff; --s-ink: #0d0d0d; --s-ink2: #4a4a4a; --s-ink3: #8a8a8a;
+  --s-line: #d4d4d4; --s-accent: #0d0d0d; --s-accent-ink: #ffffff;
+  --s-title-size: 96px; --s-title-weight: 500; --s-title-ls: -.04em; --s-title-lh: .93;
+  --s-h2-size: 38px; --s-radius: 0px; --s-radius-btn: 0px;
+  --s-pad-x: 80px; --s-pad-y: 104px; --s-gap: 24px;
+  --s-card-border: 0; --s-card-pad: 0; --s-eyebrow-ls: .18em;
+  --s-ph-bg: #f4f4f4;
+}
+/* Sichtbares Zwölf-Spalten-Raster als Grundmaß der Seite */
+[data-direction="swiss"] .sp-hero { position: relative; }
+[data-direction="swiss"] .sp-hero::before {
+  content: ""; position: absolute; inset: 0 var(--s-pad-x); pointer-events: none;
+  background-image: repeating-linear-gradient(90deg, rgb(20 20 120 / .055) 0 1px, transparent 1px calc(100% / 12));
+  background-size: calc(100% / 12) 100%;
+}
+[data-direction="swiss"] .sp-hero { grid-template-columns: 1fr; gap: 40px; }
+[data-direction="swiss"] .sp-hero__figure { order: 2; }
+[data-direction="swiss"] .sp-hero__figure .sp-ui { border-width: 1px 0 0; border-radius: 0; }
+[data-direction="swiss"] .sp-hero__float { display: none; }
+[data-direction="swiss"] .sp-lead { max-width: 34ch; font-size: 15px; }
+/* Kein gefüllter Button: der CTA ist ein unterstrichener Textlink */
+[data-direction="swiss"] .sp-hero .sp-btn,
+[data-direction="swiss"] .sp-nav .sp-btn--primary {
+  background: transparent; color: var(--s-ink); border: 0; border-bottom: 1px solid currentColor;
+  padding: 3px 0; border-radius: 0;
+}
+/* Module als Tabellenzeilen statt als Karten */
+[data-direction="swiss"] .sp-grid--4 { grid-template-columns: 1fr; gap: 0; }
+[data-direction="swiss"] .sp-card--module {
+  grid-template-columns: 64px 1fr 2fr 80px; align-items: baseline; gap: 24px;
+  border-top: 1px solid var(--s-line); padding: 22px 0;
+}
+[data-direction="swiss"] .sp-card--module .sp-ph { display: none; }
+[data-direction="swiss"] .sp-grid--3 { gap: 40px; }
+[data-direction="swiss"] .sp-card { border-top: 2px solid var(--s-ink); padding-top: 16px; }
+
+/* ── 02 MINIMAL ───────────────────────────────────────────────────────────
+   Ein Gedanke pro Bildschirm, alles auf einer zentrierten Achse.          */
+[data-direction="minimal"] {
+  --s-bg: #fbfbfa; --s-bg2: #fbfbfa; --s-ink: #111112; --s-ink2: #6b6b70; --s-ink3: #a3a3a8;
+  --s-line: #e6e6e3; --s-accent: #111112; --s-accent-ink: #fbfbfa;
+  --s-title-size: 60px; --s-title-weight: 400; --s-title-ls: -.03em; --s-title-lh: 1.08;
+  --s-h2-size: 30px; --s-h3-size: 17px; --s-radius: 0px; --s-radius-btn: 999px;
+  --s-pad-x: 120px; --s-pad-y: 150px; --s-gap: 56px;
+  --s-card-border: 0; --s-card-pad: 0; --s-eyebrow-ls: .22em; --s-eyebrow-size: 10px;
+  --s-btn-pad: 16px 34px; --s-btn-weight: 500; --s-ph-bg: #f2f2f0;
+}
+[data-direction="minimal"] .sp-hero,
+[data-direction="minimal"] .sp-sec__head,
+[data-direction="minimal"] .sp-card,
+[data-direction="minimal"] .sp-quote { text-align: center; }
+[data-direction="minimal"] .sp-hero { grid-template-columns: 1fr; justify-items: center; gap: 72px; }
+[data-direction="minimal"] .sp-hero__text { max-width: 30ch; }
+[data-direction="minimal"] .sp-hero__figure { width: 68%; }
+[data-direction="minimal"] .sp-hero__float { display: none; }
+[data-direction="minimal"] .sp-lead { margin-inline: auto; max-width: 38ch; }
+[data-direction="minimal"] .sp-cta { justify-content: center; }
+/* Genau ein Button-Typ auf der ganzen Seite */
+[data-direction="minimal"] .sp-btn--secondary { border-color: transparent; color: var(--s-ink2); text-decoration: underline; text-underline-offset: 5px; }
+[data-direction="minimal"] .sp-sec__head { margin-inline: auto; }
+[data-direction="minimal"] .sp-grid--4 { grid-template-columns: repeat(2, 1fr); gap: 72px 56px; }
+[data-direction="minimal"] .sp-card--module .sp-ph { display: none; }
+[data-direction="minimal"] .sp-proof { justify-content: center; }
+[data-direction="minimal"] .sp-proof__logos { display: none; }
+[data-direction="minimal"] .sp-quote__t { margin-inline: auto; font-size: 30px; font-weight: 300; }
+[data-direction="minimal"] .sp-quote__by { justify-content: center; }
+[data-direction="minimal"] .sp-faq { margin-inline: auto; }
+
+/* ── 03 EDITORIAL ─────────────────────────────────────────────────────────
+   Die Seite ist eine Ausgabe: Masthead, Spaltensatz, Initial.             */
+[data-direction="editorial"] {
+  --s-bg: #f7f4ec; --s-bg2: #efeadd; --s-ink: #1a1712; --s-ink2: #554f45; --s-ink3: #8b8377;
+  --s-line: #d8d0bf; --s-accent: #8c2418; --s-accent-ink: #f7f4ec;
+  --s-font: var(--font-serif); --s-display: var(--font-serif); --s-label: var(--font-sans);
+  --s-title-size: 74px; --s-title-weight: 500; --s-title-ls: -.022em; --s-title-lh: .98;
+  --s-h2-size: 36px; --s-body-size: 15.5px; --s-radius: 0px; --s-radius-btn: 0px;
+  --s-pad-x: 64px; --s-pad-y: 76px; --s-gap: 32px;
+  --s-card-border: 0; --s-card-pad: 0; --s-eyebrow-ls: .2em; --s-ph-bg: #e6dfd0;
+  --s-btn-pad: 13px 22px; --s-btn-tt: uppercase; --s-btn-ls: .1em; --s-btn-weight: 700;
+}
+/* Masthead statt Navigationsleiste */
+[data-direction="editorial"] .sp-nav {
+  flex-direction: column; height: auto; gap: 12px; padding-block: 22px;
+  border-block: 3px double var(--s-ink); text-align: center;
+}
+[data-direction="editorial"] .sp-nav__brand { font-size: 32px; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; }
+[data-direction="editorial"] .sp-nav__logomark { display: none; }
+[data-direction="editorial"] .sp-nav__links { font-family: var(--s-label); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+[data-direction="editorial"] .sp-nav__act { margin: 0; }
+[data-direction="editorial"] .sp-nav__act .sp-btn--ghost { display: none; }
+[data-direction="editorial"] .sp-hero { grid-template-columns: 1fr; gap: 0; padding-top: 44px; }
+[data-direction="editorial"] .sp-hero__text { max-width: none; }
+[data-direction="editorial"] .sp-title { max-width: 16ch; }
+/* Standfirst im Spaltensatz mit Initial */
+[data-direction="editorial"] .sp-lead {
+  columns: 3; column-gap: 32px; column-rule: 1px solid var(--s-line);
+  max-width: none; font-size: 15px; margin-top: 28px;
+}
+/* Das Initial sitzt im einspaltigen Zitat, nicht im Spaltensatz:
+   ein Float im Mehrspalter landet je nach Engine in einer anderen Spalte. */
+[data-direction="editorial"] .sp-quote__t::first-letter {
+  float: left; font-size: 78px; line-height: .74; padding: 8px 12px 0 0;
+  font-weight: 500; font-style: normal;
+}
+[data-direction="editorial"] .sp-hero__figure { margin-top: 36px; }
+[data-direction="editorial"] .sp-hero__figure .sp-ui { border-radius: 0; }
+[data-direction="editorial"] .sp-hero__float { display: none; }
+[data-direction="editorial"] .sp-eyebrow { font-family: var(--s-label); }
+[data-direction="editorial"] .sp-card { border-top: 1px solid var(--s-ink); padding-top: 14px; }
+[data-direction="editorial"] .sp-quote__t { font-size: 34px; font-style: italic; max-width: 26ch; }
+[data-direction="editorial"] .sp-proof { border-block-width: 3px; }
+
+/* ── 04 BRUTALIST ─────────────────────────────────────────────────────────
+   Die Konstruktion wird gezeigt: Rahmen, harte Schatten, keine Rundung.   */
+[data-direction="brutalist"] {
+  --s-bg: #f3f0e7; --s-bg2: #ffe94d; --s-ink: #000000; --s-ink2: #1a1a1a; --s-ink3: #3d3d3d;
+  --s-line: #000000; --s-accent: #1f36ff; --s-accent-ink: #ffffff;
+  --s-display: var(--font-sans);
+  --s-title-size: 104px; --s-title-weight: 900; --s-title-ls: -.05em; --s-title-lh: .84; --s-title-tt: uppercase;
+  --s-h2-size: 44px; --s-radius: 0px; --s-radius-btn: 0px; --s-border: 4px;
+  --s-pad-x: 40px; --s-pad-y: 60px; --s-gap: 0px;
+  --s-card-bg: #ffffff; --s-card-border: 4px solid #000; --s-card-pad: 24px;
+  --s-card-shadow: 8px 8px 0 #000;
+  --s-btn-pad: 22px 34px; --s-btn-weight: 900; --s-btn-tt: uppercase; --s-btn-ls: .04em;
+  --s-btn-border: 4px solid #000;
+  --s-eyebrow-weight: 900; --s-eyebrow-size: 12px; --s-ph-bg: #ffffff; --s-ph-border: 4px solid #000;
+}
+[data-direction="brutalist"] .sp-nav { border-bottom: 4px solid #000; gap: 0; padding-inline: 0; }
+[data-direction="brutalist"] .sp-nav__brand { padding: 0 24px; font-weight: 900; text-transform: uppercase; letter-spacing: -.04em; border-right: 4px solid #000; align-self: stretch; }
+[data-direction="brutalist"] .sp-nav__links { gap: 0; }
+[data-direction="brutalist"] .sp-nav__link { padding: 0 18px; align-self: stretch; display: flex; align-items: center; border-right: 4px solid #000; font-weight: 700; text-transform: uppercase; font-size: 12px; }
+[data-direction="brutalist"] .sp-nav__act { gap: 0; align-self: stretch; }
+[data-direction="brutalist"] .sp-nav__act .sp-btn { border-width: 0 0 0 4px; height: 100%; }
+[data-direction="brutalist"] .sp-hero { grid-template-columns: 1fr; gap: 32px; }
+[data-direction="brutalist"] .sp-hero__float { display: none; }
+[data-direction="brutalist"] .sp-cta .sp-btn { flex: 1; }
+[data-direction="brutalist"] .sp-btn--secondary { background: var(--s-bg2); color: #000; border: 4px solid #000; }
+[data-direction="brutalist"] .sp-proof { background: var(--s-bg2); border-block: 4px solid #000; }
+[data-direction="brutalist"] .sp-grid--3, [data-direction="brutalist"] .sp-grid--4 { gap: 24px; }
+[data-direction="brutalist"] .sp-sec + .sp-sec { border-top-width: 4px; }
+[data-direction="brutalist"] .sp-quote { background: #000; color: #fff; border-top: 4px solid #000; }
+[data-direction="brutalist"] .sp-quote__t { font-weight: 800; text-transform: uppercase; font-size: 30px; letter-spacing: -.03em; }
+[data-direction="brutalist"] .sp-close { border-top: 4px solid #000; }
+[data-direction="brutalist"] .sp-faq__row { border-bottom-width: 3px; }
+
+/* ── 05 SAAS ──────────────────────────────────────────────────────────────
+   Bewusst erwartungskonform: vertraute Muster, damit die Information zählt. */
+[data-direction="saas"] {
+  --s-bg: #ffffff; --s-bg2: #f6f8fc; --s-ink: #0f172a; --s-ink2: #475069; --s-ink3: #8790a6;
+  --s-line: #e3e8f0; --s-accent: #2f5cf5; --s-accent-ink: #ffffff;
+  --s-title-size: 58px; --s-title-weight: 700; --s-title-ls: -.035em; --s-title-lh: 1.05;
+  --s-h2-size: 34px; --s-radius: 12px; --s-radius-btn: 8px;
+  --s-pad-x: 64px; --s-pad-y: 84px; --s-gap: 22px;
+  --s-card-bg: #ffffff; --s-card-border: 1px solid #e3e8f0; --s-card-pad: 26px;
+  --s-card-shadow: 0 1px 2px rgb(15 23 42 / .06), 0 8px 24px -16px rgb(15 23 42 / .22);
+  --s-btn-pad: 15px 24px; --s-shadow: 0 24px 60px -30px rgb(15 23 42 / .4);
+  --s-ph-bg: #eef2f9; --s-eyebrow-ls: .1em;
+}
+[data-direction="saas"] .sp-nav { background: rgb(255 255 255 / .9); }
+[data-direction="saas"] .sp-hero { background: linear-gradient(175deg, #f6f8fc 0%, #ffffff 62%); }
+[data-direction="saas"] .sp-hero__float { right: -20px; bottom: -26px; }
+[data-direction="saas"] .sp-hero__float .sp-ph { background: #fff; box-shadow: var(--s-card-shadow); }
+[data-direction="saas"] .sp-eyebrow {
+  display: inline-block; background: #eaf0ff; color: var(--s-accent);
+  padding: 6px 12px; border-radius: 999px; letter-spacing: .04em; text-transform: none; font-size: 12px;
+}
+[data-direction="saas"] .sp-card:hover { transform: none; }
+[data-direction="saas"] .sp-quote { background: var(--s-accent); color: #fff; }
+[data-direction="saas"] .sp-quote__org { color: rgb(255 255 255 / .7); }
+[data-direction="saas"] .sp-quote .sp-avatar { background: rgb(255 255 255 / .3); }
+
+/* ── 06 FUTURISTIC ────────────────────────────────────────────────────────
+   Ebenen, technische Beschriftung, dunkler Grund, Modul über Modul.        */
+[data-direction="futuristic"] {
+  --s-bg: #07080c; --s-bg2: #0d0f16; --s-ink: #e9ecf5; --s-ink2: #9aa2b8; --s-ink3: #626a80;
+  --s-line: #1e2230; --s-accent: #3ee0c4; --s-accent-ink: #04120f;
+  --s-label: var(--font-mono);
+  --s-title-size: 64px; --s-title-weight: 600; --s-title-ls: -.04em; --s-title-lh: 1;
+  --s-h2-size: 34px; --s-radius: 14px; --s-radius-btn: 999px;
+  --s-pad-x: 60px; --s-pad-y: 88px; --s-gap: 20px;
+  --s-card-bg: #0d0f16; --s-card-border: 1px solid #1e2230; --s-card-pad: 24px;
+  --s-btn-pad: 14px 26px; --s-btn-weight: 600; --s-eyebrow-ls: .2em;
+  --s-ph-bg: #11141d; --s-ph-border: 1px solid #1e2230;
+}
+/* Schwebende Pill-Navigation */
+[data-direction="futuristic"] .sp-nav {
+  margin: 20px var(--s-pad-x); padding: 0 12px 0 20px; border: 1px solid #1e2230;
+  border-radius: 999px; background: rgb(13 15 22 / .8); height: 62px;
+}
+[data-direction="futuristic"] .sp-nav__links { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; }
+[data-direction="futuristic"] .sp-hero { position: relative; }
+[data-direction="futuristic"] .sp-hero::before {
+  content: ""; position: absolute; inset: -20% -10% auto 40%; height: 120%; pointer-events: none;
+  background: radial-gradient(closest-side, rgb(62 224 196 / .16), transparent 72%);
+}
+/* Echte Überlagerung: das Nebenmodul liegt auf dem Hauptmodul */
+[data-direction="futuristic"] .sp-hero__float { right: auto; left: -46px; bottom: 26px; }
+[data-direction="futuristic"] .sp-hero__float .sp-ph {
+  width: 132px; background: #11141d; box-shadow: 0 24px 50px -20px #000;
+}
+[data-direction="futuristic"] .sp-eyebrow::before { content: "› "; color: var(--s-accent); }
+[data-direction="futuristic"] .sp-stat__v { color: var(--s-accent); }
+[data-direction="futuristic"] .sp-card__no { font-family: var(--font-mono); }
+[data-direction="futuristic"] .sp-ui__top { background: #11141d; }
+[data-direction="futuristic"] .sp-proof { background: linear-gradient(90deg, #0d0f16, #07080c); }
+[data-direction="futuristic"] .sp-close { background: linear-gradient(120deg, #3ee0c4, #2f9bd4); }
+[data-direction="futuristic"] .sp-logo { background: #1e2230; }
+
+/* ── 07 LUXURY ────────────────────────────────────────────────────────────
+   Inszenieren statt erklären. Kein gefüllter Button, versteckte Navigation. */
+[data-direction="luxury"] {
+  --s-bg: #12100d; --s-bg2: #1a1712; --s-ink: #f0e9dd; --s-ink2: #b3a692; --s-ink3: #857a68;
+  --s-line: #2c2720; --s-accent: #c9a961; --s-accent-ink: #12100d;
+  --s-font: var(--font-sans); --s-display: var(--font-serif);
+  --s-title-size: 72px; --s-title-weight: 400; --s-title-ls: -.01em; --s-title-lh: 1.06;
+  --s-h2-size: 40px; --s-radius: 0px; --s-radius-btn: 0px;
+  --s-pad-x: 88px; --s-pad-y: 172px; --s-gap: 48px;
+  --s-card-border: 0; --s-card-pad: 0;
+  --s-eyebrow-ls: .32em; --s-eyebrow-size: 10px; --s-eyebrow-weight: 400;
+  --s-ph-bg: #1e1a15; --s-ph-border: 0;
+}
+/* Navigation hinter einem Menü – nur Marke und ein Zeichen bleiben sichtbar */
+[data-direction="luxury"] .sp-nav { border-bottom: 0; padding-block: 30px; height: auto; }
+[data-direction="luxury"] .sp-nav__links { display: none; }
+[data-direction="luxury"] .sp-nav__brand { font-family: var(--s-display); font-weight: 400; letter-spacing: .3em; text-transform: uppercase; font-size: 15px; }
+[data-direction="luxury"] .sp-nav__logomark { display: none; }
+[data-direction="luxury"] .sp-nav__act .sp-btn--ghost { display: none; }
+/* Kein einziger gefüllter Button – jeder CTA ist eine feine Unterstreichung */
+[data-direction="luxury"] .sp-btn {
+  background: transparent !important; color: var(--s-ink) !important; border: 0 !important;
+  border-bottom: 1px solid var(--s-accent) !important; border-radius: 0 !important;
+  padding: 6px 0 !important; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; font-size: 11px;
+}
+[data-direction="luxury"] .sp-nav__act .sp-btn--primary::after { content: " ☰"; letter-spacing: 0; }
+[data-direction="luxury"] .sp-hero { grid-template-columns: 1fr; padding-top: 40px; gap: 0; }
+[data-direction="luxury"] .sp-hero__figure { order: -1; margin-inline: calc(var(--s-pad-x) * -1); }
+[data-direction="luxury"] .sp-hero__figure .sp-ui {
+  border: 0; border-radius: 0; height: 460px;
+  background:
+    linear-gradient(180deg, rgb(18 16 13 / .1) 0%, rgb(18 16 13 / .82) 78%),
+    repeating-linear-gradient(112deg, #241f18 0 62px, #1e1a15 62px 124px);
+}
+[data-direction="luxury"] .sp-hero__figure .sp-ui__body { display: none; }
+[data-direction="luxury"] .sp-hero__figure .sp-ui__top { display: none; }
+[data-direction="luxury"] .sp-hero__text { margin-top: -140px; position: relative; z-index: 2; max-width: 40ch; }
+[data-direction="luxury"] .sp-hero__float { display: none; }
+[data-direction="luxury"] .sp-cta { gap: 36px; }
+[data-direction="luxury"] .sp-grid--3 { gap: 72px; }
+[data-direction="luxury"] .sp-grid--4 { grid-template-columns: repeat(2, 1fr); gap: 96px 72px; }
+[data-direction="luxury"] .sp-card--module .sp-ph { aspect-ratio: 4/5; }
+[data-direction="luxury"] .sp-proof { background: transparent; border-block: 1px solid var(--s-line); }
+[data-direction="luxury"] .sp-stat__v { font-weight: 400; }
+[data-direction="luxury"] .sp-quote__t { font-size: 38px; font-weight: 400; line-height: 1.3; }
+[data-direction="luxury"] .sp-close { background: var(--s-bg2); color: var(--s-ink); }
+
+/* ── 08 ORGANIC ───────────────────────────────────────────────────────────
+   Gelegt statt konstruiert: Bögen, Versatz, weiche Masken, warme Fläche.   */
+[data-direction="organic"] {
+  --s-bg: #fdf8f1; --s-bg2: #f3ece0; --s-ink: #241f1a; --s-ink2: #5d5449; --s-ink3: #928779;
+  --s-line: #e4d9c8; --s-accent: #2f6b4f; --s-accent-ink: #fdf8f1;
+  --s-title-size: 58px; --s-title-weight: 600; --s-title-ls: -.028em; --s-title-lh: 1.08;
+  --s-h2-size: 33px; --s-radius: 26px; --s-radius-btn: 999px;
+  --s-pad-x: 68px; --s-pad-y: 96px; --s-gap: 26px;
+  --s-card-bg: #ffffff; --s-card-border: 0; --s-card-pad: 30px;
+  --s-card-shadow: 0 18px 40px -26px rgb(70 55 35 / .5);
+  --s-btn-pad: 16px 30px; --s-ph-bg: #ece2d3; --s-ph-border: 0; --s-eyebrow-ls: .12em;
+}
+[data-direction="organic"] .sp-nav { border-bottom: 0; }
+[data-direction="organic"] .sp-nav__logomark { border-radius: 50%; }
+/* Sektionskante als Bogen statt als Linie */
+[data-direction="organic"] .sp-proof {
+  border: 0; border-radius: 0 0 48% 48% / 0 0 80px 80px; position: relative;
+}
+[data-direction="organic"] .sp-sec + .sp-sec { border-top: 0; }
+[data-direction="organic"] .sp-hero__figure .sp-ui { border-radius: 26px; border: 0; box-shadow: var(--s-card-shadow); }
+[data-direction="organic"] .sp-hero__float .sp-ph { border-radius: 50% 50% 46% 54% / 55% 48% 52% 45%; }
+/* Versetzte Karten – die Grundlinie verschwindet bewusst */
+[data-direction="organic"] .sp-grid--3 > :nth-child(2) { transform: translateY(34px); }
+[data-direction="organic"] .sp-grid--4 > :nth-child(2n) { transform: translateY(26px); }
+[data-direction="organic"] .sp-card--module .sp-ph { border-radius: 42% 58% 50% 50% / 48% 44% 56% 52%; }
+[data-direction="organic"] .sp-quote { border-top: 0; border-radius: 80px 80px 0 0; }
+[data-direction="organic"] .sp-close { border-radius: 80px 80px 0 0; }
+[data-direction="organic"] .sp-avatar { width: 46px; height: 46px; }
+[data-direction="organic"] .sp-logo { border-radius: 999px; }
+
+/* ── 09 BENTO ─────────────────────────────────────────────────────────────
+   Alles ist eine Kachel, auch der Hero. Flach, kein Schatten, keine Tiefe.  */
+[data-direction="bento"] {
+  --s-bg: #e4e4e0; --s-bg2: #ffffff; --s-ink: #131315; --s-ink2: #55555c; --s-ink3: #8a8a92;
+  --s-line: #e0e0dd; --s-accent: #131315; --s-accent-ink: #ffffff;
+  --s-title-size: 52px; --s-title-weight: 700; --s-title-ls: -.04em; --s-title-lh: 1;
+  --s-h2-size: 30px; --s-radius: 18px; --s-radius-btn: 12px;
+  --s-pad-x: 20px; --s-pad-y: 20px; --s-gap: 14px;
+  --s-card-bg: #ffffff; --s-card-border: 0; --s-card-pad: 26px; --s-card-shadow: none;
+  --s-ph-bg: #f4f4f2; --s-ph-border: 0; --s-eyebrow-ls: .12em;
+}
+/* Jede Sektion wird selbst zur Kachel */
+[data-direction="bento"] .sp { padding: 14px; }
+[data-direction="bento"] .sp-nav,
+[data-direction="bento"] .sp-hero,
+[data-direction="bento"] .sp-proof,
+[data-direction="bento"] .sp-sec,
+[data-direction="bento"] .sp-quote,
+[data-direction="bento"] .sp-close,
+[data-direction="bento"] .sp-foot {
+  background: var(--s-bg2); border: 0; border-radius: 18px; margin: 0 14px 14px;
+  padding: 34px;
+}
+[data-direction="bento"] .sp-nav { margin-top: 14px; height: auto; padding: 18px 26px; }
+[data-direction="bento"] .sp-hero { padding: 52px 44px; }
+[data-direction="bento"] .sp-hero__float { display: none; }
+[data-direction="bento"] .sp-sec + .sp-sec { border-top: 0; }
+[data-direction="bento"] .sp-sec__head { margin-bottom: 26px; }
+[data-direction="bento"] .sp-card { background: #f4f4f2; border-radius: 14px; }
+/* Gewichtung allein über Kachelgröße */
+[data-direction="bento"] .sp-grid--3 { grid-template-columns: 1.6fr 1fr 1fr; }
+[data-direction="bento"] .sp-grid--4 { grid-template-columns: repeat(6, 1fr); }
+[data-direction="bento"] .sp-grid--4 > :nth-child(1) { grid-column: span 4; }
+[data-direction="bento"] .sp-grid--4 > :nth-child(2) { grid-column: span 2; }
+[data-direction="bento"] .sp-grid--4 > :nth-child(3) { grid-column: span 2; }
+[data-direction="bento"] .sp-grid--4 > :nth-child(4) { grid-column: span 4; }
+[data-direction="bento"] .sp-quote { background: var(--s-ink); color: #fff; }
+[data-direction="bento"] .sp-quote__org { color: rgb(255 255 255 / .6); }
+[data-direction="bento"] .sp-quote .sp-avatar { background: rgb(255 255 255 / .25); }
+
+/* ── 10 EXPERIMENTAL ──────────────────────────────────────────────────────
+   Richtungswechsel als Prinzip: vertikale Schiene, Diagonale, Einzüge.     */
+[data-direction="experimental"] {
+  --s-bg: #0f0f0f; --s-bg2: #171717; --s-ink: #f5f3ee; --s-ink2: #a8a49b; --s-ink3: #6e6a62;
+  --s-line: #2a2a2a; --s-accent: #e8ff2f; --s-accent-ink: #0f0f0f;
+  --s-title-size: 92px; --s-title-weight: 500; --s-title-ls: -.05em; --s-title-lh: .88;
+  --s-h2-size: 42px; --s-radius: 0px; --s-radius-btn: 999px;
+  --s-pad-x: 120px; --s-pad-y: 92px; --s-gap: 30px;
+  --s-card-border: 0; --s-card-pad: 0; --s-eyebrow-ls: .3em;
+  --s-btn-pad: 16px 30px; --s-ph-bg: #1c1c1c; --s-ph-border: 0;
+}
+/* Navigation als senkrechte Schiene am linken Rand */
+[data-direction="experimental"] .sp { position: relative; padding-left: 64px; }
+[data-direction="experimental"] .sp-nav {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 64px; height: auto;
+  flex-direction: column; justify-content: flex-start; gap: 40px;
+  padding: 26px 0; border-right: 1px solid var(--s-line); border-bottom: 0; z-index: 4;
+}
+[data-direction="experimental"] .sp-nav__brand { writing-mode: vertical-rl; font-size: 13px; letter-spacing: .3em; text-transform: uppercase; }
+[data-direction="experimental"] .sp-nav__links { flex-direction: column; writing-mode: vertical-rl; gap: 26px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+[data-direction="experimental"] .sp-nav__act { margin: auto 0 0; flex-direction: column; }
+[data-direction="experimental"] .sp-nav__act .sp-btn { writing-mode: vertical-rl; padding: 18px 12px; font-size: 11px; letter-spacing: .16em; }
+/* Der Blick startet rechts oben und fällt diagonal */
+[data-direction="experimental"] .sp-hero { grid-template-columns: 1fr; gap: 0; }
+[data-direction="experimental"] .sp-hero__figure { order: -1; margin-left: 22%; }
+[data-direction="experimental"] .sp-hero__figure .sp-ui { border: 0; }
+[data-direction="experimental"] .sp-hero__text { margin-top: -110px; position: relative; z-index: 3; }
+[data-direction="experimental"] .sp-title { mix-blend-mode: difference; }
+[data-direction="experimental"] .sp-lead { margin-left: 34%; }
+[data-direction="experimental"] .sp-cta { margin-left: 34%; }
+[data-direction="experimental"] .sp-hero__float { left: 8%; right: auto; bottom: -60px; }
+/* Diagonales Band */
+[data-direction="experimental"] .sp-proof {
+  transform: rotate(-2.4deg) scale(1.06); background: var(--s-accent); color: var(--s-accent-ink);
+  border: 0; margin-block: 40px; position: relative; z-index: 2;
+}
+[data-direction="experimental"] .sp-proof .sp-stat__l,
+[data-direction="experimental"] .sp-proof .sp-stat__u { color: rgb(15 15 15 / .62); }
+[data-direction="experimental"] .sp-proof .sp-logo { background: rgb(15 15 15 / .28); }
+[data-direction="experimental"] .sp-grid--3 > :nth-child(2) { margin-top: 64px; }
+[data-direction="experimental"] .sp-grid--3 > :nth-child(3) { margin-top: 128px; }
+[data-direction="experimental"] .sp-sec--modules .sp-sec__head { margin-left: 46%; }
+[data-direction="experimental"] .sp-quote__t { font-size: 44px; font-weight: 400; max-width: 20ch; margin-left: 28%; }
+[data-direction="experimental"] .sp-quote__by { margin-left: 28%; }
+/* FAQ und Fuß bleiben bewusst ruhig – der Bruch ist dosiert */
+[data-direction="experimental"] .sp-sec--faq { --s-pad-x: 120px; }
+
+/* ── 11 AURORA ────────────────────────────────────────────────────────────
+   Neu ergänzt. Licht als Material: Farbfelder hinter durchscheinenden
+   Flächen, Kanten aus Helligkeitssprüngen statt aus Linien.               */
+[data-direction="aurora"] {
+  --s-bg: #070711; --s-bg2: rgb(255 255 255 / .045); --s-ink: #f2f1fa; --s-ink2: #b4b2cc; --s-ink3: #7d7b96;
+  --s-line: rgb(255 255 255 / .12); --s-accent: #b79bff; --s-accent-ink: #120a2a;
+  --s-title-size: 62px; --s-title-weight: 600; --s-title-ls: -.038em; --s-title-lh: 1.02;
+  --s-h2-size: 33px; --s-radius: 22px; --s-radius-btn: 999px;
+  --s-pad-x: 62px; --s-pad-y: 92px; --s-gap: 20px;
+  --s-card-bg: rgb(255 255 255 / .055); --s-card-border: 1px solid rgb(255 255 255 / .12);
+  --s-card-pad: 28px; --s-card-shadow: inset 0 1px 0 rgb(255 255 255 / .16);
+  --s-btn-pad: 15px 28px; --s-ph-bg: rgb(255 255 255 / .06); --s-ph-border: 1px solid rgb(255 255 255 / .1);
+  --s-eyebrow-ls: .16em;
+}
+/* Die Lichtfelder liegen hinter allem und markieren Headline, Handlung, Beleg */
+[data-direction="aurora"] { position: relative; }
+[data-direction="aurora"]::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(52% 38% at 14% 8%,  rgb(183 155 255 / .42), transparent 70%),
+    radial-gradient(46% 34% at 88% 26%, rgb(72 196 255 / .34), transparent 72%),
+    radial-gradient(44% 30% at 40% 72%, rgb(255 118 186 / .26), transparent 74%);
+}
+[data-direction="aurora"] > * { position: relative; z-index: 1; }
+[data-direction="aurora"] .sp-nav {
+  margin: 18px var(--s-pad-x); border: 1px solid rgb(255 255 255 / .14); border-radius: 999px;
+  padding-inline: 24px; background: rgb(255 255 255 / .06); backdrop-filter: blur(18px) saturate(1.4);
+}
+[data-direction="aurora"] .sp-proof,
+[data-direction="aurora"] .sp-quote {
+  background: rgb(255 255 255 / .05); border: 1px solid rgb(255 255 255 / .1);
+  border-radius: 22px; margin-inline: var(--s-pad-x); backdrop-filter: blur(16px);
+}
+[data-direction="aurora"] .sp-sec + .sp-sec { border-top-color: rgb(255 255 255 / .08); }
+[data-direction="aurora"] .sp-hero__figure .sp-ui {
+  background: rgb(255 255 255 / .06); border-color: rgb(255 255 255 / .14);
+  backdrop-filter: blur(20px); box-shadow: 0 40px 80px -40px #000, inset 0 1px 0 rgb(255 255 255 / .2);
+}
+[data-direction="aurora"] .sp-ui__top { background: rgb(255 255 255 / .05); }
+[data-direction="aurora"] .sp-btn--primary { background: linear-gradient(120deg, #b79bff, #6ec7ff); border: 0; }
+[data-direction="aurora"] .sp-close { background: linear-gradient(120deg, rgb(183 155 255 / .92), rgb(110 199 255 / .92)); }
+[data-direction="aurora"] .sp-logo { background: rgb(255 255 255 / .14); }
+
+/* ── 12 CONSOLE ───────────────────────────────────────────────────────────
+   Neu ergänzt. Die Marketingseite spricht die Sprache des Produkts:
+   Monospace, Tabellen, Statusmarken, dichte Zeilen.                       */
+[data-direction="console"] {
+  --s-bg: #0b0d0e; --s-bg2: #101314; --s-ink: #dfe5e3; --s-ink2: #93a09c; --s-ink3: #626d6a;
+  --s-line: #1d2224; --s-accent: #4ade80; --s-accent-ink: #06130c;
+  --s-font: var(--font-mono); --s-display: var(--font-mono); --s-label: var(--font-mono);
+  --s-title-size: 44px; --s-title-weight: 500; --s-title-ls: -.03em; --s-title-lh: 1.14;
+  --s-h2-size: 24px; --s-h3-size: 15px; --s-body-size: 13px;
+  --s-radius: 3px; --s-radius-btn: 3px;
+  --s-pad-x: 36px; --s-pad-y: 56px; --s-gap: 1px;
+  --s-card-bg: #101314; --s-card-border: 1px solid #1d2224; --s-card-pad: 18px;
+  --s-btn-pad: 11px 18px; --s-btn-weight: 500; --s-eyebrow-ls: .14em; --s-eyebrow-size: 11px;
+  --s-ph-bg: #0e1112; --s-ph-border: 1px solid #1d2224;
+}
+[data-direction="console"] .sp-nav { height: 46px; font-size: 12px; background: #0e1112; }
+[data-direction="console"] .sp-nav__brand { font-size: 13px; letter-spacing: .06em; }
+[data-direction="console"] .sp-nav__logomark { border-radius: 1px; }
+[data-direction="console"] .sp-nav__links { font-size: 12px; gap: 20px; }
+[data-direction="console"] .sp-nav__link::before { content: "/"; color: var(--s-ink3); margin-right: 3px; }
+[data-direction="console"] .sp-eyebrow::before { content: "▎"; color: var(--s-accent); margin-right: 6px; }
+[data-direction="console"] .sp-title { max-width: 22ch; }
+[data-direction="console"] .sp-lead { font-size: 14px; }
+/* Kennzahlen als Statuszeile */
+[data-direction="console"] .sp-proof { padding-block: 14px; font-size: 12px; background: #0e1112; }
+[data-direction="console"] .sp-proof__stats { gap: 0; border: 1px solid var(--s-line); }
+[data-direction="console"] .sp-stat { padding: 10px 22px; border-right: 1px solid var(--s-line); }
+[data-direction="console"] .sp-stat__v { font-size: 22px; font-weight: 500; }
+[data-direction="console"] .sp-stat__v::before { content: "● "; color: var(--s-accent); font-size: .5em; vertical-align: middle; }
+/* Vorteile und Module als Tabellenzeilen */
+[data-direction="console"] .sp-grid--3,
+[data-direction="console"] .sp-grid--4 { grid-template-columns: 1fr; gap: 0; border: 1px solid var(--s-line); }
+[data-direction="console"] .sp-card {
+  grid-template-columns: 60px 200px 1fr; align-items: baseline; gap: 20px;
+  border: 0; border-bottom: 1px solid var(--s-line); border-radius: 0; padding: 14px 18px;
+}
+[data-direction="console"] .sp-card:last-child { border-bottom: 0; }
+[data-direction="console"] .sp-card--module .sp-ph,
+[data-direction="console"] .sp-card--module .sp-link { display: none; }
+[data-direction="console"] .sp-card:hover { background: #12191b; }
+[data-direction="console"] .sp-quote { background: #0e1112; }
+[data-direction="console"] .sp-quote__t { font-size: 18px; line-height: 1.55; max-width: 60ch; }
+[data-direction="console"] .sp-quote__t::before { content: "# "; color: var(--s-ink3); }
+[data-direction="console"] .sp-faq__q { font-size: 14px; }
+[data-direction="console"] .sp-faq__q::before { content: "? "; color: var(--s-accent); }
+[data-direction="console"] .sp-close { text-align: left; justify-items: start; }
+[data-direction="console"] .sp-logo { background: #1d2224; border-radius: 1px; }

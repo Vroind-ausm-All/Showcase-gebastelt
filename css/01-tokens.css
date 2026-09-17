@@ -1,0 +1,156 @@
+/* ============================================================================
+   DESIGN TOKENS
+   Eine Quelle für Raum, Typografie, Farbe, Bewegung, Tiefe und Breakpoints.
+   Die Rahmenebene (Navigation, Sektionen, Werkzeuge) nutzt die --ui-* Tokens.
+   Die Musterebene (die zwölf Richtungen) nutzt die --sp-* Tokens und
+   überschreibt sie in css/10-directions.css. Beide Ebenen stören sich nicht.
+   ========================================================================== */
+
+:root {
+  /* --- Schrift ---------------------------------------------------------- */
+  --font-sans: "Inter", ui-sans-serif, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, "DejaVu Sans Mono", monospace;
+
+  /* Typo-Skala – Major Third, fluid zwischen 390 px und 1440 px */
+  --fs-micro: 10.5px;
+  --fs-mono:  11.5px;
+  --fs-xs:    12.5px;
+  --fs-sm:    13.5px;
+  --fs-base:  15px;
+  --fs-md:    clamp(16px, 1.05vw, 18px);
+  --fs-lg:    clamp(19px, 1.5vw, 23px);
+  --fs-xl:    clamp(23px, 2.1vw, 31px);
+  --fs-2xl:   clamp(29px, 3.2vw, 44px);
+  --fs-3xl:   clamp(36px, 5vw, 68px);
+  --fs-4xl:   clamp(40px, 5.4vw, 78px);
+
+  --lh-tight: 1.02;
+  --lh-snug:  1.16;
+  --lh-base:  1.55;
+  --lh-loose: 1.7;
+
+  --ls-tight: -0.035em;
+  --ls-snug:  -0.018em;
+  --ls-wide:  0.08em;
+  --ls-mono:  0.14em;
+
+  /* --- Raum – 4-px-Basis ------------------------------------------------ */
+  --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
+  --sp-5: 24px;  --sp-6: 32px;  --sp-7: 48px;  --sp-8: 64px;
+  --sp-9: 96px;  --sp-10: 128px; --sp-11: 176px; --sp-12: 240px;
+
+  /* Sektionsrhythmus – ein Wert, überall benutzt */
+  --pad-section: clamp(72px, 9vw, 152px);
+  --pad-gutter:  clamp(20px, 4vw, 64px);
+  --rail: 84px;                       /* Breite der Nummernschiene links */
+
+  /* --- Container -------------------------------------------------------- */
+  --w-full: 1680px;
+  --w-wide: 1440px;
+  --w-base: 1180px;
+  --w-text: 68ch;
+  --w-narrow: 640px;
+
+  /* --- Radius ----------------------------------------------------------- */
+  --r-0: 0px; --r-1: 2px; --r-2: 4px; --r-3: 8px; --r-4: 14px; --r-5: 24px; --r-full: 999px;
+
+  /* --- Tiefe ------------------------------------------------------------ */
+  --e-1: 0 1px 2px rgb(0 0 0 / .06);
+  --e-2: 0 2px 6px -1px rgb(0 0 0 / .08), 0 1px 2px rgb(0 0 0 / .05);
+  --e-3: 0 12px 28px -12px rgb(0 0 0 / .18);
+  --e-4: 0 32px 64px -32px rgb(0 0 0 / .32);
+
+  /* --- Bewegung --------------------------------------------------------- */
+  --t-fast:  120ms;
+  --t-base:  260ms;
+  --t-slow:  520ms;
+  --t-scene: 820ms;
+
+  --ease-out:  cubic-bezier(.22, .78, .30, 1);
+  --ease-in:   cubic-bezier(.65, .02, .85, .40);
+  --ease-both: cubic-bezier(.62, .02, .20, 1);
+  --ease-soft: cubic-bezier(.36, .66, .28, 1);
+
+  --stagger: 62ms;
+
+  /* --- Ebenen ----------------------------------------------------------- */
+  --z-base: 0; --z-raised: 10; --z-sticky: 40; --z-nav: 60;
+  --z-cursor: 80; --z-overlay: 90; --z-modal: 100; --z-toast: 110;
+
+  /* --- Rahmenebene, hell ------------------------------------------------ */
+  --ui-bg:      #f2f0ec;   /* warmes Papier, nicht reinweiß */
+  --ui-bg-2:    #e8e5df;
+  --ui-panel:   #fbfaf8;
+  --ui-ink:     #14141a;
+  --ui-ink-2:   #4d4d57;
+  --ui-ink-3:   #65656b;   /* AA auf bg, bg-2 und panel */
+  --ui-line:    #d6d2ca;
+  --ui-line-2:  #bdb8ae;
+  --ui-inverse:     #14141a;
+  --ui-inverse-ink: #f6f4f0;
+
+  /* Signalfarbe: sparsam, nur für System und Daten – nie als Dekoration */
+  --sig:      #b8350c;     /* AA als Kleintext und hinter weißer Schrift */
+  --sig-soft: #fbe7df;
+  --sig-ink:  #ffffff;
+
+  /* Spektrum für Datenvisualisierung – aus dem Prisma-Bild abgeleitet */
+  --sp-a: #d8410f;  --sp-b: #dd8b18;  --sp-c: #3f8f5c;
+  --sp-d: #1f6f9c;  --sp-e: #5b4bab;  --sp-f: #a8306b;
+
+  --grain: .022;
+  color-scheme: light;
+}
+
+/* --- Rahmenebene, dunkel -------------------------------------------------- */
+:root[data-ui-theme="dark"] {
+  --ui-bg:      #0d0d10;
+  --ui-bg-2:    #16161b;
+  --ui-panel:   #17171d;
+  --ui-ink:     #f0eee9;
+  --ui-ink-2:   #a8a6a0;
+  --ui-ink-3:   #84827d;
+  --ui-line:    #2a2a32;
+  --ui-line-2:  #3c3c46;
+  --ui-inverse:     #f0eee9;
+  --ui-inverse-ink: #0d0d10;
+
+  --sig:      #ff6a35;
+  --sig-soft: #3a1a0e;
+
+  --sp-a: #ff6a35;  --sp-b: #f0ad3c;  --sp-c: #56b97c;
+  --sp-d: #4aa3d4;  --sp-e: #8c79e0;  --sp-f: #d95a97;
+
+  --e-3: 0 12px 28px -12px rgb(0 0 0 / .7);
+  --e-4: 0 32px 64px -32px rgb(0 0 0 / .9);
+  --grain: .030;
+  color-scheme: dark;
+}
+
+/* Systemvorgabe respektieren, solange nichts ausdrücklich gewählt wurde */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-ui-theme="light"]) {
+    --ui-bg:      #0d0d10;
+    --ui-bg-2:    #16161b;
+    --ui-panel:   #17171d;
+    --ui-ink:     #f0eee9;
+    --ui-ink-2:   #a8a6a0;
+    --ui-ink-3:   #84827d;
+    --ui-line:    #2a2a32;
+    --ui-line-2:  #3c3c46;
+    --ui-inverse:     #f0eee9;
+    --ui-inverse-ink: #0d0d10;
+    --sig:      #ff6a35;
+    --sig-soft: #3a1a0e;
+    --sp-a: #ff6a35;  --sp-b: #f0ad3c;  --sp-c: #56b97c;
+    --sp-d: #4aa3d4;  --sp-e: #8c79e0;  --sp-f: #d95a97;
+    --e-3: 0 12px 28px -12px rgb(0 0 0 / .7);
+    --e-4: 0 32px 64px -32px rgb(0 0 0 / .9);
+    --grain: .030;
+    color-scheme: dark;
+  }
+}
+
+/* --- Breakpoints (als Dokumentation; CSS nutzt die Werte direkt) ---------- */
+/*  sm 480px · md 720px · lg 1024px · xl 1280px · 2xl 1560px                  */

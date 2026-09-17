@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>08 — Asymmetrical Layout · Flowdesk Wireframe</title>
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+/* ===== 08 ASYMMETRICAL LAYOUT =============================================
+   Bewusst ungleiche Gewichtung: ungleich breite Spalten, Off-Center-Setzung,
+   vertikale Versätze und grosse Leerräume. Nichts überlagert oder bricht aus –
+   die Spannung entsteht aus Verhältnis und Leere, nicht aus Kollision.        */
+
+.wrap { width: min(1340px, 100% - 64px); margin-inline: auto; }
+.g12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 28px; }
+
+/* Header: Logo eingerückt, Navigation rechtsbündig unterhalb der Mittelachse */
+.hd { padding: var(--s-5) 0 var(--s-4); }
+.hd__in { display: grid; grid-template-columns: repeat(12, 1fr); gap: 28px; align-items: center; }
+.hd__logo { grid-column: 2 / 5; }
+.hd__nav { grid-column: 7 / 11; display: flex; gap: var(--s-5); font-size: 14px; }
+.hd__nav a { text-decoration: none; color: var(--ink-3); }
+.hd__act { grid-column: 11 / -1; display: flex; justify-content: flex-end; gap: var(--s-3); }
+
+/* HERO: Headline links aussen, Visual rechts hochgezogen, CTA tief unten links */
+.hero { padding: var(--s-9) 0 var(--s-10); }
+.hero__kicker { grid-column: 2 / 5; grid-row: 1; }
+.hero__h { grid-column: 2 / 8; grid-row: 2; }
+.hero__h h1 { font-size: clamp(40px, 5.6vw, 76px); line-height: .98; letter-spacing: -.035em; }
+.hero__lead { grid-column: 2 / 6; grid-row: 3; margin-top: var(--s-5); }
+.hero__cta  { grid-column: 2 / 7; grid-row: 4; margin-top: var(--s-8); }  /* tiefer Versatz = Spannung */
+.hero__viz  { grid-column: 9 / -1; grid-row: 1 / 4; align-self: start; margin-top: var(--s-6); }
+.hero__viz .ph { aspect-ratio: 3/4; }
+.hero__note { grid-column: 9 / -1; grid-row: 4; align-self: end; text-align: right; }
+
+/* Value Proposition: Text weit rechts, linke Hälfte bleibt leer */
+.claim { padding: var(--s-9) 0; border-top: 1px solid var(--line); }
+.claim__label { grid-column: 2 / 4; }
+.claim__text  { grid-column: 6 / 12; font-size: clamp(24px, 3.2vw, 42px); font-weight: 700; letter-spacing: -.03em; line-height: 1.12; }
+.claim__sub   { grid-column: 6 / 10; margin-top: var(--s-5); }
+
+/* Social Proof: schmale Zahlenspalte links, Logos weit rechts, versetzt */
+.proof { padding: var(--s-8) 0; }
+.proof__stats { grid-column: 2 / 5; display: grid; gap: var(--s-5); }
+.proof__logos { grid-column: 7 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3); align-self: end; margin-bottom: var(--s-5); }
+
+/* Vorteile: vier Blöcke mit vier unterschiedlichen Breiten und Höhenversätzen */
+.benefits { padding: var(--s-9) 0; }
+.benefits__head { grid-column: 2 / 7; margin-bottom: var(--s-7); }
+.benefits__head h2 { font-size: clamp(26px, 3vw, 38px); }
+.bn { border-top: 2px solid var(--ink); padding-top: var(--s-4); }
+.bn h3 { font-size: 18px; margin-bottom: var(--s-2); }
+.bn--1 { grid-column: 2 / 6; }
+.bn--2 { grid-column: 7 / 10; margin-top: var(--s-9); }
+.bn--3 { grid-column: 3 / 6; margin-top: var(--s-6); }
+.bn--4 { grid-column: 8 / 12; margin-top: var(--s-5); }
+
+/* Funktionen: zwei ungleiche Spalten, die schmalere ist tiefer gesetzt */
+.features { padding: var(--s-9) 0; border-top: 1px solid var(--line); }
+.features__head { grid-column: 2 / 6; }
+.features__main { grid-column: 2 / 8; margin-top: var(--s-6); }
+.features__side { grid-column: 9 / -1; margin-top: var(--s-10); }
+.frow { display: grid; grid-template-columns: 34px 1fr; gap: var(--s-4); padding: var(--s-4) 0; border-bottom: 1px solid var(--line); }
+.frow:first-child { border-top: 1px solid var(--line); }
+.frow h3 { font-size: 16px; margin-bottom: 4px; }
+
+/* Produktvisualisierung: grosse Fläche rechts, Text schmal links unten */
+.viz { padding: var(--s-9) 0; }
+.viz__txt { grid-column: 2 / 5; align-self: end; margin-bottom: var(--s-6); }
+.viz__img { grid-column: 6 / -1; }
+
+/* Prozess: vertikale Treppe mit wachsendem Einzug */
+.process { padding: var(--s-9) 0; border-top: 1px solid var(--line); }
+.process__head { grid-column: 2 / 6; margin-bottom: var(--s-6); }
+.pst { border-left: 2px solid var(--ink); padding-left: var(--s-4); padding-bottom: var(--s-5); }
+.pst h3 { font-size: 17px; margin-bottom: 4px; }
+.ps1 { grid-column: 2 / 6; }
+.ps2 { grid-column: 4 / 8; }
+.ps3 { grid-column: 6 / 10; }
+.ps4 { grid-column: 8 / 12; }
+
+/* Use Cases + Testimonials: schmal / breit im Wechsel, ohne Symmetrie */
+.cases { padding: var(--s-8) 0; }
+.cases__head { grid-column: 9 / -1; text-align: right; margin-bottom: var(--s-5); }
+.cases__list { grid-column: 2 / 9; }
+.cases__list li { display: grid; grid-template-columns: 24ch 1fr; gap: var(--s-4); padding: var(--s-4) 0; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+
+.tst { padding: var(--s-9) 0; }
+.tst__big { grid-column: 2 / 8; }
+.tst__big p { font-size: clamp(20px, 2.4vw, 30px); font-weight: 600; letter-spacing: -.02em; line-height: 1.25; }
+.tst__by { display: flex; gap: var(--s-3); align-items: center; margin-top: var(--s-4); }
+.tst__small { grid-column: 9 / -1; display: grid; gap: var(--s-5); margin-top: var(--s-8); }
+.tst__small blockquote { border-top: 1px solid var(--line); padding-top: var(--s-3); }
+
+.faqsec { padding: var(--s-8) 0 var(--s-9); }
+.faqsec h2 { grid-column: 2 / 5; font-size: clamp(24px, 2.6vw, 34px); }
+.faqsec .faq { grid-column: 6 / 12; }
+
+/* Abschluss-CTA: Text links, Button-Gruppe weit rechts und tiefer gesetzt */
+.endcta { padding: var(--s-9) 0; border-top: 2px solid var(--ink); }
+.endcta__h { grid-column: 2 / 8; }
+.endcta__h h2 { font-size: clamp(28px, 3.6vw, 48px); letter-spacing: -.03em; }
+.endcta__act { grid-column: 9 / -1; align-self: end; display: grid; gap: var(--s-3); margin-top: var(--s-7); }
+
+.ft { padding: var(--s-7) 0 var(--s-5); border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); }
+.ft__brand { grid-column: 2 / 5; }
+.ft__c1 { grid-column: 6 / 8; } .ft__c2 { grid-column: 8 / 10; } .ft__c3 { grid-column: 10 / 12; } .ft__c4 { grid-column: 12 / -1; }
+.ft h4 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); margin-bottom: var(--s-3); }
+.ft li { margin-bottom: 6px; } .ft a { text-decoration: none; }
+.ft__base { grid-column: 2 / -1; margin-top: var(--s-6); padding-top: var(--s-4); border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; }
+
+/* ---- Mobile: Asymmetrie als Einzugs-Rhythmus statt als Spaltenspiel ------ */
+@media (max-width: 950px) {
+  .wrap { width: calc(100% - 32px); }
+  .g12, .hd__in { grid-template-columns: 1fr; gap: var(--s-4); }
+  .hd__nav { display: none; }
+  .hd__logo, .hd__act { grid-column: 1; }
+  .hd__act { justify-content: flex-start; }
+  .hero, .claim, .proof, .benefits, .features, .viz, .process, .cases, .tst, .faqsec, .endcta { padding: var(--s-7) 0; }
+  .hero > .g12 > *, .claim > .g12 > *, .proof > .g12 > *, .benefits > .g12 > *, .features > .g12 > *,
+  .viz > .g12 > *, .process > .g12 > *, .cases > .g12 > *, .tst > .g12 > *, .faqsec > .g12 > *,
+  .endcta > .g12 > *, .ft > .g12 > * { grid-column: 1 !important; grid-row: auto !important; margin-top: 0 !important; margin-bottom: 0 !important; text-align: left !important; }
+  .hero__h h1 { font-size: 38px; }
+  .hero__cta { margin-top: var(--s-5) !important; }
+  .hero .btn { flex: 1 1 100%; }
+  /* leichter Einzug erhält die Asymmetrie im schmalen Viewport */
+  .bn--2, .ps2, .tst__small { margin-left: 20px !important; }
+  .bn--3, .ps3 { margin-left: 40px !important; }
+  .bn--4, .ps4 { margin-left: 60px !important; }
+  .proof__logos { grid-template-columns: 1fr 1fr; }
+  .cases__list li { grid-template-columns: 1fr; gap: 2px; }
+  .endcta__act .btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="logo hd__logo" href="#">Flowdesk</a>
+    <nav class="hd__nav"><a href="#">Produkt</a><a href="#">Funktionen</a><a href="#usecases">Use Cases</a><a href="#">Preise</a></nav>
+    <div class="hd__act"><a class="btn btn--sm" href="#demo">Demo buchen</a></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap g12">
+    <p class="eyebrow hero__kicker">Ressourcenplanung für Agenturen</p>
+    <div class="hero__h"><h1>Agenturplanung, die endlich zusammenpasst.</h1></div>
+    <p class="t-lead hero__lead">Flowdesk verbindet Projekte, Kapazitäten und Budgets in einer Oberfläche –
+      damit Ihr Team jederzeit weiß, wer wann woran arbeitet.</p>
+    <div class="btn-row hero__cta">
+      <a class="btn btn--lg" href="#demo">Demo buchen</a>
+      <a class="btn btn--sec btn--lg" href="#tour">Produkt-Tour ansehen</a>
+    </div>
+    <div class="hero__viz"><div class="ph"><span>Produktvisualisierung · Hochformat</span></div></div>
+    <p class="t-small hero__note">480+ Agenturen · 4,7/5 aus 320 Bewertungen</p>
+  </div>
+</section>
+
+<section class="claim">
+  <div class="wrap g12">
+    <p class="eyebrow claim__label">Value Proposition</p>
+    <p class="claim__text">Eine Quelle der Wahrheit für Auslastung, Timings und Margen.</p>
+    <p class="t-lead claim__sub">Statt fünf Tabellen und drei Tools arbeitet die ganze Agentur auf demselben Plan.</p>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap g12">
+    <div class="proof__stats">
+      <div><div class="stat__value num">480+</div><div class="stat__label">Agenturen planen mit Flowdesk</div></div>
+      <div><div class="stat__value num">31 %</div><div class="stat__label">weniger Planungsaufwand</div></div>
+    </div>
+    <div class="proof__logos">
+      <span class="logo-ph">Aurum</span><span class="logo-ph">Kessler &amp; Co.</span><span class="logo-ph">Studio Nord</span>
+      <span class="logo-ph">Brandwerk</span><span class="logo-ph">Pixelhof</span><span class="logo-ph">Vesta Group</span>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="wrap g12">
+    <div class="benefits__head"><p class="eyebrow">Vorteile</p><h2>Was sich in den ersten Wochen messbar verändert.</h2></div>
+    <article class="bn bn--1"><h3>Auslastung in Echtzeit</h3><p class="t-body">Kapazitäten pro Person, Team und Woche auf einen Blick – inklusive Teilzeit, Urlaub und Skills.</p></article>
+    <article class="bn bn--2"><h3>Weniger Planungs-Chaos</h3><p class="t-body">Ein Plan statt fünf Tabellen.</p></article>
+    <article class="bn bn--3"><h3>Projekte bleiben profitabel</h3><p class="t-body">Soll-Ist ab Tag eins.</p></article>
+    <article class="bn bn--4"><h3>Schnell startklar</h3><p class="t-body">Import aus Excel und Jira, Go-live in unter 14 Tagen.</p></article>
+  </div>
+</section>
+
+<section class="features">
+  <div class="wrap g12">
+    <div class="features__head"><p class="eyebrow">Funktionen</p><h2 class="t-h2">Alles zwischen Briefing und Rechnung.</h2></div>
+    <div class="features__main">
+      <div class="frow"><span class="icon"></span><div><h3>Kapazitätsplanung</h3><p class="t-body">Wochen- und Tagesansicht, Skills, Teilzeit, Urlaube.</p></div></div>
+      <div class="frow"><span class="icon"></span><div><h3>Projekt-Timeline</h3><p class="t-body">Phasen, Meilensteine und Abhängigkeiten in einer Ansicht.</p></div></div>
+      <div class="frow"><span class="icon"></span><div><h3>Zeiterfassung</h3><p class="t-body">Erfassung in 15 Sekunden, mobil und im Browser.</p></div></div>
+      <div class="frow"><span class="icon"></span><div><h3>Budget &amp; Forecast</h3><p class="t-body">Soll-Ist je Projekt, Kunde und Quartal.</p></div></div>
+    </div>
+    <div class="features__side">
+      <div class="frow"><span class="icon"></span><div><h3>Reporting</h3><p class="t-body">Dashboards für Leitung, PM und Controlling.</p></div></div>
+      <div class="frow"><span class="icon"></span><div><h3>Integrationen</h3><p class="t-body">Jira, Slack, DATEV, Kalender, API.</p></div></div>
+      <div class="btn-row" style="margin-top:24px"><a class="btn btn--ghost" href="#">Alle Funktionen ansehen</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="viz">
+  <div class="wrap g12">
+    <div class="viz__txt">
+      <p class="eyebrow">Produkt</p>
+      <h2 class="t-h3">Planungsboard, Heatmap und Forecast in einer Oberfläche.</h2>
+      <div class="btn-row" style="margin-top:20px"><a class="btn btn--sec" href="#tour">Produkt-Tour ansehen</a></div>
+    </div>
+    <div class="viz__img">
+      <div class="ui" style="padding:20px">
+        <div class="ui__bar ui__bar--md"></div>
+        <div class="ui__grid">
+          <span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span>
+          <span class="ui__cell ui__cell--half"></span><span class="ui__cell ui__cell--fill"></span><span class="ui__cell"></span><span class="ui__cell"></span>
+        </div>
+        <div class="ui__row"><i style="height:45%"></i><i style="height:75%"></i><i style="height:38%"></i><i style="height:100%"></i><i style="height:62%"></i><i style="height:28%"></i><i style="height:80%"></i></div>
+        <p class="t-micro">Auslastung KW 36–42</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap g12">
+    <div class="process__head"><p class="eyebrow">So funktioniert es</p><h2 class="t-h2">Vier Schritte, versetzt gelesen.</h2></div>
+    <div class="pst ps1"><p class="t-micro">01</p><h3>Daten importieren</h3><p class="t-body">Projekte, Stunden und Teams aus Excel oder Jira.</p></div>
+    <div class="pst ps2"><p class="t-micro">02</p><h3>Teams &amp; Rollen anlegen</h3><p class="t-body">Skills, Verfügbarkeiten und Stundensätze.</p></div>
+    <div class="pst ps3"><p class="t-micro">03</p><h3>Projekte planen</h3><p class="t-body">Kapazität zuweisen, Timings prüfen.</p></div>
+    <div class="pst ps4"><p class="t-micro">04</p><h3>Auslastung steuern</h3><p class="t-body">Wöchentlich nachjustieren.</p></div>
+  </div>
+</section>
+
+<section class="cases" id="usecases">
+  <div class="wrap g12">
+    <div class="cases__head"><p class="eyebrow">Use Cases</p><h2 class="t-h3">Für Teams von 8 bis 200 Personen</h2></div>
+    <ul class="cases__list">
+      <li><strong>Kreativagenturen</strong><span>Retainer und Projektgeschäft parallel steuern.</span></li>
+      <li><strong>Design-Studios</strong><span>Kleine Teams, viele parallele Kunden.</span></li>
+      <li><strong>IT-Dienstleister</strong><span>Sprints, Rollen und Abrechenbarkeit verbinden.</span></li>
+      <li><strong>Inhouse-Teams</strong><span>Interne Nachfrage sichtbar priorisieren.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="tst">
+  <div class="wrap g12">
+    <blockquote class="tst__big">
+      <p>„Wir haben unsere Wochenplanung von vier Stunden auf zwanzig Minuten reduziert.“</p>
+      <div class="tst__by"><span class="avatar avatar--lg"></span><span class="t-small">Lena Brandt<br>Head of Operations, Studio Nord</span></div>
+    </blockquote>
+    <div class="tst__small">
+      <blockquote><p class="t-body">„Zum ersten Mal sehen Geschäftsführung und Projektleitung dieselben Zahlen.“</p><p class="t-small" style="margin-top:8px">Mirko Falk, Brandwerk</p></blockquote>
+      <blockquote><p class="t-body">„Die Einführung war in zwei Wochen durch – ohne Beraterprojekt.“</p><p class="t-small" style="margin-top:8px">Ayla Demir, Vesta Group</p></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="faqsec">
+  <div class="wrap g12">
+    <h2>Häufige Fragen</h2>
+    <div class="faq">
+      <details open><summary>Wie lange dauert die Einführung?</summary><p>10 bis 14 Tage, inklusive Datenimport und Schulung.</p></details>
+      <details><summary>Können wir bestehende Daten importieren?</summary><p>Excel, CSV, Jira und Harvest direkt, alles Weitere über die API.</p></details>
+      <details><summary>Welche Integrationen gibt es?</summary><p>Jira, Slack, DATEV, Google Kalender, Outlook, REST-API.</p></details>
+      <details><summary>Wie wird abgerechnet?</summary><p>Pro aktiver Person und Monat, monatlich kündbar.</p></details>
+      <details><summary>Wo liegen die Daten?</summary><p>Server in Frankfurt, DSGVO-konform, AVV inklusive.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="endcta" id="demo">
+  <div class="wrap g12">
+    <div class="endcta__h">
+      <p class="eyebrow">Nächster Schritt</p>
+      <h2>Sehen Sie Flowdesk an Ihrem eigenen Projektplan.</h2>
+    </div>
+    <div class="endcta__act">
+      <p class="t-small">30 Minuten, gemeinsam mit Ihrem Team.</p>
+      <a class="btn btn--lg" href="#">Demo buchen</a>
+      <a class="btn btn--sec btn--lg" href="#tour">Produkt-Tour ansehen</a>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap g12">
+    <div class="ft__brand"><span class="logo">Flowdesk</span><p style="margin-top:10px">Ressourcenplanung für Agenturen und Studios.</p></div>
+    <div class="ft__c1"><h4>Produkt</h4><ul><li><a href="#">Funktionen</a></li><li><a href="#">Integrationen</a></li><li><a href="#">Preise</a></li></ul></div>
+    <div class="ft__c2"><h4>Unternehmen</h4><ul><li><a href="#">Über uns</a></li><li><a href="#">Karriere</a></li><li><a href="#">Kontakt</a></li></ul></div>
+    <div class="ft__c3"><h4>Ressourcen</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Hilfe-Center</a></li></ul></div>
+    <div class="ft__c4"><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul></div>
+    <div class="ft__base"><span>© 2026 Flowdesk GmbH</span><span>Hamburg · Server in Frankfurt</span></div>
+  </div>
+</footer>
+
+<script src="../assets/wf.js"></script>
+</body>
+</html>
