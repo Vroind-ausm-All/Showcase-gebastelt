@@ -1,0 +1,45 @@
+# Veröffentlicht die Seite auf GitHub Pages.
+# Die Seite ist statisch: kein Build, kein Paketmanager – der Repository-Inhalt
+# wird unverändert hochgeladen. `enablement: true` schaltet Pages beim ersten
+# Lauf selbst ein, sodass niemand es vorher in den Einstellungen klicken muss.
+name: Pages
+
+on:
+  push:
+    branches:
+      - main
+      - claude/hopeful-ramanujan-2hv5i5
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Gleichzeitige Läufe würden sich gegenseitig überholen; der neueste gewinnt.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pages einrichten
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Seite hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v4
