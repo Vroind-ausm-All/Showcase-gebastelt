@@ -18,8 +18,7 @@ gerendert**, es wechselt ausschließlich ein Attribut.
 **[vroind-ausm-all.github.io/Showcase-gebastelt](https://vroind-ausm-all.github.io/Showcase-gebastelt/)**
 
 Veröffentlicht über GitHub Pages (`.github/workflows/pages.yml`). Jeder Push auf
-den Veröffentlichungszweig baut die Seite neu — die Seite ist statisch, es wird
-nur hochgeladen.
+`main` veröffentlicht neu — die Seite ist statisch, es wird nur hochgeladen.
 
 ## Lokal starten
 
